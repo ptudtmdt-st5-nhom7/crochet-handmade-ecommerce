@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>T10. Quy trình sử dụng AI trong dự án nhóm</title>
+<style>
+@page { size: A4; margin: 18mm 16mm; }
+* { box-sizing: border-box; }
+body { font-family: "Times New Roman", serif; font-size: 12pt; line-height: 1.45;
+       color: #111; max-width: 1100px; margin: 24px auto; padding: 0 24px; }
+h1 { font-size: 18pt; margin: 20px 0 12px; }
+h2 { font-size: 15pt; margin: 18px 0 10px; }
+h3 { font-size: 13pt; margin: 14px 0 8px; }
+p { margin: 0 0 8px; text-align: justify; overflow-wrap: anywhere; }
+p.center { text-align: center; } p.right { text-align: right; }
+p.empty { height: 5px; margin: 0; }
+li { margin: 0 0 6px 22px; padding-left: 2px; }
+li.bullet { list-style-type: disc; } li.number { list-style-type: decimal; }
+.table-wrap { width: 100%; overflow-x: auto; margin: 14px 0 18px; }
+table { border-collapse: collapse; width: 100%; table-layout: fixed; font-size: 10.5pt; }
+colgroup col:nth-child(1) { width: 23%; }
+colgroup col:nth-child(2) { width: 18%; }
+colgroup col:nth-child(3) { width: 27%; }
+colgroup col:nth-child(4) { width: 32%; }
+th, td { border: 1px solid #333; padding: 7px 8px; vertical-align: top;
+         text-align: left; overflow-wrap: anywhere; word-break: normal; }
+th { background: #e9edf3; font-weight: bold; }
+td p, th p { margin: 0 0 4px; text-align: left; }
+thead { display: table-header-group; }
+tr { break-inside: avoid; page-break-inside: avoid; }
+@media print { body { max-width: none; margin: 0; padding: 0; } .table-wrap { overflow: visible; } }
+</style>
+</head>
+<body>
+<p><strong>T10. Quy trình sử dụng AI trong dự án nhóm</strong></p>
+<p class='empty'>&nbsp;</p>
+<p><strong>1. Thống nhất quy trình sử dụng AI </strong></p>
+<h3><strong>Quy trình sử dụng AI của nhóm</strong></h3>
+<p>Phân tích yêu cầu tại T03: Thành viên phụ trách sử dụng Gemini để phân tích đề tài, xác định mục tiêu, phạm vi, tác nhân, chức năng, quy trình nghiệp vụ và các yêu cầu phi chức năng.</p>
+<p>Phản biện tại T04: Sử dụng một công cụ AI khác là ChatGPT để đánh giá kết quả T03, tìm các yêu cầu thiếu, chưa rõ, trùng lặp, chưa phù hợp với phạm vi hoặc có rủi ro khi triển khai.</p>
+<p>Đối chiếu kết quả: Nhóm so sánh đề xuất T03 với phản biện T04 và các thông tin đầu vào từ T01–T02.</p>
+<p>Quyết định của nhóm: Với từng nội dung quan trọng, nhóm lựa chọn giữ nguyên, chỉnh sửa, hoãn hoặc loại bỏ; đồng thời ghi rõ lý do và những vấn đề cần xác minh thêm.</p>
+<p>Cập nhật yêu cầu: Chỉnh sửa tài liệu yêu cầu dự án theo quyết định đã thống nhất. Các quy tắc chưa được xác nhận không được tự động xem là yêu cầu chính thức.</p>
+<p>Ghi nhật ký: Thành viên trực tiếp sử dụng AI cung cấp thông tin về công cụ, ngày sử dụng, prompt, kết quả, phản biện, quyết định và người kiểm tra cho Châu.</p>
+<p>Rà soát và bàn giao: Châu tổng hợp, kiểm tra các trường thông tin còn thiếu và cập nhật AI_USAGE_LOG.md. Đức kiểm tra chéo hồ sơ, nội dung đối chiếu và minh chứng trước khi nhóm bàn giao tại T11.</p>
+<p>Nguyên tắc chung: AI chỉ hỗ trợ phân tích và phản biện; nhóm chịu trách nhiệm đánh giá, xác minh và quyết định cuối cùng. Không ghi thông tin nhạy cảm, mật khẩu hoặc token vào nhật ký.</p>
+<p>Quy trình này cần được nhóm thống nhất trước khi thực hiện T03.</p>
+<p><strong>2. Nhật ký sử dụng AI cho T03 và T04 </strong></p>
+<h2><strong>2.1. T03 – Sử dụng Gemini để phân tích yêu cầu </strong></h2>
+<p>Ngày thực hiện: 20/10/2026</p>
+<p>Công cụ: Google Gemini</p>
+<p>Người thực hiện: Nguyễn Anh Tuấn</p>
+<p>Mục đích</p>
+<p>Phân tích đề tài website thương mại điện tử kinh doanh sản phẩm móc len handmade, xác định mục tiêu kinh doanh, phạm vi hệ thống, nhóm người dùng và các chức năng dự kiến. </p>
+<p>Đầu vào: Mô tả dự án, sản phẩm/dịch vụ, khách hàng mục tiêu, vấn đề kinh doanh và ba website tham khảo. </p>
+<p>Prompt chính<br>Bạn là chuyên gia phân tích nghiệp vụ cho dự án thương mại điện tử.</p>
+<p>Thông tin dự án:</p>
+<p>Tên dự án: [Website kinh doanh sản phẩm móc len handmade hỗ trợ đặt làm theo mẫu và tạo giỏ quà theo ngân sách]</p>
+<p>Sản phẩm hoặc dịch vụ: [móc khóa, thú len, hoa len và phụ kiện nhỏ,sản phẩm làm sẵn, lựa chọn bộ quà phù hợp với ngân sách hoặc gửi yêu cầu cá nhân hóa trên cơ sở mẫu cửa hàng có khả năng thực hiện]</p>
+<p>Khách hàng mục tiêu: [sinh viên và người đi làm trẻ tại Việt Nam có nhu cầu mua sản phẩm móc len cho bản thân hoặc làm quà tặng]</p>
+<p>Vấn đề kinh doanh: [hỗ trợ khách hàng lựa chọn quà tặng trong giới hạn chi tiêu và thống nhất nội dung đặt làm, đồng thời giúp cửa hàng quản lý việc xác nhận và xử lý đơn trên một hệ thống]</p>
+<p>Website tham khảo: [https://tiemlen1992.com][https://tiemchungminh.com][https://lylycraft.vn]</p>
+<p>Kết quả đề xuất</p>
+<p>Gemini tạo bản đề xuất phân tích nghiệp vụ cho dự án, gồm các nội dung chính:</p>
+<p>a. Mục tiêu và phạm vi</p>
+<p>Phân phối sản phẩm móc len làm sẵn, hỗ trợ tạo giỏ quà theo ngân sách và tiếp nhận yêu cầu đặt làm theo mẫu.</p>
+<p>Xây dựng công cụ hỗ trợ khách mua sắm và trang quản trị giúp cửa hàng quản lý sản phẩm, đơn hàng và tiến độ gia công.</p>
+<p>Đề xuất thanh toán giả lập bằng COD/QR; không triển khai cổng thanh toán tự động hoặc API vận chuyển bên thứ ba trong phạm vi ban đầu.</p>
+<p>Ưu tiên website responsive thay vì phát triển ứng dụng di động độc lập.</p>
+<p>b. Nhóm người dùng và chức năng</p>
+<p>Khách vãng lai: Xem danh mục, tìm kiếm, lọc sản phẩm, xem chi tiết và thử tạo giỏ quà theo ngân sách.</p>
+<p>Khách hàng thành viên: Quản lý hồ sơ, gửi yêu cầu đặt làm, đặt hàng và theo dõi đơn.</p>
+<p>Quản trị viên: Quản lý sản phẩm và danh mục, xử lý yêu cầu đặt làm, báo giá, cập nhật tiến độ và xem thống kê cơ bản.</p>
+<p>c. Các nhóm yêu cầu được đề xuất</p>
+<p>Tài khoản và phân quyền.</p>
+<p>Danh mục, tìm kiếm, lọc và chi tiết sản phẩm.</p>
+<p>Tạo giỏ quà theo ngân sách.</p>
+<p>Đặt làm sản phẩm theo mẫu.</p>
+<p>Giỏ hàng và đặt hàng.</p>
+<p>Thanh toán trong phạm vi mô phỏng.</p>
+<p>Quản lý và theo dõi đơn hàng.</p>
+<p>Quản trị sản phẩm, đơn hàng và thống kê.</p>
+<h3>4. Đánh giá kết quả T03</h3>
+<p>Kết quả Gemini tạo được khung yêu cầu ban đầu tương đối đầy đủ, gắn với hai vấn đề chính: hỗ trợ khách chọn quà theo ngân sách và giúp cửa hàng quản lý quy trình đặt làm.</p>
+<p>Tuy nhiên, một số chức năng mới dừng ở mức mô tả tổng quát. Các quy tắc như cách tạo giỏ quà, xác nhận báo giá, thời hạn hoàn thành, trạng thái đơn hàng và tiêu chí kiểm thử cần được làm rõ trước khi triển khai.</p>
+<h3>5. Quyết định ban đầu của nhóm</h3>
+<p>Giữ và tiếp tục phát triển: Các chức năng danh mục sản phẩm, tìm kiếm/lọc, giỏ hàng, đặt hàng, tạo giỏ quà theo ngân sách, đặt làm theo mẫu và quản trị đơn hàng.</p>
+<p>Cần làm rõ: Quy tắc tạo giỏ quà, quy trình báo giá đơn đặt làm, trạng thái đơn hàng, thanh toán và điều kiện kiểm thử.</p>
+<p>Cần cân nhắc phạm vi: Các chức năng bổ sung không trực tiếp phục vụ luồng mua hàng và xử lý đơn cốt lõi.</p>
+<p>Lý do: Tập trung nguồn lực vào các nghiệp vụ chính, bảo đảm phù hợp thời gian và khả năng thực hiện đồ án.</p>
+<p><strong>2.2. T04 – Sử dụng ChatGPT để phản biện yêu cầu </strong></p>
+<h3>1. Thông tin sử dụng</h3>
+<p>Mã ghi nhận: AI-02</p>
+<p>Công cụ AI: ChatGPT</p>
+<p>Ngày sử dụng: 20/10/2026 (theo tài liệu dự án; cần xác nhận ngày thực tế).</p>
+<p>Người thực hiện: Nguyễn Anh Tuấn</p>
+<p>Mục đích: Phản biện độc lập danh sách yêu cầu do Gemini đề xuất tại T03; đánh giá mức độ phù hợp với vấn đề kinh doanh, phạm vi triển khai, quy trình nghiệp vụ, bảo mật và khả năng kiểm thử.</p>
+<p>Đầu vào: Mô tả đề tài, vấn đề kinh doanh, khách hàng mục tiêu, kết quả khảo sát ba website và danh sách yêu cầu do Gemini đề xuất.</p>
+<h3>2. Prompt đã sử dụng</h3>
+<p>Phân tích dữ liệu trên với vai trò và yêu cầu dưới đây:</p>
+<p>Bạn là người phản biện độc lập cho một dự án website thương mại điện tử do nhóm sinh viên thực hiện trong một học phần.</p>
+<p>Tôi sẽ cung cấp:</p>
+<p>Mô tả đề tài.</p>
+<p>Vấn đề kinh doanh và khách hàng mục tiêu.</p>
+<p>Kết quả khảo sát ba website.</p>
+<p>Danh sách yêu cầu do một công cụ AI khác đề xuất.</p>
+<p>Hãy phản biện các yêu cầu theo những khía cạnh:</p>
+<p>Có thực sự giải quyết vấn đề kinh doanh không?</p>
+<p>Có yêu cầu nào trùng lặp hoặc không cần thiết không?</p>
+<p>Có chức năng nào vượt quá phạm vi của nhóm không?</p>
+<p>Có thiếu chức năng cơ bản hoặc quy trình nghiệp vụ nào không?</p>
+<p>Có rủi ro về dữ liệu, bảo mật hoặc quyền riêng tư không?</p>
+<p>Có yêu cầu nào chưa đủ rõ để lập trình và kiểm thử không?</p>
+<p>Với mỗi vấn đề, hãy nêu lý do và đề xuất điều chỉnh.</p>
+<p>Không mặc định rằng phương án của công cụ AI trước là đúng.</p>
+<p>Không tự ý thay đổi toàn bộ đề tài.</p>
+<h3>3. Kết quả phản biện của ChatGPT</h3>
+<p><strong>a. Đánh giá khả năng giải quyết vấn đề kinh doanh</strong></p>
+<p>ChatGPT nhận định các chức năng tạo giỏ quà theo ngân sách (F05), đặt làm theo mẫu (F06) và theo dõi tiến độ đơn hàng (F08) liên quan trực tiếp đến vấn đề kinh doanh. Tuy nhiên, chỉ xây dựng màn hình hoặc biểu mẫu là chưa đủ để giải quyết trọn vẹn nhu cầu.</p>
+<p><strong>F05 – Tạo giỏ quà theo ngân sách:</strong> Nếu chỉ lọc sản phẩm theo giá, khách vẫn phải tự phối hợp từng món. Đề xuất luồng nhập ngân sách → xem bộ quà phù hợp → chọn bộ → điều chỉnh sản phẩm/số lượng → kiểm tra tổng tiền → chuyển sang giỏ hàng.</p>
+<p><strong>F06 – Đặt làm theo mẫu:</strong> Biểu mẫu chỉ thu thập thông tin ban đầu. Cần bổ sung quy trình cửa hàng phản hồi, báo giá, xác nhận giá và thời hạn, cùng điều kiện đặt cọc nếu áp dụng.</p>
+<p><strong>F08 – Theo dõi tiến độ:</strong> Cần phân biệt tiến độ gia công với thời gian giao hàng; ghi nhận ngày khách mong muốn nhận và thời hạn dự kiến của cửa hàng.</p>
+<p>ChatGPT cũng lưu ý rằng kết quả khảo sát ba website chưa đủ để khẳng định người dùng chắc chắn có nhu cầu với chức năng mới hoặc chức năng đó là điểm khác biệt đã được chứng minh. Nhóm nên xem đây là giả thuyết và kiểm tra thêm bằng bằng chứng phù hợp.</p>
+<p><strong>b. Đánh giá chức năng trùng lặp và phạm vi</strong></p>
+<p>Giỏ hàng (F04) và tạo giỏ quà (F05) có thao tác tương tự nhưng khác mục đích. Đề xuất giữ cả hai, dùng F05 để tạo bộ quà và kiểm soát ngân sách, F04 để quản lý các sản phẩm trước khi đặt hàng.</p>
+<p>Các chức năng mở rộng như tích điểm, trò chuyện trực tiếp hoặc đánh giá kèm ảnh có thể làm tăng độ phức tạp. Cần ưu tiên các luồng mua hàng và xử lý đơn cốt lõi trước.</p>
+<p>Danh sách yêu thích có thể được xếp vào chức năng tùy chọn nếu nhóm còn đủ nguồn lực.</p>
+<p><strong>c. Đánh giá quy trình nghiệp vụ</strong></p>
+<p>ChatGPT đề xuất làm rõ các trường hợp ngoài luồng thông thường:</p>
+<p>Đơn đặt làm có thể ở trạng thái chờ bổ sung thông tin, chờ báo giá, chờ đặt cọc, bị từ chối hoặc bị hủy.</p>
+<p>Trạng thái thanh toán cần tách biệt với trạng thái gia công.</p>
+<p>Cần xác định quy tắc chuyển trạng thái, xử lý hủy đơn và giao hàng thất bại.</p>
+<p>Cần làm rõ cách tính giá cho sản phẩm đặt làm và cách xử lý khi giỏ quà vượt ngân sách.</p>
+<p><strong>d. Đánh giá bảo mật và khả năng kiểm thử</strong></p>
+<p>Cụ thể hóa quyền truy cập của khách hàng và quản trị viên.</p>
+<p>Bảo vệ mật khẩu và kiểm tra dữ liệu được gửi lên, bao gồm ảnh đính kèm trong yêu cầu đặt làm.</p>
+<p>Chỉ thu thập dữ liệu cần thiết cho quy trình đặt hàng.</p>
+<p>Xác định thiết bị, trình duyệt, dữ liệu thử và tiêu chí nghiệm thu cho yêu cầu tốc độ, khả năng tương thích giao diện.</p>
+<h3><strong>4. Đánh giá kết quả T04</strong></h3>
+<p>Kết quả phản biện giúp nhóm nhận diện những yêu cầu có ý nghĩa kinh doanh nhưng chưa đủ chi tiết để triển khai. Đặc biệt, F05, F06 và F08 cần mô tả đầy đủ quy trình nghiệp vụ thay vì chỉ liệt kê chức năng giao diện.</p>
+<p>ChatGPT cũng chỉ ra một số chức năng có thể được thu hẹp hoặc chuyển thành tùy chọn để phù hợp nguồn lực của nhóm.</p>
+<h3><strong>5. Quyết định xử lý của nhóm sau T04</strong></h3>
+<p>Dựa trên bảng đối chiếu trong tài liệu dự án, hướng xử lý được ghi nhận như sau:</p>
+<p><strong>Giữ:</strong> Các chức năng cốt lõi như giỏ hàng, tạo giỏ quà, đặt làm theo mẫu và quản lý đơn hàng.</p>
+<p><strong>Chỉnh sửa/bổ sung:</strong> Làm rõ quy trình báo giá, xác nhận đơn đặt làm, trạng thái đơn, thanh toán, giao nhận, bảo mật và tiêu chí kiểm thử.</p>
+<p><strong>Chuyển thành tùy chọn:</strong> Danh sách yêu thích và các chức năng chưa thiết yếu, tùy theo nguồn lực thực tế.</p>
+<p><strong>Loại khỏi phạm vi hiện tại:</strong> Tích điểm đổi ưu đãi và trò chuyện trực tiếp; vẫn giữ mã giảm giá cơ bản nếu phù hợp yêu cầu dự án.</p>
+<p><strong>Lý do:</strong> Ưu tiên các chức năng giải quyết trực tiếp vấn đề kinh doanh, giảm độ phức tạp và bảo đảm khả năng hoàn thành, kiểm thử.</p>
+<p><strong> 5. </strong><strong>Bảng đối chiếu giữa đề xuất và phản biện</strong></p>
+<div class='table-wrap'><table><colgroup><col><col><col><col></colgroup><thead><tr><th><p><strong>Nội dung</strong></p></th><th><p><strong>AI thứ nhất đề xuất</strong></p></th><th><p><strong>AI thứ hai phản biện</strong></p></th><th><p><strong>Quyết định của nhóm</strong></p></th></tr></thead><tbody><tr><td><p>Quản lý tài khoản và phân quyền</p></td><td><p>Có</p></td><td><p>Cần cho quản lý khách hàng và bảo vệ trang quản trị</p></td><td><p>Giữ lại và bổ sung quản lý hồ sơ, địa chỉ</p></td></tr><tr><td><p>Tìm kiếm và lọc sản phẩm</p></td><td><p>Có</p></td><td><p>Đồng ý, nhưng cần bổ sung thêm tiêu chí lọc</p></td><td><p>Giữ lại và bổ sung chất liệu, kích thước, sắp xếp</p></td></tr><tr><td><p>Xem chi tiết sản phẩm</p></td><td><p>Có</p></td><td><p>Cần cho quyết định mua hàng</p></td><td><p>Giữ lại</p></td></tr><tr><td><p>Quản lý giỏ hàng</p></td><td><p>Có</p></td><td><p>Cần cho quy trình mua hàng</p></td><td><p>Giữ lại</p></td></tr><tr><td><p>Tạo giỏ quà theo ngân sách</p></td><td><p>Có</p></td><td><p>Phù hợp đề tài nhưng cách chọn khoảng ngân sách chưa đủ rõ</p></td><td><p>Giữ lại và điều chỉnh cho khách nhập ngân sách cụ thể</p></td></tr><tr><td><p>Gợi ý bộ quà cấu hình sẵn</p></td><td><p>Chưa đầy đủ</p></td><td><p>Cần để giải quyết tốt hơn bài toán chọn quà theo ngân sách</p></td><td><p>Bổ sung vào chức năng tạo giỏ quà</p></td></tr><tr><td><p>Đặt làm theo mẫu</p></td><td><p>Có</p></td><td><p>Cần bổ sung bước cửa hàng xác nhận khả năng thực hiện, giá và thời gian</p></td><td><p>Giữ lại và điều chỉnh</p></td></tr><tr><td><p>Báo giá và khách xác nhận</p></td><td><p>Có một phần</p></td><td><p>Chưa rõ thời điểm yêu cầu trở thành đơn hàng</p></td><td><p>Bổ sung quy trình khách chấp thuận trước khi tạo đơn</p></td></tr><tr><td><p>Đặt cọc đơn làm thủ công</p></td><td><p>Có đề xuất phương án</p></td><td><p>Không nên mặc định bỏ cọc hoặc áp dụng mức cọc 50 phần trăm</p></td><td><p>Giữ chức năng cọc, nhóm sẽ xác định mức cọc sau</p></td></tr><tr><td><p>Thanh toán COD hoặc QR mẫu</p></td><td><p>Có</p></td><td><p>QR mẫu chưa đáp ứng đầy đủ yêu cầu tích hợp và kiểm thử thanh toán</p></td><td><p>Điều chỉnh, sử dụng một cổng thanh toán thử nghiệm</p></td></tr><tr><td><p>Theo dõi lịch sử và tiến độ đơn</p></td><td><p>Có</p></td><td><p>Cần tách tiến độ gia công, thanh toán và giao hàng</p></td><td><p>Giữ lại và điều chỉnh</p></td></tr><tr><td><p>Quản trị hệ thống</p></td><td><p>Có</p></td><td><p>Cần thiết nhưng phạm vi quá rộng trong một chức năng</p></td><td><p>Giữ lại và tách thành các chức năng quản trị nhỏ</p></td></tr><tr><td><p>Đánh giá và bình luận sản phẩm</p></td><td><p>Có</p></td><td><p>Cần thiết sau mua nhưng ảnh đánh giá làm tăng khối lượng xử lý</p></td><td><p>Giữ đánh giá cơ bản, ảnh đánh giá phát triển sau</p></td></tr><tr><td><p>Danh sách yêu thích</p></td><td><p>Có</p></td><td><p>Không ảnh hưởng trực tiếp đến quy trình mua hàng chính</p></td><td><p>Đưa vào nhóm chức năng tùy chọn</p></td></tr><tr><td><p>Tích điểm khách hàng</p></td><td><p>Có</p></td><td><p>Có thể vượt phạm vi vì phát sinh thêm nhiều quy tắc nghiệp vụ</p></td><td><p>Đưa ra khỏi phiên bản đầu</p></td></tr><tr><td><p>Live Chat</p></td><td><p>Có</p></td><td><p>Có thể vượt phạm vi và tăng khối lượng lập trình, kiểm thử</p></td><td><p>Đưa ra khỏi phiên bản đầu</p></td></tr><tr><td><p>Phí đóng gói cố định 30.000 đồng</p></td><td><p>Có đề xuất</p></td><td><p>Chưa có căn cứ thực tế và làm thay đổi cách tính ngân sách</p></td><td><p>Không áp dụng mặc định, nhóm sẽ xác minh chính sách</p></td></tr><tr><td><p>Lựa chọn từng loại bao bì</p></td><td><p>Có đề xuất</p></td><td><p>Làm tăng phạm vi nhưng chưa trực tiếp giải quyết vấn đề chính</p></td><td><p>Chưa triển khai trong phiên bản đầu</p></td></tr><tr><td><p>Bảo mật và phân quyền dữ liệu</p></td><td><p>Có</p></td><td><p>Yêu cầu của AI còn chung chung, khó kiểm thử</p></td><td><p>Giữ lại và cụ thể hóa tiêu chí bảo mật</p></td></tr><tr><td><p>Giao diện responsive và hiệu năng</p></td><td><p>Có</p></td><td><p>Cần xác định rõ môi trường và tiêu chí kiểm thử</p></td><td><p>Giữ lại và làm rõ tiêu chí nghiệm thu</p></td></tr></tbody></table></div>
+<p><strong><br></strong>Sau khi đối chiếu đề xuất của AI thứ nhất với kết quả phản biện của AI thứ hai, nhóm quyết định giữ lại các chức năng trực tiếp phục vụ quy trình mua hàng, tạo giỏ quà theo ngân sách và đặt làm theo mẫu. Những yêu cầu chưa rõ được nhóm điều chỉnh trước khi triển khai. Các chức năng bổ trợ như danh sách yêu thích được đưa vào nhóm tùy chọn, trong khi tích điểm và Live Chat chưa được triển khai trong phiên bản đầu nhằm bảo đảm phù hợp với thời gian, kiến thức, chi phí và phạm vi của đồ án. Quyết định cuối cùng thuộc về nhóm và được đưa ra trên cơ sở mức độ cần thiết của từng chức năng đối với đề tài. </p>
+<p class='empty'>&nbsp;</p>
+<p class='empty'>&nbsp;</p>
+</body></html>
