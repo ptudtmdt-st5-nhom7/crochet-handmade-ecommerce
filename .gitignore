@@ -7,6 +7,7 @@ build/
 # Biến môi trường, mật khẩu, API key (TUYỆT ĐỐI không đưa lên GitHub)
 .env
 .env.*
+!.env.example
 *.key
 *.pem
 secrets/
