@@ -39,9 +39,9 @@ Phạm vi chính thức sẽ được nhóm thống nhất trong REQUIREMENTS.md
 | Thành viên | Công việc |
 | --- | --- |
 | Đức | T01, T07; tạo repository, cấp quyền; xác nhận và nộp bài |
-| Quyến | Phối hợp Bảo và Tuấn thực hiện T02–T05 |
-| Bảo | Phối hợp Quyến và Tuấn thực hiện T02–T05 |
-| Tuấn | Phối hợp Quyến và Bảo thực hiện T02–T05 |
+| Quyến | Phụ trách khảo sát website T02; phối hợp hoàn thiện T05 |
+| Bảo | Phối hợp Tuấn thực hiện T03–T04; phối hợp hoàn thiện T05 |
+| Tuấn | Nhận thực hiện T03–T04, phối hợp Bảo; phối hợp hoàn thiện T05 |
 | Khanh | T06 — Xác định quy trình nghiệp vụ |
 | Nam | T08 — Chuẩn bị tài liệu, Issues; hỗ trợ Git tại T09 |
 | Châu | Tổng hợp nhật ký AI tại T10; tổng kiểm tra T11 |
