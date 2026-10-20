@@ -1,0 +1,30 @@
+# Node / frontend
+node_modules/
+dist/
+build/
+.next/
+
+# Biến môi trường, mật khẩu, API key (TUYỆT ĐỐI không đưa lên GitHub)
+.env
+.env.*
+*.key
+*.pem
+secrets/
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# Cơ sở dữ liệu cục bộ, log
+*.sqlite
+*.sqlite3
+*.db
+*.log
+
+# Hệ điều hành / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
