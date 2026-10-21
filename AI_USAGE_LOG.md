@@ -21,8 +21,6 @@
 
 **Nguyên tắc chung:** AI chỉ hỗ trợ phân tích và phản biện. Nhóm chịu trách nhiệm đánh giá, xác minh và đưa ra quyết định cuối cùng. Không ghi thông tin nhạy cảm, mật khẩu hoặc token vào nhật ký.
 
-> Quy trình cần được nhóm thống nhất trước khi thực hiện T03.
-
 ---
 
 ## 2. Nhật ký sử dụng AI
