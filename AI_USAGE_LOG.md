@@ -240,7 +240,7 @@ Các chức năng bổ trợ như danh sách yêu thích được đưa vào nh�
 
 | Vai trò | Trách nhiệm |
 |---|---|
-| Thành viên trực tiếp sử dụng AI | Cung cấp công cụ, ngày sử dụng, prompt, kết quả, đánh giá và minh chứng |
+| Tuấn | Cung cấp công cụ, ngày sử dụng, prompt, kết quả, đánh giá và minh chứng |
 | Châu | Tổng hợp nhật ký, kiểm tra trường thông tin còn thiếu và cập nhật `AI_USAGE_LOG.md` |
 | Đức | Kiểm tra chéo hồ sơ, nội dung đối chiếu và minh chứng trước khi bàn giao tại T11 |
 | Cả nhóm | Xác minh nội dung do AI đề xuất và chịu trách nhiệm về quyết định cuối cùng |
