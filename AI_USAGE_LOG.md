@@ -4,7 +4,8 @@
 > **Môn học:** Phát triển ứng dụng thương mại điện tử  
 > **Nhóm:** 7  
 > **Nhiệm vụ:** T10 – Quy trình sử dụng AI trong dự án nhóm  
-> **Đề tài:** Website kinh doanh sản phẩm móc len handmade, hỗ trợ đặt làm theo mẫu và tạo giỏ quà theo ngân sách
+> **Đề tài:** Website kinh doanh sản phẩm móc len handmade, hỗ trợ đặt làm theo mẫu và tạo giỏ quà theo ngân sách  
+> **Quy mô nhóm:** 8 người
 
 ---
 
@@ -15,7 +16,7 @@
 3. **Đối chiếu kết quả:** So sánh đề xuất T03 với phản biện T04 và thông tin đầu vào từ T01–T02.
 4. **Quyết định của nhóm:** Với từng nội dung quan trọng, nhóm chọn giữ nguyên, chỉnh sửa, hoãn hoặc loại bỏ; ghi rõ lý do và vấn đề cần xác minh.
 5. **Cập nhật yêu cầu:** Chỉnh sửa tài liệu yêu cầu dự án theo quyết định đã thống nhất. Nội dung chưa được xác nhận không tự động trở thành yêu cầu chính thức.
-6. **Ghi nhật ký:** Người trực tiếp sử dụng AI cung cấp công cụ, ngày sử dụng, prompt, kết quả, phản biện, quyết định và người kiểm tra cho người tổng hợp.
+6. **Ghi nhật ký:** Người trực tiếp sử dụng AI cung cấp công cụ, ngày sử dụng, prompt, kết quả, phản biện, quyết định và người kiểm tra cho Châu.
 7. **Rà soát và bàn giao:** Châu tổng hợp, kiểm tra trường thông tin còn thiếu và cập nhật `AI_USAGE_LOG.md`. Đức kiểm tra chéo hồ sơ, nội dung đối chiếu và minh chứng trước khi bàn giao tại T11.
 
 **Nguyên tắc chung:** AI chỉ hỗ trợ phân tích và phản biện. Nhóm chịu trách nhiệm đánh giá, xác minh và đưa ra quyết định cuối cùng. Không ghi thông tin nhạy cảm, mật khẩu hoặc token vào nhật ký.
@@ -36,6 +37,8 @@
 | Người thực hiện | Nguyễn Anh Tuấn |
 | Mục đích | Phân tích đề tài website thương mại điện tử kinh doanh sản phẩm móc len handmade; xác định mục tiêu kinh doanh, phạm vi hệ thống, nhóm người dùng và chức năng dự kiến. |
 | Đầu vào | Mô tả dự án, sản phẩm/dịch vụ, khách hàng mục tiêu, vấn đề kinh doanh và ba website tham khảo. |
+| Thời gian thực hiện theo thông tin dự án | 20/10/2025 |
+| Quy mô nhóm | 8 người |
 | Website tham khảo | [Tiệm Len 1992](https://tiemlen1992.com), [Tiệm Chúng Mình](https://tiemchungminh.com), [Lyly Craft](https://lylycraft.vn) |
 
 ### Prompt chính
@@ -50,6 +53,8 @@ Thông tin dự án:
 - Khách hàng mục tiêu: Sinh viên và người đi làm trẻ tại Việt Nam có nhu cầu mua sản phẩm móc len cho bản thân hoặc làm quà tặng.
 - Vấn đề kinh doanh: Hỗ trợ khách hàng lựa chọn quà tặng trong giới hạn chi tiêu và thống nhất nội dung đặt làm; đồng thời giúp cửa hàng quản lý việc xác nhận và xử lý đơn trên một hệ thống.
 - Website tham khảo: https://tiemlen1992.com, https://tiemchungminh.com, https://lylycraft.vn
+- Thời gian thực hiện theo tài liệu dự án: 20/10/2025
+- Quy mô nhóm: 8 người
 
 Hãy phân tích mục tiêu, phạm vi, nhóm người dùng, chức năng chính,
 quy trình nghiệp vụ và các yêu cầu phi chức năng của website.
@@ -95,6 +100,8 @@ Tuy nhiên, một số chức năng mới dừng ở mức mô tả tổng quát
 - **Cần cân nhắc phạm vi:** Các chức năng bổ sung không trực tiếp phục vụ luồng mua hàng và xử lý đơn cốt lõi.
 - **Lý do:** Tập trung nguồn lực vào nghiệp vụ chính, bảo đảm phù hợp thời gian và khả năng thực hiện đồ án.
 
+**Người kiểm tra:** Quang Đức
+
 ---
 
 ## 2.2. T04 – Dùng ChatGPT để phản biện yêu cầu
@@ -105,7 +112,7 @@ Tuy nhiên, một số chức năng mới dừng ở mức mô tả tổng quát
 |---|---|
 | Mã ghi nhận | AI-02 / T04 |
 | Công cụ AI | ChatGPT |
-| Ngày sử dụng | 20/10/2026 — cần xác nhận ngày thực tế |
+| Ngày sử dụng | 20/10/2026 (theo tài liệu dự án; cần xác nhận ngày thực tế) |
 | Người thực hiện | Nguyễn Anh Tuấn |
 | Mục đích | Phản biện độc lập danh sách yêu cầu do Gemini đề xuất tại T03; đánh giá mức độ phù hợp với vấn đề kinh doanh, phạm vi triển khai, quy trình nghiệp vụ, bảo mật và khả năng kiểm thử. |
 | Đầu vào | Mô tả đề tài, vấn đề kinh doanh, khách hàng mục tiêu, kết quả khảo sát ba website và danh sách yêu cầu do Gemini đề xuất. |
@@ -185,6 +192,8 @@ ChatGPT cũng chỉ ra một số chức năng có thể được thu hẹp ho�
 - **Loại khỏi phạm vi hiện tại:** Tích điểm đổi ưu đãi và Live Chat; vẫn giữ mã giảm giá cơ bản nếu phù hợp yêu cầu dự án.
 - **Lý do:** Ưu tiên các chức năng giải quyết trực tiếp vấn đề kinh doanh, giảm độ phức tạp và bảo đảm khả năng hoàn thành, kiểm thử.
 
+**Người kiểm tra:** Quang Đức
+
 ---
 
 ## 3. Bảng đối chiếu giữa đề xuất và phản biện
@@ -231,7 +240,7 @@ Các chức năng bổ trợ như danh sách yêu thích được đưa vào nh�
 
 ## 5. Các thông tin cần xác nhận trước khi bàn giao
 
-- [ ] Xác nhận ngày sử dụng ChatGPT tại T04 có đúng là 20/10/2026 hay không.
+- [ ] Xác nhận ngày sử dụng ChatGPT tại T04 có đúng là 20/10/2026 hay không; ngày thực hiện dự án ghi trong prompt T03 là 20/10/2025.
 - [ ] Đối chiếu prompt và kết quả trong nhật ký với lịch sử sử dụng AI thực tế.
 - [ ] Kiểm tra bảng đối chiếu với tài liệu yêu cầu cuối cùng của nhóm.
 - [ ] Bổ sung minh chứng/screenshot nếu giảng viên yêu cầu.
