@@ -94,4 +94,18 @@
 
 
 ## 6. Giới hạn và giả định
-Nêu giới hạn thời gian, công nghệ và nguồn lực.
+## 6. Giới hạn về Thời gian, Công nghệ và Nguồn lực
+
+### 1. Giới hạn về Thời gian (Timeline Constraints)
+- **Thời gian thực hiện:** Kéo dài gần 2 tháng (từ ngày 20/10/2026 đến ngày 17/12/2026).
+- **Phạm vi MVP:** Tập trung vào các luồng nghiệp vụ lõi gồm mua sản phẩm làm sẵn, tạo giỏ quà theo ngân sách, đặt làm theo mẫu (Custom Order) và quản trị hệ thống cơ bản.
+- **Các tính năng loại bỏ/hoãn:** Không đủ thời gian phát triển hệ thống tích điểm thành viên (Loyalty), khung chat trực tiếp thời gian thực (Live Chat qua WebSocket), hay mô phỏng 3D sản phẩm/hộp quà.
+
+### 2. Giới hạn về Công nghệ (Technology Constraints)
+- **Tech Stack:** Frontend (HTML5, CSS3, JavaScript thuần, Tailwind CSS), Backend (Node.js, Express.js), Database (MongoDB, Mongoose ODM), Quản lý mã nguồn (Git & GitHub).
+- **Thanh toán:** Không tích hợp cổng thanh toán quốc tế phức tạp (Stripe/VNPay thật); chỉ áp dụng thanh toán giả lập (COD, chuyển khoản QR mẫu) hoặc tích hợp cổng Sandbox cơ bản.
+- **Vận chuyển & AI:** Không kết nối API vận chuyển tự động bên thứ ba (GHN/ViettelPost); không sử dụng AI để tự động sinh mẫu sản phẩm hoặc định giá từ ảnh.
+
+### 3. Giới hạn về Nguồn lực (Resource Constraints)
+- **Quy mô & Năng lực:** Nhóm gồm 08 thành viên với trình độ kỹ thuật ở mức sinh viên học phần thương mại điện tử, phân chia các mô-đun qua GitHub.
+- **Phạm vi dữ liệu:** Dữ liệu mẫu giới hạn trong phạm vi một cửa hàng thủ công độc lập (khoảng 15–20 sản phẩm tiêu biểu, chia thành 3–4 danh mục chính), không vận hành theo mô hình sàn thương mại điện tử nhiều người bán (Multi-vendor).
