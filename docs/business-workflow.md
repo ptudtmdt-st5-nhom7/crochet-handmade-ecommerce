@@ -218,8 +218,21 @@
 </table></div>
 <h3 id="35-sơ-đồ-luồng-đơn-giản">3.5. Sơ đồ luồng đơn giản</h3>
 <p>Sơ đồ dưới đây mô tả quy trình mua sản phẩm làm sẵn, bao gồm trường hợp khách tạo giỏ quà theo ngân sách.</p>
-<p align="center"><a href="images/quy-trinh-1-mua-san-pham.png"><img src="images/quy-trinh-1-mua-san-pham.png" alt="Sơ đồ luồng quy trình mua sản phẩm làm sẵn hoặc tạo giỏ quà theo ngân sách" style="max-width:100%;height:auto"></a></p>
-<p align="center"><em>Nhấn vào hình để mở ảnh kích thước đầy đủ.</em></p>
+
+<p align="center">
+  <a href="images/sơ đồ quy trình mua sản phẩm làm sẵn.jpg" target="_blank">
+    <img
+      src="images/sơ đồ quy trình mua sản phẩm làm sẵn.jpg"
+      alt="Sơ đồ quy trình mua sản phẩm làm sẵn hoặc tạo giỏ quà theo ngân sách"
+      width="100%"
+      style="max-width: 100%; height: auto;"
+    >
+  </a>
+</p>
+
+<p align="center">
+  <em>Nhấn vào hình để mở ảnh kích thước đầy đủ.</em>
+</p>
 <hr />
 <h2 style="color:#c2457a;border-bottom:2px solid #fbe6ef;padding-bottom:4px;margin-top:2em" id="4-quy-trình-2-đặt-làm-theo-mẫucá-nhân-hóa-custom-order">4. Quy trình 2: Đặt làm theo mẫu/cá nhân hóa (Custom Order)</h2>
 <h3 id="41-mục-tiêu">4.1. Mục tiêu</h3>
