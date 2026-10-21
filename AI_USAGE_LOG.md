@@ -3,7 +3,7 @@
 > **Nhóm:** 7  
 > **Nhiệm vụ:** T10 – Quy trình sử dụng AI trong dự án nhóm  
 > **Đề tài:** Website kinh doanh sản phẩm móc len handmade, hỗ trợ đặt làm theo mẫu và tạo giỏ quà theo ngân sách  
-> **Quy mô nhóm:** 8 người
+> **Quy mô nhóm:** 7 người
 
 ---
 
@@ -34,7 +34,7 @@
 | Mục đích | Phân tích đề tài website thương mại điện tử kinh doanh sản phẩm móc len handmade; xác định mục tiêu kinh doanh, phạm vi hệ thống, nhóm người dùng và chức năng dự kiến. |
 | Đầu vào | Mô tả dự án, sản phẩm/dịch vụ, khách hàng mục tiêu, vấn đề kinh doanh và ba website tham khảo. |
 | Thời gian thực hiện theo thông tin dự án | 20/10/2026 |
-| Quy mô nhóm | 8 người |
+| Quy mô nhóm | 7 người |
 | Website tham khảo | [Tiệm Len 1992](https://tiemlen1992.com), [Tiệm Chúng Mình](https://tiemchungminh.com), [Lyly Craft](https://lylycraft.vn) |
 
 ### Prompt chính
@@ -50,7 +50,7 @@ Thông tin dự án:
 - Vấn đề kinh doanh: Hỗ trợ khách hàng lựa chọn quà tặng trong giới hạn chi tiêu và thống nhất nội dung đặt làm; đồng thời giúp cửa hàng quản lý việc xác nhận và xử lý đơn trên một hệ thống.
 - Website tham khảo: https://tiemlen1992.com, https://tiemchungminh.com, https://lylycraft.vn
 - Thời gian thực hiện theo tài liệu dự án: 20/10/2026
-- Quy mô nhóm: 8 người
+- Quy mô nhóm: 7 người
 
 Hãy phân tích mục tiêu, phạm vi, nhóm người dùng, chức năng chính,
 quy trình nghiệp vụ và các yêu cầu phi chức năng của website.
