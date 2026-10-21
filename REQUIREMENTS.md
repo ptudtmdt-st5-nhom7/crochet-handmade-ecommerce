@@ -77,7 +77,7 @@
 - Tên chức năng: Tạo giỏ quà theo ngân sách
 - Mô tả: Chọn hạn mức (dưới 200k, 200k–500k, trên 500k) -> Hệ thống lọc các món phù hợp để khách gom vào hộp quà không vượt ngân sách.
 - Người sử dụng: Guest, Customer
-- Mức độ ưu tiên: Chọn hạn mức (dưới 200k, 200k–500k, trên 500k) -> Hệ thống lọc các món phù hợp để khách gom vào hộp quà không vượt ngân sách.
+- Mức độ ưu tiên: Bắt buộc (MVP)
 - Tiêu chí nghiệm thu:
 
 *F06
@@ -130,12 +130,20 @@
 - Tiêu chí nghiệm thu:
 
 ## 5. Yêu cầu phi chức năng
-Ví dụ:
-- Giao diện đáp ứng nhiều kích thước màn hình.
-- Dữ liệu đầu vào được kiểm tra.
-- Các chức năng quản trị được phân quyền.
-- Mã nguồn được tổ chức rõ ràng.
-- Không công khai thông tin bí mật.
+1. Giao diện & Trải nghiệm (UI/UX)
+*Yêu cầu kĩ thuật cụ thể: Thiết kế phong cách thủ công ấm áp (Pastel/Kem), bố cục rõ ràng, ưu tiên trải nghiệm trên điện thoại (Mobile-first).
+*Thước đo/ Tiêu chuẩn nghiệm thu: Hiển thị chuẩn xác, không vỡ khung hình trên tối thiểu 2 kích thước màn hình (Desktop và Smartphone).
+2. Hiệu năng & Phản hồi
+*Yêu cầu kĩ thuật cụ thể: Tối ưu hóa dung lượng hình ảnh sản phẩm móc len và tốc độ phản hồi khi lọc dữ liệu.
+*Thước đo/ Tiêu chuẩn nghiệm thu: Thời gian tải trang dưới 3 giây; thao tác cộng tiền trong công cụ 'Tạo giỏ quà' cập nhật tức thì (Real-time UI).
+3. Bảo mật & Phân quyền
+*Yêu cầu kĩ thuật cụ thể: Bảo vệ thông tin tài khoản khách hàng và kiểm soát chặt quyền truy cập trang quản trị.
+*Thước đo/ Tiêu chuẩn nghiệm thu: Mật khẩu lưu trữ phải được mã hóa (Hashing); chặn truy cập trái phép vào URL của Admin; kiểm tra dữ liệu đầu vào (Validation).
+4. Khả năng tương thích
+*Yêu cầu kĩ thuật cụ thể: Hoạt động ổn định trên các môi trường trình duyệt web thông dụng hiện nay.
+*Thước đo/ Tiêu chuẩn nghiệm thu: Chạy mượt mà trên Google Chrome, Safari, Microsoft Edge và Firefox mà không phát sinh lỗi giao diện.
+
+
 
 ## 6. Giới hạn và giả định
 Nêu giới hạn thời gian, công nghệ và nguồn lực.
