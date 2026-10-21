@@ -2,87 +2,34 @@
 <html lang="vi">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tài liệu quy trình nghiệp vụ website kinh doanh sản phẩm móc len</title>
-<meta name="description" content="Tài liệu mô tả quy trình mua sản phẩm làm sẵn, giỏ quà theo ngân sách và Custom Order của website kinh doanh sản phẩm móc len.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🧶%3C/text%3E%3C/svg%3E">
-<style>
-:root{
-  --bg:#fbf7f8;--surface:#ffffff;--ink:#27212a;--soft:#6c6270;--line:#eadfe4;
-  --accent:#c2457a;--accent-soft:#fbe6ef;--thead:#f6e9ef;--code:#f3ecef;
-  color-scheme:light;
-  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
-}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){--bg:#17121a;--surface:#211a25;--ink:#f1e9f3;--soft:#b3a6b8;--line:#3a2f40;--accent:#f08ab6;--accent-soft:#3a2234;--thead:#2b2130;--code:#2b2130;color-scheme:dark}
-}
-:root[data-theme="dark"]{--bg:#17121a;--surface:#211a25;--ink:#f1e9f3;--soft:#b3a6b8;--line:#3a2f40;--accent:#f08ab6;--accent-soft:#3a2234;--thead:#2b2130;--code:#2b2130;color-scheme:dark}
-html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 12px)}
-*,*::before,*::after{box-sizing:inherit}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;line-height:1.7;font-size:16px}
-header.hero{background:linear-gradient(135deg,#e45c93,#c2457a 60%,#9d3563);color:#fff;padding:44px 20px 40px;text-align:center}
-header.hero h1{margin:0 auto;max-width:900px;font-size:clamp(22px,4.6vw,34px);line-height:1.3}
-header.hero p{margin:10px auto 0;max-width:720px;opacity:.92;font-size:clamp(14px,2.6vw,16px)}
-main{max-width:980px;margin:0 auto;padding:24px 16px 56px}
-h2{font-size:clamp(20px,3.6vw,26px);margin:2.2em 0 .6em;padding-bottom:.3em;border-bottom:2px solid var(--accent-soft);color:var(--accent)}
-h3{font-size:clamp(17px,3vw,20px);margin:1.8em 0 .5em}
-h4{font-size:16px;margin:1.4em 0 .4em;color:var(--soft)}
-p,li{overflow-wrap:anywhere}
-ul,ol{padding-left:1.4em}
-li{margin:.25em 0}
-a{color:var(--accent)}
-code{background:var(--code);padding:.1em .4em;border-radius:5px;font-size:.92em}
-.toc{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:6px 22px 14px;margin-top:8px}
-.toc h2{border:0;margin:.7em 0 .3em;font-size:18px}
-.toc ol{margin:0}
-.tw{overflow-x:auto;margin:14px 0;border:1px solid var(--line);border-radius:12px;background:var(--surface);-webkit-overflow-scrolling:touch}
-table{border-collapse:collapse;width:100%;min-width:560px;font-size:15px}
-th,td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
-th{background:var(--thead);font-weight:700;white-space:nowrap}
-tr:last-child td{border-bottom:0}
-td:first-child{font-weight:600}
-.diagram{margin:18px 0;padding:12px;background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow-x:auto;cursor:zoom-in;text-align:center}
-.diagram:hover,.diagram:focus-visible{border-color:var(--accent);outline:0}
-.diagram .mermaid{margin:0;background:transparent;font-size:14px}
-.diagram svg{max-width:100%;height:auto}
-.hint{color:var(--soft);font-size:13px;text-align:center;margin:-6px 0 6px}
-hr{border:0;border-top:1px solid var(--line);margin:2em 0}
-#zoom{position:fixed;inset:0;z-index:50;background:rgba(20,10,20,.82);display:none;padding:calc(env(safe-area-inset-top,0px) + 56px) 12px calc(env(safe-area-inset-bottom,0px) + 12px)}
-#zoom.on{display:block}
-#zoom .scroll{width:100%;height:100%;overflow:auto;background:var(--surface);border-radius:12px;padding:16px}
-#zoom svg{display:block;margin:0 auto}
-#zoom button{position:absolute;right:14px;top:calc(env(safe-area-inset-top,0px) + 10px);font:inherit;font-weight:700;border:0;border-radius:999px;padding:9px 18px;background:#fff;color:#27212a;cursor:pointer}
-footer{text-align:center;color:var(--soft);font-size:13px;padding:0 16px calc(env(safe-area-inset-bottom,0px) + 28px)}
-@media print{header.hero{background:none;color:#000;padding:0}.diagram{break-inside:avoid;cursor:auto}#zoom{display:none!important}}
-</style>
 </head>
-<body>
-<header class="hero">
-  <h1>Tài liệu quy trình nghiệp vụ website kinh doanh sản phẩm móc len</h1>
-  <p>Quy trình mua sản phẩm làm sẵn, giỏ quà theo ngân sách và Custom Order, kèm sơ đồ luồng chi tiết.</p>
-</header>
-<main>
-<p class="hint">Mẹo: nhấn vào sơ đồ để phóng to và cuộn xem chi tiết.</p>
+<body style="max-width:980px;margin:0 auto;padding:16px;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;line-height:1.7;color:#27212a;background:#ffffff">
 
-<nav class="toc"><h2 id="mục-lục">Mục lục</h2><ol>
+<h1 style="text-align:center;color:#c2457a">Tài liệu quy trình nghiệp vụ website kinh doanh sản phẩm móc len</h1>
+
+
+<h2 style="color:#c2457a;border-bottom:2px solid #fbe6ef;padding-bottom:4px;margin-top:2em" id="mục-lục">Mục lục</h2>
+<ol>
 <li><a href="#1-mục-đích-và-phạm-vi">Mục đích và phạm vi</a></li>
 <li><a href="#2-tác-nhân-tham-gia">Tác nhân tham gia</a></li>
 <li><a href="#3-quy-trình-1-mua-sản-phẩm-làm-sẵn-hoặc-tạo-giỏ-quà-theo-ngân-sách">Quy trình 1: Mua sản phẩm làm sẵn hoặc tạo giỏ quà theo ngân sách</a></li>
 <li><a href="#4-quy-trình-2-đặt-làm-theo-mẫucá-nhân-hóa-custom-order">Quy trình 2: Đặt làm theo mẫu/cá nhân hóa (Custom Order)</a></li>
 <li><a href="#5-quy-tắc-nghiệp-vụ-dùng-chung">Quy tắc nghiệp vụ dùng chung</a></li>
 <li><a href="#6-sơ-đồ-luồng-custom-order">Sơ đồ luồng Custom Order</a></li>
-</ol></nav>
+</ol>
 <hr />
-<h2 id="1-mục-đích-và-phạm-vi">1. Mục đích và phạm vi</h2>
+<h2 style="color:#c2457a;border-bottom:2px solid #fbe6ef;padding-bottom:4px;margin-top:2em" id="1-mục-đích-và-phạm-vi">1. Mục đích và phạm vi</h2>
 <p>Tài liệu mô tả hai quy trình nghiệp vụ chính của website kinh doanh sản phẩm móc len, bao gồm quy trình mua sản phẩm làm sẵn và quy trình đặt làm sản phẩm theo mẫu hoặc yêu cầu cá nhân hóa (Custom Order).</p>
 <p>Quy trình mua sản phẩm làm sẵn bao gồm trường hợp khách hàng tạo giỏ quà theo ngân sách. Quy trình Custom Order mô tả các bước từ khi khách gửi yêu cầu, cửa hàng xem xét và báo giá, khách phản hồi, đến khi đơn đặt làm được xác nhận, sản xuất và giao nhận.</p>
 <p>Các quy trình được xây dựng dựa trên các chức năng F01 - F09 trong <code>REQUIREMENTS.md</code>.</p>
-<h2 id="2-tác-nhân-tham-gia">2. Tác nhân tham gia</h2>
-<div class="tw"><table>
+<h2 style="color:#c2457a;border-bottom:2px solid #fbe6ef;padding-bottom:4px;margin-top:2em" id="2-tác-nhân-tham-gia">2. Tác nhân tham gia</h2>
+<div style="overflow-x:auto;margin:14px 0"><table border="1" cellpadding="8" cellspacing="0" style="border-collapse:collapse;width:100%;min-width:560px;border-color:#eadfe4">
 <thead>
 <tr>
-<th>Tác nhân</th>
-<th>Vai trò trong quy trình</th>
+<th align="left" style="background:#f6e9ef">Tác nhân</th>
+<th align="left" style="background:#f6e9ef">Vai trò trong quy trình</th>
 </tr>
 </thead>
 <tbody>
@@ -105,7 +52,7 @@ footer{text-align:center;color:var(--soft);font-size:13px;padding:0 16px calc(en
 </tbody>
 </table></div>
 <hr />
-<h2 id="3-quy-trình-1-mua-sản-phẩm-làm-sẵn-hoặc-tạo-giỏ-quà-theo-ngân-sách">3. Quy trình 1: Mua sản phẩm làm sẵn hoặc tạo giỏ quà theo ngân sách</h2>
+<h2 style="color:#c2457a;border-bottom:2px solid #fbe6ef;padding-bottom:4px;margin-top:2em" id="3-quy-trình-1-mua-sản-phẩm-làm-sẵn-hoặc-tạo-giỏ-quà-theo-ngân-sách">3. Quy trình 1: Mua sản phẩm làm sẵn hoặc tạo giỏ quà theo ngân sách</h2>
 <h3 id="31-mục-tiêu">3.1. Mục tiêu</h3>
 <p>Cho phép khách tìm sản phẩm làm sẵn, hoặc chọn các sản phẩm phù hợp với ngân sách để tạo giỏ quà, kiểm tra đơn hàng và hoàn tất đặt mua qua phương thức thanh toán được website hỗ trợ.</p>
 <h3 id="32-dữ-liệu-đầu-vào-và-kết-quả">3.2. Dữ liệu đầu vào và kết quả</h3>
@@ -124,13 +71,13 @@ footer{text-align:center;color:var(--soft);font-size:13px;padding:0 16px calc(en
 <li>Thông tin đơn hàng xuất hiện trong lịch sử của Customer và trang quản trị Admin.</li>
 </ul>
 <h3 id="33-các-bước-nghiệp-vụ">3.3. Các bước nghiệp vụ</h3>
-<div class="tw"><table>
+<div style="overflow-x:auto;margin:14px 0"><table border="1" cellpadding="8" cellspacing="0" style="border-collapse:collapse;width:100%;min-width:560px;border-color:#eadfe4">
 <thead>
 <tr>
-<th>Bước</th>
-<th>Tác nhân</th>
-<th>Xử lý</th>
-<th>Dữ liệu/trạng thái sau bước</th>
+<th align="left" style="background:#f6e9ef">Bước</th>
+<th align="left" style="background:#f6e9ef">Tác nhân</th>
+<th align="left" style="background:#f6e9ef">Xử lý</th>
+<th align="left" style="background:#f6e9ef">Dữ liệu/trạng thái sau bước</th>
 </tr>
 </thead>
 <tbody>
@@ -207,11 +154,11 @@ footer{text-align:center;color:var(--soft);font-size:13px;padding:0 16px calc(en
 <p>Các trạng thái được cập nhật theo tiến trình thực tế. Sau khi tiếp nhận đơn, Admin kiểm tra thông tin và xác nhận đơn hợp lệ. Cửa hàng tiếp tục chuẩn bị, đóng gói và bàn giao đơn cho quá trình giao hàng. Khi việc giao nhận kết thúc, đơn được cập nhật thành “Hoàn thành”. Nếu phát sinh sự cố, chẳng hạn khách yêu cầu hủy hoặc giao hàng không thành công, Admin ghi nhận tình trạng và xử lý theo quy tắc đã được nhóm thống nhất.</p>
 <p>Bên cạnh trạng thái xử lý đơn hàng, hệ thống cần quản lý trạng thái thanh toán riêng biệt. Việc tách hai loại trạng thái giúp xác định độc lập tiến độ thực hiện đơn và tình trạng thanh toán của khách hàng.</p>
 <p>Đối với phương thức thanh toán khi nhận hàng (COD), đơn hàng có thể đang được xử lý hoặc giao hàng trong khi khoản thanh toán chưa được ghi nhận hoàn tất. Đối với phương thức QR giả lập, hệ thống chỉ ghi nhận thanh toán thành công khi có kết quả xác nhận phù hợp với quy trình mô phỏng. Trạng thái “Đã cọc” chỉ sử dụng khi chính sách đặt cọc được nhóm xác nhận áp dụng. Việc cập nhật trạng thái thanh toán không thay thế việc cập nhật trạng thái xử lý đơn hàng. Mỗi trạng thái cần phản ánh đúng tiến trình tương ứng và kết quả được ghi nhận trong website.</p>
-<div class="tw"><table>
+<div style="overflow-x:auto;margin:14px 0"><table border="1" cellpadding="8" cellspacing="0" style="border-collapse:collapse;width:100%;min-width:560px;border-color:#eadfe4">
 <thead>
 <tr>
-<th>Trường hợp</th>
-<th>Cách xử lý</th>
+<th align="left" style="background:#f6e9ef">Trường hợp</th>
+<th align="left" style="background:#f6e9ef">Cách xử lý</th>
 </tr>
 </thead>
 <tbody>
@@ -243,43 +190,10 @@ footer{text-align:center;color:var(--soft);font-size:13px;padding:0 16px calc(en
 </table></div>
 <h3 id="35-sơ-đồ-luồng-đơn-giản">3.5. Sơ đồ luồng đơn giản</h3>
 <p>Sơ đồ dưới đây mô tả quy trình mua sản phẩm làm sẵn, bao gồm trường hợp khách tạo giỏ quà theo ngân sách.</p>
-<figure class="diagram" tabindex="0" title="Nhấn để phóng to"><pre class="mermaid">
-flowchart TD
-    A(["Bắt đầu"]) --&gt; B[/"Xem và chọn sản phẩm"/]
-    B --&gt; C{"Tạo giỏ quà?"}
-    C -- Không --&gt; D["Thêm sản phẩm làm sẵn vào giỏ"]
-    C -- Có --&gt; E[/"Chọn ngân sách và sản phẩm"/]
-    E --&gt; F{"Tổng giá trị sản phẩm trong ngân sách?"}
-    F -- Không --&gt; G["Điều chỉnh sản phẩm hoặc số lượng"]
-    G --&gt; E
-    F -- Có --&gt; H["Thêm giỏ quà vào giỏ hàng"]
-    D --&gt; I["Kiểm tra giỏ hàng"]
-    H --&gt; I
-    I --&gt; J[/"Nhập thông tin nhận hàng, chọn COD hoặc QR"/]
-    J --&gt; K{"Thông tin, giá và tồn kho hợp lệ?"}
-    K -- Không --&gt; L[/"Thông báo lỗi, yêu cầu chỉnh sửa"/]
-    L --&gt; I
-    K -- Có --&gt; M["Khách xác nhận đặt hàng"]
-    M --&gt; N["Tạo mã đơn và lưu thông tin đơn hàng"]
-    N --&gt; O{"Phương thức thanh toán?"}
-    O -- COD --&gt; P["Đặt trạng thái thanh toán theo COD"]
-    O -- QR --&gt; Q{"Thanh toán QR thành công?"}
-    Q -- Không --&gt; R[/"Thông báo thanh toán chưa thành công"/]
-    R --&gt; S{"Thử thanh toán lại?"}
-    S -- Có --&gt; Q
-    S -- Không --&gt; T(["Kết thúc: Chưa hoàn tất thanh toán"])
-    Q -- Có --&gt; U["Cập nhật trạng thái thanh toán"]
-    P --&gt; V["Admin xác nhận và chuẩn bị đơn"]
-    U --&gt; V
-    V --&gt; W["Đóng gói và giao hàng"]
-    W --&gt; X{"Giao hàng thành công?"}
-    X -- Không --&gt; Y["Admin ghi nhận và liên hệ khách để xử lý"]
-    Y --&gt; W
-    X -- Có --&gt; Z["Cập nhật đơn hoàn thành"]
-    Z --&gt; AA(["Kết thúc"])
-</pre></figure>
+<p align="center"><a href="images/quy-trinh-1-mua-san-pham.png"><img src="images/quy-trinh-1-mua-san-pham.png" alt="Sơ đồ luồng quy trình mua sản phẩm làm sẵn hoặc tạo giỏ quà theo ngân sách" style="max-width:100%;height:auto"></a></p>
+<p align="center"><em>Nhấn vào hình để mở ảnh kích thước đầy đủ.</em></p>
 <hr />
-<h2 id="4-quy-trình-2-đặt-làm-theo-mẫucá-nhân-hóa-custom-order">4. Quy trình 2: Đặt làm theo mẫu/cá nhân hóa (Custom Order)</h2>
+<h2 style="color:#c2457a;border-bottom:2px solid #fbe6ef;padding-bottom:4px;margin-top:2em" id="4-quy-trình-2-đặt-làm-theo-mẫucá-nhân-hóa-custom-order">4. Quy trình 2: Đặt làm theo mẫu/cá nhân hóa (Custom Order)</h2>
 <h3 id="41-mục-tiêu">4.1. Mục tiêu</h3>
 <p>Quy trình Custom Order nhằm chuẩn hóa việc tiếp nhận và xử lý yêu cầu đặt làm sản phẩm móc len theo mẫu hoặc yêu cầu cá nhân hóa. Cửa hàng xem xét thông tin, đánh giá khả năng thực hiện, gửi báo giá và thời gian dự kiến để khách xác nhận trước khi đơn được chốt và chuyển sang sản xuất. Đối với yêu cầu cần báo giá riêng, thông tin khách gửi ban đầu chưa được xem là giá cuối cùng hoặc cam kết giao hàng chính thức.</p>
 <h3 id="42-dữ-liệu-đầu-vào-và-kết-quả">4.2. Dữ liệu đầu vào và kết quả</h3>
@@ -301,13 +215,13 @@ flowchart TD
 </ul>
 <h3 id="43-các-bước-nghiệp-vụ">4.3. Các bước nghiệp vụ</h3>
 <p>Sau bước 4, quy trình được phân thành ba nhánh tùy theo kết quả xem xét của Admin: yêu cầu bổ sung thông tin (bước 5A - 6A), từ chối yêu cầu (bước 5B) hoặc lập báo giá (bước 5C). Chỉ nhánh lập báo giá mới tiếp tục đến bước khách hàng phản hồi báo giá.</p>
-<div class="tw"><table>
+<div style="overflow-x:auto;margin:14px 0"><table border="1" cellpadding="8" cellspacing="0" style="border-collapse:collapse;width:100%;min-width:560px;border-color:#eadfe4">
 <thead>
 <tr>
-<th>Bước</th>
-<th>Tác nhân</th>
-<th>Xử lý</th>
-<th>Dữ liệu/trạng thái sau bước</th>
+<th align="left" style="background:#f6e9ef">Bước</th>
+<th align="left" style="background:#f6e9ef">Tác nhân</th>
+<th align="left" style="background:#f6e9ef">Xử lý</th>
+<th align="left" style="background:#f6e9ef">Dữ liệu/trạng thái sau bước</th>
 </tr>
 </thead>
 <tbody>
@@ -399,11 +313,11 @@ flowchart TD
 </table></div>
 <h3 id="44-trạng-thái-nghiệp-vụ-đề-xuất">4.4. Trạng thái nghiệp vụ đề xuất</h3>
 <h4 id="441-trạng-thái-yêu-cầu-và-báo-giá">4.4.1. Trạng thái yêu cầu và báo giá</h4>
-<div class="tw"><table>
+<div style="overflow-x:auto;margin:14px 0"><table border="1" cellpadding="8" cellspacing="0" style="border-collapse:collapse;width:100%;min-width:560px;border-color:#eadfe4">
 <thead>
 <tr>
-<th>Trạng thái</th>
-<th>Ý nghĩa</th>
+<th align="left" style="background:#f6e9ef">Trạng thái</th>
+<th align="left" style="background:#f6e9ef">Ý nghĩa</th>
 </tr>
 </thead>
 <tbody>
@@ -431,11 +345,11 @@ flowchart TD
 </table></div>
 <p>Khi khách bổ sung thông tin theo yêu cầu của Admin, hệ thống cập nhật nội dung trên yêu cầu hiện có và chuyển trạng thái về “Chờ cửa hàng xem xét”. Việc bổ sung thông tin không làm phát sinh yêu cầu mới, trừ khi khách chủ động gửi một yêu cầu đặt làm khác.</p>
 <h4 id="442-trạng-thái-đơn-đặt-làm">4.4.2. Trạng thái đơn đặt làm</h4>
-<div class="tw"><table>
+<div style="overflow-x:auto;margin:14px 0"><table border="1" cellpadding="8" cellspacing="0" style="border-collapse:collapse;width:100%;min-width:560px;border-color:#eadfe4">
 <thead>
 <tr>
-<th>Trạng thái</th>
-<th>Ý nghĩa</th>
+<th align="left" style="background:#f6e9ef">Trạng thái</th>
+<th align="left" style="background:#f6e9ef">Ý nghĩa</th>
 </tr>
 </thead>
 <tbody>
@@ -471,11 +385,11 @@ flowchart TD
 </table></div>
 <p>Trạng thái “Chờ thanh toán/đặt cọc” chỉ được sử dụng khi khách đã chấp nhận báo giá nhưng chưa hoàn tất điều kiện thanh toán trước đã được thống nhất. Nếu báo giá không yêu cầu thanh toán trước, đơn có thể chuyển sang “Chờ sản xuất” sau khi khách chấp nhận báo giá và đáp ứng các điều kiện chốt đơn khác.</p>
 <h4 id="443-trạng-thái-thanh-toán">4.4.3. Trạng thái thanh toán</h4>
-<div class="tw"><table>
+<div style="overflow-x:auto;margin:14px 0"><table border="1" cellpadding="8" cellspacing="0" style="border-collapse:collapse;width:100%;min-width:560px;border-color:#eadfe4">
 <thead>
 <tr>
-<th>Trạng thái thanh toán</th>
-<th>Ý nghĩa</th>
+<th align="left" style="background:#f6e9ef">Trạng thái thanh toán</th>
+<th align="left" style="background:#f6e9ef">Ý nghĩa</th>
 </tr>
 </thead>
 <tbody>
@@ -500,11 +414,11 @@ flowchart TD
 <p>Hệ thống chỉ cập nhật trạng thái thanh toán theo kết quả giao dịch được ghi nhận và điều kiện thanh toán áp dụng cho đơn hàng. Không ghi nhận thanh toán thành công khi khách mới bắt đầu thao tác hoặc giao dịch chưa có kết quả thành công.</p>
 <p>Trạng thái thanh toán được cập nhật độc lập với trạng thái đơn đặt làm. Ví dụ, khi cửa hàng đã nhận khoản đặt cọc nhưng chưa nhận đủ tiền, trạng thái thanh toán có thể là “Đã cọc” trong khi trạng thái đơn là “Đang móc len”. Khi khoản thanh toán đầy đủ được ghi nhận, trạng thái thanh toán chuyển sang “Đã thanh toán đủ”.</p>
 <h3 id="45-các-trường-hợp-ngoại-lệ">4.5. Các trường hợp ngoại lệ</h3>
-<div class="tw"><table>
+<div style="overflow-x:auto;margin:14px 0"><table border="1" cellpadding="8" cellspacing="0" style="border-collapse:collapse;width:100%;min-width:560px;border-color:#eadfe4">
 <thead>
 <tr>
-<th>Trường hợp</th>
-<th>Cách xử lý</th>
+<th align="left" style="background:#f6e9ef">Trường hợp</th>
+<th align="left" style="background:#f6e9ef">Cách xử lý</th>
 </tr>
 </thead>
 <tbody>
@@ -555,7 +469,7 @@ flowchart TD
 </tbody>
 </table></div>
 <hr />
-<h2 id="5-quy-tắc-nghiệp-vụ-dùng-chung">5. Quy tắc nghiệp vụ dùng chung</h2>
+<h2 style="color:#c2457a;border-bottom:2px solid #fbe6ef;padding-bottom:4px;margin-top:2em" id="5-quy-tắc-nghiệp-vụ-dùng-chung">5. Quy tắc nghiệp vụ dùng chung</h2>
 <ul>
 <li><strong>Tính giá:</strong> Trước khi tạo đơn hàng, hệ thống kiểm tra lại giá sản phẩm, số lượng, tồn kho, phí vận chuyển và tổng tiền dựa trên dữ liệu hợp lệ tại thời điểm đặt hàng. Nếu thông tin thay đổi hoặc không còn hợp lệ, hệ thống thông báo để khách điều chỉnh hoặc xác nhận lại trước khi tiếp tục.</li>
 <li><strong>Ngân sách giỏ quà:</strong> Mức ngân sách áp dụng cho tổng giá trị các sản phẩm trong giỏ quà; phí vận chuyển được tính riêng. Nếu vượt ngân sách, khách phải điều chỉnh giỏ quà trước khi chuyển sang giỏ hàng.</li>
@@ -566,98 +480,13 @@ flowchart TD
 <li><strong>Thanh toán và vận chuyển:</strong> Trong phạm vi đồ án, các phương thức COD và QR chỉ được mô tả theo cách thức triển khai thực tế của website. Nếu thanh toán QR chỉ là mô phỏng, cần ghi rõ đây là thanh toán QR giả lập, không phải tích hợp thanh toán ngân hàng thật. Tương tự, nếu website chưa tích hợp API của đơn vị vận chuyển, trạng thái giao nhận được cập nhật theo thông tin do cửa hàng ghi nhận, không mô tả như quy trình vận chuyển tự động.</li>
 </ul>
 <hr />
-<h2 id="6-sơ-đồ-luồng-custom-order">6. Sơ đồ luồng Custom Order</h2>
+<h2 style="color:#c2457a;border-bottom:2px solid #fbe6ef;padding-bottom:4px;margin-top:2em" id="6-sơ-đồ-luồng-custom-order">6. Sơ đồ luồng Custom Order</h2>
 <p>Sơ đồ mô tả đầy đủ các bước từ lúc khách gửi yêu cầu đặt làm đến khi sản phẩm được giao. Các nhánh bổ sung thông tin, cửa hàng từ chối, khách không chấp nhận báo giá, thanh toán thất bại, yêu cầu hủy và giao hàng không thành công được thể hiện riêng để tránh nhầm lẫn với luồng xử lý thành công.</p>
-<figure class="diagram" tabindex="0" title="Nhấn để phóng to"><pre class="mermaid">
-flowchart TD
-    A(["Bắt đầu"]) --&gt; B["Customer đăng nhập và chọn mẫu đặt làm"]
-    B --&gt; C[/"Nhập màu, kích thước, ghi chú, ảnh và ngày mong muốn nhận"/]
-    C --&gt; D{"Thông tin và tệp đính kèm hợp lệ?"}
-    D -- Không --&gt; E[/"Thông báo lỗi, yêu cầu chỉnh sửa"/]
-    E --&gt; C
-    D -- Có --&gt; F["Hệ thống lưu yêu cầu và tạo mã yêu cầu"]
-    F --&gt; G["Admin xem xét yêu cầu"]
-    G --&gt; H{"Thông tin đã đầy đủ?"}
-    H -- Chưa --&gt; I["Thông báo cần bổ sung thông tin"]
-    I --&gt; J[/"Customer bổ sung thông tin"/]
-    J --&gt; G
-    H -- Đã đủ --&gt; K{"Cửa hàng có thể thực hiện?"}
-    K -- Không --&gt; L["Admin thông báo lý do từ chối"]
-    L --&gt; M(["Kết thúc: Bị từ chối"])
-    K -- Có --&gt; N[/"Admin gửi báo giá, thời gian dự kiến và điều kiện thanh toán"/]
-    N --&gt; O{"Customer chấp nhận báo giá?"}
-    O -- Không --&gt; P(["Kết thúc: Báo giá bị từ chối"])
-    O -- Có --&gt; Q["Customer thực hiện đặt cọc/thanh toán theo điều kiện đã thông báo"]
-    Q --&gt; R{"Thanh toán hợp lệ?"}
-    R -- Không --&gt; S[/"Thông báo thanh toán thất bại hoặc chưa hoàn tất"/]
-    S --&gt; T{"Khách thử thanh toán lại?"}
-    T -- Có --&gt; Q
-    T -- Không --&gt; U{"Khách yêu cầu hủy?"}
-    U -- Có --&gt; V["Admin tiếp nhận và xử lý yêu cầu hủy theo quy định"]
-    V --&gt; W(["Kết thúc nhánh hủy theo kết quả xử lý"])
-    U -- Không --&gt; X(["Tạm dừng: Đơn chờ thanh toán"])
-    R -- Có --&gt; Y["Hệ thống ghi nhận thanh toán và chốt đơn sản xuất"]
-    Y --&gt; Z["Admin/cửa hàng tiến hành móc len"]
-    Z --&gt; AA{"Khách yêu cầu hủy trong quá trình xử lý?"}
-    AA -- Có --&gt; AB["Admin xem xét theo chính sách hủy đã thống nhất"]
-    AB --&gt; AC(["Kết thúc nhánh hủy theo kết quả xử lý"])
-    AA -- Không --&gt; AD["Đóng gói sản phẩm"]
-    AD --&gt; AE["Giao hàng"]
-    AE --&gt; AF{"Giao hàng thành công?"}
-    AF -- Có --&gt; AG["Cập nhật trạng thái hoàn thành"]
-    AG --&gt; AH(["Kết thúc"])
-    AF -- Không --&gt; AI["Admin ghi nhận sự cố và liên hệ khách để xử lý"]
-    AI --&gt; AE
-</pre></figure>
-</main>
-<footer>Tài liệu quy trình nghiệp vụ · các chức năng F01 - F09 theo REQUIREMENTS.md</footer>
+<p align="center"><a href="images/quy-trinh-2-custom-order.png"><img src="images/quy-trinh-2-custom-order.png" alt="Sơ đồ luồng quy trình đặt làm theo mẫu hoặc cá nhân hóa (Custom Order)" style="max-width:100%;height:auto"></a></p>
+<p align="center"><em>Nhấn vào hình để mở ảnh kích thước đầy đủ.</em></p>
 
-<div id="zoom" role="dialog" aria-modal="true" aria-label="Sơ đồ phóng to"><button type="button" id="zoomClose">Đóng ✕</button><div class="scroll" id="zoomBody"></div></div>
+<hr>
+<p align="center"><small>Tài liệu quy trình nghiệp vụ · các chức năng F01 - F09 theo REQUIREMENTS.md</small></p>
 
-<script src="https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js"></script>
-<script>
-(function(){
-  var dark=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches;
-  var root=document.documentElement.getAttribute('data-theme');
-  if(root)dark=root==='dark';
-  function fail(){
-    var els=document.querySelectorAll('.mermaid');
-    for(var i=0;i<els.length;i++){
-      if(!els[i].querySelector('svg')){
-        els[i].insertAdjacentHTML('afterend','<p class="hint">Không tải được thư viện vẽ sơ đồ (cần kết nối mạng). Mã nguồn sơ đồ nằm trong file QUY_TRINH_NGHIEP_VU.md.</p>');
-      }
-    }
-  }
-  if(!window.mermaid){fail();return}
-  mermaid.initialize({
-    startOnLoad:false,
-    theme:dark?'dark':'default',
-    securityLevel:'strict',
-    flowchart:{useMaxWidth:true,htmlLabels:true,curve:'basis'},
-    themeVariables:dark?{}:{primaryColor:'#fde8f1',primaryBorderColor:'#c2457a',lineColor:'#8a6d7c',primaryTextColor:'#27212a'}
-  });
-  mermaid.run({querySelector:'.mermaid'}).catch(function(e){console.error(e)}).then(fail);
-
-  var zoom=document.getElementById('zoom'),zb=document.getElementById('zoomBody');
-  function open(fig){
-    var svg=fig.querySelector('svg');if(!svg)return;
-    var c=svg.cloneNode(true),vb=svg.viewBox&&svg.viewBox.baseVal;
-    c.removeAttribute('style');c.removeAttribute('height');
-    c.setAttribute('width',vb&&vb.width?Math.max(vb.width,700):1000);
-    c.style.maxWidth='none';c.style.height='auto';
-    zb.innerHTML='';zb.appendChild(c);zoom.classList.add('on');
-  }
-  function close(){zoom.classList.remove('on');zb.innerHTML=''}
-  document.addEventListener('click',function(e){
-    var f=e.target.closest&&e.target.closest('.diagram');if(f)open(f);
-  });
-  document.addEventListener('keydown',function(e){
-    if(e.key==='Escape')close();
-    if((e.key==='Enter'||e.key===' ')&&document.activeElement&&document.activeElement.classList.contains('diagram')){e.preventDefault();open(document.activeElement)}
-  });
-  document.getElementById('zoomClose').addEventListener('click',close);
-  zoom.addEventListener('click',function(e){if(e.target===zoom)close()});
-})();
-</script>
 </body>
 </html>
