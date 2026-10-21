@@ -33,13 +33,14 @@
 | Người thực hiện | Nguyễn Anh Tuấn |
 | Mục đích | Phân tích đề tài website thương mại điện tử kinh doanh sản phẩm móc len handmade; xác định mục tiêu kinh doanh, phạm vi hệ thống, nhóm người dùng và chức năng dự kiến. |
 | Đầu vào | Mô tả dự án, sản phẩm/dịch vụ, khách hàng mục tiêu, vấn đề kinh doanh và ba website tham khảo. |
-| Thời gian thực hiện theo thông tin dự án | 20/10/2026 |
+| Thời gian thực hiện theo thông tin dự án | 20/10/2026 - 17/12/2026 |
 | Quy mô nhóm | 7 người |
 | Website tham khảo | [Tiệm Len 1992](https://tiemlen1992.com), [Tiệm Chúng Mình](https://tiemchungminh.com), [Lyly Craft](https://lylycraft.vn) |
 
 ### Prompt chính
 
 ```text
+*Có đính kèm dữ liệu T02
 Bạn là chuyên gia phân tích nghiệp vụ cho dự án thương mại điện tử.
 
 Thông tin dự án:
@@ -49,14 +50,26 @@ Thông tin dự án:
 - Khách hàng mục tiêu: Sinh viên và người đi làm trẻ tại Việt Nam có nhu cầu mua sản phẩm móc len cho bản thân hoặc làm quà tặng.
 - Vấn đề kinh doanh: Hỗ trợ khách hàng lựa chọn quà tặng trong giới hạn chi tiêu và thống nhất nội dung đặt làm; đồng thời giúp cửa hàng quản lý việc xác nhận và xử lý đơn trên một hệ thống.
 - Website tham khảo: https://tiemlen1992.com, https://tiemchungminh.com, https://lylycraft.vn
-- Thời gian thực hiện theo tài liệu dự án: 20/10/2026
+- Thời gian thực hiện theo tài liệu dự án: 20/10/2026 - 17/12/2026
 - Quy mô nhóm: 7 người
 
-Hãy phân tích mục tiêu, phạm vi, nhóm người dùng, chức năng chính,
-quy trình nghiệp vụ và các yêu cầu phi chức năng của website.
-Phân biệt rõ nội dung đề xuất với những thông tin cần nhóm xác minh.
-```
+Hãy đề xuất:
+1. Mục tiêu và phạm vi dự án.
+2. Các nhóm người dùng và quyền hạn.
+3. Danh sách chức năng cần có.
+4. Quy trình nghiệp vụ chính.
+5. Yêu cầu phi chức năng.
+6. Các chức năng nên hoàn thành ở phiên bản đầu tiên.
+7. Các chức năng nâng cao có thể bổ sung.
+8. Rủi ro khi triển khai và cách giảm thiểu.
 
+Phân biệt rõ:
+- Yêu cầu bắt buộc.
+- Yêu cầu có thể phát triển sau.
+- Đề xuất cần nhóm xác minh thêm.
+Không giả định nhóm có đủ thời gian hoặc năng lực để triển khai.
+Phát triển ứng dụng WEB/TMĐT tất cả chức năng. Hãy giải thích cơ sở của từng đề xuất.  
+```
 ### Kết quả AI đề xuất
 
 **a. Mục tiêu và phạm vi**
