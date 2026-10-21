@@ -1,6 +1,4 @@
-# AI_USAGE_LOG.md
 # NHẬT KÝ SỬ DỤNG AI TRONG DỰ ÁN NHÓM
-
 > **Môn học:** Phát triển ứng dụng thương mại điện tử  
 > **Nhóm:** 7  
 > **Nhiệm vụ:** T10 – Quy trình sử dụng AI trong dự án nhóm  
