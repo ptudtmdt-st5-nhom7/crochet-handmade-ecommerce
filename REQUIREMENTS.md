@@ -77,18 +77,19 @@
 | **F26** | **Thống kê hoạt động cửa hàng** | Tổng hợp các chỉ số vận hành và doanh thu phục vụ quản trị cửa hàng. | `Admin` | **Bắt buộc** | • Hiển thị thống kê theo khoảng thời gian: tổng số đơn, sản phẩm bán chạy, số khách hàng, đơn chờ xử lý/chờ giao.<br>• Phân biệt rõ giá trị đơn hàng, khoản tiền thực thu (tiền cọc, tiền đã thanh toán đủ) và đơn đã hủy để không tính trùng doanh thu. |
 | **F27** | **Danh sách yêu thích (Wishlist)** | Lưu lại các mẫu sản phẩm móc len yêu thích vào tài khoản cá nhân để xem lại sau. | `Customer` | **Tùy chọn (Phát triển sau)** | • Khách đã đăng nhập có thể thêm/xóa sản phẩm khỏi danh sách yêu thích và chuyển nhanh sang trang chi tiết.<br>• Chỉ triển khai khi nhóm đã hoàn thành và kiểm thử xong toàn bộ các chức năng Bắt buộc (`F01`–`F26`). |
 ## 5. Yêu cầu phi chức năng
-1. Giao diện & Trải nghiệm (UI/UX)
-- Yêu cầu kĩ thuật cụ thể: Thiết kế phong cách thủ công ấm áp (Pastel/Kem), bố cục rõ ràng, ưu tiên trải nghiệm trên điện thoại (Mobile-first).
-- Thước đo/ Tiêu chuẩn nghiệm thu: Hiển thị chuẩn xác, không vỡ khung hình trên tối thiểu 2 kích thước màn hình (Desktop và Smartphone).
-2. Hiệu năng & Phản hồi-
-- Yêu cầu kĩ thuật cụ thể: Tối ưu hóa dung lượng hình ảnh sản phẩm móc len và tốc độ phản hồi khi lọc dữ liệu.
-- Thước đo/ Tiêu chuẩn nghiệm thu: Thời gian tải trang dưới 3 giây; thao tác cộng tiền trong công cụ 'Tạo giỏ quà' cập nhật tức thì (Real-time UI).
-3. Bảo mật & Phân quyền
-- Yêu cầu kĩ thuật cụ thể: Bảo vệ thông tin tài khoản khách hàng và kiểm soát chặt quyền truy cập trang quản trị.
-- Thước đo/ Tiêu chuẩn nghiệm thu: Mật khẩu lưu trữ phải được mã hóa (Hashing); chặn truy cập trái phép vào URL của Admin; kiểm tra dữ liệu đầu vào (Validation).
-4. Khả năng tương thích
-- Yêu cầu kĩ thuật cụ thể: Hoạt động ổn định trên các môi trường trình duyệt web thông dụng hiện nay.
-- Thước đo/ Tiêu chuẩn nghiệm thu: Chạy mượt mà trên Google Chrome, Safari, Microsoft Edge và Firefox mà không phát sinh lỗi giao diện.
+
+
+| Mã | Nhóm yêu cầu | Nội dung và tiêu chí nghiệm thu |
+| :---: | :--- | :--- |
+| **NF01** | Giao diện | Sử dụng được trên desktop và smartphone; không tràn hoặc che khuất nội dung tại các kích thước nhóm chọn để kiểm thử. |
+| **NF02** | Bảo mật tài khoản | Mật khẩu được băm bằng cơ chế của framework; trang và API quản trị kiểm tra vai trò ở phía máy chủ. |
+| **NF03** | Quyền riêng tư | Người dùng chỉ truy cập hồ sơ, địa chỉ, yêu cầu và đơn của mình, kể cả khi thay đổi ID trên URL hoặc request. |
+| **NF04** | Tính đúng đắn của giá | Máy chủ tính lại giá, tồn kho, voucher, phí và tổng tiền; không sử dụng trực tiếp tổng tiền do giao diện gửi lên. |
+| **NF05** | Tải ảnh | Chỉ chấp nhận định dạng và dung lượng quy định; đổi tên file khi lưu và kiểm soát quyền truy cập. |
+| **NF06** | Thanh toán | Kiểm tra mã giao dịch, số tiền và trạng thái; một giao dịch thành công chỉ được ghi nhận một lần. |
+| **NF07** | Hiệu năng | Xác định trang, thiết bị, mạng và lượng dữ liệu dùng để đo; không sử dụng tiêu chí chung chung như chạy mượt. |
+| **NF08** | Tương thích | Kiểm thử trên phiên bản Chrome, Edge và trình duyệt di động do nhóm thống nhất. |
+| **NF09** | Lưu vết | Các thay đổi quan trọng đối với báo giá, thanh toán và trạng thái đơn lưu thời gian và người thực hiện. |
 
 
 
