@@ -209,7 +209,7 @@ ChatGPT cũng chỉ ra một số chức năng có thể được thu hẹp ho�
 | Đặt làm theo mẫu | Có | Cần cửa hàng xác nhận khả năng thực hiện, giá và thời gian | Giữ lại và điều chỉnh |
 | Báo giá và khách xác nhận | Có một phần | Chưa rõ thời điểm yêu cầu trở thành đơn hàng | Bổ sung quy trình khách chấp thuận trước khi tạo đơn |
 | Đặt cọc đơn làm thủ công | Có đề xuất phương án | Không nên mặc định bỏ cọc hoặc áp dụng mức cọc 50% | Giữ chức năng cọc; nhóm xác định mức cọc sau |
-| Thanh toán COD hoặc QR mẫu | Có | QR mẫu chưa đáp ứng đầy đủ yêu cầu tích hợp và kiểm thử thanh toán | Điều chỉnh, sử dụng một cổng thanh toán thử nghiệm |
+| Thanh toán COD hoặc QR mẫu | Có | QR mẫu chưa đáp ứng đầy đủ yêu cầu tích hợp và kiểm thử thanh toán | Điều chỉnh, sử dụng một cổng thanh toán COD hoặc QR mẫu |
 | Theo dõi lịch sử và tiến độ đơn | Có | Cần tách tiến độ gia công, thanh toán và giao hàng | Giữ lại và điều chỉnh |
 | Quản trị hệ thống | Có | Cần thiết nhưng phạm vi quá rộng trong một chức năng | Giữ lại; tách thành các chức năng quản trị nhỏ |
 | Đánh giá và bình luận sản phẩm | Có | Cần thiết sau mua nhưng ảnh đánh giá làm tăng khối lượng xử lý | Giữ đánh giá cơ bản; ảnh đánh giá phát triển sau |
