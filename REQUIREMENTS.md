@@ -94,7 +94,7 @@
 
 
 ## 6. Giới hạn và giả định
-## 6. Giới hạn về Thời gian, Công nghệ và Nguồn lực
+Giới hạn về Thời gian, Công nghệ và Nguồn lực
 
 ### 1. Giới hạn về Thời gian (Timeline Constraints)
 - **Thời gian thực hiện:** Kéo dài gần 2 tháng (từ ngày 20/10/2026 đến ngày 17/12/2026).
