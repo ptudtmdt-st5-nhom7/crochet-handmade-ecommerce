@@ -1,55 +1,55 @@
 # Requirements
 
 ## 1. Mục tiêu dự án
-*Mục tiêu kinh doanh: Phân phối sản phẩm móc len handmade (làm sẵn, giỏ quà theo ngân sách, đặt làm theo mẫu).
-*Giá trị mang lại cho khách hàng: Giải quyết bài toán chọn quà theo chi phí của giới trẻ và chuẩn hóa quản lý đơn thủ công cho shop.
+- Mục tiêu kinh doanh: Phân phối sản phẩm móc len handmade (làm sẵn, giỏ quà theo ngân sách, đặt làm theo mẫu).
+- Giá trị mang lại cho khách hàng: Giải quyết bài toán chọn quà theo chi phí của giới trẻ và chuẩn hóa quản lý đơn thủ công cho shop.
 
 ## 2. Phạm vi
 ### Trong phạm vi
-*Phân hệ khách hàng: Tài khoản, Danh mục sản phẩm, Tạo giỏ quà theo ngân sách, Form đặt mẫu riêng, Giỏ hàng & Thanh toán giả lập (COD/QR)
-*Phân hệ quản trị (Admin): CRUD sản phẩm & danh mục, duyệt/báo giá yêu cầu custom, cập nhật tiến độ gia công đơn hàng, thống kê cơ bản.
+- Phân hệ khách hàng: Tài khoản, Danh mục sản phẩm, Tạo giỏ quà theo ngân sách, Form đặt mẫu riêng, Giỏ hàng & Thanh toán giả lập (COD/QR)
+- Phân hệ quản trị (Admin): CRUD sản phẩm & danh mục, duyệt/báo giá yêu cầu custom, cập nhật tiến độ gia công đơn hàng, thống kê cơ bản.
 
 ### Ngoài phạm vi
-*Tích hợp bên thứ ba: Cổng thanh toán thật trên môi trường Production như VNPay, MoMo, Stripe và API vận chuyển tự động như GHN, Viettel Post. Hệ thống chỉ sử dụng thanh toán giả lập hoặc cổng thanh toán trên môi trường thử nghiệm (Sandbox).
-*Nền tảng thiết bị: Ứng dụng di động (Mobile App iOS/Android) độc lập.
+- Tích hợp bên thứ ba: Cổng thanh toán thật trên môi trường Production như VNPay, MoMo, Stripe và API vận chuyển tự động như GHN, Viettel Post. Hệ thống chỉ sử dụng thanh toán giả lập hoặc cổng thanh toán trên môi trường thử nghiệm (Sandbox).
+- Nền tảng thiết bị: Ứng dụng di động (Mobile App iOS/Android) độc lập.
 
 
 ## 3. Người dùng
-*Khách vãng lai (guest)
-- Mô tả đối tượng: Người dùng truy cập website nhưng chưa đăng nhập.
-- Quyền hạn được phép thực hiện:
-    + Xem trang chủ, danh mục, tìm kiếm, lọc và xem chi tiết sản phẩm
-    + Dùng thử công cụ 'Tạo giỏ quà theo ngân sách'.
-    + Thêm sản phẩm làm sẵn vào giỏ hàng; Đăng ký / Đăng nhập.
-- Giới hạn truy cập:
-    + Chưa thể gửi form 'đặt làm theo mẫu'
-    + Chưa lưu được Wishlist
-    + Chưa xem được lịch sử đơn hàng.
+- Khách vãng lai (guest)
+    - Mô tả đối tượng: Người dùng truy cập website nhưng chưa đăng nhập.
+    - Quyền hạn được phép thực hiện:
+        + Xem trang chủ, danh mục, tìm kiếm, lọc và xem chi tiết sản phẩm
+        + Dùng thử công cụ 'Tạo giỏ quà theo ngân sách'.
+        + Thêm sản phẩm làm sẵn vào giỏ hàng; Đăng ký / Đăng nhập.
+    - Giới hạn truy cập:
+        + Chưa thể gửi form 'đặt làm theo mẫu'
+        + Chưa lưu được Wishlist
+        + Chưa xem được lịch sử đơn hàng.
 
-*Khách hàng thành viên (Customer)
-- Mô tả đối tượng: Khách hàng đã có tài khoản và đăng nhập hệ thống.
-- Quyền hạn được phép thực hiện:
-    + Toàn bộ quyền của Khách vãng lai.
-    + Quản lý hồ sơ cá nhân, sổ địa chỉ, danh sách yêu thích (Wishlist) (nếu F27 được triển khai)
-    + Gửi yêu cầu 'Đặt làm theo mẫu' kèm ảnh/ghi chú.
-    + Đặt hàng và theo dõi tiến độ gia công đơn hàng thực tế.
-- Giới hạn truy cập:
-    + Không được truy cập vào trang Quản trị (Admin Dashboard) hoặc chỉnh sửa dữ liệu hệ thống.
+- Khách hàng thành viên (Customer)
+    - Mô tả đối tượng: Khách hàng đã có tài khoản và đăng nhập hệ thống.
+    - Quyền hạn được phép thực hiện:
+        + Toàn bộ quyền của Khách vãng lai.
+        + Quản lý hồ sơ cá nhân, sổ địa chỉ, danh sách yêu thích (Wishlist) (nếu F27 được triển khai)
+        + Gửi yêu cầu 'Đặt làm theo mẫu' kèm ảnh/ghi chú.
+        + Đặt hàng và theo dõi tiến độ gia công đơn hàng thực tế.
+    - Giới hạn truy cập:
+        + Không được truy cập vào trang Quản trị (Admin Dashboard) hoặc chỉnh sửa dữ liệu hệ thống.
 
-*Quản trị viên (Admin)
-- Mô tả đối tượng: Chủ cửa hàng hoặc nhân viên quản lý vận hành.
-- Quyền hạn được phép thực hiện:
-    + Sản phẩm: Thêm, sửa, xóa danh mục & sản phẩm (gắn nhãn Có sẵn / Nhận custom).
-    + Đơn custom: Duyệt, phản hồi và báo giá yêu cầu đặt làm riêng.
-    + Đơn hàng: Cập nhật trạng thái (Đã xác nhận -> Đang móc len -> Đóng gói -> Giao hàng -> Hoàn thành).
-    + Thống kê: Xem doanh thu và số lượng đơn theo thời gian.
+- Quản trị viên (Admin)
+    - Mô tả đối tượng: Chủ cửa hàng hoặc nhân viên quản lý vận hành.
+    - Quyền hạn được phép thực hiện:
+        + Sản phẩm: Thêm, sửa, xóa danh mục & sản phẩm (gắn nhãn Có sẵn / Nhận custom).
+        + Đơn custom: Duyệt, phản hồi và báo giá yêu cầu đặt làm riêng.
+        + Đơn hàng: Cập nhật trạng thái (Đã xác nhận -> Đang móc len -> Đóng gói -> Giao hàng -> Hoàn thành).
+        + Thống kê: Xem doanh thu và số lượng đơn theo thời gian.
 
 ## 4. Yêu cầu chức năng
-## Bảng Ma trận Chức năng & Phân loại Ưu tiên (Functional Requirements)
+### Bảng Ma trận Chức năng & Phân loại Ưu tiên (Functional Requirements)
 
 | Mã CN | Tên chức năng | Mô tả chi tiết nghiệp vụ | Người sử dụng | Mức độ ưu tiên | Tiêu chí nghiệm thu |
 | :---: | :--- | :--- | :--- | :---: | :--- |
-| **F01** | **Đăng ký, đăng nhập và đăng xuất** | Hỗ trợ tạo tài khoản khách hàng mới, xác thực phiên đăng nhập theo vai trò và đăng xuất an toàn. | Tất cả (`Guest`, `Customer`, `Admin`) | **Bắt buộc** | • Người dùng đăng ký bằng thông tin hợp lệ và đăng nhập đúng vai trò.<br>• Thông tin sai không tạo phiên đăng nhập; mật khẩu được băm bằng cơ chế của framework.<br>• Giỏ hàng tạm thời của Guest được giữ nguyên sau khi đăng nhập. |
+| **F01** | **Đăng ký, đăng nhập và đăng xuất** | Hỗ trợ tạo tài khoản khách hàng mới, xác thực phiên đăng nhập theo vai trò và đăng xuất an toàn. | Tất cả (`Guest`, `Customer`, `Admin`) | **Bắt buộc** | • Người dùng đăng ký bằng thông tin hợp lệ và đăng nhập đúng vai trò.<br>• Thông tin sai không tạo phiên đăng nhập; mật khẩu được băm bằng thư viện (ví dụ bcrypt).<br>• Giỏ hàng tạm thời của Guest được giữ nguyên sau khi đăng nhập. |
 | **F02** | **Quản lý hồ sơ và sổ địa chỉ** | Cho phép khách hàng xem, cập nhật thông tin cá nhân và quản lý danh sách địa chỉ nhận hàng. | `Customer` | **Bắt buộc** | • Khách xem, thêm và sửa thông tin cá nhân, địa chỉ nhận hàng của chính mình.<br>• Hệ thống kiểm tra quyền ở máy chủ: khách không truy cập được hồ sơ hoặc địa chỉ của khách khác (kể cả khi đổi ID trên URL). |
 | **F03** | **Xem danh mục sản phẩm** | Hiển thị danh sách sản phẩm móc len hoàn thiện theo từng nhóm danh mục (móc khóa, thú len, hoa len, phụ kiện). | `Guest`, `Customer` | **Bắt buộc** | • Hiển thị đầy đủ danh sách sản phẩm theo danh mục với ảnh thống nhất tỷ lệ, tên, giá hoặc *"Liên hệ báo giá"*.<br>• Thể hiện rõ nhãn tình trạng (*"Còn hàng"* / *"Hết hàng"*) và khả năng nhận đặt làm (*"Có sẵn"* / *"Nhận đặt làm"*). |
 | **F04** | **Tìm kiếm, lọc và sắp xếp sản phẩm** | Hỗ trợ tìm sản phẩm theo từ khóa, kết hợp lọc đa tiêu chí và sắp xếp danh sách kết quả. | `Guest`, `Customer` | **Bắt buộc** | • Tìm kiếm đúng theo tên/từ khóa; lọc kết hợp theo tối thiểu 5 thuộc tính: loại sản phẩm, màu sắc, chất liệu, kích thước, khoảng giá (và khả năng đặt làm).<br>• Hỗ trợ sắp xếp (giá, mới nhất), nút xóa bộ lọc và hiển thị thông báo rõ ràng khi không có kết quả. |
@@ -82,7 +82,7 @@
 | Mã | Nhóm yêu cầu | Nội dung và tiêu chí nghiệm thu |
 | :---: | :--- | :--- |
 | **NF01** | Giao diện | Sử dụng được trên desktop và smartphone; không tràn hoặc che khuất nội dung tại các kích thước nhóm chọn để kiểm thử. |
-| **NF02** | Bảo mật tài khoản | Mật khẩu được băm bằng cơ chế của framework; trang và API quản trị kiểm tra vai trò ở phía máy chủ. |
+| **NF02** | Bảo mật tài khoản | Mật khẩu được băm bằng thư viện; trang và API quản trị kiểm tra vai trò ở phía máy chủ. |
 | **NF03** | Quyền riêng tư | Người dùng chỉ truy cập hồ sơ, địa chỉ, yêu cầu và đơn của mình, kể cả khi thay đổi ID trên URL hoặc request. |
 | **NF04** | Tính đúng đắn của giá | Máy chủ tính lại giá, tồn kho, voucher, phí và tổng tiền; không sử dụng trực tiếp tổng tiền do giao diện gửi lên. |
 | **NF05** | Tải ảnh | Chỉ chấp nhận định dạng và dung lượng quy định; đổi tên file khi lưu và kiểm soát quyền truy cập. |
