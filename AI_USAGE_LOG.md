@@ -236,5 +236,3 @@ Các chức năng bổ trợ như danh sách yêu thích được đưa vào nh�
 
 ---
 
-
-> **Lưu ý:** Nội dung trong nhật ký được tổng hợp từ tài liệu dự án. Nhóm cần xác minh lại ngày sử dụng, prompt thực tế, kết quả AI và các quyết định trước khi nộp; không nên ghi nội dung chưa được kiểm chứng như một sự kiện chắc chắn.
