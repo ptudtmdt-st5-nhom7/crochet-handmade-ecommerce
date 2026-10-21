@@ -13,8 +13,14 @@ và tạo giỏ quà theo ngân sách.
 Chỉ triển khai các chức năng đã được nhóm thống nhất
 trong REQUIREMENTS.md.
 
-Các nội dung đang chờ bổ sung chưa phải yêu cầu đã chốt.
+Các nội dung chưa được ghi là yêu cầu đã chốt trong REQUIREMENTS.md
+không được tự ý triển khai.
 Không tự ý thêm chức năng hoặc chọn công nghệ thay nhóm.
+
+Công nghệ đã thống nhất: Frontend (HTML5, CSS3, JavaScript thuần,
+Tailwind CSS), Backend (Node.js, Express.js), cơ sở dữ liệu
+(MongoDB, Mongoose), quản lý mã nguồn (Git, GitHub).
+Xem REQUIREMENTS.md, mục 6.
 
 ## 3. Nguyên tắc viết mã nguồn
 
@@ -22,7 +28,6 @@ Không tự ý thêm chức năng hoặc chọn công nghệ thay nhóm.
 - Không thay đổi kiến trúc lớn khi chưa được nhóm đồng ý.
 - Không tự ý xóa chức năng đang hoạt động.
 - Ưu tiên thay đổi nhỏ, có thể kiểm tra.
-- Không đưa mật khẩu, token hoặc thông tin bí mật vào repository.
 
 ## 4. Quy trình làm việc
 
@@ -47,3 +52,20 @@ Ghi lại công cụ, mục đích, prompt chính và kết quả sử dụng AI
 Nhóm kiểm tra kết quả, ghi nhận ý kiến phản biện,
 quyết định giữ, sửa hoặc bỏ và người kiểm tra
 trong AI_USAGE_LOG.md.
+
+## 6. Bảo mật
+
+- Không đưa mật khẩu, API key hoặc token vào mã nguồn hoặc repository;
+  dùng biến môi trường và không commit file cấu hình chứa thông tin bí mật.
+- Không tự ý vô hiệu hóa hoặc bỏ qua các kiểm tra bảo mật
+  (đăng nhập, phân quyền, kiểm tra dữ liệu đầu vào và kiểm tra quyền
+  ở phía máy chủ).
+- Không sử dụng dữ liệu cá nhân thật khi chưa được phép; dùng dữ liệu mẫu.
+- Không đưa thông tin đăng nhập, dữ liệu cá nhân hoặc tài liệu không
+  được phép công khai vào công cụ AI.
+
+## 7. Giao tiếp
+
+Nếu yêu cầu chưa rõ, hãy hỏi lại nhóm trước khi triển khai.
+Không tự suy đoán hoặc tự thêm chức năng để lấp chỗ chưa rõ.
+Ghi lại câu hỏi và quyết định của nhóm trong GitHub Issue liên quan.
