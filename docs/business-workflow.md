@@ -543,8 +543,22 @@
 <hr />
 <h2 style="color:#c2457a;border-bottom:2px solid #fbe6ef;padding-bottom:4px;margin-top:2em" id="6-sơ-đồ-luồng-custom-order">6. Sơ đồ luồng Custom Order</h2>
 <p>Sơ đồ mô tả đầy đủ các bước từ lúc khách gửi yêu cầu đặt làm đến khi sản phẩm được giao. Các nhánh bổ sung thông tin, cửa hàng từ chối, khách không chấp nhận báo giá, thanh toán thất bại, yêu cầu hủy và giao hàng không thành công được thể hiện riêng để tránh nhầm lẫn với luồng xử lý thành công.</p>
-<p align="center"><a href="images/quy-trinh-2-custom-order.png"><img src="images/quy-trinh-2-custom-order.png" alt="Sơ đồ luồng quy trình đặt làm theo mẫu hoặc cá nhân hóa (Custom Order)" style="max-width:100%;height:auto"></a></p>
-<p align="center"><em>Nhấn vào hình để mở ảnh kích thước đầy đủ.</em></p>
+
+<p align="center">
+  <a href="images/sơ đồ quy trình custom order.jpg" target="_blank">
+    <img
+      src="images/sơ đồ quy trình custom order.jpg"
+      alt="Sơ đồ quy trình đặt làm theo mẫu hoặc cá nhân hóa Custom Order"
+      width="100%"
+      style="max-width: 100%; height: auto;"
+    >
+  </a>
+</p>
+
+<p align="center">
+  <em>Nhấn vào hình để mở ảnh kích thước đầy đủ.</em>
+</p>
+
 
 <hr>
 <p align="center"><small>Tài liệu quy trình nghiệp vụ website kinh doanh sản phẩm móc len</small></p>
