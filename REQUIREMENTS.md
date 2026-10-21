@@ -107,5 +107,5 @@ Giới hạn về Thời gian, Công nghệ và Nguồn lực
 - **Vận chuyển & AI:** Không kết nối API vận chuyển tự động bên thứ ba (GHN/ViettelPost); không sử dụng AI để tự động sinh mẫu sản phẩm hoặc định giá từ ảnh.
 
 ### 3. Giới hạn về Nguồn lực (Resource Constraints)
-- **Quy mô & Năng lực:** Nhóm gồm 08 thành viên với trình độ kỹ thuật ở mức sinh viên học phần thương mại điện tử, phân chia các mô-đun qua GitHub.
+- **Quy mô & Năng lực:** Nhóm gồm 07 thành viên với trình độ kỹ thuật ở mức sinh viên học phần thương mại điện tử, phân chia các mô-đun qua GitHub.
 - **Phạm vi dữ liệu:** Dữ liệu mẫu giới hạn trong phạm vi một cửa hàng thủ công độc lập (khoảng 15–20 sản phẩm tiêu biểu, chia thành 3–4 danh mục chính), không vận hành theo mô hình sàn thương mại điện tử nhiều người bán (Multi-vendor).
