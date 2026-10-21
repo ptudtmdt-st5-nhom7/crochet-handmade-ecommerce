@@ -51,7 +51,7 @@ Thông tin dự án:
 - Khách hàng mục tiêu: Sinh viên và người đi làm trẻ tại Việt Nam có nhu cầu mua sản phẩm móc len cho bản thân hoặc làm quà tặng.
 - Vấn đề kinh doanh: Hỗ trợ khách hàng lựa chọn quà tặng trong giới hạn chi tiêu và thống nhất nội dung đặt làm; đồng thời giúp cửa hàng quản lý việc xác nhận và xử lý đơn trên một hệ thống.
 - Website tham khảo: https://tiemlen1992.com, https://tiemchungminh.com, https://lylycraft.vn
-- Thời gian thực hiện theo tài liệu dự án: 20/10/2025
+- Thời gian thực hiện theo tài liệu dự án: 20/10/2026
 - Quy mô nhóm: 8 người
 
 Hãy phân tích mục tiêu, phạm vi, nhóm người dùng, chức năng chính,
