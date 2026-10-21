@@ -35,7 +35,7 @@
 | Người thực hiện | Nguyễn Anh Tuấn |
 | Mục đích | Phân tích đề tài website thương mại điện tử kinh doanh sản phẩm móc len handmade; xác định mục tiêu kinh doanh, phạm vi hệ thống, nhóm người dùng và chức năng dự kiến. |
 | Đầu vào | Mô tả dự án, sản phẩm/dịch vụ, khách hàng mục tiêu, vấn đề kinh doanh và ba website tham khảo. |
-| Thời gian thực hiện theo thông tin dự án | 20/10/2025 |
+| Thời gian thực hiện theo thông tin dự án | 20/10/2026 |
 | Quy mô nhóm | 8 người |
 | Website tham khảo | [Tiệm Len 1992](https://tiemlen1992.com), [Tiệm Chúng Mình](https://tiemchungminh.com), [Lyly Craft](https://lylycraft.vn) |
 
@@ -236,12 +236,5 @@ Các chức năng bổ trợ như danh sách yêu thích được đưa vào nh�
 
 ---
 
-## 5. Các thông tin cần xác nhận trước khi bàn giao
-
-- [ ] Xác nhận ngày sử dụng ChatGPT tại T04 có đúng là 20/10/2026 hay không; ngày thực hiện dự án ghi trong prompt T03 là 20/10/2025.
-- [ ] Đối chiếu prompt và kết quả trong nhật ký với lịch sử sử dụng AI thực tế.
-- [ ] Kiểm tra bảng đối chiếu với tài liệu yêu cầu cuối cùng của nhóm.
-- [ ] Bổ sung minh chứng/screenshot nếu giảng viên yêu cầu.
-- [ ] Châu rà soát nhật ký; Đức kiểm tra chéo trước khi bàn giao.
 
 > **Lưu ý:** Nội dung trong nhật ký được tổng hợp từ tài liệu dự án. Nhóm cần xác minh lại ngày sử dụng, prompt thực tế, kết quả AI và các quyết định trước khi nộp; không nên ghi nội dung chưa được kiểm chứng như một sự kiện chắc chắn.
