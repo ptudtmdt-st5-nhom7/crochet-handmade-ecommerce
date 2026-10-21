@@ -60,88 +60,75 @@
 - Tiêu chí nghiệm thu:
 
 *F03
-- Tên chức năng:
-- Mô tả:
-- Người sử dụng:
-- Mức độ ưu tiên:
-- Tiêu chí nghiệm thu:
-
-*F03
-- Tên chức năng:
-- Mô tả:
-- Người sử dụng:
-- Mức độ ưu tiên:
+- Tên chức năng: Xem chi tiết sản phẩm
+- Mô tả: Hiển thị ảnh đa góc độ, kích thước, chất liệu len, giá bán và trạng thái (Có sẵn / Nhận đặt làm).
+- Người sử dụng: Guest, Customer
+- Mức độ ưu tiên: Bắt buộc (MVP)
 - Tiêu chí nghiệm thu:
 
 *F04
-- Tên chức năng:
-- Mô tả:
-- Người sử dụng:
-- Mức độ ưu tiên:
-- Tiêu chí nghiệm thu:
+- Tên chức năng: Quản lý giỏ hàng
+- Mô tả: Thêm, tăng/giảm số lượng, xóa sản phẩm làm sẵn hoặc giỏ hàng; tự động tính tổng tiền tạm tính.
+- Người sử dụng: Guest, Customer
+- Mức độ ưu tiên: Bắt buộc (MVP)
+- Tiêu chí nghiệm thu: 
 
 *F05
-- Tên chức năng:
-- Mô tả:
-- Người sử dụng:
-- Mức độ ưu tiên:
+- Tên chức năng: Tạo giỏ quà theo ngân sách
+- Mô tả: Chọn hạn mức (dưới 200k, 200k–500k, trên 500k) -> Hệ thống lọc các món phù hợp để khách gom vào hộp quà không vượt ngân sách.
+- Người sử dụng: Guest, Customer
+- Mức độ ưu tiên: Chọn hạn mức (dưới 200k, 200k–500k, trên 500k) -> Hệ thống lọc các món phù hợp để khách gom vào hộp quà không vượt ngân sách.
 - Tiêu chí nghiệm thu:
 
 *F06
-- Tên chức năng:
-- Mô tả:
-- Người sử dụng:
-- Mức độ ưu tiên:
+- Tên chức năng: Đặt làm theo mẫu (Custom Order)
+- Mô tả: Chọn mẫu gốc trên web, chọn màu len từ bảng màu có sẵn, nhập ghi chú chi tiết, tải ảnh minh họa và gửi yêu cầu.
+- Người sử dụng: Customer
+- Mức độ ưu tiên: Bắt buộc (MVP)
 - Tiêu chí nghiệm thu:
 
 *F07
-- Tên chức năng:
-- Mô tả:
-- Người sử dụng:
-- Mức độ ưu tiên:
+- Tên chức năng: Đặt hàng & Thanh toán giả lập
+- Mô tả: Nhập thông tin nhận hàng, chọn thanh toán COD hoặc Chuyển khoản QR mẫu, xác nhận tạo đơn.
+- Người sử dụng: Customer
+- Mức độ ưu tiên: Bắt buộc (MVP)
 - Tiêu chí nghiệm thu:
 
 *F08
-- Tên chức năng:
-- Mô tả:
-- Người sử dụng:
-- Mức độ ưu tiên:
-- Tiêu chí nghiệm thu:
-
-*F03
-- Tên chức năng:
-- Mô tả:
-- Người sử dụng:
-- Mức độ ưu tiên:
+- Tên chức năng: Theo dõi lịch sử & Tiến độ đơn
+- Mô tả: Xem danh sách đơn đã đặt, chi tiết sản phẩm và tiến độ gia công thực tế của từng đơn.
+- Người sử dụng: Customer
+- Mức độ ưu tiên: Bắt buộc (MVP)
 - Tiêu chí nghiệm thu:
 
 *F09
-- Tên chức năng:
-- Mô tả:
-- Người sử dụng:
-- Mức độ ưu tiên:
+- Tên chức năng: Quản trị hệ thống (Admin)
+- Mô tả: CRUD sản phẩm/danh mục; duyệt & báo giá đơn custom; cập nhật trạng thái đơn hàng thủ công; xem thống kê cơ bản.
+- Người sử dụng: Admin
+- Mức độ ưu tiên: Bắt buộc (MVP)
 - Tiêu chí nghiệm thu:
 
 *F10
-- Tên chức năng:
-- Mô tả:
-- Người sử dụng:
-- Mức độ ưu tiên:
+- Tên chức năng: Đánh giá & Bình luận (Reviews)
+- Mô tả: Khách đã mua hàng chấm sao và viết nhận xét kèm ảnh thực tế lên trang sản phẩm.
+- Người sử dụng: Customer
+- Mức độ ưu tiên: Phát triển sau (GĐ 2)
 - Tiêu chí nghiệm thu:
 
 *F11
-- Tên chức năng:
-- Mô tả:
-- Người sử dụng:
-- Mức độ ưu tiên:
+- Tên chức năng: Danh sách yêu thích (Wishlist)
+- Mô tả: Lưu lại các mẫu len yêu thích vào tài khoản cá nhân để mua vào dịp lễ sau.
+- Người sử dụng: Customer
+- Mức độ ưu tiên: Phát triển sau (GĐ 2)
 - Tiêu chí nghiệm thu:
 
 *F12
-- Tên chức năng:
-- Mô tả:
-- Người sử dụng:
-- Mức độ ưu tiên:
+- Tên chức năng: Tích điểm (Loyalty) & Live Chat
+- Mô tả: Tích điểm đổi voucher giảm giá sau mỗi đơn; khung chat trực tiếp trên web.
+- Người sử dụng: Customer, Admin
+- Mức độ ưu tiên: Phát triển sau (GĐ 2)
 - Tiêu chí nghiệm thu:
+
 ## 5. Yêu cầu phi chức năng
 Ví dụ:
 - Giao diện đáp ứng nhiều kích thước màn hình.
