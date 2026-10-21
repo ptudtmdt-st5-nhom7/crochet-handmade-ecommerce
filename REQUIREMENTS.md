@@ -5,45 +5,42 @@
 - Giá trị mang lại cho khách hàng: Giải quyết bài toán chọn quà theo chi phí của giới trẻ và chuẩn hóa quản lý đơn thủ công cho shop.
 
 ## 2. Phạm vi
-### Trong phạm vi
-- Phân hệ khách hàng: Tài khoản, Danh mục sản phẩm, Tạo giỏ quà theo ngân sách, Form đặt mẫu riêng, Giỏ hàng & Thanh toán giả lập (COD/QR)
-- Phân hệ quản trị (Admin): CRUD sản phẩm & danh mục, duyệt/báo giá yêu cầu custom, cập nhật tiến độ gia công đơn hàng, thống kê cơ bản.
+### 2.1. Trong phạm vi phiên bản đầu (In-scope)
+- **Mô hình vận hành:** Website phục vụ một cửa hàng độc lập (Single-store), không phải sàn thương mại điện tử nhiều người bán.
+- **Phân hệ Khách hàng (`Guest` & `Customer`):**
+  - Đăng ký, đăng nhập, quản lý hồ sơ cá nhân và sổ địa chỉ nhận hàng (`F01`, `F02`).
+  - Xem danh mục, tìm kiếm theo từ khóa, lọc đa tiêu chí (loại, màu, chất liệu, kích thước, khoảng giá, khả năng đặt làm), sắp xếp và xem chi tiết sản phẩm (`F03`, `F04`, `F05`).
+  - Công cụ **Tạo giỏ quà theo ngân sách**: Nhập mức ngân sách cụ thể, nhận gợi ý các bộ quà cấu hình sẵn và điều chỉnh thành phần món quà trong phạm vi tồn kho (`F06`, `F07`).
+  - Quản lý giỏ hàng (thêm, sửa, xóa sản phẩm lẻ hoặc nguyên bộ quà), áp dụng mã giảm giá (Voucher), tính phí vận chuyển và đặt mua hàng làm sẵn (`F08`, `F09`).
+  - Quy trình **Đặt làm theo mẫu (Custom Order)** gồm 2 nhánh: đặt theo mẫu có tùy chọn giá niêm yết hoặc gửi yêu cầu riêng kèm ảnh tham khảo để nhận báo giá; khách hàng xem xét, chấp nhận/từ chối báo giá và thanh toán tiền đặt cọc (`F12`, `F13`, `F15`, `F16`).
+  - Thanh toán đơn mua sẵn và thanh toán tiền cọc qua cổng thanh toán thử nghiệm (Sandbox), kết hợp hỗ trợ phương thức COD theo điều kiện cửa hàng (`F10`, `F16`).
+  - Xem lịch sử đơn mua sẵn, theo dõi tiến độ gia công đơn đặt làm và gửi đánh giá cơ bản (chấm sao, nhận xét chữ) sau khi nhận hàng thành công (`F11`, `F17`, `F18`).
+- **Phân hệ Quản trị viên (`Admin`):**
+  - Quản lý danh mục, sản phẩm, biến thể, cấu hình bộ quà mẫu và kiểm soát tồn kho dùng chung giữa hàng bán lẻ và thành phần bộ quà (`F19`, `F20`, `F21`).
+  - Tiếp nhận, thẩm định yêu cầu đặt làm, yêu cầu bổ sung thông tin, lập báo giá và cập nhật tiến độ sản xuất, giao nhận (`F14`, `F22`, `F23`).
+  - Quản lý chương trình khuyến mãi (Voucher), quản lý tài khoản người dùng và theo dõi bảng thống kê hoạt động cửa hàng (`F24`, `F25`, `F26`).
+- **Chức năng tùy chọn (Chỉ thực hiện khi còn thời gian sau khi hoàn tất `F01`–`F26`):**
+  - Lưu danh sách sản phẩm yêu thích - Wishlist (`F27`).
 
-### Ngoài phạm vi
-- Tích hợp bên thứ ba: Cổng thanh toán thật trên môi trường Production như VNPay, MoMo, Stripe và API vận chuyển tự động như GHN, Viettel Post. Hệ thống chỉ sử dụng thanh toán giả lập hoặc cổng thanh toán trên môi trường thử nghiệm (Sandbox).
-- Nền tảng thiết bị: Ứng dụng di động (Mobile App iOS/Android) độc lập.
+### 2.2. Ngoài phạm vi phiên bản đầu (Out-of-scope)
+- Sử dụng AI để tự động sinh mẫu sản phẩm hoặc tự động định giá từ ảnh tham khảo của khách.
+- Mô phỏng sản phẩm móc len hoặc hộp quà bằng đồ họa 3D.
+- Khung trò chuyện trực tiếp thời gian thực (Live Chat / WebSocket), hệ thống tích điểm đổi thưởng phức tạp (Loyalty Points) và tính năng tải ảnh trong phần đánh giá sản phẩm.
+- Tích hợp cổng thanh toán quốc tế thật hoặc kết nối API vận chuyển tự động của bên thứ ba (GHN, ViettelPost).
+- Cho phép khách hàng tự cấu hình lẻ từng phụ kiện bao bì đóng gói hoặc gộp chung hàng làm sẵn và hàng đặt làm trong cùng một lần thanh toán (Checkout).
+- Ứng dụng di động độc lập (Mobile App iOS/Android), đơn hàng doanh nghiệp số lượng lớn (B2B) và mô hình sàn nhiều người bán (Multi-vendor).
+
+---
 
 
 ## 3. Người dùng
-- Khách vãng lai (guest)
-    - Mô tả đối tượng: Người dùng truy cập website nhưng chưa đăng nhập.
-    - Quyền hạn được phép thực hiện:
-        + Xem trang chủ, danh mục, tìm kiếm, lọc và xem chi tiết sản phẩm
-        + Dùng thử công cụ 'Tạo giỏ quà theo ngân sách'.
-        + Thêm sản phẩm làm sẵn vào giỏ hàng; Đăng ký / Đăng nhập.
-    - Giới hạn truy cập:
-        + Chưa thể gửi form 'đặt làm theo mẫu'
-        + Chưa lưu được Wishlist
-        + Chưa xem được lịch sử đơn hàng.
+## 3. Vai trò người dùng và Phân quyền (User Roles)
 
-- Khách hàng thành viên (Customer)
-    - Mô tả đối tượng: Khách hàng đã có tài khoản và đăng nhập hệ thống.
-    - Quyền hạn được phép thực hiện:
-        + Toàn bộ quyền của Khách vãng lai.
-        + Quản lý hồ sơ cá nhân, sổ địa chỉ, danh sách yêu thích (Wishlist) (nếu F27 được triển khai)
-        + Gửi yêu cầu 'Đặt làm theo mẫu' kèm ảnh/ghi chú.
-        + Đặt hàng và theo dõi tiến độ gia công đơn hàng thực tế.
-    - Giới hạn truy cập:
-        + Không được truy cập vào trang Quản trị (Admin Dashboard) hoặc chỉnh sửa dữ liệu hệ thống.
-
-- Quản trị viên (Admin)
-    - Mô tả đối tượng: Chủ cửa hàng hoặc nhân viên quản lý vận hành.
-    - Quyền hạn được phép thực hiện:
-        + Sản phẩm: Thêm, sửa, xóa danh mục & sản phẩm (gắn nhãn Có sẵn / Nhận custom).
-        + Đơn custom: Duyệt, phản hồi và báo giá yêu cầu đặt làm riêng.
-        + Đơn hàng: Cập nhật trạng thái (Đã xác nhận -> Đang móc len -> Đóng gói -> Giao hàng -> Hoàn thành).
-        + Thống kê: Xem doanh thu và số lượng đơn theo thời gian.
-
+| Vai trò | Mô tả đối tượng | Các công việc thực hiện (Khớp Mục 4) | Quyền hạn và Giới hạn truy cập |
+| :--- | :--- | :--- | :--- |
+| **1. Khách chưa đăng nhập (`Guest`)** | Người dùng truy cập website nhưng chưa đăng nhập tài khoản. | • **Tài khoản:** Đăng ký tài khoản mới hoặc đăng nhập (`F01`).<br>• **Tra cứu sản phẩm:** Xem danh mục (`F03`), tìm kiếm, lọc theo tối thiểu 5 thuộc tính, sắp xếp (`F04`) và xem chi tiết sản phẩm (`F05`).<br>• **Giỏ quà ngân sách:** Nhập ngân sách cụ thể để nhận gợi ý bộ quà cấu hình sẵn (`F06`) và tùy chỉnh đổi/tăng giảm/bỏ món trong bộ quà (`F07`).<br>• **Giỏ hàng tạm:** Thêm, sửa số lượng, xóa sản phẩm lẻ hoặc nguyên bộ quà trong giỏ hàng tạm thời (`F08`). | • **Được phép truy cập:** `F01`, `F03`, `F04`, `F05`, `F06`, `F07`, `F08`.<br>• **Giới hạn truy cập:** Không được quản lý hồ sơ/địa chỉ (`F02`), đặt hàng và thanh toán (`F09`, `F10`), xem lịch sử đơn (`F11`), gửi yêu cầu/xác nhận báo giá/đặt cọc/theo dõi đơn đặt làm (`F12`, `F13`, `F15`, `F16`, `F17`), đánh giá sản phẩm (`F18`), lưu Wishlist (`F27`) và toàn bộ chức năng quản trị (`F14`, `F19`–`F26`). |
+| **2. Khách hàng (`Customer`)** | Khách hàng đã có tài khoản và đăng nhập thành công. | • **Tài khoản & Cá nhân:** Đăng nhập, đăng xuất (`F01`), quản lý hồ sơ cá nhân, sổ địa chỉ nhận hàng (`F02`) và lưu danh sách yêu thích (`F27`).<br>• **Mua sắm & Giỏ quà:** Xem danh mục (`F03`), tìm kiếm/lọc/sắp xếp (`F04`), xem chi tiết (`F05`), nhận gợi ý và điều chỉnh bộ quà theo ngân sách (`F06`, `F07`), quản lý giỏ hàng (`F08`).<br>• **Đặt mua hàng sẵn:** Chọn địa chỉ, áp mã voucher, tính tổng tiền (`F09`), thanh toán qua cổng Sandbox (`F10`) và theo dõi lịch sử đơn mua sẵn (`F11`).<br>• **Đặt làm (Custom Order):** Đặt làm theo mẫu có giá niêm yết (`F12`), gửi yêu cầu đặt làm riêng cần báo giá (`F13`), chấp nhận hoặc từ chối báo giá (`F15`), thanh toán tiền đặt cọc (`F16`) và xem tiến độ gia công đơn đặt làm (`F17`).<br>• **Sau mua:** Chấm sao và viết nhận xét cho đơn đã hoàn thành (`F18`). | • **Được phép truy cập:** `F01`–`F13`, `F15`–`F18`, `F27` (Giỏ hàng tạm thời lúc còn là `Guest` được giữ nguyên sau khi đăng nhập).<br>• **Giới hạn truy cập:** Chỉ được xem và thao tác trên dữ liệu hồ sơ, địa chỉ, yêu cầu đặt làm, báo giá và đơn hàng của **chính mình** (hệ thống chặn truy cập chéo khi đổi ID trên URL). Tuyệt đối không truy cập được các chức năng thẩm định báo giá và quản trị hệ thống của `Admin` (`F14`, `F19`–`F26`). |
+| **3. Quản trị viên (`Admin`)** | Chủ cửa hàng hoặc người quản lý vận hành hệ thống. | • **Xác thực:** Đăng nhập và đăng xuất tài khoản quản trị (`F01`).<br>• **Quản trị Hàng hóa & Bộ quà:** Thêm, sửa, ẩn/ngừng bán sản phẩm, danh mục, biến thể (`F19`), quản lý tồn kho theo biến thể (`F20`) và tạo/quản lý các mẫu bộ quà cấu hình sẵn (`F21`).<br>• **Xử lý Đơn mua sẵn:** Tiếp nhận, cập nhật trạng thái đơn mua sẵn, xử lý hủy đơn, giao thất bại và hoàn hàng (`F22`).<br>• **Xử lý Đơn đặt làm & Báo giá:** Xác nhận khả năng và thời gian làm cho mẫu có giá niêm yết (`F12`), thẩm định yêu cầu đặt làm riêng, yêu cầu bổ sung thông tin, từ chối hoặc lập báo giá (`F14`), cập nhật tiến độ gia công (`F17`) và quản lý toàn bộ vòng đời đơn đặt làm (`F23`).<br>• **Khuyến mãi, Người dùng & Thống kê:** Thiết lập và kiểm soát mã Voucher (`F24`), quản lý tài khoản và phân quyền người dùng (`F25`), xem thống kê hoạt động và doanh thu thực thu của cửa hàng (`F26`). | • **Được phép truy cập:** `F01`, `F12` (bước xác nhận khả năng làm), `F14`, `F17`, `F19`–`F26`.<br>• **Giới hạn truy cập:** Không thực hiện các thao tác đặt mua hàng, tạo giỏ quà, chấp nhận báo giá, thanh toán hay viết đánh giá sản phẩm dưới tư cách khách mua lẻ trên giao diện quản trị (`F02`, `F06`–`F11`, `F13`, `F15`, `F16`, `F18`, `F27`). Mọi thao tác cập nhật báo giá, thanh toán và trạng thái đơn đều bị lưu vết thời gian và người thực hiện. |
 ## 4. Yêu cầu chức năng
 ### Bảng Ma trận Chức năng & Phân loại Ưu tiên (Functional Requirements)
 
