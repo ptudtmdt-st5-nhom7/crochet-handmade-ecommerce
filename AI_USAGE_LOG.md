@@ -121,7 +121,7 @@ Tuy nhiên, một số chức năng mới dừng ở mức mô tả tổng quát
 |---|---|
 | Mã ghi nhận | AI-02 / T04 |
 | Công cụ AI | ChatGPT |
-| Ngày sử dụng | 20/10/2026 (theo tài liệu dự án; cần xác nhận ngày thực tế) |
+| Ngày sử dụng | 20/10/2026  |
 | Người thực hiện | Nguyễn Anh Tuấn |
 | Mục đích | Phản biện độc lập danh sách yêu cầu do Gemini đề xuất tại T03; đánh giá mức độ phù hợp với vấn đề kinh doanh, phạm vi triển khai, quy trình nghiệp vụ, bảo mật và khả năng kiểm thử. |
 | Đầu vào | Mô tả đề tài, vấn đề kinh doanh, khách hàng mục tiêu, kết quả khảo sát ba website và danh sách yêu cầu do Gemini đề xuất. |
