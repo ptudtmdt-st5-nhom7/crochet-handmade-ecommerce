@@ -40,7 +40,7 @@
   </tr>
   <tr>
     <td style="border:1px solid #999; padding:10px;">File ảnh</td>
-    <td style="border:1px solid #999; padding:10px;">product-1.png</td>
+    <td style="border:1px solid #999; padding:10px;"><a href="../images/product-1.png">product-1.png</a></td>
   </tr>
   <tr>
     <td style="border:1px solid #999; padding:10px;">Nguồn ảnh</td>
@@ -96,7 +96,7 @@
   </tr>
   <tr>
     <td style="border:1px solid #999; padding:10px;">File ảnh</td>
-    <td style="border:1px solid #999; padding:10px;">product-2.png</td>
+    <td style="border:1px solid #999; padding:10px;"><a href="../images/product-2.png">product-2.png</a></td>
   </tr>
   <tr>
     <td style="border:1px solid #999; padding:10px;">Nguồn ảnh</td>
@@ -152,7 +152,7 @@
   </tr>
   <tr>
     <td style="border:1px solid #999; padding:10px;">File ảnh</td>
-    <td style="border:1px solid #999; padding:10px;">product-3.png</td>
+    <td style="border:1px solid #999; padding:10px;"><a href="../images/product-3.png">product-3.png</a></td>
   </tr>
   <tr>
     <td style="border:1px solid #999; padding:10px;">Nguồn ảnh</td>
@@ -208,7 +208,7 @@
   </tr>
   <tr>
     <td style="border:1px solid #999; padding:10px;">File ảnh</td>
-    <td style="border:1px solid #999; padding:10px;">product-4.png</td>
+    <td style="border:1px solid #999; padding:10px;"><a href="../images/product-4.png">product-4.png</a></td>
   </tr>
   <tr>
     <td style="border:1px solid #999; padding:10px;">Nguồn ảnh</td>
@@ -264,7 +264,7 @@
   </tr>
   <tr>
     <td style="border:1px solid #999; padding:10px;">File ảnh</td>
-    <td style="border:1px solid #999; padding:10px;">product-5.png</td>
+    <td style="border:1px solid #999; padding:10px;"><a href="../images/product-5.png">product-5.png</a></td>
   </tr>
   <tr>
     <td style="border:1px solid #999; padding:10px;">Nguồn ảnh</td>
@@ -320,7 +320,7 @@
   </tr>
   <tr>
     <td style="border:1px solid #999; padding:10px;">File ảnh</td>
-    <td style="border:1px solid #999; padding:10px;">product-6.png</td>
+    <td style="border:1px solid #999; padding:10px;"><a href="../images/product-6.png">product-6.png</a></td>
   </tr>
   <tr>
     <td style="border:1px solid #999; padding:10px;">Nguồn ảnh</td>
@@ -376,7 +376,7 @@
   </tr>
   <tr>
     <td style="border:1px solid #999; padding:10px;">File ảnh</td>
-    <td style="border:1px solid #999; padding:10px;">product-7.png</td>
+    <td style="border:1px solid #999; padding:10px;"><a href="../images/product-7.png">product-7.png</a></td>
   </tr>
   <tr>
     <td style="border:1px solid #999; padding:10px;">Nguồn ảnh</td>
@@ -432,7 +432,7 @@
   </tr>
   <tr>
     <td style="border:1px solid #999; padding:10px;">File ảnh</td>
-    <td style="border:1px solid #999; padding:10px;">product-8.png</td>
+    <td style="border:1px solid #999; padding:10px;"><a href="../images/product-8.png">product-8.png</a></td>
   </tr>
   <tr>
     <td style="border:1px solid #999; padding:10px;">Nguồn ảnh</td>
