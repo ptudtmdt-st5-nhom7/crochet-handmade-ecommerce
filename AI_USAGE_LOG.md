@@ -247,3 +247,11 @@ Các chức năng bổ trợ như danh sách yêu thích được đưa vào nh�
 
 ---
 
+
+### Đổi định dạng ảnh sản phẩm — 29/10/2026
+
+- Người thực hiện: Nguyễn Thanh Nam. Công cụ: OpenAI Codex.
+- Mục đích/prompt chính: “giờ t muốn đổi mấy file ảnh định dạng png sang webp hết á”, kèm tám file WebP.
+- Kết quả: thay tám ảnh `images/product-1.png` đến `product-8.png` bằng các file WebP Nam cung cấp; cập nhật đường dẫn trong `docs/products-data.md`. Không chỉnh nội dung ảnh.
+- Kiểm tra: nhận dạng header WebP, đối chiếu SHA-256 bản sao với nguồn, kiểm tra đường dẫn mới và tham chiếu PNG cũ.
+- Quyết định của Nam: dùng WebP thay PNG. Đánh giá/người kiểm tra của nhóm: chưa ghi nhận.
