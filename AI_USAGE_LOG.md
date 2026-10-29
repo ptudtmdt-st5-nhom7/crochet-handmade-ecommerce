@@ -205,6 +205,28 @@ ChatGPT cũng chỉ ra một số chức năng có thể được thu hẹp ho�
 
 ---
 
+## 2.3. Buổi 2 — hỗ trợ làm chân trang và rà soát phần Nam
+
+| Trường thông tin | Nội dung |
+|---|---|
+| Mã ghi nhận | AI-03 |
+| Ngày sử dụng | 29/10/2026 |
+| Người thực hiện | Nguyễn Thanh Nam |
+| Công cụ | Copilot SDK trong VS Code (lượt chỉnh bố cục đã ghi nhận trước đó); OpenAI Codex (phiên tạo, chỉnh sửa và đồng bộ footer). |
+| Mục đích | Viết HTML/CSS chân trang chung và đối chiếu đầu ra Bước 2 theo phân công. |
+| Đầu vào | Yêu cầu footer của Nam, mã nguồn hiện có, tài liệu Chương 2 và bảng WORKING SPACE. |
+
+**Prompt chính (trích yêu cầu thực tế):** “Tạo file docs/footer-mau.html, chỉ chứa đoạn HTML của thẻ <footer class="site-footer">”; “Thứ tự 3 vùng trong site-footer-inner: site-footer-brand, site-footer-nav, site-footer-info.” Nam xác nhận phạm vi cuối: “Sửa footer mẫu + CSS + index.html”.
+
+**Kết quả cuối:** Mẫu footer và footer trong `index.html` được đồng bộ; CSS nằm trong ngăn FOOTER của `css/style.css`. Ba vùng gồm thương hiệu, liên kết nhanh và liên hệ; giữ ghi chú website học tập. Có Grid 1/2/3 cột, hover, focus và giảm chuyển động; không dùng JavaScript hoặc framework CSS.
+
+**Phản biện và xử lý:** Các lần chỉnh trước làm mẫu HTML và trang chủ không đồng bộ. Theo yêu cầu cuối của Nam, bỏ chính sách và icon mạng xã hội, tách riêng liên hệ và thống nhất footer ba vùng. Quyết định nghiệm thu của nhóm: chờ kiểm tra.
+
+**Kiểm tra đã thực hiện:** Đối chiếu mẫu với footer trang chủ, kiểm tra không còn class chính sách/mạng xã hội và chạy `git diff --check`. Rà soát Bước 2 xác nhận có tám bộ dữ liệu sản phẩm, đúng một sản phẩm mẫu Thú len thỏ, các đường dẫn ảnh tồn tại và bốn trang liên kết CSS chung. Chưa xác minh đầy đủ giao diện/bàn phím trên trình duyệt; chưa hoàn thành tích hợp và kiểm thử Bước 9A.
+
+**Người kiểm tra của nhóm:** Chưa ghi nhận.
+
+---
 ## 3. Bảng đối chiếu giữa đề xuất và phản biện
 
 | Nội dung | AI thứ nhất đề xuất | AI thứ hai phản biện | Quyết định của nhóm |
@@ -244,6 +266,4 @@ Các chức năng bổ trợ như danh sách yêu thích được đưa vào nh�
 | Châu | Tổng hợp nhật ký, kiểm tra trường thông tin còn thiếu và cập nhật `AI_USAGE_LOG.md` |
 | Đức | Kiểm tra chéo hồ sơ, nội dung đối chiếu và minh chứng trước khi bàn giao tại T11 |
 | Cả nhóm | Xác minh nội dung do AI đề xuất và chịu trách nhiệm về quyết định cuối cùng |
-
----
 

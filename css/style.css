@@ -1,6 +1,146 @@
 /* ===== 1. THIẾT LẬP CHUNG ===== */
 /* ===== 2. HEADER / TÌM KIẾM ===== */
 /* ===== 3. FOOTER ===== */
+.site-footer {
+  --footer-bg: #F4E1E5;
+  --footer-border: #D8C7BF;
+  --footer-text: #332B2B;
+  --footer-muted: #6B5D59;
+  --footer-link: #8F4558;
+  --footer-hover: #733647;
+  --footer-focus: #245C52;
+
+  background-color: var(--footer-bg);
+  border-top: 1px solid var(--footer-border);
+  color: var(--footer-text);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.site-footer-inner {
+  box-sizing: border-box;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 16px 32px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+  gap: 32px;
+}
+
+.site-footer-inner > div {
+  min-width: 0;
+}
+
+.site-footer h2 {
+  margin: 0 0 16px;
+  color: var(--footer-link);
+  font-size: 20px;
+}
+
+.site-footer p {
+  margin: 0 0 12px;
+}
+
+.site-footer-description,
+.site-footer .site-footer-note {
+  color: var(--footer-muted);
+}
+
+.site-footer ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-footer address {
+  font-style: normal;
+}
+
+.site-footer a {
+  box-sizing: border-box;
+  display: inline-block;
+  max-width: 100%;
+  min-height: 48px;
+  padding: 8px 0;
+  color: var(--footer-link);
+  text-decoration: none;
+  transition: color 150ms;
+}
+
+.site-footer a:hover {
+  color: var(--footer-hover);
+  text-decoration: underline;
+}
+
+.site-footer a:focus {
+  outline: 3px solid var(--footer-focus);
+  outline-offset: 3px;
+}
+
+/* Giảm khoảng cách giữa các dòng liên hệ. */
+.site-footer address p {
+  margin-bottom: 0;
+}
+
+.site-footer .site-footer-wordmark {
+  margin-bottom: 16px;
+  padding-top: 0;
+  line-height: 1.2;
+}
+
+.site-footer-wordmark span {
+  display: block;
+}
+
+.site-footer-name {
+  font-family: Georgia, serif;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.site-footer-label {
+  margin-top: 4px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  letter-spacing: 4px;
+}
+
+.site-footer-bottom {
+  border-top: 1px solid var(--footer-border);
+  padding: 16px;
+}
+
+.site-footer-bottom .site-footer-note {
+  max-width: 1200px;
+  margin: 0 auto;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Tablet: hai cột, vùng liên hệ tự xuống hàng tiếp theo. */
+@media (min-width: 700px) {
+  .site-footer-inner {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+}
+
+/* Desktop: ba vùng nằm ngang. */
+@media (min-width: 1100px) {
+  .site-footer-inner {
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, 1.2fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-footer a {
+    transition: none;
+  }
+}
 /* ===== 4. TRANG CHỦ ===== */
 /* ===== 5. DANH SÁCH SẢN PHẨM ===== */
 /* ===== 6. CHI TIẾT SẢN PHẨM ===== */
