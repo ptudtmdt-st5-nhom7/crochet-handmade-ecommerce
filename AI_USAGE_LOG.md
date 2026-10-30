@@ -323,20 +323,6 @@ Với 7 sản phẩm còn lại, Nam gửi lần lượt trong cùng cuộc trò
 
 **Kiểm tra:** Đã đối chiếu cấu trúc footer với mẫu và chạy git diff --check. Responsive và bàn phím: [Nam điền sau khi thử 3 cỡ 1366 / 768 / 390 và phím Tab]. **Người kiểm tra giao diện:** Nguyễn Thanh Nam. **Người nghiệm thu của nhóm:** Nguyễn Quang Đức.
 
-## 2.5. Buổi 2 — hỗ trợ phần chân trang của Nam
-
-**Người thực hiện:** Nguyễn Thanh Nam. **Ngày:** 29/10/2026. **Công cụ:** OpenAI Codex; Copilot SDK trong VS Code ở lượt chỉnh bố cục đã ghi nhận trước đó.
-
-**Mục đích và đầu vào:** Dùng AI hỗ trợ viết, giải thích và chỉnh HTML/CSS footer dùng chung theo yêu cầu của Nam, thiết kế Chương 2 và mã nguồn dự án.
-
-**Prompt chính (trích yêu cầu thực tế):** “Tạo file docs/footer-mau.html, chỉ chứa đoạn HTML của thẻ <footer class="site-footer">”; “icon nằm dưới chỗ email”, “liên hệ nhảy lên cùng hàng với lenly, thông tin chính sách và liên kết nhanh”; “cái icon để nhỏ lại chút ... và để sát cái email hơn 1 tí”.
-
-**Kết quả:** Tạo mẫu footer, CSS trong ngăn FOOTER và đồng bộ vào index.html, products.html, product-detail.html, about.html. Bản cuối có bốn cột desktop: thương hiệu, chính sách, liên kết nhanh, liên hệ; tablet hai cột, mobile một cột. Icon Facebook/TikTok/Instagram nằm dưới email, không có tiêu đề “Kết nối với Lenly”; khung icon 44px, SVG 22px, cách phía trên 4px. Giữ ghi chú học tập, màu, hover, focus và giảm chuyển động; không dùng JavaScript/framework CSS. Chính sách và icon chưa có URL nên chỉ hiển thị.
-
-**Phản biện và quyết định:** Các phương án trước chưa cân đối, mẫu và trang có lúc chưa đồng bộ. Nam yêu cầu điều chỉnh vị trí liên hệ/icon và đã đồng ý giao diện cuối. Giữ nội dung đã cung cấp, không tự thêm cam kết chính sách; nhóm chưa nghiệm thu chính thức.
-
-**Kiểm tra:** Đã đối chiếu footer bốn trang với mẫu, kiểm tra cấu trúc và chạy git diff --check; chưa xác minh đầy đủ responsive/bàn phím trên trình duyệt. Nam phản hồi “ok rồi” về giao diện. **Người kiểm tra giao diện:** Nguyễn Thanh Nam; **người nghiệm thu của nhóm:** Nguyễn Quang Đức.
-
 ---
 ## 3. Bảng đối chiếu giữa đề xuất và phản biện
 
