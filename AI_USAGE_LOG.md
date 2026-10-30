@@ -217,7 +217,7 @@ ChatGPT cũng chỉ ra một số chức năng có thể được thu hẹp ho�
 
 **Phản biện và quyết định:** Các phương án trước chưa cân đối, mẫu và trang có lúc chưa đồng bộ. Nam yêu cầu điều chỉnh vị trí liên hệ/icon và đã đồng ý giao diện cuối. Giữ nội dung đã cung cấp, không tự thêm cam kết chính sách; nhóm chưa nghiệm thu chính thức.
 
-**Kiểm tra:** Đã đối chiếu footer bốn trang với mẫu, kiểm tra cấu trúc và chạy git diff --check; chưa xác minh đầy đủ responsive/bàn phím trên trình duyệt. Nam phản hồi “ok rồi” về giao diện. **Người kiểm tra giao diện:** Nguyễn Thanh Nam; **người nghiệm thu của nhóm:** chưa ghi nhận.
+**Kiểm tra:** Đã đối chiếu footer bốn trang với mẫu, kiểm tra cấu trúc và chạy git diff --check; chưa xác minh đầy đủ responsive/bàn phím trên trình duyệt. Nam phản hồi “ok rồi” về giao diện. **Người kiểm tra giao diện:** Nguyễn Thanh Nam; **người nghiệm thu của nhóm:** Nguyễn Quang Đức.
 
 ---
 ## 3. Bảng đối chiếu giữa đề xuất và phản biện
