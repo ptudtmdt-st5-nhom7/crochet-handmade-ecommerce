@@ -204,8 +204,126 @@ ChatGPT cũng chỉ ra một số chức năng có thể được thu hẹp ho�
 **Người kiểm tra:** Quang Đức
 
 ---
+## 2.3. Buổi 2 – Dùng ChatGPT soạn dữ liệu 8 sản phẩm
 
-## 2.3. Buổi 2 — hỗ trợ phần chân trang của Nam
+| Trường thông tin | Nội dung |
+|---|---|
+| Mã ghi nhận | (Châu cấp số) / Buổi 2 – Bước 2 |
+| Ngày thực hiện | 28/10/2026 |
+| Công cụ AI | ChatGPT (gói Plus) |
+| Người thực hiện | Nguyễn Thanh Nam |
+| Mục đích | Soạn nội dung 8 sản phẩm minh họa (mã, tên, danh mục, giá, mô tả, màu, kích thước, chất liệu) cho trang danh sách và trang chi tiết. |
+| Đầu vào | Danh sách 8 sản phẩm do Nam chọn theo 4 danh mục của trang chủ (móc khóa, thú len, hoa len, phụ kiện), mẫu trình bày và các ràng buộc. |
+
+### Prompt chính
+
+```text
+Tôi làm đồ án website bán đồ móc len handmade tên Lenly Crochet, khách hàng là sinh viên và người đi làm trẻ. Hãy viết dữ liệu minh họa cho 8 sản phẩm dưới đây.
+
+Danh sách sản phẩm:
+1. KC-001 Móc khóa gấu len (Móc khóa len)
+2. KC-002 Móc khóa hoa cúc len (Móc khóa len)
+3. TL-001 Thú len thỏ (Thú len)
+4. TL-002 Thú len mèo (Thú len)
+5. HL-001 Hoa tulip len (Hoa len)
+6. HL-002 Bó hoa len nhỏ (Hoa len)
+7. PK-001 Scrunchie len (Phụ kiện móc len)
+8. PK-002 Kẹp tóc hoa len (Phụ kiện móc len)
+
+Với mỗi sản phẩm, viết theo đúng mẫu: Mã, Tên, Danh mục, Giá (VND, mức hợp lý cho sinh viên), Mô tả ngắn (1-2 câu, giọng thân thiện), Màu, Kích thước, Chất liệu, File ảnh, Nguồn ảnh, Nguồn thông tin, Sản phẩm mẫu.
+
+Yêu cầu:
+- Không bịa thông tin thật của cửa hàng (địa chỉ, chính sách, cam kết).
+- Không nhắc phí vận chuyển hay chương trình khuyến mãi.
+- Chỉ trả về nội dung theo mẫu, không giải thích thêm.
+```
+
+### Kết quả AI đề xuất
+
+- Bảng 8 sản phẩm theo đúng mẫu, giá từ 25.000 đến 125.000 đồng, mỗi sản phẩm có mô tả 2 câu, màu, kích thước, chất liệu.
+- Cột nguồn ảnh ghi "Ảnh minh họa do ChatGPT tạo"; cột nguồn thông tin ghi "AI đề xuất, giá minh họa, nhóm chưa xác nhận".
+
+### Đánh giá và kiểm tra
+
+- Đối chiếu cột "File ảnh" với thư mục images: 8/8 tên ảnh khớp file thật.
+- Giá và mô tả chỉ là dữ liệu minh họa, chưa có căn cứ từ cửa hàng thật. [Nam điền: đã sửa gì ở giá hoặc mô tả; nếu không sửa thì ghi "giữ nguyên"]
+- Chọn Thú len thỏ (TL-001) làm sản phẩm mẫu vì có đủ màu, kích thước, chất liệu và ảnh rõ.
+
+### Quyết định của nhóm
+
+- **Giữ:** danh sách 8 sản phẩm, 4 danh mục và cách ghi nguồn.
+- **Chỉnh sửa:** đổi đuôi ảnh từ .jpg sang .png cho khớp file thật; gắn link ảnh vào cột "File ảnh".
+- **Hoãn:** xác nhận giá và mô tả thật khi nhóm có dữ liệu của cửa hàng.
+
+**Người kiểm tra:** Nguyễn Quang Đức.
+
+---
+
+## 2.4. Buổi 2 – Dùng ChatGPT tạo 8 ảnh sản phẩm minh họa
+
+| Trường thông tin | Nội dung |
+|---|---|
+| Mã ghi nhận | (Châu cấp số) / Buổi 2 – Bước 2 |
+| Ngày thực hiện | 28/10/2026 |
+| Công cụ AI | ChatGPT (gói Plus, tạo ảnh) |
+| Người thực hiện | Nguyễn Thanh Nam |
+| Mục đích | Tạo 8 ảnh sản phẩm minh họa đồng bộ phong cách cho trang danh sách và trang chi tiết. |
+| Đầu vào | Thông tin từng sản phẩm trong bảng (tên, màu, kích thước, chất liệu) và mô tả phong cách chung. |
+
+### Prompt chính
+
+```text
+Tạo cho tôi một ảnh sản phẩm cho website bán đồ móc len handmade.
+
+Sản phẩm: Thú len thỏ, tai dài, dáng ngồi, màu kem phối hồng pastel, có nơ nhỏ, cao khoảng 18 cm, làm bằng sợi cotton milk, nhìn rõ từng mũi móc.
+
+Phong cách (dùng cho các sản phẩm khác):
+- Ảnh vuông 1:1
+- Nền màu kem sáng trơn
+- Ánh sáng mềm, chụp chính diện, từ trên cao một chút
+- Sản phẩm đặt giữa khung, chiếm khoảng 70% ảnh
+- Giống ảnh chụp sản phẩm thật
+- Không có chữ, logo, tay người hay mặt người
+```
+
+Với 7 sản phẩm còn lại, Nam gửi lần lượt trong cùng cuộc trò chuyện: "Tạo tiếp ảnh sản phẩm số [N], giữ đúng phong cách các ảnh trước. Sản phẩm: [tên, màu, kích thước, chất liệu lấy từ bảng]."
+
+### Kết quả AI đề xuất
+
+- 8 ảnh PNG vuông 1254 x 1254, đồng bộ nền kem và ánh sáng, đặt tên product-1.png đến product-8.png, mỗi ảnh khoảng 1,8 đến 2 MB.
+
+### Đánh giá và kiểm tra
+
+- Xem từng ảnh: không có chữ hay logo lạ, sản phẩm nằm giữa khung, nền thống nhất.
+- Ảnh do AI tạo, không phải ảnh sản phẩm thật nên đã ghi "Ảnh minh họa do ChatGPT tạo" ở cột nguồn ảnh.
+- Sau khi đẩy lên GitHub, trang so sánh commit báo "Unable to render code block" ở một số ảnh. Mở trực tiếp từng file trong thư mục images và link trong bảng thì ảnh hiển thị bình thường, nên đây là lỗi hiển thị của GitHub.
+- Hạn chế: 8 ảnh nặng khoảng 15 MB, có thể làm trang tải chậm.
+
+### Quyết định của nhóm
+
+- **Giữ:** cả 8 ảnh vì đủ rõ và đồng bộ.
+- **Hoãn:** thu nhỏ kích thước ảnh nếu khi ghép trang thấy tải chậm.
+- **Điều kiện:** nếu cửa hàng có ảnh sản phẩm thật thì thay ảnh minh họa.
+
+**Người kiểm tra:** Nguyễn Quang Đức.
+
+---
+
+## 2.5. Buổi 2 — hỗ trợ phần chân trang của Nam
+
+**Người thực hiện:** Nguyễn Thanh Nam. **Ngày:** 29/10/2026. **Công cụ:** OpenAI Codex trong VS Code.
+
+**Mục đích và đầu vào:** Dùng AI hỗ trợ viết, giải thích và chỉnh HTML/CSS footer dùng chung theo yêu cầu của Nam, thiết kế Chương 2 và mã nguồn dự án.
+
+**Prompt chính (trích yêu cầu thực tế):** "Tạo file docs/footer-mau.html, chỉ chứa đoạn HTML của thẻ <footer class="site-footer">"; "icon nằm dưới chỗ email"; "liên hệ nhảy lên cùng hàng với lenly, thông tin chính sách và liên kết nhanh"; "cái icon để nhỏ lại chút ... và để sát cái email hơn 1 tí".
+
+**Kết quả:** Tạo mẫu footer docs/footer-mau.html và CSS trong ngăn FOOTER của css/style.css. Mỗi thành viên tự gắn đoạn HTML mẫu vào trang mình phụ trách. Bản hiện tại có bốn cột desktop: thương hiệu, chính sách, liên kết nhanh, liên hệ; tablet hai cột, mobile một cột. Icon Facebook/TikTok/Instagram nằm dưới email; khung icon 44px, SVG 22px. Giữ ghi chú học tập, màu, hover, focus và giảm chuyển động; không dùng JavaScript hay framework CSS. Chính sách và icon chưa có đường dẫn nên chỉ hiển thị.
+
+**Phản biện và quyết định:** Các phương án đầu chưa cân đối giữa các cột. Nam yêu cầu điều chỉnh vị trí liên hệ và icon, rồi chọn giao diện cuối. So với thiết kế Chương 2 (3 vùng: thương hiệu, liên kết nhanh, liên hệ cùng ghi chú học tập), bản hiện tại có thêm cột chính sách (chỉ hiển thị chữ) và icon mạng xã hội (chưa có liên kết); chờ Nguyễn Quang Đức và Đặng Đình Quyến xác nhận giữ hay bỏ. Nhóm không tự thêm cam kết chính sách; nhóm chưa nghiệm thu chính thức.
+
+**Kiểm tra:** Đã đối chiếu cấu trúc footer với mẫu và chạy git diff --check. Responsive và bàn phím: [Nam điền sau khi thử 3 cỡ 1366 / 768 / 390 và phím Tab]. **Người kiểm tra giao diện:** Nguyễn Thanh Nam. **Người nghiệm thu của nhóm:** Nguyễn Quang Đức.
+
+## 2.5. Buổi 2 — hỗ trợ phần chân trang của Nam
 
 **Người thực hiện:** Nguyễn Thanh Nam. **Ngày:** 29/10/2026. **Công cụ:** OpenAI Codex; Copilot SDK trong VS Code ở lượt chỉnh bố cục đã ghi nhận trước đó.
 
