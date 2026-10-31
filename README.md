@@ -2,6 +2,16 @@
 
 Đồ án học phần **Phát triển ứng dụng TMĐT — Nhóm 7, ST5**.
 
+## Bản giao diện Buổi 2 trên nhánh `buoc4-duc`
+
+Mở `index.html` ngay tại thư mục gốc bằng Chrome để xem trang chủ Lenly Crochet; không cần cài thư viện. Có thể chạy máy chủ tĩnh từ thư mục gốc nếu muốn kiểm tra qua HTTP.
+
+Trang chủ đã có header/menu/tìm kiếm minh họa, banner, danh mục, sản phẩm nổi bật, bộ quà, đặt làm, giới thiệu ngắn, logo và footer. `products.html`, `product-detail.html`, `about.html` hiện là khung có footer của Nam, chờ nội dung của Bảo, Khanh và Tuấn. Các liên kết đến nhóm hàng, thông tin nhanh và đặt làm đang chờ các trang này tạo đúng `id`.
+
+Buổi 2 dùng HTML5/CSS3 thuần, không dùng JavaScript hoặc framework CSS. Tìm kiếm, tính ngân sách và đặt hàng chưa có xử lý. Phần công nghệ và yêu cầu Chương 1 bên dưới mô tả kế hoạch toàn đồ án, không phải khả năng đang chạy của bản giao diện này.
+
+Xem [báo cáo Bước 4](docs/bai-lam-4.md), [hướng dẫn bàn giao](docs/ban-giao-buoc4.md) và [minh chứng](docs/minh-chung-buoc4/README.md). Nhánh này chờ Đức kiểm tra trước khi gộp vào `main`.
+
 ## 1. Giới thiệu
 
 Dự án xây dựng website cho một cửa hàng kinh doanh sản phẩm móc len handmade, gồm móc khóa, thú len, hoa len và phụ kiện nhỏ. Website phục vụ ba nhu cầu chính: mua sản phẩm làm sẵn, lựa chọn bộ quà theo ngân sách và đặt làm theo mẫu hoặc yêu cầu riêng.
@@ -10,7 +20,7 @@ Khách mua quà thường cần cân đối chi phí, chọn các món phù hợ
 
 Điểm riêng của đề tài là công cụ gợi ý bộ quà cấu hình sẵn theo số tiền khách nhập. Khách được đổi món, thay số lượng hoặc bỏ món; hệ thống tính lại tổng tiền và thông báo phần vượt ngân sách. Ngân sách tính trên tiền sản phẩm, tách riêng phí vận chuyển. Hàng làm sẵn và hàng đặt làm được xử lý thành hai luồng đơn hàng riêng trong phiên bản đầu.
 
-Repository hiện phục vụ giai đoạn khảo sát, xác định yêu cầu và lập kế hoạch Chương 1. Các chức năng dưới đây là phạm vi phát triển; trạng thái thực hiện được cập nhật trong kế hoạch và GitHub Issues.
+Phần hồ sơ Chương 1 dưới đây phục vụ khảo sát, xác định yêu cầu và lập kế hoạch. Các chức năng dưới đây là phạm vi phát triển; trạng thái thực hiện được cập nhật trong kế hoạch và GitHub Issues.
 
 ## 2. Khách hàng mục tiêu và vai trò sử dụng
 

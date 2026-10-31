@@ -205,6 +205,126 @@ ChatGPT cũng chỉ ra một số chức năng có thể được thu hẹp ho�
 
 ---
 
+## 2.3. Buổi 2 – Dùng ChatGPT soạn dữ liệu 8 sản phẩm
+
+| Trường thông tin | Nội dung |
+|---|---|
+| Mã ghi nhận | (Châu cấp số) / Buổi 2 – Bước 2 |
+| Ngày thực hiện | 28/10/2026 |
+| Công cụ AI | ChatGPT (gói Plus) |
+| Người thực hiện | Nguyễn Thanh Nam |
+| Mục đích | Soạn nội dung 8 sản phẩm minh họa (mã, tên, danh mục, giá, mô tả, màu, kích thước, chất liệu) cho trang danh sách và trang chi tiết. |
+| Đầu vào | Danh sách 8 sản phẩm do Nam chọn theo 4 danh mục của trang chủ (móc khóa, thú len, hoa len, phụ kiện), mẫu trình bày và các ràng buộc. |
+
+### Prompt chính
+
+```text
+Tôi làm đồ án website bán đồ móc len handmade tên Lenly Crochet, khách hàng là sinh viên và người đi làm trẻ. Hãy viết dữ liệu minh họa cho 8 sản phẩm dưới đây.
+
+Danh sách sản phẩm:
+1. KC-001 Móc khóa gấu len (Móc khóa len)
+2. KC-002 Móc khóa hoa cúc len (Móc khóa len)
+3. TL-001 Thú len thỏ (Thú len)
+4. TL-002 Thú len mèo (Thú len)
+5. HL-001 Hoa tulip len (Hoa len)
+6. HL-002 Bó hoa len nhỏ (Hoa len)
+7. PK-001 Scrunchie len (Phụ kiện móc len)
+8. PK-002 Kẹp tóc hoa len (Phụ kiện móc len)
+
+Với mỗi sản phẩm, viết theo đúng mẫu: Mã, Tên, Danh mục, Giá (VND, mức hợp lý cho sinh viên), Mô tả ngắn (1-2 câu, giọng thân thiện), Màu, Kích thước, Chất liệu, File ảnh, Nguồn ảnh, Nguồn thông tin, Sản phẩm mẫu.
+
+Yêu cầu:
+- Không bịa thông tin thật của cửa hàng (địa chỉ, chính sách, cam kết).
+- Không nhắc phí vận chuyển hay chương trình khuyến mãi.
+- Chỉ trả về nội dung theo mẫu, không giải thích thêm.
+```
+
+### Kết quả AI đề xuất
+
+- Bảng 8 sản phẩm theo đúng mẫu, giá từ 25.000 đến 125.000 đồng, mỗi sản phẩm có mô tả 2 câu, màu, kích thước, chất liệu.
+- Cột nguồn ảnh ghi "Ảnh minh họa do ChatGPT tạo"; cột nguồn thông tin ghi "AI đề xuất, giá minh họa, nhóm chưa xác nhận".
+
+### Đánh giá và kiểm tra
+
+- Đối chiếu cột "File ảnh" với thư mục images: 8/8 tên ảnh khớp file thật.
+- Giá và mô tả chỉ là dữ liệu minh họa, chưa có căn cứ từ cửa hàng thật. [Nam điền: đã sửa gì ở giá hoặc mô tả; nếu không sửa thì ghi "giữ nguyên"]
+- Chọn Thú len thỏ (TL-001) làm sản phẩm mẫu vì có đủ màu, kích thước, chất liệu và ảnh rõ.
+
+### Quyết định của nhóm
+
+- **Giữ:** danh sách 8 sản phẩm, 4 danh mục và cách ghi nguồn.
+- **Chỉnh sửa:** đổi đuôi ảnh từ .jpg sang .png cho khớp file thật; gắn link ảnh vào cột "File ảnh".
+- **Hoãn:** xác nhận giá và mô tả thật khi nhóm có dữ liệu của cửa hàng.
+
+**Người kiểm tra:** Nguyễn Quang Đức.
+
+---
+
+## 2.4. Buổi 2 – Dùng ChatGPT tạo 8 ảnh sản phẩm minh họa
+
+| Trường thông tin | Nội dung |
+|---|---|
+| Mã ghi nhận | (Châu cấp số) / Buổi 2 – Bước 2 |
+| Ngày thực hiện | 28/10/2026 |
+| Công cụ AI | ChatGPT (gói Plus, tạo ảnh) |
+| Người thực hiện | Nguyễn Thanh Nam |
+| Mục đích | Tạo 8 ảnh sản phẩm minh họa đồng bộ phong cách cho trang danh sách và trang chi tiết. |
+| Đầu vào | Thông tin từng sản phẩm trong bảng (tên, màu, kích thước, chất liệu) và mô tả phong cách chung. |
+
+### Prompt chính
+
+```text
+Tạo cho tôi một ảnh sản phẩm cho website bán đồ móc len handmade.
+
+Sản phẩm: Thú len thỏ, tai dài, dáng ngồi, màu kem phối hồng pastel, có nơ nhỏ, cao khoảng 18 cm, làm bằng sợi cotton milk, nhìn rõ từng mũi móc.
+
+Phong cách (dùng cho các sản phẩm khác):
+- Ảnh vuông 1:1
+- Nền màu kem sáng trơn
+- Ánh sáng mềm, chụp chính diện, từ trên cao một chút
+- Sản phẩm đặt giữa khung, chiếm khoảng 70% ảnh
+- Giống ảnh chụp sản phẩm thật
+- Không có chữ, logo, tay người hay mặt người
+```
+
+Với 7 sản phẩm còn lại, Nam gửi lần lượt trong cùng cuộc trò chuyện: "Tạo tiếp ảnh sản phẩm số [N], giữ đúng phong cách các ảnh trước. Sản phẩm: [tên, màu, kích thước, chất liệu lấy từ bảng]."
+
+### Kết quả AI đề xuất
+
+- 8 ảnh PNG vuông 1254 x 1254, đồng bộ nền kem và ánh sáng, đặt tên product-1.png đến product-8.png, mỗi ảnh khoảng 1,8 đến 2 MB.
+
+### Đánh giá và kiểm tra
+
+- Xem từng ảnh: không có chữ hay logo lạ, sản phẩm nằm giữa khung, nền thống nhất.
+- Ảnh do AI tạo, không phải ảnh sản phẩm thật nên đã ghi "Ảnh minh họa do ChatGPT tạo" ở cột nguồn ảnh.
+- Sau khi đẩy lên GitHub, trang so sánh commit báo "Unable to render code block" ở một số ảnh. Mở trực tiếp từng file trong thư mục images và link trong bảng thì ảnh hiển thị bình thường, nên đây là lỗi hiển thị của GitHub.
+- Hạn chế: 8 ảnh nặng khoảng 15 MB, có thể làm trang tải chậm.
+
+### Quyết định của nhóm
+
+- **Giữ:** cả 8 ảnh vì đủ rõ và đồng bộ.
+- **Hoãn:** thu nhỏ kích thước ảnh nếu khi ghép trang thấy tải chậm.
+- **Điều kiện:** nếu cửa hàng có ảnh sản phẩm thật thì thay ảnh minh họa.
+
+**Người kiểm tra:** Nguyễn Quang Đức.
+
+---
+
+## 2.5. Buổi 2 — hỗ trợ phần chân trang của Nam
+
+**Người thực hiện:** Nguyễn Thanh Nam. **Ngày:** 29/10/2026. **Công cụ:** OpenAI Codex trong VS Code.
+
+**Mục đích và đầu vào:** Dùng AI hỗ trợ viết, giải thích và chỉnh HTML/CSS footer dùng chung theo yêu cầu của Nam, thiết kế Chương 2 và mã nguồn dự án.
+
+**Prompt chính (trích yêu cầu thực tế):** "Tạo file docs/footer-mau.html, chỉ chứa đoạn HTML của thẻ <footer class="site-footer">"; "icon nằm dưới chỗ email"; "liên hệ nhảy lên cùng hàng với lenly, thông tin chính sách và liên kết nhanh"; "cái icon để nhỏ lại chút ... và để sát cái email hơn 1 tí".
+
+**Kết quả:** Tạo mẫu footer docs/footer-mau.html và CSS trong ngăn FOOTER của css/style.css. Mỗi thành viên tự gắn đoạn HTML mẫu vào trang mình phụ trách. Bản hiện tại có bốn cột desktop: thương hiệu, chính sách, liên kết nhanh, liên hệ; tablet hai cột, mobile một cột. Icon Facebook/TikTok/Instagram nằm dưới email; khung icon 44px, SVG 22px. Giữ ghi chú học tập, màu, hover, focus và giảm chuyển động; không dùng JavaScript hay framework CSS. Chính sách và icon chưa có đường dẫn nên chỉ hiển thị.
+
+**Phản biện và quyết định:** Các phương án đầu chưa cân đối giữa các cột. Nam yêu cầu điều chỉnh vị trí liên hệ và icon, rồi chọn giao diện cuối. So với thiết kế Chương 2 (3 vùng: thương hiệu, liên kết nhanh, liên hệ cùng ghi chú học tập), bản hiện tại có thêm cột chính sách (chỉ hiển thị chữ) và icon mạng xã hội (chưa có liên kết); chờ Nguyễn Quang Đức và Đặng Đình Quyến xác nhận giữ hay bỏ. Nhóm không tự thêm cam kết chính sách; nhóm chưa nghiệm thu chính thức.
+
+**Kiểm tra:** Đã đối chiếu cấu trúc footer với mẫu và chạy git diff --check. Responsive và bàn phím: [Nam điền sau khi thử 3 cỡ 1366 / 768 / 390 và phím Tab]. **Người kiểm tra giao diện:** Nguyễn Thanh Nam. **Người nghiệm thu của nhóm:** Nguyễn Quang Đức.
+
+---
 ## 3. Bảng đối chiếu giữa đề xuất và phản biện
 
 | Nội dung | AI thứ nhất đề xuất | AI thứ hai phản biện | Quyết định của nhóm |
@@ -255,3 +375,35 @@ Các chức năng bổ trợ như danh sách yêu thích được đưa vào nh�
 - Kết quả: thay tám ảnh `images/product-1.png` đến `product-8.png` bằng các file WebP Nam cung cấp; cập nhật đường dẫn trong `docs/products-data.md`. Không chỉnh nội dung ảnh.
 - Kiểm tra: nhận dạng header WebP, đối chiếu SHA-256 bản sao với nguồn, kiểm tra đường dẫn mới và tham chiếu PNG cũ.
 - Quyết định của Nam: dùng WebP thay PNG. Đánh giá/người kiểm tra của nhóm: chưa ghi nhận.
+
+### Bước 4 — Bản nháp header và trang chủ — 29/10/2026
+
+- Người phụ trách: Nguyễn Quang Đức. Công cụ hỗ trợ: OpenAI Codex.
+- Yêu cầu thực tế: “những việc này bạn có thể làm tiếp giúp tôi được đúng ko”, kèm ảnh các công việc header, menu, banner và trang chủ.
+- Đầu vào: Bài làm 1 và Bài làm 3 trong Google Docs nhóm; dữ liệu sản phẩm và quy ước ở repository main tại 55ab2d5. Bộ tám sản phẩm là dữ liệu minh họa đã được Đức duyệt qua bàn giao chat phụ.
+- Kết quả AI hỗ trợ: tạo index.html, CSS chung/header/trang chủ, mẫu header trong docs/header-mau.html và hướng dẫn docs/ban-giao-buoc4.md. Dùng màu, cỡ chữ, bố cục và sơ đồ liên kết theo Bước 3. Không triển khai xử lý tìm kiếm hoặc mua hàng.
+- Kiểm tra của Codex: bản cục bộ tại 1366/768/390 px không tràn ngang; ảnh tải được; kiểm tra anchor bộ quà, focus bàn phím và dữ liệu bốn thẻ nổi bật. Ảnh kiểm tra lưu trong gói xem trước riêng.
+- Điều chỉnh/giới hạn: nút tìm kiếm disabled, có ghi chú minh họa; mỗi sản phẩm dẫn đúng đích dự kiến thay vì cùng dẫn về mẫu thỏ. Logo gốc tải từ Drive bị từ chối quyền; dùng vùng giữ chỗ có nhãn, không dựng lại logo. Chưa ghép footer Nam, chưa kiểm thử các trang thành viên còn đang là khung.
+- Phản biện và quyết định của Đức/nhóm: chưa ghi nhận sau khi xem bản nháp. Người kiểm tra bằng công cụ: Codex; người nghiệm thu nhóm: chờ Đức xác nhận. Chưa push, tạo Pull Request hoặc merge.
+
+### Bước 4 (Hoàn thiện) — Tích hợp Logo gốc Bước 3 và Footer Bước 2 — 30/10/2026
+
+- Người phụ trách: Nguyễn Quang Đức. Công cụ hỗ trợ: Google Gemini.
+- Yêu cầu thực tế: Kiểm tra gói bản nháp Bước 4 (`lenly-buoc4`), bổ sung tệp logo gốc của Quyến từ Google Drive và ghép phần Footer dùng chung của Nam từ GitHub repository để hoàn thiện Bước 4.
+- Đầu vào: Gói bản nháp `Lenly_Crochet_Buoc4_Ban_nhap.zip`, tệp `LOGO.png` (mẫu số 3) trong thư mục `Bài làm 3 / Logo` trên Google Drive, mã `docs/footer-mau.html` và CSS `.site-footer` tại commit `a34d0fc` (nhánh `buoc2-nam`), dữ liệu `docs/products-data.md` tại commit `55ab2d5` (nhánh `main`).
+- Kết quả AI hỗ trợ:
+  - Xử lý tách nền trong suốt cho `LOGO.png` thành `images/logo.png` (bản đã xử lý `402×430`; không có bản gốc `images/LOGO.png` trong commit đã tải lên), cập nhật vào `.site-brand` trong `index.html` và `docs/header-mau.html` thay cho ô giữ chỗ `.logo-pending`.
+  - Tạo `docs/footer-mau.html`, ghép `<footer class="site-footer">` vào `index.html` (cùng các trang khung) và bổ sung đầy đủ CSS ngăn `/* ===== 3. FOOTER ===== */` vào `css/style.css`.
+  - Cập nhật `docs/ban-giao-buoc4.md` và soạn `docs/bai-lam-4.md`.
+- Kết quả kiểm tra do Gemini ghi trong bản bàn giao, chưa có ảnh hoặc log đi kèm tại commit 6137d7a: Kết xuất và kiểm tra trên trình duyệt Chromium ở cả 3 độ rộng `1366 px`, `768 px` và `390 px` (`scrollWidth == clientWidth`, không tràn ngang, logo và 8 ảnh WebP hiển thị đúng tỷ lệ, bố cục Footer chuyển đổi đúng 4 cột / 2 cột / 1 cột).
+
+### Bước 4 — Sửa cấu trúc bàn giao và kiểm tra độc lập — 31/10/2026
+
+- Người phụ trách: Nguyễn Quang Đức. Công cụ hỗ trợ: OpenAI Codex.
+- Prompt thực tế: “ở nhánh `buoc4-duc` là tôi để file theo gemini kêu, tôi ko biết đã để đúng chưa, và chưa xem được nội dung có làm đúng chưa nữa, nếu nó đăng dư, sai thì hãy sửa và nói cho tôi biết bạn đã sửa gì để tôi xem bạn có làm đúng với yêu cầu ko nha”.
+- Đầu vào: nhánh `buoc4-duc` tại `6137d7a`, bản nháp ZIP, TXT bàn giao, Bước 4/Bài làm 1/Bài làm 3 trong Google Docs, bảng phân công và logo trên Drive. Footer và các mục nhật ký 2.3–2.5 kế thừa nhánh `buoc2-nam` tại `d507e6f`.
+- Phản biện: upload toàn bộ dự án trong `lenly-buoc4/` làm bản gốc vẫn trống và tạo bản sao tài liệu/ảnh; mô tả lưu `images/LOGO.png` không khớp git tree; nhật ký Nam chưa được ghép; đích liên kết các trang khác còn là khung; báo cáo trước chưa kèm minh chứng đầy đủ.
+- Kết quả sửa: đưa trang chủ/CSS/logo/mẫu dùng chung về cấu trúc gốc; dùng lại HTML/CSS footer của Nam, chỉ thêm cách ly letter-spacing tiêu đề footer; giữ nguyên tám ảnh và dữ liệu sản phẩm; hợp nhất nhật ký Nam, WebP và Bước 4; sửa hướng dẫn/báo cáo/README; bỏ thư mục dự án lồng sau khi đối chiếu các file trùng. Giữ ba trang của thành viên khác ở khung footer Nam đã cung cấp.
+- Kiểm tra độc lập: Chromium tại viewport 1366/768/390 px; scrollWidth bằng clientWidth lần lượt 1351/753/375 px; không có ảnh lỗi trên trang chủ sau khi cuộn tải; banner 2/2/1 cột, sản phẩm 4/2/1 cột, footer 4/2/1 cột. Bấm bộ quà đến đúng fragment; Tab đầu tiên hiện skip link và viền focus. Có ảnh và số đo trong `docs/minh-chung-buoc4/`.
+- Quyết định áp dụng trong phạm vi người dùng yêu cầu: giữ nội dung/giao diện phù hợp, sửa tổ chức và mô tả sai, bỏ bản sao dư. Không tự viết nội dung của Bảo/Khanh/Tuấn, không coi các id chờ tích hợp là đã chạy đủ, không tạo lại prompt Gemini nguyên văn khi chưa có nguồn.
+- Người kiểm tra bằng công cụ: Codex. Đức xem bản sửa và quyết định nghiệm thu. Cập nhật trên nhánh riêng; không merge `main`, không thay trạng thái trong Google Sheets hoặc tự nhận nhóm đã duyệt.
