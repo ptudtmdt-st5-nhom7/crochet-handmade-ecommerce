@@ -1,71 +1,77 @@
-# Bài làm 4 — Header, menu điều hướng, banner và trang chủ
+# Bài làm 4 Xây dựng header menu điều hướng banner và trang chủ
 
-Người phụ trách: Nguyễn Quang Đức. Công cụ hỗ trợ: OpenAI Codex và Google Gemini theo [nhật ký AI](../AI_USAGE_LOG.md). Báo cáo cập nhật ngày 31/10/2026 theo mã thực tế trên [nhánh buoc4-duc](https://github.com/ptudtmdt-st5-nhom7/crochet-handmade-ecommerce/tree/buoc4-duc).
+Người thực hiện: Nguyễn Quang Đức.
 
-## 1. Đầu vào và kết quả
+## 1. Mục tiêu và đầu vào
 
-Sử dụng nội dung trang chủ tại Bài làm 1 và thiết kế Bài làm 3 của [tài liệu nhóm](https://docs.google.com/document/d/1uIoFsaHZOZoELrRm6Y9PIP3tNZ9jMsXwfM6cFZjABJ8/edit); dữ liệu và ảnh Bước 2 do Nam chuẩn bị; logo LC/cuộn len của Quyến; footer của Nam trên nhánh `buoc2-nam` tại commit `d507e6f`.
+Xây dựng trang chủ Lenly Crochet bằng HTML5 và CSS3 thuần theo nội dung Bước 1, thiết kế Bước 3 và cấu trúc dự án Bước 2. Sản phẩm gồm trang chủ hoàn chỉnh, mẫu header/menu/tìm kiếm dùng chung, CSS và tài nguyên trang chủ.
 
-Trang chủ nằm tại [`index.html`](../index.html), dùng [`css/style.css`](../css/style.css), ảnh trong `images/` và các mẫu [`header`](header-mau.html), [`footer`](footer-mau.html). Bản tải lên trước đó ở commit `6137d7a` đặt cả dự án trong `lenly-buoc4/`; lượt sửa này đưa phần cần dùng về thư mục gốc và loại các bản sao dư.
+Nội dung sử dụng: Bài làm 1 và Bài làm 3 trong [tài liệu nhóm](https://docs.google.com/document/d/1uIoFsaHZOZoELrRm6Y9PIP3tNZ9jMsXwfM6cFZjABJ8/edit); dữ liệu tám sản phẩm, ảnh WebP và footer do Nam chuẩn bị; logo LC kết hợp cuộn len của Quyến. Tên, giá và ảnh sản phẩm là dữ liệu minh họa Buổi 2.
 
-Logo đang dùng là `images/logo.png` đã xử lý trong suốt 402 × 430. Bản gốc `LOGO.png` ở Drive; repository không lưu thêm bản gốc cùng tên khác hoa/thường. Tám ảnh sản phẩm WebP giữ nguyên. Tên và giá là dữ liệu minh họa Buổi 2 đã được Đức duyệt theo nội dung bàn giao.
+## 2. Kết quả xây dựng giao diện
 
-## 2. Cấu trúc HTML và CSS
+Trang chủ [`index.html`](../index.html) có header, banner, bốn danh mục, bốn sản phẩm nổi bật, giới thiệu bộ quà theo ngân sách, đặt làm theo yêu cầu, giới thiệu ngắn và footer dùng chung. CSS đặt tại [`css/style.css`](../css/style.css); logo và ảnh đặt trong `images/`.
 
-`header.site-header` chứa logo liên kết về trang chủ, `nav.site-nav` có ba mục Trang chủ, Sản phẩm, Giới thiệu và thanh tìm kiếm. Trang hiện tại được đánh dấu bằng `aria-current="page"`. Ô tìm kiếm có label và ghi chú minh họa; nút bị vô hiệu hóa vì Buổi 2 chưa xử lý tìm kiếm.
+Header chứa logo liên kết về trang chủ, menu ba mục Trang chủ, Sản phẩm, Giới thiệu và ô tìm kiếm có nhãn. Thuộc tính `aria-current="page"` đánh dấu trang hiện tại. Tìm kiếm chỉ là giao diện, có ghi chú và nút `disabled`.
 
-Skip link trỏ đến `main#noi-dung`. Nội dung chính gồm sáu section theo thứ tự: banner; bốn danh mục; bốn sản phẩm nổi bật; bộ quà theo ngân sách; đặt làm; giới thiệu ngắn. Thẻ sản phẩm dùng `article`. Cuối trang là footer dùng chung của Nam gồm thương hiệu, thông tin chính sách, liên kết nhanh và liên hệ. Chính sách/icon chưa có URL chỉ hiển thị.
+Banner có tiêu đề “Một món quà nhỏ, gửi điều muốn nói.”, ảnh thú len thỏ và hai nút dẫn đến `products.html`, `#qua-theo-ngan-sach`. Bốn danh mục gồm Móc khóa len, Thú len, Hoa len, Phụ kiện móc len.
 
-Banner có H1 “Một món quà nhỏ, gửi điều muốn nói.”, nội dung giới thiệu và ảnh thú len thỏ. Hai nút dẫn tới `products.html` và `#qua-theo-ngan-sach`. Bốn thẻ nổi bật lần lượt là KC-001 — 45.000đ; TL-001 — 125.000đ; HL-002 — 99.000đ; PK-002 — 25.000đ. Chỉ TL-001 dẫn đến trang chi tiết mẫu; ba thẻ còn lại dẫn tới thông tin đúng mã trên trang danh sách.
+Bốn sản phẩm nổi bật: KC-001 — Móc khóa gấu len, 45.000đ; TL-001 — Thú len thỏ, 125.000đ; HL-002 — Bó hoa len nhỏ, 99.000đ; PK-002 — Kẹp tóc hoa len, 25.000đ. TL-001 dẫn đến trang chi tiết mẫu; các sản phẩm khác dẫn đến thông tin đúng mã trên trang danh sách.
 
-Phần bộ quà giới thiệu Chọn ngân sách → Xem gợi ý → Điều chỉnh lựa chọn. Giá gồm sản phẩm, hộp/túi và phụ kiện liệt kê; chưa gồm phí vận chuyển; miễn phí công đóng gói. Phần đặt làm giới thiệu trao đổi yêu cầu, không tạo biểu mẫu hoặc đơn hàng thật.
+Khối bộ quà trình bày ba bước Chọn ngân sách, Xem gợi ý, Điều chỉnh lựa chọn. Giá gồm sản phẩm, hộp/túi và phụ kiện liệt kê; chưa gồm phí vận chuyển; miễn phí công đóng gói. Khối đặt làm giới thiệu quá trình trao đổi yêu cầu và dẫn tới `about.html#dat-lam`.
 
-CSS dùng các biến màu theo Bài làm 3: hồng đất `#8F4558`, nền kem `#FFF9F4`, nền trắng `#FFFFFF`, hồng nhạt `#F4E1E5`, xanh nhạt `#E8EDE4`, chữ `#332B2B`, chữ phụ `#6B5D59`, viền `#D8C7BF`. Nội dung dùng Arial/Helvetica, 16 px, line-height 1.6.
+Footer kế thừa mẫu Bước 2, gồm thương hiệu, thông tin chính sách, liên kết nhanh và liên hệ. Chính sách và biểu tượng mạng xã hội chưa có URL chỉ hiển thị.
 
-Flexbox dùng cho header, menu, tìm kiếm, nhóm nút và nội dung thẻ. Grid dùng cho banner, danh mục, sản phẩm, các bước bộ quà và khối đặt làm. CSS được chia chín ngăn theo quy ước nhóm. Có hover, focus-visible và giảm chuyển động. Ngưỡng responsive là dưới 700 px, 700–1099 px và từ 1100 px.
+## 3. HTML semantic và bố cục CSS
 
-## 3. Kết quả kiểm tra ngày 31/10/2026
+Sử dụng `header`, `nav`, `main`, `section`, `article`, `figure`, `footer` và `address` theo vai trò nội dung. Skip link trỏ đến `main#noi-dung`; ảnh có văn bản thay thế phù hợp, ô tìm kiếm có `label`.
 
-Codex kiểm tra bản ở thư mục gốc bằng Chromium qua HTTP cục bộ; ảnh được cuộn tải trước khi kiểm tra lỗi. Đây là lượt kiểm tra mới, không suy ra từ lời khẳng định trong báo cáo Gemini trước đó.
+Flexbox dùng cho header, menu, thanh tìm kiếm, nhóm nút và nội dung thẻ sản phẩm. Grid dùng cho banner, danh mục, lưới sản phẩm, các bước bộ quà và khối đặt làm. CSS chia chín ngăn theo quy ước chung.
 
-| Viewport | Banner | Danh mục | Sản phẩm | Footer | scrollWidth / clientWidth |
+Màu chủ đạo `#8F4558`, nền `#FFF9F4`, chữ chính `#332B2B`, chữ phụ `#6B5D59`. Nội dung dùng Arial/Helvetica, cỡ 16 px, line-height 1.6. Có hover, focus-visible và giảm chuyển động. Các ngưỡng responsive là dưới 700 px, 700–1099 px và từ 1100 px.
+
+## 4. Kiểm tra và minh chứng
+
+Trang chủ được kiểm tra trên Chromium qua HTTP cục bộ, tại ba độ rộng sau khi cuộn tải ảnh.
+
+| Độ rộng | Banner | Danh mục | Sản phẩm | Footer | Tràn ngang |
 |---|---|---|---|---|---|
-| 1366 px | 2 cột | 4 cột | 4 cột | 4 cột | 1351 / 1351 |
-| 768 px | 2 cột | 2 cột | 2 cột | 2 cột | 753 / 753 |
-| 390 px | 1 cột | 2 cột | 1 cột | 1 cột | 375 / 375 |
+| 1366 px | 2 cột | 4 cột | 4 cột | 4 cột | Không |
+| 768 px | 2 cột | 2 cột | 2 cột | 2 cột | Không |
+| 390 px | 1 cột | 2 cột | 1 cột | 1 cột | Không |
 
-Không tràn ngang ở ba kích thước. `clientWidth` có thể nhỏ hơn viewport vì thanh cuộn; không giả định `scrollWidth` luôn bằng số viewport. Không phát hiện ảnh lỗi trên trang chủ sau khi tải. Menu có vùng bấm cao 44 px. Nút “Tìm hiểu bộ quà” dẫn đúng fragment cùng trang. Skip link nhận Tab và có viền focus. Tìm kiếm giữ trạng thái minh họa.
+`scrollWidth` bằng `clientWidth`, lần lượt 1351, 753 và 375 px trong môi trường kiểm tra. Không phát hiện ảnh lỗi trên trang chủ sau khi tải. Menu có vùng bấm cao 44 px. Nút “Tìm hiểu bộ quà” dẫn đúng khu vực; skip link nhận Tab và có viền focus.
 
-Minh chứng: [1366 px](minh-chung-buoc4/home-1366.png), [768 px](minh-chung-buoc4/home-768.png), [390 px](minh-chung-buoc4/home-390.png), [số đo trình duyệt](minh-chung-buoc4/ket-qua-trinh-duyet.json).
+Ảnh minh chứng: [1366 px](minh-chung-buoc4/home-1366.png), [768 px](minh-chung-buoc4/home-768.png), [390 px](minh-chung-buoc4/home-390.png), [focus bàn phím](minh-chung-buoc4/focus-ban-phim.png).
 
-## 4. Phạm vi điều hướng và bàn giao
+## 5. Sản phẩm bàn giao và phạm vi tích hợp
 
-Menu và các nút đã dùng đúng tên file. `products.html`, `product-detail.html`, `about.html` hiện chỉ là khung có footer do Nam chuẩn bị, chưa có nội dung của Bảo, Khanh và Tuấn. Bốn id danh mục, ba id thông tin nhanh trên danh sách và `about.html#dat-lam` đang chờ tác giả trang tạo. Các đích này được ghi cụ thể trong [hướng dẫn bàn giao](ban-giao-buoc4.md).
+Kết quả gồm `index.html`, `css/style.css`, tài nguyên trang chủ và mẫu [`docs/header-mau.html`](header-mau.html). Mẫu [`docs/footer-mau.html`](footer-mau.html) dùng chung theo Bước 2. Cách sử dụng thành phần chung được ghi trong [quy ước mã nguồn](quy-uoc.md).
 
-Kiểm tra riêng trang chủ không thay thế kiểm thử bốn trang sau tích hợp. Kết quả được đưa lên nhánh riêng để Đức xem, chưa coi là nhóm đã nghiệm thu hoặc đã merge vào `main`.
+Các liên kết sử dụng đúng tên bốn file HTML theo thiết kế. Nội dung trên `products.html`, `product-detail.html`, `about.html` và các id danh mục, thông tin nhanh, đặt làm thuộc phần triển khai các trang tương ứng; kiểm thử nội dung đích được thực hiện khi tích hợp. Kết quả kiểm tra ở đây áp dụng riêng trang chủ. Buổi 2 chưa triển khai xử lý tìm kiếm, tính ngân sách hoặc đặt hàng.
 
-## 5. Prompt, phản biện và xử lý
+## 6. Sử dụng AI và đánh giá kết quả
 
-Các lượt tạo bản nháp và hoàn thiện logo/footer được ghi trong nhật ký AI. Prompt Gemini nguyên văn và toàn bộ cuộc trao đổi của lượt trước không có trong các file đã cung cấp; báo cáo không tự tạo lại chúng làm minh chứng.
+OpenAI Codex hỗ trợ xây dựng và kiểm tra HTML/CSS trang chủ; Google Gemini hỗ trợ tích hợp logo, footer và chuẩn bị báo cáo. Kết quả được đối chiếu với thiết kế, dữ liệu sản phẩm, cấu trúc HTML semantic, đường dẫn tài nguyên và bố cục tại ba kích thước.
 
-Yêu cầu thực tế cho lượt sửa 31/10/2026:
+Phương án phù hợp về nội dung và nhận diện được giữ lại. Tổ chức file được điều chỉnh theo cấu trúc chung; các bản sao trùng được loại bỏ. Nguồn tài nguyên, mục đích sử dụng AI, kết quả kiểm tra và cách xử lý được ghi trong [nhật ký AI](../AI_USAGE_LOG.md).
 
-> ở nhánh `buoc4-duc` là tôi để file theo gemini kêu, tôi ko biết đã để đúng chưa, và chưa xem được nội dung có làm đúng chưa nữa, nếu nó đăng dư, sai thì hãy sửa và nói cho tôi biết bạn đã sửa gì để tôi xem bạn có làm đúng với yêu cầu ko nha
+## 7. Trả lời câu hỏi kiểm tra kiến thức
 
-Kết quả đối chiếu: giữ giao diện trang chủ, logo đang hiển thị, dữ liệu và các mẫu dùng chung; sửa vị trí file và mô tả chưa đúng; dùng lại HTML/CSS footer của Nam; hợp nhất nhật ký; bỏ bản sao dự án lồng. Ảnh kiểm tra và số đo được lưu cùng mã. Quyết định nghiệm thu cuối thuộc Đức sau khi xem bản sửa.
+### Câu 1. Thẻ header và nav có vai trò gì?
 
-## 6. Câu hỏi kiểm tra kiến thức
+`header` xác định phần đầu trang, ở đây gom logo, menu và tìm kiếm. `nav` đánh dấu nhóm liên kết điều hướng quan trọng. `aria-label` phân biệt menu chính với liên kết nhanh trong footer; `aria-current="page"` chỉ rõ trang đang xem.
 
-### 1. Thẻ header và nav có vai trò gì?
+### Câu 2. Vì sao Flexbox thuận tiện hơn định vị thủ công cho header?
 
-`header` xác định phần đầu trang, ở đây gom logo, menu và tìm kiếm. `nav` xác định nhóm liên kết điều hướng quan trọng. `aria-label` phân biệt menu chính với liên kết nhanh trong footer; `aria-current="page"` đánh dấu trang hiện tại.
+Flexbox căn phần tử theo trục và phân bố khoảng cách theo nội dung thực tế. `.header-top` dùng `display:flex`, `align-items:center`, `gap:48px`; mô tả phụ dùng `margin-left:auto`. Khi màn hình hẹp, có thể đổi hướng hoặc cho xuống dòng mà không tính lại từng tọa độ top/left, giảm nguy cơ logo và menu chồng nhau.
 
-### 2. Vì sao Flexbox thuận tiện hơn định vị thủ công cho header?
+### Câu 3. Menu tốt trên máy tính nhưng chật trên điện thoại thì điều chỉnh thế nào?
 
-Flexbox căn các phần tử theo trục và phân bố khoảng cách theo nội dung thực tế. `.header-top` dùng `display:flex`, `align-items:center`, `gap:48px`; mô tả phụ dùng `margin-left:auto`. Khi màn hình hẹp, đổi hướng hoặc cho xuống dòng mà không phải tính lại từng tọa độ top/left, giảm nguy cơ logo/menu chồng nhau.
+Ở dưới 700 px, header chuyển sang xếp dọc, ẩn mô tả phụ và thu logo còn 92 px. Menu rộng 100%, giữ ba mục, cho phép `flex-wrap`, giảm gap và giữ vùng bấm cao tối thiểu 44 px. Kiểm tra lại tại 390 px và bằng bàn phím; không dùng hamburger phụ thuộc JavaScript trong phạm vi Buổi 2.
 
-### 3. Menu máy tính tốt nhưng điện thoại bị chật thì điều chỉnh thế nào?
+## 8. Đường dẫn kết quả
 
-Ở dưới 700 px, header xếp dọc, ẩn mô tả phụ, logo rộng 92 px. Menu rộng 100%, giữ đủ ba mục, cho phép `flex-wrap`, giảm gap và giữ vùng bấm cao tối thiểu 44 px. Kiểm tra lại tại 390 px và bằng bàn phím; không dùng hamburger cần JavaScript trong phạm vi Buổi 2.
-
-Đây là ba câu của Bước 4; sáu câu bắt buộc cá nhân ở Bước 10 vẫn thực hiện riêng dựa trên mã thực tế.
+- [Website Lenly Crochet](https://ptudtmdt-st5-nhom7.github.io/crochet-handmade-ecommerce/).
+- [Mã nguồn nhánh buoc4-duc](https://github.com/ptudtmdt-st5-nhom7/crochet-handmade-ecommerce/tree/buoc4-duc).
+- [Bài làm 4 trên Google Docs](https://docs.google.com/document/d/1uIoFsaHZOZoELrRm6Y9PIP3tNZ9jMsXwfM6cFZjABJ8/edit?tab=t.e8hn99sxg0co).
