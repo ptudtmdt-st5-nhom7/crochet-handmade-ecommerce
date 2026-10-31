@@ -397,3 +397,12 @@ Các chức năng bổ trợ như danh sách yêu thích được đưa vào nh�
 **Kiểm tra kết quả:** Chromium tại viewport 1366/768/390 px; `scrollWidth` bằng `clientWidth` lần lượt 1351/753/375 px; không phát hiện ảnh lỗi trên trang chủ sau khi cuộn tải. Banner 2/2/1 cột, sản phẩm 4/2/1 cột, footer 4/2/1 cột. Nút bộ quà đến đúng fragment; skip link nhận Tab và có viền focus. Ảnh lưu trong `docs/minh-chung-buoc4/`.
 
 **Phạm vi:** Kiểm tra riêng trang chủ; nội dung và id trên các trang danh sách, chi tiết và giới thiệu được kiểm thử khi tích hợp. Không triển khai xử lý tìm kiếm, tính ngân sách hoặc đặt hàng trong Buổi 2. Việc nghiệm thu thuộc người phụ trách và nhóm; không suy ra đã nghiệm thu toàn website từ kết quả kiểm tra riêng trang chủ.
+### Bước 5 — Xây dựng trang danh sách sản phẩm
+
+**Người phụ trách:** Trần Quốc Bảo. **Thời gian:** 31/10/2026. **Công cụ:** OpenAI.
+
+**Nội dung đã hỏi AI:** Làm rõ yêu cầu Bước 5; đề xuất và kiểm tra HTML/CSS cho danh sách 8 sản phẩm; giải thích lựa chọn CSS Grid; kiểm tra liên kết xem chi tiết, hover, focus và responsive.
+
+**Đánh giá và xử lý:** Giữ cấu trúc thẻ gồm ảnh, mã, tên, giá và nút xem chi tiết; giữ CSS Grid 4/2/1 cột và tỷ lệ ảnh 4:3. Sửa `aria-current="page"` sang mục Sản phẩm. Chỉ TL-001 liên kết tới `product-detail.html`; bảy sản phẩm còn lại dùng liên kết tới phần thông tin nhanh. Không áp dụng cách cho mọi sản phẩm mở chung một trang chi tiết.
+
+**Kiểm tra kết quả:** Đã kiểm tra đủ 8 sản phẩm, hình ảnh và giá; bố cục 4 cột trên máy tính, 2 cột ở màn hình vừa và 1 cột ở màn hình nhỏ; hover/focus và các fragment thông tin nhanh hoạt động. `product-detail.html` hiện chưa đủ nội dung và tiếp tục chờ Bước 6 triển khai.
