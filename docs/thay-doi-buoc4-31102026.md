@@ -17,4 +17,4 @@ Tải nhánh `buoc4-duc`, giải nén và mở `index.html` ở thư mục gốc
 
 Không tràn ngang và không phát hiện ảnh lỗi trên trang chủ ở cả ba kích thước. Bộ quà và skip link có đích trong trang. Các URL sang danh sách/chi tiết/giới thiệu vẫn cần nội dung của từng thành viên trước khi kiểm thử đủ luồng. Không coi đây là lỗi cần Đức tự làm hộ các trang khác.
 
-Bản sửa được cập nhật vào nhánh riêng để Đức xem. `main`, nhánh Nam, PR #14 và Google Docs/Sheets chưa được thay đổi bởi lượt sửa này. Chưa xác nhận nghiệm thu thay Đức.
+Bản sửa đã được cập nhật lên nhánh `buoc4-duc` bằng phiên đăng nhập của Đức. Tại commit `8e19a4f`, toàn bộ cây file trên GitHub khớp bản đã kiểm tra trên máy. [Bài làm 4 trong Google Docs](https://docs.google.com/document/d/1uIoFsaHZOZoELrRm6Y9PIP3tNZ9jMsXwfM6cFZjABJ8/edit?tab=t.e8hn99sxg0co) đã được điền báo cáo, ba câu trả lời kiến thức, ba ảnh minh chứng và link commit. `main`, nhánh Nam, PR #14 và Google Sheets chưa được thay đổi. Chưa xác nhận nghiệm thu thay Đức.
