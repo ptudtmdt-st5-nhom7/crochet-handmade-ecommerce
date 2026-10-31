@@ -407,3 +407,12 @@ Các chức năng bổ trợ như danh sách yêu thích được đưa vào nh�
 - Kiểm tra độc lập: Chromium tại viewport 1366/768/390 px; scrollWidth bằng clientWidth lần lượt 1351/753/375 px; không có ảnh lỗi trên trang chủ sau khi cuộn tải; banner 2/2/1 cột, sản phẩm 4/2/1 cột, footer 4/2/1 cột. Bấm bộ quà đến đúng fragment; Tab đầu tiên hiện skip link và viền focus. Có ảnh và số đo trong `docs/minh-chung-buoc4/`.
 - Quyết định áp dụng trong phạm vi người dùng yêu cầu: giữ nội dung/giao diện phù hợp, sửa tổ chức và mô tả sai, bỏ bản sao dư. Không tự viết nội dung của Bảo/Khanh/Tuấn, không coi các id chờ tích hợp là đã chạy đủ, không tạo lại prompt Gemini nguyên văn khi chưa có nguồn.
 - Người kiểm tra bằng công cụ: Codex. Đức xem bản sửa và quyết định nghiệm thu. Cập nhật trên nhánh riêng; không merge `main`, không thay trạng thái trong Google Sheets hoặc tự nhận nhóm đã duyệt.
+
+### Bước 4 — Cập nhật nhánh GitHub và Bài làm 4 trên Docs — 31/10/2026
+
+- Người phụ trách: Nguyễn Quang Đức. Công cụ hỗ trợ: OpenAI Codex.
+- Yêu cầu thực tế: “tôi sẽ gửi bạn tk github để bạn sửa giúp tôi luôn, và ghi nội dung cần nộp trên docs giúp tôi”.
+- Thực hiện: dùng phiên trình duyệt đăng nhập tài khoản Đức để cập nhật `buoc4-duc`; đưa đủ mã và minh chứng về cấu trúc gốc, sau đó bỏ thư mục sao chép `lenly-buoc4/`. Không lưu thông tin đăng nhập vào repository hoặc tài liệu.
+- Kiểm tra: tại commit `8e19a4f`, toàn bộ cây file trên GitHub khớp bản cục bộ `23e6bd9` đã kiểm tra. `main` vẫn ở `55ab2d5`; không merge PR footer của Nam hoặc tự thay trạng thái WORKING SPACE.
+- Google Docs: điền tab [Bài làm 4](https://docs.google.com/document/d/1uIoFsaHZOZoELrRm6Y9PIP3tNZ9jMsXwfM6cFZjABJ8/edit?tab=t.e8hn99sxg0co), gồm đầu vào/kết quả, cấu trúc HTML/CSS, bảng kiểm tra, giới hạn bàn giao, sử dụng AI, ba câu trả lời kiến thức, ba ảnh và liên kết commit. Rà bản xuất sáu trang, chỉnh chú thích ảnh và câu hỏi không tách khỏi phần liên quan.
+- Giới hạn: các id và nội dung trên trang danh sách, chi tiết và giới thiệu còn phụ thuộc tác giả từng trang; báo cáo ghi đúng phạm vi riêng trang chủ. Đức vẫn là người đọc, kiểm tra và quyết định nghiệm thu cuối.
