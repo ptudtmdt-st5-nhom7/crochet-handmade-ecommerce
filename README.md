@@ -10,7 +10,7 @@ Trang chủ đã có header/menu/tìm kiếm minh họa, banner, danh mục, s�
 
 Buổi 2 dùng HTML5/CSS3 thuần, không dùng JavaScript hoặc framework CSS. Tìm kiếm, tính ngân sách và đặt hàng chưa có xử lý. Phần công nghệ và yêu cầu Chương 1 bên dưới mô tả kế hoạch toàn đồ án, không phải khả năng đang chạy của bản giao diện này.
 
-Xem [báo cáo Bước 4](docs/bai-lam-4.md), [hướng dẫn bàn giao](docs/ban-giao-buoc4.md) và [minh chứng](docs/minh-chung-buoc4/README.md). Nhánh này chờ Đức kiểm tra trước khi gộp vào `main`.
+Xem [báo cáo Bước 4](docs/bai-lam-4.md), [quy ước sử dụng thành phần chung](docs/quy-uoc.md) và [ảnh minh chứng](docs/minh-chung-buoc4/). [Website trình diễn](https://ptudtmdt-st5-nhom7.github.io/crochet-handmade-ecommerce/) sử dụng nhánh `buoc4-duc`.
 
 ## 1. Giới thiệu
 

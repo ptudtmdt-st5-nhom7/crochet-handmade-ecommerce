@@ -376,43 +376,24 @@ Các chức năng bổ trợ như danh sách yêu thích được đưa vào nh�
 - Kiểm tra: nhận dạng header WebP, đối chiếu SHA-256 bản sao với nguồn, kiểm tra đường dẫn mới và tham chiếu PNG cũ.
 - Quyết định của Nam: dùng WebP thay PNG. Đánh giá/người kiểm tra của nhóm: chưa ghi nhận.
 
-### Bước 4 — Bản nháp header và trang chủ — 29/10/2026
+### Bước 4 — Xây dựng và kiểm tra trang chủ Lenly Crochet
 
-- Người phụ trách: Nguyễn Quang Đức. Công cụ hỗ trợ: OpenAI Codex.
-- Yêu cầu thực tế: “những việc này bạn có thể làm tiếp giúp tôi được đúng ko”, kèm ảnh các công việc header, menu, banner và trang chủ.
-- Đầu vào: Bài làm 1 và Bài làm 3 trong Google Docs nhóm; dữ liệu sản phẩm và quy ước ở repository main tại 55ab2d5. Bộ tám sản phẩm là dữ liệu minh họa đã được Đức duyệt qua bàn giao chat phụ.
-- Kết quả AI hỗ trợ: tạo index.html, CSS chung/header/trang chủ, mẫu header trong docs/header-mau.html và hướng dẫn docs/ban-giao-buoc4.md. Dùng màu, cỡ chữ, bố cục và sơ đồ liên kết theo Bước 3. Không triển khai xử lý tìm kiếm hoặc mua hàng.
-- Kiểm tra của Codex: bản cục bộ tại 1366/768/390 px không tràn ngang; ảnh tải được; kiểm tra anchor bộ quà, focus bàn phím và dữ liệu bốn thẻ nổi bật. Ảnh kiểm tra lưu trong gói xem trước riêng.
-- Điều chỉnh/giới hạn: nút tìm kiếm disabled, có ghi chú minh họa; mỗi sản phẩm dẫn đúng đích dự kiến thay vì cùng dẫn về mẫu thỏ. Logo gốc tải từ Drive bị từ chối quyền; dùng vùng giữ chỗ có nhãn, không dựng lại logo. Chưa ghép footer Nam, chưa kiểm thử các trang thành viên còn đang là khung.
-- Phản biện và quyết định của Đức/nhóm: chưa ghi nhận sau khi xem bản nháp. Người kiểm tra bằng công cụ: Codex; người nghiệm thu nhóm: chờ Đức xác nhận. Chưa push, tạo Pull Request hoặc merge.
+**Người phụ trách:** Nguyễn Quang Đức. **Thời gian:** 29–31/10/2026. **Công cụ:** OpenAI Codex và Google Gemini.
 
-### Bước 4 (Hoàn thiện) — Tích hợp Logo gốc Bước 3 và Footer Bước 2 — 30/10/2026
+**Mục đích sử dụng AI:** Hỗ trợ viết HTML/CSS header, menu, ô tìm kiếm minh họa, banner và nội dung trang chủ; tích hợp logo và footer; kiểm tra, hoàn thiện mã nguồn và báo cáo Bước 4.
 
-- Người phụ trách: Nguyễn Quang Đức. Công cụ hỗ trợ: Google Gemini.
-- Yêu cầu thực tế: Kiểm tra gói bản nháp Bước 4 (`lenly-buoc4`), bổ sung tệp logo gốc của Quyến từ Google Drive và ghép phần Footer dùng chung của Nam từ GitHub repository để hoàn thiện Bước 4.
-- Đầu vào: Gói bản nháp `Lenly_Crochet_Buoc4_Ban_nhap.zip`, tệp `LOGO.png` (mẫu số 3) trong thư mục `Bài làm 3 / Logo` trên Google Drive, mã `docs/footer-mau.html` và CSS `.site-footer` tại commit `a34d0fc` (nhánh `buoc2-nam`), dữ liệu `docs/products-data.md` tại commit `55ab2d5` (nhánh `main`).
-- Kết quả AI hỗ trợ:
-  - Xử lý tách nền trong suốt cho `LOGO.png` thành `images/logo.png` (bản đã xử lý `402×430`; không có bản gốc `images/LOGO.png` trong commit đã tải lên), cập nhật vào `.site-brand` trong `index.html` và `docs/header-mau.html` thay cho ô giữ chỗ `.logo-pending`.
-  - Tạo `docs/footer-mau.html`, ghép `<footer class="site-footer">` vào `index.html` (cùng các trang khung) và bổ sung đầy đủ CSS ngăn `/* ===== 3. FOOTER ===== */` vào `css/style.css`.
-  - Cập nhật `docs/ban-giao-buoc4.md` và soạn `docs/bai-lam-4.md`.
-- Kết quả kiểm tra do Gemini ghi trong bản bàn giao, chưa có ảnh hoặc log đi kèm tại commit 6137d7a: Kết xuất và kiểm tra trên trình duyệt Chromium ở cả 3 độ rộng `1366 px`, `768 px` và `390 px` (`scrollWidth == clientWidth`, không tràn ngang, logo và 8 ảnh WebP hiển thị đúng tỷ lệ, bố cục Footer chuyển đổi đúng 4 cột / 2 cột / 1 cột).
+**Đầu vào:** Nội dung Bước 1, thiết kế Bước 3, bộ khung/dữ liệu và tám ảnh WebP Bước 2, logo của Quyến, mẫu HTML/CSS footer của Nam tại nhánh `buoc2-nam` (commit `d507e6f`).
 
-### Bước 4 — Sửa cấu trúc bàn giao và kiểm tra độc lập — 31/10/2026
+**Yêu cầu chính đã gửi AI, tóm tắt theo nội dung:** Xây dựng trang chủ theo thiết kế; bổ sung logo và footer đã có; đối chiếu mã với yêu cầu, sửa phần sai hoặc trùng; chuẩn bị kết quả và minh chứng Bước 4. Đây là phần tóm tắt nội dung yêu cầu, không phải bản chép nguyên văn hội thoại.
 
-- Người phụ trách: Nguyễn Quang Đức. Công cụ hỗ trợ: OpenAI Codex.
-- Prompt thực tế: “ở nhánh `buoc4-duc` là tôi để file theo gemini kêu, tôi ko biết đã để đúng chưa, và chưa xem được nội dung có làm đúng chưa nữa, nếu nó đăng dư, sai thì hãy sửa và nói cho tôi biết bạn đã sửa gì để tôi xem bạn có làm đúng với yêu cầu ko nha”.
-- Đầu vào: nhánh `buoc4-duc` tại `6137d7a`, bản nháp ZIP, TXT bàn giao, Bước 4/Bài làm 1/Bài làm 3 trong Google Docs, bảng phân công và logo trên Drive. Footer và các mục nhật ký 2.3–2.5 kế thừa nhánh `buoc2-nam` tại `d507e6f`.
-- Phản biện: upload toàn bộ dự án trong `lenly-buoc4/` làm bản gốc vẫn trống và tạo bản sao tài liệu/ảnh; mô tả lưu `images/LOGO.png` không khớp git tree; nhật ký Nam chưa được ghép; đích liên kết các trang khác còn là khung; báo cáo trước chưa kèm minh chứng đầy đủ.
-- Kết quả sửa: đưa trang chủ/CSS/logo/mẫu dùng chung về cấu trúc gốc; dùng lại HTML/CSS footer của Nam, chỉ thêm cách ly letter-spacing tiêu đề footer; giữ nguyên tám ảnh và dữ liệu sản phẩm; hợp nhất nhật ký Nam, WebP và Bước 4; sửa hướng dẫn/báo cáo/README; bỏ thư mục dự án lồng sau khi đối chiếu các file trùng. Giữ ba trang của thành viên khác ở khung footer Nam đã cung cấp.
-- Kiểm tra độc lập: Chromium tại viewport 1366/768/390 px; scrollWidth bằng clientWidth lần lượt 1351/753/375 px; không có ảnh lỗi trên trang chủ sau khi cuộn tải; banner 2/2/1 cột, sản phẩm 4/2/1 cột, footer 4/2/1 cột. Bấm bộ quà đến đúng fragment; Tab đầu tiên hiện skip link và viền focus. Có ảnh và số đo trong `docs/minh-chung-buoc4/`.
-- Quyết định áp dụng trong phạm vi người dùng yêu cầu: giữ nội dung/giao diện phù hợp, sửa tổ chức và mô tả sai, bỏ bản sao dư. Không tự viết nội dung của Bảo/Khanh/Tuấn, không coi các id chờ tích hợp là đã chạy đủ, không tạo lại prompt Gemini nguyên văn khi chưa có nguồn.
-- Người kiểm tra bằng công cụ: Codex. Đức xem bản sửa và quyết định nghiệm thu. Cập nhật trên nhánh riêng; không merge `main`, không thay trạng thái trong Google Sheets hoặc tự nhận nhóm đã duyệt.
+| Thời gian | Công cụ | Kết quả hỗ trợ |
+|---|---|---|
+| 29/10/2026 | Codex | Bản nháp trang chủ, CSS, mẫu header; kiểm tra bố cục và liên kết trong trang. |
+| 30/10/2026 | Gemini | Bổ sung logo đã xử lý và footer, chuẩn bị báo cáo. |
+| 31/10/2026 | Codex | Đối chiếu yêu cầu, chuẩn hóa cấu trúc file, tích hợp mẫu footer Nam, hợp nhất nhật ký, kiểm tra độc lập và bổ sung minh chứng. |
 
-### Bước 4 — Cập nhật nhánh GitHub và Bài làm 4 trên Docs — 31/10/2026
+**Đánh giá và xử lý:** Giữ nội dung, nhận diện, dữ liệu và bố cục phù hợp Bước 1–3. Điều chỉnh vị trí mã về cấu trúc gốc; loại bản sao trùng; sửa mô tả tài nguyên theo file thực tế. Bản PNG đang dùng là `images/logo.png`; bản gốc của Quyến ở Drive. Kết quả kiểm tra của Gemini tại bản trước không có minh chứng đi kèm nên được kiểm tra lại độc lập.
 
-- Người phụ trách: Nguyễn Quang Đức. Công cụ hỗ trợ: OpenAI Codex.
-- Yêu cầu thực tế: “tôi sẽ gửi bạn tk github để bạn sửa giúp tôi luôn, và ghi nội dung cần nộp trên docs giúp tôi”.
-- Thực hiện: dùng phiên trình duyệt đăng nhập tài khoản Đức để cập nhật `buoc4-duc`; đưa đủ mã và minh chứng về cấu trúc gốc, sau đó bỏ thư mục sao chép `lenly-buoc4/`. Không lưu thông tin đăng nhập vào repository hoặc tài liệu.
-- Kiểm tra: tại commit `8e19a4f`, toàn bộ cây file trên GitHub khớp bản cục bộ `23e6bd9` đã kiểm tra. `main` vẫn ở `55ab2d5`; không merge PR footer của Nam hoặc tự thay trạng thái WORKING SPACE.
-- Google Docs: điền tab [Bài làm 4](https://docs.google.com/document/d/1uIoFsaHZOZoELrRm6Y9PIP3tNZ9jMsXwfM6cFZjABJ8/edit?tab=t.e8hn99sxg0co), gồm đầu vào/kết quả, cấu trúc HTML/CSS, bảng kiểm tra, giới hạn bàn giao, sử dụng AI, ba câu trả lời kiến thức, ba ảnh và liên kết commit. Rà bản xuất sáu trang, chỉnh chú thích ảnh và câu hỏi không tách khỏi phần liên quan.
-- Giới hạn: các id và nội dung trên trang danh sách, chi tiết và giới thiệu còn phụ thuộc tác giả từng trang; báo cáo ghi đúng phạm vi riêng trang chủ. Đức vẫn là người đọc, kiểm tra và quyết định nghiệm thu cuối.
+**Kiểm tra kết quả:** Chromium tại viewport 1366/768/390 px; `scrollWidth` bằng `clientWidth` lần lượt 1351/753/375 px; không phát hiện ảnh lỗi trên trang chủ sau khi cuộn tải. Banner 2/2/1 cột, sản phẩm 4/2/1 cột, footer 4/2/1 cột. Nút bộ quà đến đúng fragment; skip link nhận Tab và có viền focus. Ảnh lưu trong `docs/minh-chung-buoc4/`.
+
+**Phạm vi:** Kiểm tra riêng trang chủ; nội dung và id trên các trang danh sách, chi tiết và giới thiệu được kiểm thử khi tích hợp. Không triển khai xử lý tìm kiếm, tính ngân sách hoặc đặt hàng trong Buổi 2. Việc nghiệm thu thuộc người phụ trách và nhóm; không suy ra đã nghiệm thu toàn website từ kết quả kiểm tra riêng trang chủ.
