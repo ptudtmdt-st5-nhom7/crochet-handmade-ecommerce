@@ -381,7 +381,9 @@ Tuy nhiên, mã nguồn do AI đề xuất cần được đối chiếu với c
 
 # BÁO CÁO ĐÁNH GIÁ VÀ XỬ LÝ ĐỀ XUẤT AI (BƯỚC 6B - TRANG GIỚI THIỆU ABOUT.HTML)
 ### Prompt chính
+**Nội dung prompt:**
 
+```text
 Prompt được sử dụng nhằm yêu cầu ChatGPT hỗ trợ xây dựng trang giới thiệu dựa trên cấu trúc và quy chuẩn giao diện hiện có của dự án.
 Nhóm tôi đang xây dựng trang about.html cho cửa hàng thương mại điện tử.
 
@@ -413,6 +415,8 @@ Yêu cầu:
 Không tự tạo thông tin kinh doanh không có trong dữ liệu.
 Chỉ cung cấp phần mã cần bổ sung hoặc chỉnh sửa.
 Không sử dụng JavaScript hoặc framework CSS. 
+```
+
 ## 1. Kết quả AI hỗ trợ
 * **Nội dung AI hỗ trợ:** 
   * Gợi ý cấu trúc HTML semantic cho trang giới thiệu (`about.html`), bao gồm việc phân chia các khối nội dung chính: Phần mở đầu thương hiệu (Hero), Lĩnh vực kinh doanh, Đối tượng khách hàng, Điểm nổi bật của cửa hàng và Thông tin liên hệ.
