@@ -1,11 +1,227 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Giới thiệu - Lenly Crochet</title>
-  <link rel="stylesheet" href="css/style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Lenly Crochet — sản phẩm móc len handmade, bộ quà theo ngân sách và đặt làm theo mẫu.">
+<title>Lenly Crochet — Giới thiệu cửa hàng</title>
+<link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="about-page">
+<a class="skip-link" href="#noi-dung">Đến nội dung chính</a>
+
+<header class="site-header">
+  <div class="container header-top">
+    <a class="site-brand" href="index.html" aria-label="Lenly Crochet — Trang chủ">
+      <img src="images/logo.png" alt="Lenly Crochet — Trang chủ" width="402" height="430">
+    </a>
+    <nav class="site-nav" aria-label="Điều hướng chính">
+      <a href="index.html">Trang chủ</a>
+      <a href="products.html">Sản phẩm</a>
+      <a href="about.html" aria-current="page">Giới thiệu</a>
+    </nav>
+    <p class="header-caption">Những món len, những lời thương.</p>
+  </div>
+  <div class="search-strip">
+    <div class="container search-inner">
+      <label for="site-search">Tìm một món len</label>
+      <div class="search-control">
+        <input id="site-search" type="search" placeholder="Bạn đang tìm món đồ len nào?" aria-describedby="search-note">
+        <button type="button" disabled>Tìm kiếm</button>
+      </div>
+      <p id="search-note">Giao diện minh họa, chưa hỗ trợ tìm kiếm.</p>
+    </div>
+  </div>
+</header>
+
+<main id="noi-dung">
+  <!-- 1. Hero Section: Giới thiệu chung -->
+  <section class="home-hero container" aria-labelledby="about-hero-title">
+    <div class="hero-copy">
+      <p class="eyebrow">CÂU CHUYỆN THƯƠNG HIỆU · LENLY CROCHET</p>
+      <h1 id="about-hero-title">Gửi gắm sự tỉ mỉ,<br><span>trao trọn yêu thương.</span></h1>
+      <p>Lenly Crochet được thành lập với niềm đam mê vô tận dành cho nghệ thuật thủ công. Chúng tôi chuyên cung cấp các sản phẩm móc len handmade tinh xảo, mang lại sự ấm áp và nét độc bản cho không gian sống cũng như những món quà ý nghĩa của bạn.</p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="products.html">Khám phá bộ sưu tập</a>
+        <a class="button button-secondary" href="#lien-he-chi-tiet">Liên hệ với chúng tôi</a>
+      </div>
+    </div>
+    <figure class="hero-image">
+      <img src="images/product-3.webp" alt="Sản phẩm móc len handmade tiêu biểu của Lenly Crochet" width="800" height="800" fetchpriority="high">
+      <figcaption>Từng mũi móc đong đầy sự tận tâm và tỉ mỉ.</figcaption>
+    </figure>
+  </section>
+
+  <!-- 2. Lĩnh vực kinh doanh -->
+  <section class="home-section container" aria-labelledby="business-field-title">
+    <div class="home-section-heading">
+      <p class="eyebrow">SẢN PHẨM ĐẶC TRƯNG</p>
+      <h2 id="business-field-title">Cửa hàng kinh doanh gì?</h2>
+      <p>Mỗi sản phẩm tại Lenly Crochet đều là một tác phẩm thủ công được đầu tư kỹ lưỡng về chất liệu và thiết kế:</p>
+    </div>
+    <div class="home-category-grid">
+      <div class="home-category">
+        <img src="images/product-1.webp" alt="Móc khóa len" width="400" height="300" loading="lazy">
+        <h3>Móc khóa len <span aria-hidden="true">↗</span></h3>
+        <p>Những món phụ kiện nhỏ xinh, dễ thương gắn liền với balo, túi xách hoặc chùm chìa khóa hằng ngày.</p>
+      </div>
+      <div class="home-category">
+        <img src="images/product-3.webp" alt="Thú len" width="400" height="300" loading="lazy">
+        <h3>Thú len <span aria-hidden="true">↗</span></h3>
+        <p>Những người bạn nhỏ nhắn, mềm mại với tạo hình ngộ nghĩnh, thích hợp trang trí góc nhỏ hoặc làm quà tặng.</p>
+      </div>
+      <div class="home-category">
+        <img src="images/product-5.webp" alt="Hoa len" width="400" height="300" loading="lazy">
+        <h3>Hoa len <span aria-hidden="true">↗</span></h3>
+        <p>Những bông hoa được móc kỳ công, gửi gắm thông điệp yêu thương bền đẹp qua thời gian.</p>
+      </div>
+      <div class="home-category">
+        <img src="images/product-7.webp" alt="Phụ kiện móc len" width="400" height="300" loading="lazy">
+        <h3>Phụ kiện móc len <span aria-hidden="true">↗</span></h3>
+        <p>Các sản phẩm thời trang và tiện ích hằng ngày mang lại nét tươi tắn, trẻ trung cho cuộc sống.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Đối tượng khách hàng -->
+  <section class="home-section container" aria-labelledby="customers-title">
+    <div class="about-customer-panel home-gift-panel">
+      <div class="about-customer-heading home-section-heading">
+        <p class="eyebrow">KHÁCH HÀNG MỤC TIÊU</p>
+        <h2 id="customers-title">Lenly Crochet dành cho ai?</h2>
+        <p>Chúng tôi luôn lắng nghe và thấu hiểu nhu cầu của từng nhóm khách hàng:</p>
+      </div>
+      <div class="about-customer-grid">
+        <div class="about-customer-card">
+          <div class="about-number">01</div>
+          <h3 class="about-customer-title">Học sinh, sinh viên & người đi làm trẻ</h3>
+          <p class="about-customer-description">Những người yêu thích phong cách dễ thương, mộc mạc, tìm kiếm những món quà mang dấu ấn cá nhân hoặc phụ kiện trang trí không gian sống, góc làm việc.</p>
+        </div>
+        <div class="about-customer-card">
+          <div class="about-number">02</div>
+          <h3 class="about-customer-title">Khách hàng tìm kiếm quà tặng</h3>
+          <p class="about-customer-description">Những ai đang muốn tìm kiếm các món quà thủ công ý nghĩa, tinh tế dành tặng bạn bè, người thương trong các dịp đặc biệt mà không có nhiều thời gian tự tay chuẩn bị.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Điểm nổi bật của cửa hàng -->
+  <section class="home-section container" aria-labelledby="highlights-title">
+    <div class="home-section-heading">
+      <p class="eyebrow">GIÁ TRỊ CỐT LÕI</p>
+      <h2 id="highlights-title">Điểm nổi bật của Lenly Crochet</h2>
+      <p>Cam kết mang lại trải nghiệm mua sắm và giá trị tốt nhất cho từng khách hàng:</p>
+    </div>
+    <div class="about-value-grid">
+      <article class="about-value-card">
+        <h3 class="about-value-title">✨ Sản phẩm thủ công tỉ mỉ</h3>
+        <p class="about-value-description">Mỗi sản phẩm tại Lenly Crochet đều được chăm chút qua từng mũi móc, đảm bảo tính thẩm mỹ, độ bền và sự độc bản.</p>
+      </article>
+      <article class="about-value-card">
+        <h3 class="about-value-title">🎁 Chọn quà theo ngân sách</h3>
+        <p class="about-value-description">Website hỗ trợ gợi ý và cấu hình sẵn các bộ quà tặng đa dạng mức giá, cho phép khách hàng linh hoạt thay đổi thành phần trong giới hạn cho phép mà vẫn kiểm soát được chi phí.</p>
+      </article>
+      <article class="about-value-card">
+        <h3 class="about-value-title">🧵 Đặt làm riêng linh hoạt</h3>
+        <p class="about-value-description">Cho phép cá nhân hóa món quà theo sở thích riêng (màu sắc, kích thước, mẫu mã) thông qua quy trình tư vấn và báo giá minh bạch từ cửa hàng.</p>
+      </article>
+      <article class="about-value-card">
+        <h3 class="about-value-title">📦 Đóng gói chu đáo</h3>
+        <p class="about-value-description">Cửa hàng hỗ trợ miễn phí công đóng gói hoàn chỉnh hoặc cung cấp đầy đủ hộp, túi, nơ, thiệp để khách hàng tự tay trang trí món quà gửi đến người nhận.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- 5. Thông tin liên hệ chi tiết -->
+  <section class="home-section container" id="lien-he-chi-tiet" aria-labelledby="about-contact-title">
+    <div class="about-contact-panel">
+      <p class="about-contact-eyebrow eyebrow">KẾT NỐI VỚI CHÚNG TÔI</p>
+      <h2 id="about-contact-title" class="about-contact-title">Thông tin liên hệ</h2>
+      <p class="about-contact-intro">Bạn có thắc mắc về sản phẩm hoặc muốn đặt làm món quà riêng theo yêu cầu? Hãy ghé thăm hoặc liên hệ trực tiếp với Lenly Crochet qua:</p>
+      <address class="about-contact-address">
+        <p>📞 <strong>Điện thoại:</strong> <a href="tel:0767916364" class="about-contact-link">0767916364</a></p>
+        <p>📍 <strong>Địa chỉ:</strong> 279 Nguyễn Tri Phương, phường Diên Hồng, TP. Hồ Chí Minh</p>
+        <p>✉️ <strong>Email:</strong> <a href="mailto:lenlycrochet@gmail.com" class="about-contact-link">lenlycrochet@gmail.com</a></p>
+      </address>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-brand">
+      <a class="site-footer-wordmark" href="index.html">
+        <span class="site-footer-name">Lenly</span>
+        <span class="site-footer-label">CROCHET</span>
+      </a>
+      <p class="site-footer-description">Lenly Crochet — Sản phẩm móc len, bộ quà theo ngân sách và những món quà mang dấu ấn riêng.</p>
+    </div>
+    <div class="site-footer-policy">
+      <h2>Thông tin chính sách</h2>
+      <ul>
+        <li>Hướng dẫn mua hàng</li>
+        <li>Chính sách thanh toán</li>
+        <li>Chính sách đổi trả</li>
+        <li>Chính sách vận chuyển</li>
+        <li>Chính sách bảo mật</li>
+      </ul>
+    </div>
+    <div class="site-footer-nav">
+      <nav aria-label="Liên kết nhanh">
+        <h2>Liên kết nhanh</h2>
+        <ul>
+          <li>
+            <a href="index.html">Trang chủ</a>
+          </li>
+          <li>
+            <a href="products.html">Sản phẩm</a>
+          </li>
+          <li>
+            <a href="about.html">Giới thiệu</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="site-footer-info">
+      <h2>Liên hệ</h2>
+      <address>
+        <p>Điện thoại: <a href="tel:0767916364">0767916364</a></p>
+        <p>Địa chỉ: 279 Nguyễn Tri Phương, phường Diên Hồng, TP. Hồ Chí Minh</p>
+        <p>Email: <a href="mailto:lenlycrochet@gmail.com">lenlycrochet@gmail.com</a></p>
+      </address>
+      <div class="site-footer-social">
+        <ul>
+          <li>
+            <span class="site-footer-social-icon" role="img" aria-label="Facebook" title="Facebook">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M14 22v-9h3l.5-4H14V7c0-1.2.4-2 2-2h2V1.4C17.3 1.2 16.1 1 15 1c-3 0-5 1.8-5 5v3H7v4h3v9z" />
+              </svg>
+            </span>
+          </li>
+          <li>
+            <span class="site-footer-social-icon" role="img" aria-label="TikTok" title="TikTok">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M16 2c.3 2.4 1.7 3.8 4 4v4a9 9 0 0 1-4-1v7a6 6 0 1 1-6-6v4a2 2 0 1 0 2 2V2z" />
+              </svg>
+            </span>
+          </li>
+          <li>
+            <span class="site-footer-social-icon" role="img" aria-label="Instagram" title="Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2" />
+                <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2" />
+                <circle cx="17.5" cy="6.5" r="1.2" />
+              </svg>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="site-footer-bottom">
+    <p class="site-footer-note">Website học tập thuộc môn Phát triển ứng dụng thương mại điện tử, Nhóm 7. Các thao tác mua hàng chỉ ở mức giao diện minh họa.</p>
+  </div>
+</footer>
 </body>
 </html>
