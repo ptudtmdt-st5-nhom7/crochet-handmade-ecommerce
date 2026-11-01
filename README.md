@@ -2,15 +2,36 @@
 
 Đồ án học phần **Phát triển ứng dụng TMĐT — Nhóm 7, ST5**.
 
-## Bản giao diện Buổi 2 trên nhánh `buoc4-duc`
+## Bản giao diện Buổi 2 — tích hợp bốn trang
 
-Mở `index.html` ngay tại thư mục gốc bằng Chrome để xem trang chủ Lenly Crochet; không cần cài thư viện. Có thể chạy máy chủ tĩnh từ thư mục gốc nếu muốn kiểm tra qua HTTP.
+Bản này được rà soát từ ZIP nhánh `integration/buoi2` do nhóm cung cấp sau khi ghép Nam → Đức → Bảo → Khanh → Tuấn. Chỉ dùng HTML5/CSS3 thuần; không cần npm hoặc cơ sở dữ liệu để xem giao diện.
 
-Trang chủ đã có header/menu/tìm kiếm minh họa, banner, danh mục, sản phẩm nổi bật, bộ quà, đặt làm, giới thiệu ngắn, logo và footer. `products.html`, `product-detail.html`, `about.html` hiện là khung có footer của Nam, chờ nội dung của Bảo, Khanh và Tuấn. Các liên kết đến nhóm hàng, thông tin nhanh và đặt làm đang chờ các trang này tạo đúng `id`.
+| Trang | Nội dung hiện có |
+| --- | --- |
+| `index.html` | Trang chủ, banner, bốn danh mục, sản phẩm nổi bật, giới thiệu bộ quà và đặt làm |
+| `products.html` | Tám sản phẩm, liên kết danh mục và thông tin nhanh; TL-001 có trang chi tiết riêng |
+| `product-detail.html` | Thú len thỏ TL-001: ảnh, giá, thuộc tính, mô tả, chăm sóc và nút mua minh họa |
+| `about.html` | Giới thiệu, nhóm khách hàng, giá trị cửa hàng, liên hệ |
 
-Buổi 2 dùng HTML5/CSS3 thuần, không dùng JavaScript hoặc framework CSS. Tìm kiếm, tính ngân sách và đặt hàng chưa có xử lý. Phần công nghệ và yêu cầu Chương 1 bên dưới mô tả kế hoạch toàn đồ án, không phải khả năng đang chạy của bản giao diện này.
+### Cách mở và kiểm tra
 
-Xem [báo cáo Bước 4](docs/bai-lam-4.md), [quy ước sử dụng thành phần chung](docs/quy-uoc.md) và [ảnh minh chứng](docs/minh-chung-buoc4/). [Website trình diễn](https://ptudtmdt-st5-nhom7.github.io/crochet-handmade-ecommerce/) sử dụng nhánh `buoc4-duc`.
+- Giải nén, mở `index.html` bằng Chrome/Edge; giữ nguyên thư mục `css/` và `images/` bên cạnh bốn trang.
+- Nếu máy có Python, mở terminal tại thư mục dự án, chạy `python -m http.server 8000` rồi truy cập `http://localhost:8000/index.html`. Có thể dùng VS Code Live Server thay thế.
+- Mở DevTools → thanh thiết bị → đặt chiều rộng lần lượt 1366, 768 và 390 px; xem cả bốn trang, cuộn hết trang và kiểm tra ảnh, cột sản phẩm, menu, footer, thanh cuộn ngang.
+- Dùng phím Tab để xem viền focus và skip link; dùng chuột kiểm tra hover. Bấm các danh mục, thông tin nhanh, liên hệ và liên kết quay lại.
+- Xem [báo cáo rà soát và danh sách kiểm thử](docs/kiem-thu-tich-hop-buoi2.md). Kiểm tra mã nguồn đã chạy; kiểm thử hiển thị sau sửa trên trình duyệt còn chờ nhóm thực hiện. Ảnh cũ trong `docs/minh-chung-buoc4/` chỉ minh chứng trang chủ ở giai đoạn Bước 4.
+
+### Phạm vi và giới hạn
+
+Tìm kiếm, tính ngân sách, đăng nhập, giỏ hàng và thanh toán chưa có xử lý. Nút tìm kiếm và mua hàng được vô hiệu hóa có ghi chú. Bảy sản phẩm ngoài TL-001 dùng mục thông tin nhanh trong trang danh sách. Ảnh, giá và thông số là dữ liệu minh họa. Công nghệ và chức năng ở phần hồ sơ Chương 1 bên dưới là kế hoạch toàn đồ án, không phải khả năng đang chạy của bản Buổi 2.
+
+[Website trình diễn](https://ptudtmdt-st5-nhom7.github.io/crochet-handmade-ecommerce/) có thể đang phục vụ nhánh khác; kiểm tra Settings → Pages trước khi dùng làm minh chứng bản tích hợp. Chưa tự thay đổi cấu hình Pages.
+
+### Đóng góp Buổi 2 và cập nhật bản ghép
+
+Các nhánh được nhóm ghép qua PR #15–#19: Nam chuẩn bị cấu trúc/dữ liệu/ảnh/footer; Đức làm trang chủ và thành phần chung; Bảo làm danh sách; Khanh làm chi tiết; Tuấn làm giới thiệu. Đây là phần đối chiếu từ mã và PR nhóm cung cấp, không thay thế bảng phân công hoặc xác nhận nghiệm thu của nhóm. Logo của Quyến được ghi trong báo cáo Bước 4. Công việc thiết kế, kiểm thử và hồ sơ còn lại theo bảng phân công của nhóm.
+
+Bản rà soát bổ sung sửa liên kết, phạm vi CSS, nội dung trích dẫn và responsive trang giới thiệu; cập nhật quy ước, báo cáo và nhật ký AI. Nhóm cần kiểm tra rồi commit lên `integration/buoi2` trước khi mở PR vào main. Khi main có nhật ký AI mới, đối chiếu và giữ cả nội dung mới; không ghi đè nguyên main bằng bản ZIP.
 
 ## 1. Giới thiệu
 

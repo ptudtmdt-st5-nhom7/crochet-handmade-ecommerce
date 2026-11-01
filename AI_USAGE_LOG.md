@@ -591,3 +591,18 @@ Không sử dụng JavaScript hoặc framework CSS. 
 
 **Người thực hiện:** Nguyễn Anh Tuấn
 
+
+
+---
+
+### Rà soát bản tích hợp Buổi 2 — 01/11/2026
+
+- Công cụ: ChatGPT / OpenAI Codex.
+- Người thực hiện rà soát mã và chỉnh sửa: AI theo yêu cầu người dùng trong phiên làm việc này. Người phê duyệt/kiểm tra của nhóm: chưa ghi nhận; không tự gán tên sinh viên.
+- Yêu cầu tóm tắt theo hội thoại: kiểm tra khả năng ghép năm nhánh vào main; sau khi nhóm ghép vào `integration/buoi2`, rà soát bản ZIP thực tế và sửa lỗi liên kết/CSS/nội dung trước khi đưa vào main.
+- Đầu vào: ZIP bản ghép và hai PDF yêu cầu học phần do nhóm cung cấp; kế thừa HTML/CSS của các thành viên. Không truy cập hoặc thay đổi GitHub trong lượt chỉnh sửa bản ZIP.
+- Kết quả: sửa tám liên kết không có đích, thêm bốn ID danh mục, bỏ 13 token trích dẫn trên giao diện, chuyển event handler hover và inline style trang giới thiệu sang CSS; giới hạn CSS danh sách trong `.products-page`; chỉnh responsive panel giới thiệu; bỏ dấu trang hiện tại sai ở menu chi tiết; cập nhật README/quy ước và báo cáo kiểm thử.
+- Kiểm tra đã chạy: phân tích HTML bốn trang; 102 tham chiếu cục bộ khớp file/ID đích, 28 thẻ ảnh có file và alt; đủ tám thẻ sản phẩm; không còn conflict, ID trùng, script hoặc event handler; mỗi trang có một header/main/footer/h1.
+- Giới hạn: môi trường không khởi tạo được trình duyệt, nên chưa có số đo/ảnh hiển thị sau sửa. Nguy cơ tràn ngang được xử lý ở mức mã, chưa được xác nhận đã hết bằng trình duyệt.
+- Hai ví dụ cần nhóm phản biện và kiểm chứng: liên kết sai đích và CSS ảnh hưởng chéo/responsive, có hướng kiểm thử tại `docs/kiem-thu-tich-hop-buoi2.md`.
+- Quyết định giữ/sửa/bỏ và người kiểm tra của nhóm: chờ nhóm mở bản sửa, thử và ghi nhận thực tế. Không coi kết quả AI là nghiệm thu cuối.
