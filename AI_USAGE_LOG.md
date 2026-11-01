@@ -606,3 +606,14 @@ Không sử dụng JavaScript hoặc framework CSS. 
 - Giới hạn: môi trường không khởi tạo được trình duyệt, nên chưa có số đo/ảnh hiển thị sau sửa. Nguy cơ tràn ngang được xử lý ở mức mã, chưa được xác nhận đã hết bằng trình duyệt.
 - Hai ví dụ cần nhóm phản biện và kiểm chứng: liên kết sai đích và CSS ảnh hưởng chéo/responsive, có hướng kiểm thử tại `docs/kiem-thu-tich-hop-buoi2.md`.
 - Quyết định giữ/sửa/bỏ và người kiểm tra của nhóm: chờ nhóm mở bản sửa, thử và ghi nhận thực tế. Không coi kết quả AI là nghiệm thu cuối.
+
+
+## 01/11/2026 — Tách trang chi tiết và sửa liên kết sau cập nhật của Khanh
+
+- Công cụ: ChatGPT/Codex.
+- Người yêu cầu: Nam; người kiểm tra kết quả cuối: chờ nhóm xác nhận.
+- Mục đích/prompt: Tách 8 trang HTML đang nối trong product-detail.html thành các file riêng và nối đúng 8 nút Xem chi tiết.
+- Nội dung sản phẩm: sử dụng nội dung Khanh đã bổ sung trong bản main được cung cấp. AI hỗ trợ tách file và sửa tích hợp.
+- Thay đổi: giữ product-detail.html cho TL-001; tạo 7 file product-[ma].html; sửa 7 liên kết trong products.html; bỏ aria-current trên liên kết Sản phẩm ở trang chi tiết.
+- Kiểm tra: kiểm tra tĩnh cấu trúc từng trang, đường dẫn nội bộ, ID, tên, ảnh và giá so với danh sách. Chưa kiểm thử giao diện bản mới trên trình duyệt.
+- Quyết định: người yêu cầu đồng ý phương án tách file; nghiệm thu cuối sau khi bấm thử đủ 8 nút và kiểm tra responsive.
