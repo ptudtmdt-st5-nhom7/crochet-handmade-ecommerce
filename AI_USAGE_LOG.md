@@ -383,8 +383,8 @@ Tuy nhiên, mã nguồn do AI đề xuất cần được đối chiếu với c
 ### Prompt chính
 **Nội dung prompt:**
 
-```text
 Prompt được sử dụng nhằm yêu cầu ChatGPT hỗ trợ xây dựng trang giới thiệu dựa trên cấu trúc và quy chuẩn giao diện hiện có của dự án.
+```text
 Nhóm tôi đang xây dựng trang about.html cho cửa hàng thương mại điện tử.
 
 Thông tin cửa hàng:
@@ -439,5 +439,5 @@ Không sử dụng JavaScript hoặc framework CSS. 
   * Chuẩn hóa lại các đường dẫn tệp (hình ảnh, CSS) sử dụng đường dẫn tương đối đúng chuẩn của nhóm (ví dụ: `images/product-1.webp`, `css/style.css`).
   * Rà soát kỹ lưỡng nội dung text hiển thị trên giao diện, đảm bảo bám sát đúng 100% dữ liệu thống nhất của cửa hàng Lenly Crochet (số điện thoại `0767916364`, địa chỉ `279 Nguyễn Tri Phương, phường Diên Hồng, TP. Hồ Chí Minh`, email `lenlycrochet@gmail.com`) và loại bỏ hoàn toàn các thông tin giả lập không có thật.
 
-
+**Người thực hiện:** Nguyễn Anh Tuấn
 
