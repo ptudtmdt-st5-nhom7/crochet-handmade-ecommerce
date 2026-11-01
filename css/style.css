@@ -143,6 +143,11 @@ button,input { font:inherit; }
   display: block;
 }
 
+.site-footer-wordmark img {
+  width: 108px;
+  height: auto;
+}
+
 .site-footer-name {
   font-family: Georgia, serif;
   font-size: 32px;
