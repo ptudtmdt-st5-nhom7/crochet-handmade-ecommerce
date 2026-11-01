@@ -376,6 +376,30 @@ Tuy nhiên, mã nguồn do AI đề xuất cần được đối chiếu với c
 - **Kiểm tra:** Đối chiếu các quy tắc CSS mới với CSS dùng chung, kiểm tra đường dẫn tài nguyên và khả năng hiển thị trên nhiều kích thước màn hình.
 - **Cần xác minh:** Giá bán và thông số sản phẩm trước khi sử dụng làm dữ liệu chính thức.
 
+# BÁO CÁO ĐÁNH GIÁ VÀ XỬ LÝ ĐỀ XUẤT AI (BƯỚC 6B - TRANG GIỚI THIỆU ABOUT.HTML)
+
+## 1. Kết quả AI hỗ trợ
+* **Nội dung AI hỗ trợ:** 
+  * Gợi ý cấu trúc HTML semantic cho trang giới thiệu (`about.html`), bao gồm việc phân chia các khối nội dung chính: Phần mở đầu thương hiệu (Hero), Lĩnh vực kinh doanh, Đối tượng khách hàng, Điểm nổi bật của cửa hàng và Thông tin liên hệ.
+  * Đề xuất bổ sung các lớp CSS (classes) và định dạng bố cục sử dụng Flexbox/Grid sao cho đồng bộ với trang chủ (`index.html`) và phong cách nhận diện chung của Lenly Crochet (tông màu hồng đất `#8F4558`, màu nền `#FFF9F4`).
+  * Cải tiến giao diện các khối thông tin (đối tượng khách hàng và giá trị cốt lõi) thành dạng thẻ (card) có hiệu ứng chuyển động mượt mà và bóng đổ giúp trang web sinh động, chuyên nghiệp hơn.
+
+## 2. Đánh giá kết quả AI
+* **Ưu điểm:** 
+  * Các thẻ HTML semantic sử dụng chính xác (`<header>`, `<main>`, `<section>`, `<article>`, `<address>`), giúp cấu trúc mã nguồn sáng sủa, chuẩn SEO và hỗ trợ tốt cho khả năng truy cập (accessibility).
+  * Bố cục do AI gợi ý đáp ứng tốt tiêu chí hiển thị linh hoạt trên nhiều thiết bị (Responsive tốt từ máy tính đến điện thoại) nhờ áp dụng mô hình Grid/Flexbox co giãn linh hoạt.
+* **Nhược điểm / Điểm cần lưu ý:**
+  * Một số đoạn mã do AI sinh ra ban đầu có thể sử dụng inline style, cần được kiểm soát để đảm bảo tuân thủ quy tắc tổ chức CSS chung của nhóm.
+  * Các thông tin kinh doanh sinh ra cần phải được rà soát lại để khớp tuyệt đối với dữ liệu thực tế của nhóm (tên cửa hàng, thông tin liên hệ, lĩnh vực kinh doanh) mà không bịa đặt thêm các chính sách ngoài luồng.
+
+## 3. Quyết định xử lý của thành viên
+* **Áp dụng:** 
+  * Tiếp thu cấu trúc phân chia các phần rõ ràng (tiêu đề, lĩnh vực kinh doanh, đối tượng khách hàng, điểm nổi bật và thông tin liên hệ) để đưa vào trang `about.html`.
+  * Giữ lại phần chân trang (`site-footer`) dùng chung của nhóm để đảm bảo sự đồng bộ xuyên suốt qua các trang HTML.
+* **Điều chỉnh:** 
+  * Chuẩn hóa lại các đường dẫn tệp (hình ảnh, CSS) sử dụng đường dẫn tương đối đúng chuẩn của nhóm (ví dụ: `images/product-1.webp`, `css/style.css`).
+  * Rà soát kỹ lưỡng nội dung text hiển thị trên giao diện, đảm bảo bám sát đúng 100% dữ liệu thống nhất của cửa hàng Lenly Crochet (số điện thoại `0767916364`, địa chỉ `279 Nguyễn Tri Phương, phường Diên Hồng, TP. Hồ Chí Minh`, email `lenlycrochet@gmail.com`) và loại bỏ hoàn toàn các thông tin giả lập không có thật.
+
 **Người thực hiện:** Đỗ Trọng Khanh
 
 **Người kiểm tra:** Nguyễn Thanh Nam
