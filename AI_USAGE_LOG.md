@@ -255,3 +255,259 @@ Các chức năng bổ trợ như danh sách yêu thích được đưa vào nh�
 - Kết quả: thay tám ảnh `images/product-1.png` đến `product-8.png` bằng các file WebP Nam cung cấp; cập nhật đường dẫn trong `docs/products-data.md`. Không chỉnh nội dung ảnh.
 - Kiểm tra: nhận dạng header WebP, đối chiếu SHA-256 bản sao với nguồn, kiểm tra đường dẫn mới và tham chiếu PNG cũ.
 - Quyết định của Nam: dùng WebP thay PNG. Đánh giá/người kiểm tra của nhóm: chưa ghi nhận.
+
+
+<section id="step-6a-ai-log">
+    <h2>2.3. Bước 6A – Sử dụng ChatGPT hỗ trợ xây dựng trang chi tiết sản phẩm</h2>
+
+    <h3>Thông tin sử dụng</h3>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Mã ghi nhận</th>
+                <td>AI-03 / Bước 6A</td>
+            </tr>
+            <tr>
+                <th>Ngày sử dụng</th>
+                <td>01/11/2026</td>
+            </tr>
+            <tr>
+                <th>Công cụ AI</th>
+                <td>ChatGPT (OpenAI)</td>
+            </tr>
+            <tr>
+                <th>Người thực hiện</th>
+                <td>Đỗ Trọng Khanh</td>
+            </tr>
+            <tr>
+                <th>Người kiểm tra</th>
+                <td>Nguyễn Thanh Nam</td>
+            </tr>
+            <tr>
+                <th>Nhiệm vụ</th>
+                <td>
+                    Xây dựng giao diện trang chi tiết sản phẩm
+                    (product-detail.html) và bổ sung CSS tương ứng
+                    cho website kinh doanh sản phẩm móc len handmade.
+                </td>
+            </tr>
+            <tr>
+                <th>Mục đích</th>
+                <td>
+                    Hỗ trợ xây dựng cấu trúc HTML và CSS cho trang
+                    chi tiết sản phẩm; bảo đảm giao diện thống nhất
+                    với các trang hiện có, hiển thị đầy đủ thông tin
+                    sản phẩm và tương thích với nhiều kích thước màn hình.
+                </td>
+            </tr>
+            <tr>
+                <th>Đầu vào</th>
+                <td>
+                    Tài liệu yêu cầu dự án T05, quy trình nghiệp vụ
+                    tại T06, mã nguồn trang chủ và CSS dùng chung
+                    của website, thông tin sản phẩm Thú len thỏ (TL-001).
+                </td>
+            </tr>
+            <tr>
+                <th>Phạm vi thực hiện</th>
+                <td>
+                    Xây dựng trang product-detail.html và bổ sung
+                    CSS riêng cho trang chi tiết sản phẩm vào
+                    khu vực tương ứng trong css/style.css.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Prompt chính</h3>
+
+    <pre><code>Bạn là chuyên gia phát triển giao diện website thương mại điện tử
+sử dụng HTML5 và CSS3.
+
+Tôi đang thực hiện Bước 6A: xây dựng trang chi tiết sản phẩm
+(product-detail.html) cho website kinh doanh sản phẩm móc len handmade.
+
+Thông tin và yêu cầu dự án:
+
+- Website kinh doanh sản phẩm móc len handmade, bao gồm sản phẩm
+  làm sẵn và sản phẩm đặt làm theo mẫu.
+- Dự án sử dụng HTML5 và CSS3.
+- Không sử dụng JavaScript, backend, cơ sở dữ liệu hoặc tích hợp
+  thanh toán thực tế.
+- Website đã có các trang index.html, products.html và about.html.
+- Các trang sử dụng chung header, footer và file css/style.css.
+- Cần giữ nguyên cấu trúc, màu sắc, kiểu chữ và quy chuẩn giao diện
+  đã được sử dụng trong các trang hiện có.
+
+Thông tin sản phẩm cần xây dựng trang chi tiết:
+
+- Mã sản phẩm: TL-001.
+- Tên sản phẩm: Thú len thỏ.
+- Giá minh họa: 125.000đ.
+- Danh mục: Thú len.
+- Màu sắc: Kem phối hồng pastel.
+- Kích thước: Cao khoảng 18 cm, tính cả tai.
+- Chất liệu: Sợi cotton milk, bông nhồi polyester và chỉ thêu.
+- Mô tả: Bạn thỏ tai dài với dáng ngồi dễ thương, thích hợp đặt
+  ở góc học tập hoặc bàn làm việc. Chiếc nơ nhỏ tạo thêm nét
+  ngọt ngào cho món quà.
+- Hình ảnh: images/product-3.webp.
+
+Yêu cầu thực hiện:
+
+1. Xây dựng cấu trúc HTML hoàn chỉnh cho product-detail.html.
+2. Tái sử dụng header và footer theo trang chủ, không tự ý thay đổi
+   cấu trúc chung của website.
+3. Thiết kế breadcrumb giúp người dùng xác định vị trí hiện tại.
+4. Bố trí hình ảnh và thông tin sản phẩm theo dạng hai cột trên
+   màn hình lớn, chuyển thành một cột trên thiết bị di động.
+5. Hiển thị mã sản phẩm, tên, giá, mô tả, danh mục, màu sắc,
+   kích thước và chất liệu.
+6. Bổ sung các nội dung hỗ trợ như đặc điểm thiết kế, chất liệu
+   và hướng dẫn bảo quản.
+7. Bổ sung nút mua hàng nhưng phải thể hiện rõ đây chỉ là giao diện
+   minh họa, chưa có chức năng giỏ hàng hoặc đặt hàng thực tế.
+8. Viết CSS riêng cho trang chi tiết sản phẩm, bổ sung vào khu vực
+   dành cho Bước 6A trong css/style.css.
+9. Không ghi đè hoặc xóa các CSS đã được sử dụng bởi những trang khác.
+10. Bảo đảm giao diện responsive trên desktop, tablet và mobile.
+
+Hãy cung cấp mã HTML và CSS rõ ràng, có chú thích cần thiết,
+dễ tích hợp vào mã nguồn hiện tại. Nếu có thông tin chưa được
+xác nhận, hãy đánh dấu là thông tin minh họa thay vì tự khẳng định.</code></pre>
+
+    <h3>Kết quả AI hỗ trợ</h3>
+
+    <p><strong>a. Xây dựng cấu trúc trang HTML</strong></p>
+
+    <ul>
+        <li>
+            Tạo cấu trúc trang product-detail.html theo HTML5,
+            bao gồm phần khai báo tài liệu, metadata, liên kết CSS
+            và nội dung chính.
+        </li>
+        <li>
+            Tái sử dụng header và footer theo cấu trúc của trang chủ,
+            bảo đảm sự thống nhất trong điều hướng và nhận diện thương hiệu.
+        </li>
+        <li>
+            Bổ sung breadcrumb với các cấp điều hướng:
+            Trang chủ → Sản phẩm → Thú len thỏ.
+        </li>
+        <li>
+            Bố trí khu vực chi tiết sản phẩm gồm hình ảnh, mã sản phẩm,
+            tên sản phẩm, giá bán, mô tả và thông số kỹ thuật.
+        </li>
+        <li>
+            Bổ sung liên kết quay lại danh sách sản phẩm và khu vực
+            giới thiệu thêm về thiết kế, chất liệu và cách bảo quản.
+        </li>
+    </ul>
+
+    <p><strong>b. Xây dựng CSS cho trang chi tiết sản phẩm</strong></p>
+
+    <ul>
+        <li>
+            Thiết kế bố cục hai cột, phân chia khu vực hình ảnh
+            và khu vực thông tin sản phẩm.
+        </li>
+        <li>
+            Bổ sung các thành phần giao diện như breadcrumb,
+            giá sản phẩm, thông số kỹ thuật, nút thao tác,
+            thẻ thông tin bổ sung và khu vực điều hướng cuối trang.
+        </li>
+        <li>
+            Sử dụng các biến màu và quy chuẩn kiểu chữ có sẵn
+            trong file CSS chung của dự án.
+        </li>
+        <li>
+            Bổ sung quy tắc responsive để điều chỉnh bố cục
+            trên desktop, tablet và mobile.
+        </li>
+        <li>
+            Giới hạn phạm vi chỉnh sửa trong khu vực CSS dành cho
+            trang chi tiết sản phẩm, tránh ảnh hưởng đến các trang khác.
+        </li>
+    </ul>
+
+    <p><strong>c. Bổ sung nội dung và giới hạn chức năng</strong></p>
+
+    <ul>
+        <li>
+            Bổ sung thông tin mô tả và thông số của sản phẩm
+            Thú len thỏ (TL-001) để minh họa cách trình bày
+            nội dung chi tiết sản phẩm.
+        </li>
+        <li>
+            Bổ sung hướng dẫn bảo quản sản phẩm ở mức khuyến nghị
+            chung, không trình bày như chính sách chính thức của cửa hàng.
+        </li>
+        <li>
+            Nút mua hàng được thiết lập ở trạng thái vô hiệu hóa
+            để tránh tạo cảm giác website đã có chức năng đặt hàng thực tế.
+        </li>
+        <li>
+            Ghi chú rõ giá và thông số sản phẩm đang được sử dụng
+            với mục đích minh họa, cần được xác minh trước khi sử dụng
+            như dữ liệu kinh doanh chính thức.
+        </li>
+    </ul>
+
+    <h3>Đánh giá kết quả AI</h3>
+
+    <p>
+        Kết quả ChatGPT cung cấp cấu trúc HTML và CSS tương đối đầy đủ
+        cho trang chi tiết sản phẩm, giúp rút ngắn thời gian xây dựng
+        giao diện và bảo đảm tính nhất quán với hệ thống trang hiện có.
+        Các thành phần được đề xuất phù hợp với mục tiêu cung cấp
+        thông tin sản phẩm, hỗ trợ khách hàng tham khảo trước khi
+        đưa ra quyết định mua hàng.
+    </p>
+
+    <p>
+        Tuy nhiên, mã nguồn do AI đề xuất cần được đối chiếu với
+        cấu trúc thực tế của dự án trước khi tích hợp. Đặc biệt,
+        việc tái sử dụng header, footer, các biến CSS và tên lớp
+        cần bảo đảm không gây trùng lặp hoặc ghi đè những quy tắc
+        đang được sử dụng ở các trang khác. Một số thông tin như
+        giá bán, kích thước, chất liệu và hướng dẫn bảo quản cũng
+        chưa được xác nhận là dữ liệu chính thức của cửa hàng.
+    </p>
+
+    <h3>Quyết định xử lý của thành viên phụ trách</h3>
+
+    <ul>
+        <li>
+            <strong>Tiếp nhận:</strong> Sử dụng cấu trúc HTML5,
+            breadcrumb, bố cục hình ảnh - thông tin sản phẩm
+            và các khu vực nội dung bổ sung do AI đề xuất.
+        </li>
+        <li>
+            <strong>Điều chỉnh:</strong> Tích hợp header và footer
+            theo mã nguồn trang chủ; điều chỉnh đường dẫn hình ảnh,
+            liên kết điều hướng và tên lớp CSS theo cấu trúc dự án.
+        </li>
+        <li>
+            <strong>Điều chỉnh phạm vi:</strong> Không triển khai
+            chức năng mua hàng, giỏ hàng hoặc thanh toán thực tế
+            trong bước xây dựng giao diện này.
+        </li>
+        <li>
+            <strong>Kiểm tra:</strong> Đối chiếu các quy tắc CSS mới
+            với CSS dùng chung, kiểm tra đường dẫn tài nguyên
+            và khả năng hiển thị trên nhiều kích thước màn hình.
+        </li>
+        <li>
+            <strong>Cần xác minh:</strong> Giá bán và thông số sản phẩm
+            trước khi sử dụng làm dữ liệu chính thức.
+        </li>
+    </ul>
+
+    <p>
+        <strong>Người thực hiện:</strong> Đỗ Trọng Khanh
+        <br>
+        <strong>Người kiểm tra:</strong> Nguyễn Thanh Nam
+    </p>
+</section>
+
