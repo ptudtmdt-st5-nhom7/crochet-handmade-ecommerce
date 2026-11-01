@@ -375,9 +375,44 @@ Tuy nhiên, mã nguồn do AI đề xuất cần được đối chiếu với c
 - **Điều chỉnh phạm vi:** Không triển khai chức năng mua hàng, giỏ hàng hoặc thanh toán thực tế trong bước xây dựng giao diện này.
 - **Kiểm tra:** Đối chiếu các quy tắc CSS mới với CSS dùng chung, kiểm tra đường dẫn tài nguyên và khả năng hiển thị trên nhiều kích thước màn hình.
 - **Cần xác minh:** Giá bán và thông số sản phẩm trước khi sử dụng làm dữ liệu chính thức.
+**Người thực hiện:** Đỗ Trọng Khanh
+
+**Người kiểm tra:** Nguyễn Thanh Nam
 
 # BÁO CÁO ĐÁNH GIÁ VÀ XỬ LÝ ĐỀ XUẤT AI (BƯỚC 6B - TRANG GIỚI THIỆU ABOUT.HTML)
+### Prompt chính
 
+Prompt được sử dụng nhằm yêu cầu ChatGPT hỗ trợ xây dựng trang giới thiệu dựa trên cấu trúc và quy chuẩn giao diện hiện có của dự án.
+Nhóm tôi đang xây dựng trang about.html cho cửa hàng thương mại điện tử.
+
+Thông tin cửa hàng:
+- Tên: Lenly Crochet
+- Lĩnh vực: chuyên cung cấp các sản phẩm móc len handmade tinh xảo và độc đáo dành cho những ai yêu thích sự tỉ mỉ, ấm áp của đồ thủ công
+- Đối tượng khách hàng: Học sinh, sinh viên và người đi làm trẻ: Những người yêu thích phong cách dễ thương, mộc mạc, tìm kiếm những món quà mang dấu ấn cá nhân hoặc phụ kiện trang trí không gian sống, góc làm việc.
+- Khách hàng tìm kiếm quà tặng: Những ai đang muốn tìm kiếm các món quà thủ công ý nghĩa, tinh tế dành tặng bạn bè, người thương trong các dịp đặc biệt mà không có nhiều thời gian tự tay chuẩn bị.
+- Điểm nổi bật:
+  - Sản phẩm thủ công tỉ mỉ: Mỗi sản phẩm tại Lenly Crochet đều được chăm chút qua từng mũi móc, đảm bảo tính thẩm mỹ, độ bền và sự độc bản.
+  - Linh hoạt chọn quà theo ngân sách: Website hỗ trợ gợi ý và cấu hình sẵn các bộ quà tặng đa dạng mức giá, cho phép khách hàng linh hoạt thay đổi thành phần trong giới hạn cho phép mà vẫn kiểm soát được chi phí.
+  - Dịch vụ đặt làm riêng linh hoạt: Cho phép cá nhân hóa món quà theo sở thích riêng (màu sắc, kích thước, mẫu mã) thông qua quy trình tư vấn và báo giá minh bạch từ cửa hàng
+  - Chính sách đóng gói chu đáo: Cửa hàng hỗ trợ miễn phí công đóng gói hoàn chỉnh hoặc cung cấp đầy đủ hộp, túi, nơ, thiệp để khách hàng tự tay trang trí món quà gửi đến người nhận
+  - HTML/CSS hiện tại:
+- <index.html>
+- <product-detail.html>
+
+
+Hãy giúp nhóm hoàn thiện trang giới thiệu.
+
+Yêu cầu:
+1. Nội dung được chia thành các phần rõ ràng.
+2. Có tiêu đề, đoạn giới thiệu và hình ảnh phù hợp.
+3. Bố cục dễ đọc, khoảng cách hợp lý.
+4. Sử dụng HTML semantic khi phù hợp.
+5. Phong cách nhất quán với các trang khác.
+6. Có thể hiển thị tốt trên điện thoại.
+
+Không tự tạo thông tin kinh doanh không có trong dữ liệu.
+Chỉ cung cấp phần mã cần bổ sung hoặc chỉnh sửa.
+Không sử dụng JavaScript hoặc framework CSS. 
 ## 1. Kết quả AI hỗ trợ
 * **Nội dung AI hỗ trợ:** 
   * Gợi ý cấu trúc HTML semantic cho trang giới thiệu (`about.html`), bao gồm việc phân chia các khối nội dung chính: Phần mở đầu thương hiệu (Hero), Lĩnh vực kinh doanh, Đối tượng khách hàng, Điểm nổi bật của cửa hàng và Thông tin liên hệ.
@@ -400,7 +435,5 @@ Tuy nhiên, mã nguồn do AI đề xuất cần được đối chiếu với c
   * Chuẩn hóa lại các đường dẫn tệp (hình ảnh, CSS) sử dụng đường dẫn tương đối đúng chuẩn của nhóm (ví dụ: `images/product-1.webp`, `css/style.css`).
   * Rà soát kỹ lưỡng nội dung text hiển thị trên giao diện, đảm bảo bám sát đúng 100% dữ liệu thống nhất của cửa hàng Lenly Crochet (số điện thoại `0767916364`, địa chỉ `279 Nguyễn Tri Phương, phường Diên Hồng, TP. Hồ Chí Minh`, email `lenlycrochet@gmail.com`) và loại bỏ hoàn toàn các thông tin giả lập không có thật.
 
-**Người thực hiện:** Đỗ Trọng Khanh
 
-**Người kiểm tra:** Nguyễn Thanh Nam
 
