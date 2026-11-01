@@ -204,7 +204,6 @@ ChatGPT cũng chỉ ra một số chức năng có thể được thu hẹp ho�
 **Người kiểm tra:** Quang Đức
 
 ---
-
 ## 2.3. Buổi 2 – Dùng ChatGPT soạn dữ liệu 8 sản phẩm
 
 | Trường thông tin | Nội dung |
@@ -365,6 +364,7 @@ Các chức năng bổ trợ như danh sách yêu thích được đưa vào nh�
 | Đức | Kiểm tra chéo hồ sơ, nội dung đối chiếu và minh chứng trước khi bàn giao tại T11 |
 | Cả nhóm | Xác minh nội dung do AI đề xuất và chịu trách nhiệm về quyết định cuối cùng |
 
+
 ---
 
 
@@ -397,3 +397,188 @@ Các chức năng bổ trợ như danh sách yêu thích được đưa vào nh�
 **Kiểm tra kết quả:** Chromium tại viewport 1366/768/390 px; `scrollWidth` bằng `clientWidth` lần lượt 1351/753/375 px; không phát hiện ảnh lỗi trên trang chủ sau khi cuộn tải. Banner 2/2/1 cột, sản phẩm 4/2/1 cột, footer 4/2/1 cột. Nút bộ quà đến đúng fragment; skip link nhận Tab và có viền focus. Ảnh lưu trong `docs/minh-chung-buoc4/`.
 
 **Phạm vi:** Kiểm tra riêng trang chủ; nội dung và id trên các trang danh sách, chi tiết và giới thiệu được kiểm thử khi tích hợp. Không triển khai xử lý tìm kiếm, tính ngân sách hoặc đặt hàng trong Buổi 2. Việc nghiệm thu thuộc người phụ trách và nhóm; không suy ra đã nghiệm thu toàn website từ kết quả kiểm tra riêng trang chủ.
+
+
+## 2.3. Bước 6A – Sử dụng ChatGPT hỗ trợ xây dựng trang chi tiết sản phẩm
+
+### Thông tin sử dụng
+
+| Trường thông tin | Nội dung |
+|---|---|
+| Mã ghi nhận | AI-03 / Bước 6A |
+| Ngày sử dụng | 01/11/2026 |
+| Công cụ AI | ChatGPT (OpenAI) |
+| Người thực hiện | Đỗ Trọng Khanh |
+| Người kiểm tra | Nguyễn Thanh Nam |
+| Nhiệm vụ | Xây dựng giao diện trang chi tiết sản phẩm (`product-detail.html`) và bổ sung CSS tương ứng cho website kinh doanh sản phẩm móc len handmade. |
+| Mục đích | Hỗ trợ xây dựng cấu trúc HTML và CSS cho trang chi tiết sản phẩm; bảo đảm giao diện thống nhất với các trang hiện có, hiển thị đầy đủ thông tin sản phẩm và tương thích với nhiều kích thước màn hình. |
+| Đầu vào | Tài liệu yêu cầu dự án T05, quy trình nghiệp vụ tại T06, mã nguồn trang chủ, CSS dùng chung và thông tin sản phẩm Thú len thỏ (TL-001). |
+| Phạm vi thực hiện | Xây dựng trang `product-detail.html` và bổ sung CSS riêng cho trang chi tiết sản phẩm vào khu vực tương ứng trong `css/style.css`. |
+
+### Prompt chính
+
+Prompt được sử dụng nhằm yêu cầu ChatGPT hỗ trợ xây dựng trang chi tiết sản phẩm dựa trên cấu trúc và quy chuẩn giao diện hiện có của dự án.
+
+**Nội dung prompt:**
+
+```text
+Bạn là chuyên gia phát triển giao diện website thương mại điện tử
+sử dụng HTML5 và CSS3.
+
+Tôi đang thực hiện Bước 6A: xây dựng trang chi tiết sản phẩm
+(product-detail.html) cho website kinh doanh sản phẩm móc len handmade.
+
+Thông tin dự án:
+
+- Website kinh doanh sản phẩm móc len handmade, bao gồm sản phẩm
+  làm sẵn và sản phẩm đặt làm theo mẫu.
+- Dự án sử dụng HTML5 và CSS3.
+- Không sử dụng JavaScript, backend, cơ sở dữ liệu hoặc tích hợp
+  thanh toán thực tế.
+- Website đã có các trang index.html, products.html và about.html.
+- Các trang sử dụng chung header, footer và file css/style.css.
+- Cần giữ nguyên cấu trúc, màu sắc, kiểu chữ và quy chuẩn giao diện
+  đã được sử dụng trong các trang hiện có.
+
+Thông tin sản phẩm:
+
+- Mã sản phẩm: TL-001.
+- Tên sản phẩm: Thú len thỏ.
+- Giá minh họa: 125.000đ.
+- Danh mục: Thú len.
+- Màu sắc: Kem phối hồng pastel.
+- Kích thước: Cao khoảng 18 cm, tính cả tai.
+- Chất liệu: Sợi cotton milk, bông nhồi polyester và chỉ thêu.
+- Mô tả: Bạn thỏ tai dài với dáng ngồi dễ thương, thích hợp đặt
+  ở góc học tập hoặc bàn làm việc. Chiếc nơ nhỏ tạo thêm nét
+  ngọt ngào cho món quà.
+- Hình ảnh: images/product-3.webp.
+
+Yêu cầu thực hiện:
+
+1. Xây dựng cấu trúc HTML hoàn chỉnh cho product-detail.html.
+2. Tái sử dụng header và footer theo trang chủ, không tự ý thay đổi
+   cấu trúc chung của website.
+3. Thiết kế breadcrumb giúp người dùng xác định vị trí hiện tại.
+4. Bố trí hình ảnh và thông tin sản phẩm theo dạng hai cột trên
+   màn hình lớn, chuyển thành một cột trên thiết bị di động.
+5. Hiển thị mã sản phẩm, tên, giá, mô tả, danh mục, màu sắc,
+   kích thước và chất liệu.
+6. Bổ sung nội dung về đặc điểm thiết kế, chất liệu
+   và hướng dẫn bảo quản.
+7. Bổ sung nút mua hàng nhưng phải thể hiện rõ đây chỉ là giao diện
+   minh họa, chưa có chức năng giỏ hàng hoặc đặt hàng thực tế.
+8. Viết CSS riêng cho trang chi tiết sản phẩm, bổ sung vào khu vực
+   dành cho Bước 6A trong css/style.css.
+9. Không ghi đè hoặc xóa các CSS đã được sử dụng bởi những trang khác.
+10. Bảo đảm giao diện responsive trên desktop, tablet và mobile.
+
+Hãy cung cấp mã HTML và CSS rõ ràng, có chú thích cần thiết,
+dễ tích hợp vào mã nguồn hiện tại. Nếu có thông tin chưa được
+xác nhận, hãy đánh dấu là thông tin minh họa thay vì tự khẳng định.
+```
+
+### Kết quả AI hỗ trợ
+
+**a. Xây dựng cấu trúc trang HTML**
+
+- Tạo cấu trúc trang `product-detail.html` theo HTML5, bao gồm phần khai báo tài liệu, metadata, liên kết CSS và nội dung chính.
+- Tái sử dụng header và footer theo cấu trúc của trang chủ, bảo đảm sự thống nhất trong điều hướng và nhận diện thương hiệu.
+- Bổ sung breadcrumb với các cấp điều hướng: Trang chủ → Sản phẩm → Thú len thỏ.
+- Bố trí khu vực chi tiết sản phẩm gồm hình ảnh, mã sản phẩm, tên sản phẩm, giá bán, mô tả và thông số kỹ thuật.
+- Bổ sung liên kết quay lại danh sách sản phẩm và khu vực giới thiệu thêm về thiết kế, chất liệu và cách bảo quản.
+
+**b. Xây dựng CSS cho trang chi tiết sản phẩm**
+
+- Thiết kế bố cục hai cột, phân chia khu vực hình ảnh và khu vực thông tin sản phẩm.
+- Bổ sung các thành phần giao diện như breadcrumb, giá sản phẩm, thông số kỹ thuật, nút thao tác, thẻ thông tin bổ sung và khu vực điều hướng cuối trang.
+- Sử dụng các biến màu và quy chuẩn kiểu chữ có sẵn trong file CSS chung của dự án.
+- Bổ sung quy tắc responsive để điều chỉnh bố cục trên desktop, tablet và mobile.
+- Giới hạn phạm vi chỉnh sửa trong khu vực CSS dành cho trang chi tiết sản phẩm, tránh ảnh hưởng đến các trang khác.
+
+**c. Bổ sung nội dung và giới hạn chức năng**
+
+- Bổ sung thông tin mô tả và thông số của sản phẩm Thú len thỏ (TL-001) để minh họa cách trình bày nội dung chi tiết sản phẩm.
+- Bổ sung hướng dẫn bảo quản sản phẩm ở mức khuyến nghị chung, không trình bày như chính sách chính thức của cửa hàng.
+- Nút mua hàng được thiết lập ở trạng thái vô hiệu hóa để tránh tạo cảm giác website đã có chức năng đặt hàng thực tế.
+- Ghi chú rõ giá và thông số sản phẩm đang được sử dụng với mục đích minh họa, cần được xác minh trước khi sử dụng như dữ liệu kinh doanh chính thức.
+
+### Đánh giá kết quả AI
+
+Kết quả ChatGPT cung cấp cấu trúc HTML và CSS tương đối đầy đủ cho trang chi tiết sản phẩm, giúp rút ngắn thời gian xây dựng giao diện và bảo đảm tính nhất quán với hệ thống trang hiện có. Các thành phần được đề xuất phù hợp với mục tiêu cung cấp thông tin sản phẩm, hỗ trợ khách hàng tham khảo trước khi đưa ra quyết định mua hàng.
+
+Tuy nhiên, mã nguồn do AI đề xuất cần được đối chiếu với cấu trúc thực tế của dự án trước khi tích hợp. Đặc biệt, việc tái sử dụng header, footer, các biến CSS và tên lớp cần bảo đảm không gây trùng lặp hoặc ghi đè những quy tắc đang được sử dụng ở các trang khác. Một số thông tin như giá bán, kích thước, chất liệu và hướng dẫn bảo quản cũng chưa được xác nhận là dữ liệu chính thức của cửa hàng.
+
+### Quyết định xử lý của thành viên phụ trách
+
+- **Tiếp nhận:** Sử dụng cấu trúc HTML5, breadcrumb, bố cục hình ảnh – thông tin sản phẩm và các khu vực nội dung bổ sung do AI đề xuất.
+- **Điều chỉnh:** Tích hợp header và footer theo mã nguồn trang chủ; điều chỉnh đường dẫn hình ảnh, liên kết điều hướng và tên lớp CSS theo cấu trúc dự án.
+- **Điều chỉnh phạm vi:** Không triển khai chức năng mua hàng, giỏ hàng hoặc thanh toán thực tế trong bước xây dựng giao diện này.
+- **Kiểm tra:** Đối chiếu các quy tắc CSS mới với CSS dùng chung, kiểm tra đường dẫn tài nguyên và khả năng hiển thị trên nhiều kích thước màn hình.
+- **Cần xác minh:** Giá bán và thông số sản phẩm trước khi sử dụng làm dữ liệu chính thức.
+**Người thực hiện:** Đỗ Trọng Khanh
+
+**Người kiểm tra:** Nguyễn Thanh Nam
+
+# BÁO CÁO ĐÁNH GIÁ VÀ XỬ LÝ ĐỀ XUẤT AI (BƯỚC 6B - TRANG GIỚI THIỆU ABOUT.HTML)
+### Prompt chính
+**Nội dung prompt:**
+
+Prompt được sử dụng nhằm yêu cầu ChatGPT hỗ trợ xây dựng trang giới thiệu dựa trên cấu trúc và quy chuẩn giao diện hiện có của dự án.
+```text
+Nhóm tôi đang xây dựng trang about.html cho cửa hàng thương mại điện tử.
+
+Thông tin cửa hàng:
+- Tên: Lenly Crochet
+- Lĩnh vực: chuyên cung cấp các sản phẩm móc len handmade tinh xảo và độc đáo dành cho những ai yêu thích sự tỉ mỉ, ấm áp của đồ thủ công
+- Đối tượng khách hàng: Học sinh, sinh viên và người đi làm trẻ: Những người yêu thích phong cách dễ thương, mộc mạc, tìm kiếm những món quà mang dấu ấn cá nhân hoặc phụ kiện trang trí không gian sống, góc làm việc.
+- Khách hàng tìm kiếm quà tặng: Những ai đang muốn tìm kiếm các món quà thủ công ý nghĩa, tinh tế dành tặng bạn bè, người thương trong các dịp đặc biệt mà không có nhiều thời gian tự tay chuẩn bị.
+- Điểm nổi bật:
+  - Sản phẩm thủ công tỉ mỉ: Mỗi sản phẩm tại Lenly Crochet đều được chăm chút qua từng mũi móc, đảm bảo tính thẩm mỹ, độ bền và sự độc bản.
+  - Linh hoạt chọn quà theo ngân sách: Website hỗ trợ gợi ý và cấu hình sẵn các bộ quà tặng đa dạng mức giá, cho phép khách hàng linh hoạt thay đổi thành phần trong giới hạn cho phép mà vẫn kiểm soát được chi phí.
+  - Dịch vụ đặt làm riêng linh hoạt: Cho phép cá nhân hóa món quà theo sở thích riêng (màu sắc, kích thước, mẫu mã) thông qua quy trình tư vấn và báo giá minh bạch từ cửa hàng
+  - Chính sách đóng gói chu đáo: Cửa hàng hỗ trợ miễn phí công đóng gói hoàn chỉnh hoặc cung cấp đầy đủ hộp, túi, nơ, thiệp để khách hàng tự tay trang trí món quà gửi đến người nhận
+  - HTML/CSS hiện tại:
+- <index.html>
+- <product-detail.html>
+
+
+Hãy giúp nhóm hoàn thiện trang giới thiệu.
+
+Yêu cầu:
+1. Nội dung được chia thành các phần rõ ràng.
+2. Có tiêu đề, đoạn giới thiệu và hình ảnh phù hợp.
+3. Bố cục dễ đọc, khoảng cách hợp lý.
+4. Sử dụng HTML semantic khi phù hợp.
+5. Phong cách nhất quán với các trang khác.
+6. Có thể hiển thị tốt trên điện thoại.
+
+Không tự tạo thông tin kinh doanh không có trong dữ liệu.
+Chỉ cung cấp phần mã cần bổ sung hoặc chỉnh sửa.
+Không sử dụng JavaScript hoặc framework CSS. 
+```
+
+## 1. Kết quả AI hỗ trợ
+* **Nội dung AI hỗ trợ:** 
+  * Gợi ý cấu trúc HTML semantic cho trang giới thiệu (`about.html`), bao gồm việc phân chia các khối nội dung chính: Phần mở đầu thương hiệu (Hero), Lĩnh vực kinh doanh, Đối tượng khách hàng, Điểm nổi bật của cửa hàng và Thông tin liên hệ.
+  * Đề xuất bổ sung các lớp CSS (classes) và định dạng bố cục sử dụng Flexbox/Grid sao cho đồng bộ với trang chủ (`index.html`) và phong cách nhận diện chung của Lenly Crochet (tông màu hồng đất `#8F4558`, màu nền `#FFF9F4`).
+  * Cải tiến giao diện các khối thông tin (đối tượng khách hàng và giá trị cốt lõi) thành dạng thẻ (card) có hiệu ứng chuyển động mượt mà và bóng đổ giúp trang web sinh động, chuyên nghiệp hơn.
+
+## 2. Đánh giá kết quả AI
+* **Ưu điểm:** 
+  * Các thẻ HTML semantic sử dụng chính xác (`<header>`, `<main>`, `<section>`, `<article>`, `<address>`), giúp cấu trúc mã nguồn sáng sủa, chuẩn SEO và hỗ trợ tốt cho khả năng truy cập (accessibility).
+  * Bố cục do AI gợi ý đáp ứng tốt tiêu chí hiển thị linh hoạt trên nhiều thiết bị (Responsive tốt từ máy tính đến điện thoại) nhờ áp dụng mô hình Grid/Flexbox co giãn linh hoạt.
+* **Nhược điểm / Điểm cần lưu ý:**
+  * Một số đoạn mã do AI sinh ra ban đầu có thể sử dụng inline style, cần được kiểm soát để đảm bảo tuân thủ quy tắc tổ chức CSS chung của nhóm.
+  * Các thông tin kinh doanh sinh ra cần phải được rà soát lại để khớp tuyệt đối với dữ liệu thực tế của nhóm (tên cửa hàng, thông tin liên hệ, lĩnh vực kinh doanh) mà không bịa đặt thêm các chính sách ngoài luồng.
+
+## 3. Quyết định xử lý của thành viên
+* **Áp dụng:** 
+  * Tiếp thu cấu trúc phân chia các phần rõ ràng (tiêu đề, lĩnh vực kinh doanh, đối tượng khách hàng, điểm nổi bật và thông tin liên hệ) để đưa vào trang `about.html`.
+  * Giữ lại phần chân trang (`site-footer`) dùng chung của nhóm để đảm bảo sự đồng bộ xuyên suốt qua các trang HTML.
+* **Điều chỉnh:** 
+  * Chuẩn hóa lại các đường dẫn tệp (hình ảnh, CSS) sử dụng đường dẫn tương đối đúng chuẩn của nhóm (ví dụ: `images/product-1.webp`, `css/style.css`).
+  * Rà soát kỹ lưỡng nội dung text hiển thị trên giao diện, đảm bảo bám sát đúng 100% dữ liệu thống nhất của cửa hàng Lenly Crochet (số điện thoại `0767916364`, địa chỉ `279 Nguyễn Tri Phương, phường Diên Hồng, TP. Hồ Chí Minh`, email `lenlycrochet@gmail.com`) và loại bỏ hoàn toàn các thông tin giả lập không có thật.
+
+**Người thực hiện:** Nguyễn Anh Tuấn
+
