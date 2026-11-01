@@ -376,6 +376,27 @@ Các chức năng bổ trợ như danh sách yêu thích được đưa vào nh�
 - Kiểm tra: nhận dạng header WebP, đối chiếu SHA-256 bản sao với nguồn, kiểm tra đường dẫn mới và tham chiếu PNG cũ.
 - Quyết định của Nam: dùng WebP thay PNG. Đánh giá/người kiểm tra của nhóm: chưa ghi nhận.
 
+### Bước 4 — Xây dựng và kiểm tra trang chủ Lenly Crochet
+
+**Người phụ trách:** Nguyễn Quang Đức. **Thời gian:** 29–31/10/2026. **Công cụ:** OpenAI Codex và Google Gemini.
+
+**Mục đích sử dụng AI:** Hỗ trợ viết HTML/CSS header, menu, ô tìm kiếm minh họa, banner và nội dung trang chủ; tích hợp logo và footer; kiểm tra, hoàn thiện mã nguồn và báo cáo Bước 4.
+
+**Đầu vào:** Nội dung Bước 1, thiết kế Bước 3, bộ khung/dữ liệu và tám ảnh WebP Bước 2, logo của Quyến, mẫu HTML/CSS footer của Nam tại nhánh `buoc2-nam` (commit `d507e6f`).
+
+**Yêu cầu chính đã gửi AI, tóm tắt theo nội dung:** Xây dựng trang chủ theo thiết kế; bổ sung logo và footer đã có; đối chiếu mã với yêu cầu, sửa phần sai hoặc trùng; chuẩn bị kết quả và minh chứng Bước 4. Đây là phần tóm tắt nội dung yêu cầu, không phải bản chép nguyên văn hội thoại.
+
+| Thời gian | Công cụ | Kết quả hỗ trợ |
+|---|---|---|
+| 29/10/2026 | Codex | Bản nháp trang chủ, CSS, mẫu header; kiểm tra bố cục và liên kết trong trang. |
+| 30/10/2026 | Gemini | Bổ sung logo đã xử lý và footer, chuẩn bị báo cáo. |
+| 31/10/2026 | Codex | Đối chiếu yêu cầu, chuẩn hóa cấu trúc file, tích hợp mẫu footer Nam, hợp nhất nhật ký, kiểm tra độc lập và bổ sung minh chứng. |
+
+**Đánh giá và xử lý:** Giữ nội dung, nhận diện, dữ liệu và bố cục phù hợp Bước 1–3. Điều chỉnh vị trí mã về cấu trúc gốc; loại bản sao trùng; sửa mô tả tài nguyên theo file thực tế. Bản PNG đang dùng là `images/logo.png`; bản gốc của Quyến ở Drive. Kết quả kiểm tra của Gemini tại bản trước không có minh chứng đi kèm nên được kiểm tra lại độc lập.
+
+**Kiểm tra kết quả:** Chromium tại viewport 1366/768/390 px; `scrollWidth` bằng `clientWidth` lần lượt 1351/753/375 px; không phát hiện ảnh lỗi trên trang chủ sau khi cuộn tải. Banner 2/2/1 cột, sản phẩm 4/2/1 cột, footer 4/2/1 cột. Nút bộ quà đến đúng fragment; skip link nhận Tab và có viền focus. Ảnh lưu trong `docs/minh-chung-buoc4/`.
+
+**Phạm vi:** Kiểm tra riêng trang chủ; nội dung và id trên các trang danh sách, chi tiết và giới thiệu được kiểm thử khi tích hợp. Không triển khai xử lý tìm kiếm, tính ngân sách hoặc đặt hàng trong Buổi 2. Việc nghiệm thu thuộc người phụ trách và nhóm; không suy ra đã nghiệm thu toàn website từ kết quả kiểm tra riêng trang chủ.
 
 
 ## 2.3. Bước 6A – Sử dụng ChatGPT hỗ trợ xây dựng trang chi tiết sản phẩm
