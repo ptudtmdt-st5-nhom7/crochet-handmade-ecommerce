@@ -617,3 +617,16 @@ Không sử dụng JavaScript hoặc framework CSS. 
 - Thay đổi: giữ product-detail.html cho TL-001; tạo 7 file product-[ma].html; sửa 7 liên kết trong products.html; bỏ aria-current trên liên kết Sản phẩm ở trang chi tiết.
 - Kiểm tra: kiểm tra tĩnh cấu trúc từng trang, đường dẫn nội bộ, ID, tên, ảnh và giá so với danh sách. Chưa kiểm thử giao diện bản mới trên trình duyệt.
 - Quyết định: người yêu cầu đồng ý phương án tách file; nghiệm thu cuối sau khi bấm thử đủ 8 nút và kiểm tra responsive.
+
+## 01/11/2026 — Đồng bộ logo footer trang chủ với header
+
+- Công cụ: ChatGPT/Codex.
+- Người yêu cầu: Nam.
+- Mục đích/prompt chính: “Thay cái logo ở dưới footer thôi, cái logo ở header là cái mới nhất mà nhóm cập nhật”; ghi nhật ký AI.
+- Phương án được Nam xác nhận: dùng ảnh logo hiện có ở header cho footer trang chủ, giữ nguyên header.
+- Kết quả: thay chữ Lenly/CROCHET trong footer của index.html bằng images/logo.png; bổ sung CSS cho ảnh footer rộng 108px, giữ tỷ lệ gốc; giữ liên kết về trang chủ và thêm văn bản thay thế cho ảnh.
+- File sửa: index.html, css/style.css, AI_USAGE_LOG.md.
+- Kiểm tra: đối chiếu đường dẫn ảnh header/footer, kiểm tra file ảnh tồn tại và git diff --check. Chưa kiểm tra hiển thị trên trình duyệt.
+- Hướng dẫn kiểm tra: mở index.html, cuộn xuống footer, đối chiếu logo với header và bấm logo để về trang chủ; kiểm tra thêm trên màn hình hẹp.
+- Phản hồi của nhóm: nhóm đã xác nhận thay đổi, theo thông tin Nam cung cấp.
+- Quyết định: giữ thay đổi logo footer. Người xác nhận thay mặt nhóm trong phiên làm việc: Nam.
