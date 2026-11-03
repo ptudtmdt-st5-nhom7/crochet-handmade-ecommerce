@@ -630,3 +630,16 @@ Không sử dụng JavaScript hoặc framework CSS. 
 - Hướng dẫn kiểm tra: mở index.html, cuộn xuống footer, đối chiếu logo với header và bấm logo để về trang chủ; kiểm tra thêm trên màn hình hẹp.
 - Phản hồi của nhóm: nhóm đã xác nhận thay đổi, theo thông tin Nam cung cấp.
 - Quyết định: giữ thay đổi logo footer. Người xác nhận thay mặt nhóm trong phiên làm việc: Nam.
+
+## 03/11/2026 — Kiểm tra và sửa lỗi tích hợp lần 2
+
+- Người thực hiện: Nguyễn Thanh Nam.
+- Công cụ hỗ trợ: ChatGPT.
+- Mục đích: kiểm tra bản tích hợp sau Bước 7–8 và sửa lỗi phát hiện khi chạy website.
+- Yêu cầu đã trao đổi: kiểm tra CSS, logo footer, icon Instagram và sự khác biệt của footer trang Kẹp tóc hoa len.
+- Kết quả đề xuất: giới hạn logo footer rộng 108 px; sửa fill/stroke của icon Instagram; dùng footer chung cho product-pk-002.html; cập nhật câu giới thiệu trong products.html.
+- Cách kiểm tra: mở website bằng Live Server; kiểm tra tại 1366, 768 và 390 px; thử liên kết, hover và dùng Tab để xem focus.
+- Kết quả thực tế: logo đã gọn; icon Instagram hiện đúng; ba icon ở footer Kẹp tóc nằm ngang; câu giới thiệu đã phù hợp với tám trang chi tiết.
+- Quyết định: áp dụng các sửa đổi sau khi đối chiếu mã và kiểm tra lại giao diện.
+- Người kiểm tra: Nguyễn Thanh Nam.
+- Commit sửa mã: 6bd4de1.
