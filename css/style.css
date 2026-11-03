@@ -867,3 +867,21 @@ a:focus-visible,button:focus-visible,input:focus-visible { outline:3px solid #24
 @media (prefers-reduced-motion:reduce) {
   .about-page .about-customer-card:hover, .about-page .about-value-card:hover { transform:none; }
 }
+/* Giữ logo footer cùng kích thước với header */
+.site-footer-wordmark img {
+  width: 108px;
+  height: auto;
+}
+
+/* Sửa icon Instagram ở footer */
+.site-footer-social-icon svg rect,
+.site-footer-social-icon svg circle {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
+.site-footer-social-icon svg circle:last-child {
+  fill: currentColor;
+  stroke: none;
+}
