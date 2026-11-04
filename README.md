@@ -1,37 +1,70 @@
-# Website kinh doanh sản phẩm móc len handmade
+# Lenly Crochet
 
-Đồ án học phần **Phát triển ứng dụng TMĐT — Nhóm 7, ST5**.
+Đồ án học phần **Phát triển ứng dụng TMĐT - Nhóm 7, ST5**.
 
-## Bản giao diện Buổi 2 — tích hợp bốn trang
+## Giao diện Buổi 2
 
-Bản này được rà soát từ ZIP nhánh `integration/buoi2` do nhóm cung cấp sau khi ghép Nam → Đức → Bảo → Khanh → Tuấn. Chỉ dùng HTML5/CSS3 thuần; không cần npm hoặc cơ sở dữ liệu để xem giao diện.
+Website HTML5/CSS3 thuần, tiếp tục repository Buổi 1. Bản tích hợp trên `main` gồm bốn trang chính và bảy trang chi tiết bổ sung, tổng cộng 11 trang HTML. CSS dùng chung đã có phần responsive và khối hover/focus được khôi phục tại commit `29c295c`.
 
-| Trang | Nội dung hiện có |
-| --- | --- |
-| `index.html` | Trang chủ, banner, bốn danh mục, sản phẩm nổi bật, giới thiệu bộ quà và đặt làm |
-| `products.html` | Tám sản phẩm, liên kết danh mục và thông tin nhanh; TL-001 có trang chi tiết riêng |
-| `product-detail.html` | Thú len thỏ TL-001: ảnh, giá, thuộc tính, mô tả, chăm sóc và nút mua minh họa |
-| `about.html` | Giới thiệu, nhóm khách hàng, giá trị cửa hàng, liên hệ |
+- [Xem website](https://ptudtmdt-st5-nhom7.github.io/crochet-handmade-ecommerce/).
+- [Hồ sơ Bước 9C và danh sách trước nộp](docs/buoc9c-ban-giao.md).
+- [Báo cáo kiểm thử bản tích hợp](docs/kiem-thu-tich-hop-buoi2.md).
+- [Sáu câu Bước 10 của Đức](docs/buoc10-duc.md).
+- [Bài nhóm trên Google Docs](https://docs.google.com/document/d/1uIoFsaHZOZoELrRm6Y9PIP3tNZ9jMsXwfM6cFZjABJ8/edit?tab=t.o9x095d1q30e).
+- [Bảng phân công và tiến độ](https://docs.google.com/spreadsheets/d/1UIP27nPdW2n_PZR36gXBxR1aO9nti8mK8NYxyOvS_0s/edit?gid=0#gid=0).
 
-### Cách mở và kiểm tra
+### Các trang hiện có
 
-- Giải nén, mở `index.html` bằng Chrome/Edge; giữ nguyên thư mục `css/` và `images/` bên cạnh bốn trang.
-- Nếu máy có Python, mở terminal tại thư mục dự án, chạy `python -m http.server 8000` rồi truy cập `http://localhost:8000/index.html`. Có thể dùng VS Code Live Server thay thế.
-- Mở DevTools → thanh thiết bị → đặt chiều rộng lần lượt 1366, 768 và 390 px; xem cả bốn trang, cuộn hết trang và kiểm tra ảnh, cột sản phẩm, menu, footer, thanh cuộn ngang.
-- Dùng phím Tab để xem viền focus và skip link; dùng chuột kiểm tra hover. Bấm các danh mục, thông tin nhanh, liên hệ và liên kết quay lại.
-- Xem [báo cáo rà soát và danh sách kiểm thử](docs/kiem-thu-tich-hop-buoi2.md). Kiểm tra mã nguồn đã chạy; kiểm thử hiển thị sau sửa trên trình duyệt còn chờ nhóm thực hiện. Ảnh cũ trong `docs/minh-chung-buoc4/` chỉ minh chứng trang chủ ở giai đoạn Bước 4.
+| Trang | Nội dung |
+|---|---|
+| `index.html` | Logo, menu, tìm kiếm minh họa, banner, danh mục, sản phẩm nổi bật, giới thiệu bộ quà và đặt làm |
+| `products.html` | Danh sách tám sản phẩm, danh mục và thông tin nhanh; tám nút dẫn tới tám trang chi tiết đúng sản phẩm |
+| `product-detail.html` | Chi tiết TL-001 - Thú len thỏ |
+| `about.html` | Giới thiệu, khách hàng, điểm riêng và liên hệ đặt làm |
 
-### Phạm vi và giới hạn
+Bảy trang chi tiết bổ sung: `product-kc-001.html`, `product-kc-002.html`, `product-tl-002.html`, `product-hl-001.html`, `product-hl-002.html`, `product-pk-001.html`, `product-pk-002.html`.
 
-Tìm kiếm, tính ngân sách, đăng nhập, giỏ hàng và thanh toán chưa có xử lý. Nút tìm kiếm và mua hàng được vô hiệu hóa có ghi chú. Bảy sản phẩm ngoài TL-001 dùng mục thông tin nhanh trong trang danh sách. Ảnh, giá và thông số là dữ liệu minh họa. Công nghệ và chức năng ở phần hồ sơ Chương 1 bên dưới là kế hoạch toàn đồ án, không phải khả năng đang chạy của bản Buổi 2.
+### Cách xem và chạy
 
-[Website trình diễn](https://ptudtmdt-st5-nhom7.github.io/crochet-handmade-ecommerce/) có thể đang phục vụ nhánh khác; kiểm tra Settings → Pages trước khi dùng làm minh chứng bản tích hợp. Chưa tự thay đổi cấu hình Pages.
+Mở `index.html` bằng Chrome hoặc Edge, giữ `css/` và `images/` cạnh các file HTML. Không cần npm, thư viện ngoài, backend hoặc cơ sở dữ liệu để xem giao diện.
 
-### Đóng góp Buổi 2 và cập nhật bản ghép
+Nếu dùng máy chủ cục bộ: mở terminal tại thư mục dự án, chạy `python -m http.server 8000` rồi mở `http://localhost:8000/`. Có thể dùng VS Code Live Server.
 
-Các nhánh được nhóm ghép qua PR #15–#19: Nam chuẩn bị cấu trúc/dữ liệu/ảnh/footer; Đức làm trang chủ và thành phần chung; Bảo làm danh sách; Khanh làm chi tiết; Tuấn làm giới thiệu. Đây là phần đối chiếu từ mã và PR nhóm cung cấp, không thay thế bảng phân công hoặc xác nhận nghiệm thu của nhóm. Logo của Quyến được ghi trong báo cáo Bước 4. Công việc thiết kế, kiểm thử và hồ sơ còn lại theo bảng phân công của nhóm.
+Để tự kiểm tra: mở DevTools, đặt chiều rộng 1366, 768 và 390 px; cuộn hết từng trang, kiểm tra ảnh, menu, số cột và footer. Dùng Tab/Enter để kiểm tra focus, skip link và điều hướng; dùng chuột thử hover. Chế độ giảm chuyển động phải tắt các chuyển động hover tương ứng.
 
-Bản rà soát bổ sung sửa liên kết, phạm vi CSS, nội dung trích dẫn và responsive trang giới thiệu; cập nhật quy ước, báo cáo và nhật ký AI. Nhóm cần kiểm tra rồi commit lên `integration/buoi2` trước khi mở PR vào main. Khi main có nhật ký AI mới, đối chiếu và giữ cả nội dung mới; không ghi đè nguyên main bằng bản ZIP.
+### Kết quả kiểm thử và tài nguyên
+
+Ngày 04/11/2026, Codex hỗ trợ kiểm tra bản công khai từ `main` tại 12 tổ hợp (bốn trang chính × ba độ rộng). Không phát hiện tràn ngang hoặc ảnh tải lỗi. Đã kiểm tra bổ sung focus, hover và giảm chuyển động cho khối CSS khôi phục. Đây là kết quả công cụ, được phân biệt với báo cáo thao tác của Nam ngày 03/11 trong Google Docs.
+
+- [Bộ 12 ảnh responsive và ảnh tương tác](docs/minh-chung-buoi2/).
+- [Quy ước dùng chung](docs/quy-uoc.md), [dữ liệu tám sản phẩm](docs/products-data.md).
+- [Báo cáo Bước 4](docs/bai-lam-4.md) và ảnh `docs/minh-chung-buoc4/` là hồ sơ của giai đoạn trang chủ, không thay cho ảnh bản tích hợp cuối.
+
+### Phạm vi Buổi 2
+
+Có HTML semantic, CSS ngoài, Grid/Flexbox, media query, hover và focus. Tìm kiếm và nút mua là giao diện minh họa, chưa có xử lý. Bộ quà theo ngân sách và đặt làm được giới thiệu bằng nội dung, chưa tính tiền, nhận đơn, đăng nhập hoặc thanh toán. Dữ liệu, ảnh và giá phục vụ bài học.
+
+### Phân công Buổi 2
+
+| Thành viên | Phần việc |
+|---|---|
+| Đức | Bước 1, trang chủ/thành phần chung Bước 4, hồ sơ 9C và tổng hợp Bước 10 |
+| Nam | Cấu trúc, dữ liệu, ảnh, footer Bước 2; tích hợp/kiểm thử 9A |
+| Quyến | Thiết kế Bước 3; responsive Bước 7 |
+| Bảo | Danh sách sản phẩm Bước 5 |
+| Khanh | Chi tiết sản phẩm Bước 6A |
+| Tuấn | Giới thiệu cửa hàng Bước 6B |
+| Châu | Tương tác Bước 8; đánh giá AI 9B |
+
+Mỗi thành viên trả lời đủ sáu câu Bước 10 theo phần mình thực hiện. [Hồ sơ 9C](docs/buoc9c-ban-giao.md) ghi trạng thái thu bài và các điều kiện còn lại trước khi nộp; chưa xác nhận đã đủ bảy phần chỉ vì website đã chạy.
+
+### Hồ sơ sử dụng AI
+
+[AI_USAGE_LOG.md](AI_USAGE_LOG.md) lưu các ghi nhận đã có. [Bài làm 9 trên Docs](https://docs.google.com/document/d/1uIoFsaHZOZoELrRm6Y9PIP3tNZ9jMsXwfM6cFZjABJ8/edit?tab=t.n4ae0xgpikad) gồm báo cáo 9A của Nam và nội dung đánh giá AI 9B. Phần 9B cần chốt hai ví dụ theo mã cuối và kết quả kiểm tra; hồ sơ 9C không thay việc xác nhận của người phụ trách.
+
+## Hồ sơ kế thừa Buổi 1 và kế hoạch toàn đồ án
+
+Các công nghệ và chức năng trong phần dưới là yêu cầu/kế hoạch toàn đồ án, không phải các chức năng đã triển khai trong bản HTML/CSS Buổi 2.
 
 ## 1. Giới thiệu
 
