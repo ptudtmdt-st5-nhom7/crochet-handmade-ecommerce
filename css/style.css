@@ -739,7 +739,7 @@ a:focus-visible,button:focus-visible,input:focus-visible { outline:3px solid #24
   border-bottom: 1px solid var(--border);
 }
 
-.products-page .product-card-content {
+.-content {
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -803,6 +803,9 @@ a:focus-visible,button:focus-visible,input:focus-visible { outline:3px solid #24
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 16px;
+  padding: 0;
+  scroll-margin-top: 24px;
+
 }
 
 .products-page .quick-info-card:target {
@@ -851,7 +854,6 @@ a:focus-visible,button:focus-visible,input:focus-visible { outline:3px solid #24
 .about-page .about-contact-address { overflow-wrap:anywhere; }
 .about-page .about-customer-card:hover { transform:translateY(-5px); box-shadow:0 10px 25px rgba(143,69,88,.1); }
 .about-page .about-value-card:hover { transform:translateY(-4px); box-shadow:0 8px 24px rgba(143,69,88,.12); }
-.products-page .product-card { padding:0; scroll-margin-top:24px; }
 /* Bước 7: giảm khoảng đệm ở tablet để hai thẻ khách hàng hiển thị cùng hàng. */
 @media (min-width: 700px) and (max-width: 1099px) {
   .about-page .about-customer-panel { padding: 32px; }
