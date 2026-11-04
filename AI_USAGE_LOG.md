@@ -368,6 +368,8 @@ Các chức năng bổ trợ như danh sách yêu thích được đưa vào nh�
 ---
 
 
+## 5. Nhật ký bổ sung
+
 ### Đổi định dạng ảnh sản phẩm — 29/10/2026
 
 - Người thực hiện: Nguyễn Thanh Nam. Công cụ: OpenAI Codex.
@@ -408,9 +410,9 @@ Các chức năng bổ trợ như danh sách yêu thích được đưa vào nh�
 **Kiểm tra kết quả:** Đã kiểm tra đủ 8 sản phẩm, hình ảnh và giá; bố cục 4 cột trên máy tính, 2 cột ở màn hình vừa và 1 cột ở màn hình nhỏ; hover/focus và các fragment thông tin nhanh hoạt động. `product-detail.html` hiện chưa đủ nội dung và tiếp tục chờ Bước 6 triển khai.
 
 
-## 2.3. Bước 6A – Sử dụng ChatGPT hỗ trợ xây dựng trang chi tiết sản phẩm
+### Bước 6A – Sử dụng ChatGPT hỗ trợ xây dựng trang chi tiết sản phẩm
 
-### Thông tin sử dụng
+#### Thông tin sử dụng
 
 | Trường thông tin | Nội dung |
 |---|---|
@@ -424,7 +426,7 @@ Các chức năng bổ trợ như danh sách yêu thích được đưa vào nh�
 | Đầu vào | Tài liệu yêu cầu dự án T05, quy trình nghiệp vụ tại T06, mã nguồn trang chủ, CSS dùng chung và thông tin sản phẩm Thú len thỏ (TL-001). |
 | Phạm vi thực hiện | Xây dựng trang `product-detail.html` và bổ sung CSS riêng cho trang chi tiết sản phẩm vào khu vực tương ứng trong `css/style.css`. |
 
-### Prompt chính
+#### Prompt chính
 
 Prompt được sử dụng nhằm yêu cầu ChatGPT hỗ trợ xây dựng trang chi tiết sản phẩm dựa trên cấu trúc và quy chuẩn giao diện hiện có của dự án.
 
@@ -487,7 +489,7 @@ dễ tích hợp vào mã nguồn hiện tại. Nếu có thông tin chưa đư�
 xác nhận, hãy đánh dấu là thông tin minh họa thay vì tự khẳng định.
 ```
 
-### Kết quả AI hỗ trợ
+#### Kết quả AI hỗ trợ
 
 **a. Xây dựng cấu trúc trang HTML**
 
@@ -512,13 +514,13 @@ xác nhận, hãy đánh dấu là thông tin minh họa thay vì tự khẳng �
 - Nút mua hàng được thiết lập ở trạng thái vô hiệu hóa để tránh tạo cảm giác website đã có chức năng đặt hàng thực tế.
 - Ghi chú rõ giá và thông số sản phẩm đang được sử dụng với mục đích minh họa, cần được xác minh trước khi sử dụng như dữ liệu kinh doanh chính thức.
 
-### Đánh giá kết quả AI
+#### Đánh giá kết quả AI
 
 Kết quả ChatGPT cung cấp cấu trúc HTML và CSS tương đối đầy đủ cho trang chi tiết sản phẩm, giúp rút ngắn thời gian xây dựng giao diện và bảo đảm tính nhất quán với hệ thống trang hiện có. Các thành phần được đề xuất phù hợp với mục tiêu cung cấp thông tin sản phẩm, hỗ trợ khách hàng tham khảo trước khi đưa ra quyết định mua hàng.
 
 Tuy nhiên, mã nguồn do AI đề xuất cần được đối chiếu với cấu trúc thực tế của dự án trước khi tích hợp. Đặc biệt, việc tái sử dụng header, footer, các biến CSS và tên lớp cần bảo đảm không gây trùng lặp hoặc ghi đè những quy tắc đang được sử dụng ở các trang khác. Một số thông tin như giá bán, kích thước, chất liệu và hướng dẫn bảo quản cũng chưa được xác nhận là dữ liệu chính thức của cửa hàng.
 
-### Quyết định xử lý của thành viên phụ trách
+#### Quyết định xử lý của thành viên phụ trách
 
 - **Tiếp nhận:** Sử dụng cấu trúc HTML5, breadcrumb, bố cục hình ảnh – thông tin sản phẩm và các khu vực nội dung bổ sung do AI đề xuất.
 - **Điều chỉnh:** Tích hợp header và footer theo mã nguồn trang chủ; điều chỉnh đường dẫn hình ảnh, liên kết điều hướng và tên lớp CSS theo cấu trúc dự án.
@@ -529,8 +531,8 @@ Tuy nhiên, mã nguồn do AI đề xuất cần được đối chiếu với c
 
 **Người kiểm tra:** Nguyễn Thanh Nam
 
-# BÁO CÁO ĐÁNH GIÁ VÀ XỬ LÝ ĐỀ XUẤT AI (BƯỚC 6B - TRANG GIỚI THIỆU ABOUT.HTML)
-### Prompt chính
+### Bước 6B — Đánh giá và xử lý đề xuất AI cho trang giới thiệu
+#### Prompt chính
 **Nội dung prompt:**
 
 Prompt được sử dụng nhằm yêu cầu ChatGPT hỗ trợ xây dựng trang giới thiệu dựa trên cấu trúc và quy chuẩn giao diện hiện có của dự án.
@@ -567,13 +569,13 @@ Chỉ cung cấp phần mã cần bổ sung hoặc chỉnh sửa.
 Không sử dụng JavaScript hoặc framework CSS. 
 ```
 
-## 1. Kết quả AI hỗ trợ
+#### 1. Kết quả AI hỗ trợ
 * **Nội dung AI hỗ trợ:** 
   * Gợi ý cấu trúc HTML semantic cho trang giới thiệu (`about.html`), bao gồm việc phân chia các khối nội dung chính: Phần mở đầu thương hiệu (Hero), Lĩnh vực kinh doanh, Đối tượng khách hàng, Điểm nổi bật của cửa hàng và Thông tin liên hệ.
   * Đề xuất bổ sung các lớp CSS (classes) và định dạng bố cục sử dụng Flexbox/Grid sao cho đồng bộ với trang chủ (`index.html`) và phong cách nhận diện chung của Lenly Crochet (tông màu hồng đất `#8F4558`, màu nền `#FFF9F4`).
   * Cải tiến giao diện các khối thông tin (đối tượng khách hàng và giá trị cốt lõi) thành dạng thẻ (card) có hiệu ứng chuyển động mượt mà và bóng đổ giúp trang web sinh động, chuyên nghiệp hơn.
 
-## 2. Đánh giá kết quả AI
+#### 2. Đánh giá kết quả AI
 * **Ưu điểm:** 
   * Các thẻ HTML semantic sử dụng chính xác (`<header>`, `<main>`, `<section>`, `<article>`, `<address>`), giúp cấu trúc mã nguồn sáng sủa, chuẩn SEO và hỗ trợ tốt cho khả năng truy cập (accessibility).
   * Bố cục do AI gợi ý đáp ứng tốt tiêu chí hiển thị linh hoạt trên nhiều thiết bị (Responsive tốt từ máy tính đến điện thoại) nhờ áp dụng mô hình Grid/Flexbox co giãn linh hoạt.
@@ -581,7 +583,7 @@ Không sử dụng JavaScript hoặc framework CSS. 
   * Một số đoạn mã do AI sinh ra ban đầu có thể sử dụng inline style, cần được kiểm soát để đảm bảo tuân thủ quy tắc tổ chức CSS chung của nhóm.
   * Các thông tin kinh doanh sinh ra cần phải được rà soát lại để khớp tuyệt đối với dữ liệu thực tế của nhóm (tên cửa hàng, thông tin liên hệ, lĩnh vực kinh doanh) mà không bịa đặt thêm các chính sách ngoài luồng.
 
-## 3. Quyết định xử lý của thành viên
+#### 3. Quyết định xử lý của thành viên
 * **Áp dụng:** 
   * Tiếp thu cấu trúc phân chia các phần rõ ràng (tiêu đề, lĩnh vực kinh doanh, đối tượng khách hàng, điểm nổi bật và thông tin liên hệ) để đưa vào trang `about.html`.
   * Giữ lại phần chân trang (`site-footer`) dùng chung của nhóm để đảm bảo sự đồng bộ xuyên suốt qua các trang HTML.
@@ -608,7 +610,7 @@ Không sử dụng JavaScript hoặc framework CSS. 
 - Quyết định giữ/sửa/bỏ và người kiểm tra của nhóm: chờ nhóm mở bản sửa, thử và ghi nhận thực tế. Không coi kết quả AI là nghiệm thu cuối.
 
 
-## 01/11/2026 — Tách trang chi tiết và sửa liên kết sau cập nhật của Khanh
+### 01/11/2026 — Tách trang chi tiết và sửa liên kết sau cập nhật của Khanh
 
 - Công cụ: ChatGPT/Codex.
 - Người yêu cầu: Nam; người kiểm tra kết quả cuối: chờ nhóm xác nhận.
@@ -618,7 +620,7 @@ Không sử dụng JavaScript hoặc framework CSS. 
 - Kiểm tra: kiểm tra tĩnh cấu trúc từng trang, đường dẫn nội bộ, ID, tên, ảnh và giá so với danh sách. Chưa kiểm thử giao diện bản mới trên trình duyệt.
 - Quyết định: người yêu cầu đồng ý phương án tách file; nghiệm thu cuối sau khi bấm thử đủ 8 nút và kiểm tra responsive.
 
-## 01/11/2026 — Đồng bộ logo footer trang chủ với header
+### 01/11/2026 — Đồng bộ logo footer trang chủ với header
 
 - Công cụ: ChatGPT/Codex.
 - Người yêu cầu: Nam.
@@ -631,7 +633,7 @@ Không sử dụng JavaScript hoặc framework CSS. 
 - Phản hồi của nhóm: nhóm đã xác nhận thay đổi, theo thông tin Nam cung cấp.
 - Quyết định: giữ thay đổi logo footer. Người xác nhận thay mặt nhóm trong phiên làm việc: Nam.
 
-## 03/11/2026 — Kiểm tra và sửa lỗi tích hợp lần 2
+### 03/11/2026 — Kiểm tra và sửa lỗi tích hợp lần 2
 
 - Người thực hiện: Nguyễn Thanh Nam.
 - Công cụ hỗ trợ: ChatGPT.
@@ -644,7 +646,7 @@ Không sử dụng JavaScript hoặc framework CSS. 
 - Người kiểm tra: Nguyễn Thanh Nam.
 - Commit sửa mã: 6bd4de1.
 
-## 04/11/2026 — Kiểm tra lại sau khi khôi phục CSS Bước 8
+### 04/11/2026 — Kiểm tra lại sau khi khôi phục CSS Bước 8
 
 - Người thực hiện: Nguyễn Thanh Nam.
 - Công cụ hỗ trợ: ChatGPT.
@@ -657,3 +659,14 @@ Không sử dụng JavaScript hoặc framework CSS. 
 - Nội dung AI hỗ trợ: nhận xét ảnh giao diện, hướng dẫn thao tác kiểm tra và soạn phần bổ sung báo cáo kèm ảnh minh chứng.
 - Quyết định: sử dụng nội dung tổng hợp sau khi đối chiếu với kết quả kiểm tra thực tế; bổ sung vào mục 13 của Phần A.
 - Người kiểm tra và xác nhận: Nguyễn Thanh Nam.
+
+### 04/11/2026 — Chuẩn hóa hồ sơ GitHub trước khi nộp Buổi 2
+
+- Công cụ hỗ trợ: OpenAI Codex.
+- Người yêu cầu: Nguyễn Quang Đức.
+- Yêu cầu: rà soát file không còn cần, sửa README dùng chung cho nhóm, cập nhật đủ bảy phần Bước 10 và kiểm tra ảnh hưởng đến bản Word.
+- Đầu vào: mã nguồn nhánh main, đề bài Buổi 2, các phần trả lời trong Docs và bản Word tổng hợp đã có đủ bảy thành viên.
+- Quyết định: rút gọn README và dẫn tới câu hỏi của cả nhóm; cập nhật hồ sơ 9C; giữ tài liệu yêu cầu, kế hoạch, khảo sát, quy trình và minh chứng; giữ hồ sơ Bước 4 như tài liệu lịch sử. Bỏ bản riêng sáu câu của Đức vì đã có trong tài liệu chung và bỏ một ảnh sơ đồ cũ không còn được dẫn tới.
+- Thay đổi khác: đồng bộ mẫu footer với index.html; ghi rõ giới hạn HTML/CSS của Buổi 2 trong AGENTS.md; chuẩn hóa cấp tiêu đề nhật ký, giữ nội dung các ghi nhận cũ.
+- Kiểm tra: rà các liên kết file/ID nội bộ, đường dẫn ảnh và tham chiếu trong bản Word; đối chiếu mẫu footer với trang chủ. Không thay mã HTML/CSS đang chạy của website.
+- Giới hạn: việc đủ nội dung trong hồ sơ không xác nhận đã nộp LMS; trưởng nhóm tự kiểm tra file cuối và thực hiện nộp.

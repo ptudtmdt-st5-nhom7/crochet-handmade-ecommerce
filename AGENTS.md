@@ -22,6 +22,16 @@ Tailwind CSS), Backend (Node.js, Express.js), cơ sở dữ liệu
 (MongoDB, Mongoose), quản lý mã nguồn (Git, GitHub).
 Xem REQUIREMENTS.md, mục 6.
 
+### Phạm vi riêng của bài tập Buổi 2
+
+Buổi 2 chỉ xây dựng giao diện bằng HTML5 và CSS3 thuần. Không thêm
+JavaScript, Tailwind CSS hoặc framework CSS khác, backend, cơ sở dữ liệu,
+đăng nhập thật, giỏ hàng hoạt động hoặc thanh toán. Công nghệ của toàn
+đồ án ở trên không phải công nghệ đã triển khai trong bản Buổi 2.
+Giữ các thao tác chưa có xử lý ở mức giao diện minh họa và mô tả rõ
+giới hạn trong README.
+
+
 ## 3. Nguyên tắc viết mã nguồn
 
 - Giữ mã nguồn rõ ràng, dễ đọc và dễ bảo trì.
