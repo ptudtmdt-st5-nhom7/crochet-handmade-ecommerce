@@ -9,6 +9,7 @@ Website HTML5/CSS3 thuần, tiếp tục repository Buổi 1. Bản tích hợp 
 - [Xem website](https://ptudtmdt-st5-nhom7.github.io/crochet-handmade-ecommerce/).
 - [Hồ sơ Bước 9C và danh sách trước nộp](docs/buoc9c-ban-giao.md).
 - [Báo cáo kiểm thử bản tích hợp](docs/kiem-thu-tich-hop-buoi2.md).
+- [Báo cáo đánh giá AI 9B và minh chứng sửa CSS](docs/buoc9b-danh-gia-ai.md).
 - [Sáu câu Bước 10 của Đức](docs/buoc10-duc.md).
 - [Bài nhóm trên Google Docs](https://docs.google.com/document/d/1uIoFsaHZOZoELrRm6Y9PIP3tNZ9jMsXwfM6cFZjABJ8/edit?tab=t.o9x095d1q30e).
 - [Bảng phân công và tiến độ](https://docs.google.com/spreadsheets/d/1UIP27nPdW2n_PZR36gXBxR1aO9nti8mK8NYxyOvS_0s/edit?gid=0#gid=0).
@@ -40,6 +41,8 @@ Ngày 04/11/2026, Codex hỗ trợ kiểm tra bản công khai từ `main` tại
 - [Quy ước dùng chung](docs/quy-uoc.md), [dữ liệu tám sản phẩm](docs/products-data.md).
 - [Báo cáo Bước 4](docs/bai-lam-4.md) và ảnh `docs/minh-chung-buoc4/` là hồ sơ của giai đoạn trang chủ, không thay cho ảnh bản tích hợp cuối.
 
+Ngày 04/11/2026, lượt kiểm tra bổ sung phát hiện bộ chọn nội dung danh sách không khớp HTML. Đã sửa thành `.products-page .product-card-content` và kiểm tra cục bộ bốn trang ở ba độ rộng: cả tám vùng nội dung nhận Flexbox và padding 16 px; không phát hiện tràn ngang. [Minh chứng và phạm vi kiểm tra](docs/buoc9b-danh-gia-ai.md).
+
 ### Phạm vi Buổi 2
 
 Có HTML semantic, CSS ngoài, Grid/Flexbox, media query, hover và focus. Tìm kiếm và nút mua là giao diện minh họa, chưa có xử lý. Bộ quà theo ngân sách và đặt làm được giới thiệu bằng nội dung, chưa tính tiền, nhận đơn, đăng nhập hoặc thanh toán. Dữ liệu, ảnh và giá phục vụ bài học.
@@ -56,11 +59,11 @@ Có HTML semantic, CSS ngoài, Grid/Flexbox, media query, hover và focus. Tìm 
 | Tuấn | Giới thiệu cửa hàng Bước 6B |
 | Châu | Tương tác Bước 8; đánh giá AI 9B |
 
-Mỗi thành viên trả lời đủ sáu câu Bước 10 theo phần mình thực hiện. [Hồ sơ 9C](docs/buoc9c-ban-giao.md) ghi trạng thái thu bài và các điều kiện còn lại trước khi nộp; chưa xác nhận đã đủ bảy phần chỉ vì website đã chạy.
+Mỗi thành viên trả lời đủ sáu câu Bước 10 theo phần mình thực hiện. Đã có sáu phần của Đức, Nam, Châu, Bảo, Khanh và Quyến trong Google Docs; Tuấn chưa bổ sung. Phần của Châu được giữ nguyên để người phụ trách tự đối chiếu mã với nhiệm vụ đã làm. [Hồ sơ 9C](docs/buoc9c-ban-giao.md) ghi các điều kiện còn lại; chưa xác nhận hoàn tất toàn bộ bài nộp.
 
 ### Hồ sơ sử dụng AI
 
-[AI_USAGE_LOG.md](AI_USAGE_LOG.md) lưu các ghi nhận đã có. [Bài làm 9 trên Docs](https://docs.google.com/document/d/1uIoFsaHZOZoELrRm6Y9PIP3tNZ9jMsXwfM6cFZjABJ8/edit?tab=t.n4ae0xgpikad) gồm báo cáo 9A của Nam và nội dung đánh giá AI 9B. Phần 9B cần chốt hai ví dụ theo mã cuối và kết quả kiểm tra; hồ sơ 9C không thay việc xác nhận của người phụ trách.
+[AI_USAGE_LOG.md](AI_USAGE_LOG.md) lưu các ghi nhận đã có. [Báo cáo 9A của Nam trên Docs](https://docs.google.com/document/d/1uIoFsaHZOZoELrRm6Y9PIP3tNZ9jMsXwfM6cFZjABJ8/edit?tab=t.n4ae0xgpikad) đã có kiểm tra lại sau khôi phục CSS. [Báo cáo 9B](docs/buoc9b-danh-gia-ai.md) và [bản trên Docs](https://docs.google.com/document/d/1uIoFsaHZOZoELrRm6Y9PIP3tNZ9jMsXwfM6cFZjABJ8/edit?tab=t.66ufqhbqnhhr) thống nhất hai ví dụ: sửa bộ chọn nội dung thẻ sản phẩm và gộp các khai báo cùng bộ chọn. Có mã, quyết định, kết quả đo và ảnh trước/sau; các lượt Codex hỗ trợ được ghi rõ trong báo cáo. Nhật ký chung được giữ nguyên trong lượt hoàn thiện này.
 
 ## Hồ sơ kế thừa Buổi 1 và kế hoạch toàn đồ án
 
