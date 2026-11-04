@@ -643,3 +643,17 @@ Không sử dụng JavaScript hoặc framework CSS. 
 - Quyết định: áp dụng các sửa đổi sau khi đối chiếu mã và kiểm tra lại giao diện.
 - Người kiểm tra: Nguyễn Thanh Nam.
 - Commit sửa mã: 6bd4de1.
+
+## 04/11/2026 — Kiểm tra lại sau khi khôi phục CSS Bước 8
+
+- Người thực hiện: Nguyễn Thanh Nam.
+- Công cụ hỗ trợ: ChatGPT.
+- Mục đích: kiểm tra lại giao diện sau khi CSS hover và focus của Bước 8 được khôi phục.
+- Phiên bản được kiểm tra: nhánh main, commit 29c295c.
+- Yêu cầu trao đổi: hỗ trợ kiểm tra hover, focus bằng phím Tab và bố cục responsive; tổng hợp kết quả và ảnh minh chứng để bổ sung báo cáo Bước 9A.
+- Phạm vi: trang chủ, danh sách sản phẩm, chi tiết Móc khóa gấu len và trang giới thiệu tại 1366 × 900, 768 × 900 và 390 × 900 px.
+- Cách kiểm tra: chạy bằng Live Server; quan sát toàn trang tại từng kích thước; đưa chuột lên nút để thử hover và dùng phím Tab để kiểm tra viền focus.
+- Kết quả thực tế: các nút được thử trên cả bốn trang đổi màu khi hover và có viền focus rõ khi dùng Tab. Bố cục tại ba kích thước hiển thị phù hợp; nội dung nằm trong khung, ảnh giữ đúng tỷ lệ và footer chuyển số cột phù hợp.
+- Nội dung AI hỗ trợ: nhận xét ảnh giao diện, hướng dẫn thao tác kiểm tra và soạn phần bổ sung báo cáo kèm ảnh minh chứng.
+- Quyết định: sử dụng nội dung tổng hợp sau khi đối chiếu với kết quả kiểm tra thực tế; bổ sung vào mục 13 của Phần A.
+- Người kiểm tra và xác nhận: Nguyễn Thanh Nam.
