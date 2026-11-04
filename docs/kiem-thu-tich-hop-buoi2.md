@@ -60,3 +60,14 @@ Viewport và giả lập giảm chuyển động được trả về mặc đị
 ## Giới hạn và hồ sơ liên quan
 
 Trang tìm kiếm, mua hàng, bộ quà và đặt làm chưa có xử lý nghiệp vụ trong Buổi 2. Kiểm thử bố cục ở ba độ rộng không đồng nghĩa các chức năng này đã hoạt động. Sáu câu của từng thành viên và hai ví dụ đánh giá AI được theo dõi trong [hồ sơ 9C](buoc9c-ban-giao.md); việc có đủ mã và ảnh không thay thế các nội dung cá nhân đó.
+
+
+## Kiểm tra bổ sung sau sửa bộ chọn nội dung thẻ — 04/11/2026
+
+Codex đối chiếu `main` tại `534110d`, xác định HTML dùng `product-card-content` nhưng CSS dùng `.products-page .product-content`, nên quy tắc không khớp tám vùng nội dung. Chỉ đổi bộ chọn thành `.products-page .product-card-content`; giữ nguyên thuộc tính và HTML. Trước sửa, tám vùng có display block, padding 0px. Sau sửa, cả tám nhận display flex, flex theo cột, flex 1 và padding 16px.
+
+Chạy qua HTTP cục bộ và kiểm tra bốn trang chính ở 1366/768/390 px: scrollWidth bằng clientWidth trong cả 12 tổ hợp; trang danh sách giữ lưới 4/2/1 cột. Các giá trị clientWidth lần lượt 1351/753/375px trong môi trường có thanh cuộn dọc. Đây là lượt hỗ trợ bằng công cụ, không thay lời xác nhận tự thao tác của Nam hoặc từng thành viên.
+
+Đối chiếu riêng việc gộp `.products-page .product-card`: bản công khai trước cập nhật có hai khối, bản cục bộ còn một khối; các thuộc tính display, hướng Flexbox, padding, bo góc, scroll-margin-top và màu viền được kiểm tra vẫn giữ nguyên. Thay đổi gộp đã có trước lượt sửa tên lớp này.
+
+Mã, quyết định và ảnh trước/sau được lưu tại [báo cáo 9B](buoc9b-danh-gia-ai.md). Sau khi cập nhật GitHub, phải đối chiếu bản Pages với CSS đã sửa; kết quả bản online cũ không tự động chứng minh cho bản main mới.
