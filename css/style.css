@@ -741,7 +741,7 @@ a:focus-visible,button:focus-visible,input:focus-visible { outline:3px solid #24
   border-bottom: 1px solid var(--border);
 }
 
-.-content {
+.products-page .product-content{
   display: flex;
   flex-direction: column;
   flex: 1;
