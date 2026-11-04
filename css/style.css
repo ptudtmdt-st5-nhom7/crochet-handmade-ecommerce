@@ -885,3 +885,91 @@ a:focus-visible,button:focus-visible,input:focus-visible { outline:3px solid #24
   fill: currentColor;
   stroke: none;
 }
+
+/* ===== 8. HOVER / FOCUS DÙNG CHUNG - KHÔI PHỤC BƯỚC 8 ===== */
+/* 1. Hiển thị focus rõ ràng khi dùng bàn phím */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid #2b5797 !important;
+  outline-offset: 3px !important;
+}
+
+/* 2. Hover cho menu điều hướng */
+.site-nav a {
+  transition: color 0.2s ease-in-out;
+}
+
+@media (hover: hover) {
+  .site-nav a:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+}
+
+/* 3. Hover cho nút bấm và liên kết có kiểu dáng nút */
+button,
+.button {
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.15s ease;
+}
+
+@media (hover: hover) {
+  button:not(:disabled):hover,
+  .button:not(:disabled):hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* Trạng thái khi nhấn nút */
+button:not(:disabled):active,
+.button:not(:disabled):active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Không tạo hiệu ứng hover cho nút bị vô hiệu hóa */
+button:disabled {
+  cursor: not-allowed;
+}
+
+/* 4. Hover cho thẻ sản phẩm */
+.product-card {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+@media (hover: hover) {
+  .product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(51, 43, 43, 0.08);
+  }
+}
+
+/* 5. Giữ hiệu ứng focus khi thao tác bằng bàn phím */
+.product-card:focus-within {
+  outline: 3px solid #2b5797;
+  outline-offset: 3px;
+}
+
+/* 6. Hạn chế chuyển động theo cài đặt của người dùng */
+@media (prefers-reduced-motion: reduce) {
+  .site-nav a,
+  button,
+  .button,
+  .product-card {
+    transition: none !important;
+  }
+
+  button:not(:disabled):hover,
+  .button:not(:disabled):hover,
+  .product-card:hover {
+    transform: none !important;
+  }
+}
