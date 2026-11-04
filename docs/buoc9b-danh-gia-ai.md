@@ -10,7 +10,7 @@ Nhóm sử dụng ChatGPT để rà soát HTML/CSS. Đầu vào gồm liên kế
 
 Prompt đã dùng yêu cầu đánh giá semantic, tổ chức CSS, Grid/Flexbox, responsive, hover/focus và đoạn mã có thể đơn giản hóa; với mỗi vấn đề, nêu mã liên quan, lý do, mức ưu tiên, hướng khắc phục và cách kiểm tra; phân biệt lỗi có bằng chứng với nội dung cần kiểm tra thêm, không tự động viết lại toàn bộ dự án.
 
-Trong lượt hoàn thiện này, người dùng yêu cầu Codex sửa các điểm đã xác định trong Docs, sheet và GitHub, giữ nguyên Bước 10 của Châu. Codex hỗ trợ đối chiếu tên lớp với HTML thật, sửa một bộ chọn CSS, kiểm tra bằng trình duyệt và tổng hợp minh chứng. Các số đo bổ sung dưới đây là kết quả công cụ, không phải xác nhận từng thành viên đã tự thực hiện các phép đo.
+Ở lượt đối chiếu bổ sung, Codex hỗ trợ kiểm tra tên lớp với HTML thực tế, sửa một bộ chọn CSS, kiểm tra bằng trình duyệt và tổng hợp minh chứng. Các số đo bổ sung dưới đây là kết quả công cụ, không phải xác nhận từng thành viên đã tự thực hiện các phép đo.
 
 ## 2. Ví dụ 1 — Bộ chọn nội dung thẻ không khớp HTML
 
