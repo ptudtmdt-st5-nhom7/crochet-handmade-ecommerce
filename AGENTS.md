@@ -32,6 +32,19 @@ Giữ các thao tác chưa có xử lý ở mức giao diện minh họa và mô
 giới hạn trong README.
 
 
+### Phạm vi chuẩn bị và phát triển Buổi 3
+
+Buổi 3 kế thừa giao diện Buổi 2 và bổ sung JavaScript thuần/localStorage
+theo đề, cùng luồng giỏ quà theo ngân sách đã được trưởng nhóm yêu cầu.
+Đọc phần Buổi 3 trong `docs/quy-uoc.md` và nhiệm vụ hiện hành trước khi
+sửa mã liên quan. Giới hạn không JavaScript ở mục Buổi 2 là ngữ cảnh
+lịch sử, không phải lệnh cấm triển khai bài Buổi 3.
+
+Giữ logo, CSS và phần đang hoạt động; không tự thêm framework, backend,
+cơ sở dữ liệu hoặc thanh toán. Chưa khẳng định chức năng đã hoàn thành
+khi mới có kế hoạch hoặc favicon. Các hợp đồng file/hàm/dữ liệu dùng
+chung phải được người nhận xác nhận trước khi ghép.
+
 ## 3. Nguyên tắc viết mã nguồn
 
 - Giữ mã nguồn rõ ràng, dễ đọc và dễ bảo trì.

@@ -670,3 +670,14 @@ Không sử dụng JavaScript hoặc framework CSS. 
 - Thay đổi khác: đồng bộ mẫu footer với index.html; ghi rõ giới hạn HTML/CSS của Buổi 2 trong AGENTS.md; chuẩn hóa cấp tiêu đề nhật ký, giữ nội dung các ghi nhận cũ.
 - Kiểm tra: rà các liên kết file/ID nội bộ, đường dẫn ảnh và tham chiếu trong bản Word; đối chiếu mẫu footer với trang chủ. Không thay mã HTML/CSS đang chạy của website.
 - Giới hạn: việc đủ nội dung trong hồ sơ không xác nhận đã nộp LMS; trưởng nhóm tự kiểm tra file cuối và thực hiện nộp.
+
+
+### 07/11/2026 — Chuẩn bị Buổi 3 và bổ sung favicon Lenly
+
+- Công cụ hỗ trợ: OpenAI Codex.
+- Người yêu cầu: Nguyễn Quang Đức.
+- Yêu cầu: bổ sung biểu tượng nhỏ cạnh tiêu đề tab như ví dụ của thầy, dùng logo Lenly hiện có; cập nhật phần chuẩn bị Buổi 3.
+- Kết quả: tạo images/favicon.svg dùng lại phần LC từ ảnh logo gốc qua khung SVG; ảnh logo không thay đổi. Thêm liên kết SVG và PNG dự phòng vào 11 trang HTML.
+- Tài liệu: bổ sung phạm vi Buổi 3 trong AGENTS.md và quy ước favicon/phạm vi tại docs/quy-uoc.md; chưa triển khai các chức năng JavaScript.
+- Kiểm tra công cụ: đối chiếu 11 trang có đủ hai link icon, file tồn tại, SVG hợp lệ và dữ liệu ảnh nhúng khớp ảnh gốc; nội dung HTML ngoài hai link icon giữ nguyên. HTTP localhost trả 200 và image/svg+xml; trình duyệt hiển thị biểu tượng LC. git diff --check không báo lỗi.
+- Quyết định: áp dụng theo yêu cầu của Đức; kết quả công cụ không được ghi thành việc sinh viên đã tự thao tác. Trưởng nhóm kiểm tra hiển thị favicon trên trình duyệt sử dụng thực tế; có thể cần tải lại do bộ nhớ đệm.
