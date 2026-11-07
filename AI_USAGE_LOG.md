@@ -681,3 +681,12 @@ Không sử dụng JavaScript hoặc framework CSS. 
 - Tài liệu: bổ sung phạm vi Buổi 3 trong AGENTS.md và quy ước favicon/phạm vi tại docs/quy-uoc.md; chưa triển khai các chức năng JavaScript.
 - Kiểm tra công cụ: đối chiếu 11 trang có đủ hai link icon, file tồn tại, SVG hợp lệ và dữ liệu ảnh nhúng khớp ảnh gốc; nội dung HTML ngoài hai link icon giữ nguyên. HTTP localhost trả 200 và image/svg+xml; trình duyệt hiển thị biểu tượng LC. git diff --check không báo lỗi.
 - Quyết định: áp dụng theo yêu cầu của Đức; kết quả công cụ không được ghi thành việc sinh viên đã tự thao tác. Trưởng nhóm kiểm tra hiển thị favicon trên trình duyệt sử dụng thực tế; có thể cần tải lại do bộ nhớ đệm.
+
+### 07/11/2026 — Hoàn thiện đầu vào Bước 1 Buổi 3
+
+- Người yêu cầu: Nguyễn Quang Đức. Công cụ hỗ trợ: OpenAI Codex.
+- Yêu cầu thực tế: kiểm tra Bước 1 đã đủ để giao nhóm bắt đầu chưa; bổ sung phần còn thiếu.
+- AI hỗ trợ: cụ thể hóa tên file và người phụ trách; ES modules; cấu trúc products, giftSets, giỏ và bản soạn; khóa lưu; chữ ký hàm và kết quả trả về; điểm nối giao diện; ca kiểm tra bàn giao và thứ tự bắt đầu. Đồng bộ trong báo cáo/Sheet Buổi 3; theo góp ý tiếp theo của Đức, trình bày Bài làm 1 theo văn phong báo cáo Buổi 2, bỏ lịch giờ chi tiết khỏi bài làm, chuyển quy ước kỹ thuật sang phần hướng dẫn và giải thích rõ từng thao tác thay/thêm/bỏ sản phẩm, thay đổi số lượng.
+- Quyết định tổ chức: dùng các quy ước trên làm đầu vào triển khai theo yêu cầu Đức; các PIC báo vướng mắc trước khi thay đổi giao tiếp dùng chung. Stock và bộ quà là dữ liệu demo, không phải số liệu cửa hàng thực tế.
+- Kiểm tra công cụ: đối chiếu mã sản phẩm, tên/giá/ảnh nguồn Buổi 2; kiểm tra JSON mẫu, phép tính và quy tắc nhận diện cấu hình; rà bảo toàn nội dung cũ. Chưa triển khai hoặc chạy kiểm thử các chức năng JavaScript của các PIC.
+- Trách nhiệm nhóm: đọc hiểu quy ước, triển khai và tự kiểm tra phần được giao; người nhận kiểm tra đầu vào, Quyến kiểm thử bản ghép và Đức duyệt cuối. Không ghi các bước kiểm tra công cụ thành thao tác sinh viên đã tự làm.
