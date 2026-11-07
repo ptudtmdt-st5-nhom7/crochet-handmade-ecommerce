@@ -56,8 +56,8 @@
 - Bảo: `cart.html`, `js/cart.js`, `js/cart-page.js`. `cart.js` là nghiệp vụ dùng chung, `cart-page.js` là giao diện trang giỏ.
 - Châu: `js/storage.js`; không tạo thêm phiên bản nghiệp vụ giỏ hoặc tự gắn sự kiện UI.
 - Đức: `gift-builder.html`, `js/gift-builder.js`, `js/site.js`; trang chủ/điều hướng, quy ước, ghép mã và hồ sơ cuối.
-- Quyến: `docs/TEST_REPORT_BUOI3.md`, `docs/minh-chung-buoi3/`; rà giao diện, tổng hợp lỗi và thử lại. Các PIC cung cấp ảnh và sửa lỗi phần mình.
-- `css/style.css`: mỗi người chỉ sửa ngăn/phạm vi trang của mình. Quyến ghi lỗi/góp ý; thay CSS dùng chung phải báo Đức. Dùng `git diff` để tránh ghi đè phần người khác.
+- Quyến: mẫu giao diện tại `docs/THIET_KE_GIAO_DIEN_BUOI3.md`, CSS dùng chung sau khi Đức duyệt; bảng kiểm thử tại `docs/TEST_REPORT_BUOI3.md`, ảnh tại `docs/minh-chung-buoi3/`. Các chủ trang áp dụng mẫu và sửa lỗi phần mình; Quyến rà sự thống nhất và thử lại.
+- `css/style.css`: Quyến chuẩn hóa màu, chữ, khoảng cách, nút và thẻ sản phẩm trong phần dùng chung sau khi Đức duyệt mẫu. Mỗi người sửa vùng CSS riêng của trang mình theo mẫu; báo nhau trước khi sửa cùng một vùng. Nam/Đức kiểm tra `git diff` trước khi ghép để tránh ghi đè.
 - Nam bàn giao dữ liệu và các hàm thuần trước 12:00 ngày 08/11. Sau đó các PIC bắt đầu phần độc lập. Các file khởi tạo chỉ import module đã tồn tại; không đưa bản trang bị lỗi import lên `main` để chờ người khác sửa.
 
 ### 3. Cấu trúc sản phẩm và bộ mẫu
@@ -155,3 +155,13 @@ Nam bắt đầu Bước 2 ngay bằng tám sản phẩm/bộ mẫu và hàm thu
 Tạo nhánh từ `main` mới nhất: `buoi3-nam`, `buoi3-tuan`, `buoi3-khanh`, `buoi3-bao`, `buoi3-chau`, `buoi3-quyen`, `buoi3-duc`. Không ghi đè/xóa nhánh đã có. Commit/push phần mình, gửi PR hoặc commit kèm cách thử cho người kiểm tra. Nam/Đức ghép sau kiểm tra; chưa đủ module thì giữ trên nhánh riêng, không ghép trang bị lỗi import lên main.
 
 Khi bàn giao, ghi file/commit, dữ liệu/hàm đã có, cách chạy, một ca bình thường/một ca sai phù hợp, ảnh và phần còn chờ. Người nhận kiểm tra đầu vào ngay; Quyến kiểm thử toàn luồng sau bản ghép, PIC sửa lỗi phần mình, Đức duyệt hồ sơ cuối. Deadline chi tiết theo Sheet; trình tự phụ thuộc ở trên là căn cứ để biết khi nào có thể bắt đầu.
+
+
+## Phối hợp cải thiện giao diện Buổi 3
+
+- Quyến làm mẫu hình thức từ sau Bước 1, đồng thời Nam chuẩn hóa dữ liệu; không chờ kiểm thử cuối mới bàn giao diện. Mẫu gồm bố cục, chiều rộng nội dung, màu, kiểu/cỡ chữ, khoảng cách, thẻ sản phẩm, nút, ô nhập và cách chuyển bố cục trên điện thoại. Giữ logo Lenly.
+- Mẫu có thể là ảnh có chú thích hoặc trang thử HTML/CSS trên nhánh riêng; thể hiện đầu trang/banner, thẻ sản phẩm và cách trình bày phần chọn quà hoặc giỏ. Không bắt buộc dùng công cụ thiết kế trả phí.
+- Đức duyệt mẫu trước khi sửa hàng loạt. Quyến trực tiếp sửa phần CSS chung; Đức áp dụng vào trang chủ/chọn quà, Nam vào danh sách, Tuấn vào nhóm điều khiển tìm kiếm/lọc/sắp xếp, Khanh vào chi tiết và Bảo vào giỏ. Quyến kiểm tra sự thống nhất, không làm thay tất cả trang.
+- Khi sửa hình thức, giữ tên hàm, mã sản phẩm và những thuộc tính HTML mà JavaScript đang đọc. Nếu cần đổi, báo người phụ trách chức năng trước và kiểm tra lại thao tác sau thay đổi.
+- Sau khi ghép, Quyến thử chức năng và giao diện tại 1366, 768 và 390 px; ghi kết quả, cách tái hiện lỗi và người sửa. Mỗi người sửa phần mình; Quyến thử lại, Nam hỗ trợ ghép và Đức duyệt cuối.
+- Hướng dẫn Bước 1–8 và Sheet đã được diễn giải đầy đủ hơn: nhận dữ liệu gì, làm thao tác nào, lưu file ở đâu, giao cho ai và kiểm tra thế nào. Tên file/hàm và cấu trúc dữ liệu trong mã giữ theo quy ước kỹ thuật. Đây là phân công triển khai, chưa xác nhận giao diện đã được làm đẹp hoặc chức năng đã hoàn thành.
