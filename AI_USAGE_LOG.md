@@ -690,3 +690,12 @@ Không sử dụng JavaScript hoặc framework CSS. 
 - Quyết định tổ chức: dùng các quy ước trên làm đầu vào triển khai theo yêu cầu Đức; các PIC báo vướng mắc trước khi thay đổi giao tiếp dùng chung. Stock và bộ quà là dữ liệu demo, không phải số liệu cửa hàng thực tế.
 - Kiểm tra công cụ: đối chiếu mã sản phẩm, tên/giá/ảnh nguồn Buổi 2; kiểm tra JSON mẫu, phép tính và quy tắc nhận diện cấu hình; rà bảo toàn nội dung cũ. Chưa triển khai hoặc chạy kiểm thử các chức năng JavaScript của các PIC.
 - Trách nhiệm nhóm: đọc hiểu quy ước, triển khai và tự kiểm tra phần được giao; người nhận kiểm tra đầu vào, Quyến kiểm thử bản ghép và Đức duyệt cuối. Không ghi các bước kiểm tra công cụ thành thao tác sinh viên đã tự làm.
+
+
+### 07/11/2026 — Làm rõ hướng dẫn Buổi 3 và phân công cải thiện giao diện
+
+- Người yêu cầu: Nguyễn Quang Đức. Công cụ hỗ trợ: OpenAI Codex.
+- Yêu cầu thực tế: rà toàn bộ hướng dẫn Bước 1–8 và Sheet, viết rõ những chỗ viết tắt/khó hiểu để từng thành viên biết phải làm gì; làm rõ người phụ trách nâng chất lượng hình thức website.
+- AI hỗ trợ: diễn giải lại đầu vào, thao tác, file đầu ra, người nhận/người kiểm tra và điều kiện bắt đầu; giải thích thuật ngữ; đồng bộ sơ đồ bàn giao và phân công. Mẫu prompt nguyên văn của giảng viên được giữ; phần bối cảnh Lenly được làm rõ.
+- Phân công bổ sung: Quyến chuẩn bị mẫu giao diện sớm và chuẩn hóa CSS chung sau Đức duyệt; từng chủ trang áp dụng mẫu; Quyến kiểm thử cuối, Nam hỗ trợ ghép, Đức duyệt và tự nộp. Kế hoạch này chưa xác nhận các thành viên đã thiết kế hoặc sửa giao diện.
+- Kiểm tra công cụ: đối chiếu hướng dẫn với Sheet; giữ các ô người phụ trách, deadline cuối, trạng thái và danh sách chọn; kiểm tra phần Bài làm không phát sinh giờ điều phối chi tiết. Không chạy hoặc xác nhận thay các ca kiểm thử chức năng của thành viên.
