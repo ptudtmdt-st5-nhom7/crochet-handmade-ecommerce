@@ -42,7 +42,7 @@
 
 ### 1. Cách nạp JavaScript và chạy website
 
-- Dùng JavaScript thuần với ES modules (`export`/`import`). Các trang HTML ở gốc; file JavaScript ở `js/`, dữ liệu ảnh ở `images/`. Không dùng biến toàn cục hoặc thuộc tính `onclick` trong HTML.
+- Dùng JavaScript thuần với ES modules (`export`/`import`). Các trang HTML chính ở gốc; bảy trang chi tiết tĩnh Buổi 2 ở `pages/product-details/`; file JavaScript ở `js/`, dữ liệu ảnh ở `images/`. Không dùng biến toàn cục hoặc thuộc tính `onclick` trong HTML.
 - Mỗi trang nạp `js/site.js` để cập nhật số đếm giỏ chung, và tối đa một file khởi tạo riêng: `products.html` → `js/products-page.js`; `product-detail.html` → `js/product-detail.js`; `cart.html` → `js/cart-page.js`; `gift-builder.html` → `js/gift-builder.js`.
 - Dùng thẻ `<script type="module" src="js/ten-file.js"></script>` trong HTML. Không nạp lại các file dữ liệu/thư viện bằng thẻ script riêng; chúng được import từ file khởi tạo.
 - File thư viện chỉ xuất dữ liệu/hàm; không tự gắn sự kiện, render hoặc chạy khởi tạo khi được import. File khởi tạo gắn sự kiện một lần. Không import ngược từ thư viện vào file khởi tạo trang.
@@ -173,3 +173,11 @@ Khi bàn giao, ghi file/commit, dữ liệu/hàm đã có, cách chạy, một c
 - `storage.js` kiểm tra cấu trúc và tạo dữ liệu độc lập; không lưu giá/tổng tiền, không kiểm tra mã trong catalog hoặc lượng tồn. Đọc lỗi trả mặc định và cảnh báo; ghi lỗi không báo thành công. Bảo tính lại giá/tổng và kiểm tra lượng từ dữ liệu Nam.
 - Chỉ module lưu và trang thử đã được triển khai trong lượt này. `site.js` sẽ nối `updateCartBadge()` khi Bảo giao hàm; chưa nạp file chưa tồn tại vào website bán hàng.
 - Dữ liệu/ảnh Buổi 2 giữ nguyên. Không tạo các file rỗng trùng phần việc Nam/Tuấn/Khanh/Bảo/Châu; các PIC tạo đúng module được phân công, dùng ví dụ để bắt đầu, rồi thay bằng đầu vào thật.
+
+
+## Sắp xếp trang chi tiết 08/11/2026
+
+- Gốc dự án giữ `index.html`, `products.html`, `product-detail.html`, `about.html` và các trang chính sẽ bổ sung như `cart.html`, `gift-builder.html`.
+- Bảy file `product-hl-*`, `product-kc-*`, `product-pk-*`, `product-tl-002.html` của Buổi 2 chuyển vào `pages/product-details/`. Link trong danh sách được cập nhật; trang bên trong dùng `../../css/`, `../../images/` và `../../index.html`, `../../products.html`, `../../about.html`.
+- `product-detail.html` vẫn ở gốc để Khanh làm trang động Buổi 3. Khi có chức năng đọc `id`, Nam/Khanh đổi link theo mã sản phẩm và kiểm tra trước khi quyết định bỏ các trang tĩnh cũ. Lượt sắp xếp này chưa triển khai thay chức năng của Khanh.
+- Thành viên đang làm trên nhánh cũ cần lấy `main` mới để nhận vị trí file; không tạo lại bảy trang tĩnh ở gốc. `js/storage.js`, dữ liệu, ảnh, CSS và tên hàm không đổi.
