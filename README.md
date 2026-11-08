@@ -23,6 +23,8 @@ Website được xây dựng bằng **HTML5 và CSS3 thuần**, kế thừa repo
 - [Câu hỏi kiến thức của cả bảy thành viên](https://docs.google.com/document/d/1uIoFsaHZOZoELrRm6Y9PIP3tNZ9jMsXwfM6cFZjABJ8/edit?tab=t.ndz8ebldwwq9).
 - [Bảng phân công và tiến độ](https://docs.google.com/spreadsheets/d/1UIP27nPdW2n_PZR36gXBxR1aO9nti8mK8NYxyOvS_0s/edit?gid=0#gid=0).
 
+Các trang chính đặt ngoài thư mục gốc; bảy trang chi tiết tĩnh bổ sung được gom vào `pages/product-details/`. Khi Khanh hoàn thiện Buổi 3, các sản phẩm dùng `product-detail.html?id=...` theo quy ước; giữ các trang cũ tới khi rà xong liên kết.
+
 ### Các trang hiện có
 
 | Trang | Nội dung |
@@ -32,7 +34,7 @@ Website được xây dựng bằng **HTML5 và CSS3 thuần**, kế thừa repo
 | `product-detail.html` | Chi tiết TL-001 — Thú len thỏ, gồm hình ảnh, giá, mô tả, thuộc tính và nút mua minh họa. |
 | `about.html` | Giới thiệu cửa hàng, khách hàng mục tiêu, điểm nổi bật, hình ảnh và liên hệ. |
 
-Bảy trang chi tiết còn lại là `product-kc-001.html`, `product-kc-002.html`, `product-tl-002.html`, `product-hl-001.html`, `product-hl-002.html`, `product-pk-001.html` và `product-pk-002.html`.
+Bảy trang chi tiết còn lại là `pages/product-details/product-kc-001.html`, `pages/product-details/product-kc-002.html`, `pages/product-details/product-tl-002.html`, `pages/product-details/product-hl-001.html`, `pages/product-details/product-hl-002.html`, `pages/product-details/product-pk-001.html` và `pages/product-details/product-pk-002.html`.
 
 ### Phạm vi hiện tại
 
@@ -46,7 +48,7 @@ crochet-handmade-ecommerce/
 ├── products.html
 ├── product-detail.html
 ├── about.html
-├── product-[ma-san-pham].html
+├── pages/product-details/       # Bảy trang chi tiết tĩnh của Buổi 2
 ├── css/style.css
 ├── images/                       # Logo và tám ảnh sản phẩm
 ├── docs/                         # Quy ước, dữ liệu, báo cáo và minh chứng

@@ -710,3 +710,13 @@ Không sử dụng JavaScript hoặc framework CSS. 
 - Quyết định triển khai: giữ năm hàm và hai khóa đã thống nhất; bản đang chỉnh được có ngân sách null/danh sách rỗng, nhưng bộ xác nhận thêm giỏ phải được module nghiệp vụ kiểm tra đầy đủ. Giá, catalog, lượng tồn và gộp bộ thuộc Nam/Bảo/Châu, không chuyển vào storage.js. Không tạo file rỗng hoặc tự làm thay các module được giao cho thành viên.
 - Kết quả kiểm tra công cụ: 23/23 ca tự động đạt; thử trình duyệt HTTP cổng riêng, lưu hai loại dữ liệu rồi tải lại vẫn giữ; xóa bản soạn không xóa giỏ; lượt thử bình thường không có cảnh báo/lỗi trình duyệt. Lỗi quyền/dung lượng được mô phỏng trong bộ tự động. Chi tiết tại docs/kiem-thu-storage-buoi3.md.
 - Giới hạn và người kiểm tra: Đức nhận bản bàn giao; Bảo/Châu/Khanh cần tự gọi thử và phản hồi. Chưa nghiệm thu các trang giỏ/chọn quà/chi tiết thật hoặc toàn Bước 6; không ghi kiểm tra công cụ thành thao tác sinh viên đã tự làm, không xác nhận đã nộp LMS.
+
+
+### 08/11/2026 — Gom các trang chi tiết tĩnh vào thư mục riêng
+
+- Người yêu cầu: Nguyễn Quang Đức. Công cụ hỗ trợ: OpenAI Codex.
+- Yêu cầu thực tế: “thầy tôi kêu cái này bỏ vô 1 file riêng, chứ để như này không hợp lí, những cái chính mới bỏ ở ngoài thôi”, kèm ảnh danh sách các file chi tiết sản phẩm ở gốc.
+- Thực hiện: chuyển bảy trang chi tiết tĩnh của Buổi 2 vào pages/product-details/; giữ index.html, products.html, product-detail.html và about.html ở gốc. Sửa liên kết từ danh sách, đường dẫn ảnh/CSS/favicon và điều hướng trong các trang đã chuyển; cập nhật README/quy ước vị trí file.
+- Giới hạn: product-detail.html vẫn là đầu vào để Khanh phát triển chi tiết động theo id ở Buổi 3; không triển khai thay phần chức năng đó. URL bảy trang tĩnh chuyển sang đường dẫn mới; thành viên cần lấy main mới, không tạo lại file ở gốc.
+- Kiểm tra công cụ: rà 12 trang HTML độc lập và 242 đường dẫn/tài nguyên nội bộ, không có đích file/anchor bị thiếu. Hai đoạn header/footer trong docs là mẫu chép vào trang ở gốc, được loại khỏi danh sách trang độc lập. Mã lưu trữ, CSS, ảnh và dữ liệu sản phẩm không thay đổi.
+- Trách nhiệm: các thành viên kiểm tra lại đường dẫn khi cập nhật nhánh; Đức tích hợp, Khanh tiếp tục trang chi tiết động. Kết quả công cụ không ghi thành thao tác sinh viên đã tự làm.
