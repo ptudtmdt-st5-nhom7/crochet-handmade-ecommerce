@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lenly • Kiểm tra lưu trữ Buổi 3</title>
+  <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+  <style>
+    :root { color-scheme: light; font-family: system-ui,sans-serif; color:#352b2b; background:#fcf8f4; }
+    * { box-sizing:border-box; } body { max-width:1100px; margin:auto; padding:32px 20px; }
+    h1 { color:#a83f59; margin-bottom:12px; } p { line-height:1.6; } code { overflow-wrap:anywhere; }
+    .notice { padding:16px; border-left:4px solid #a83f59; background:#f4e8e8; }
+    .actions { display:flex; flex-wrap:wrap; gap:10px; margin:22px 0; }
+    button { padding:12px 16px; border:1px solid #a83f59; border-radius:8px; background:white; color:#803047; font:inherit; cursor:pointer; }
+    button:hover { background:#f7e8ed; } button:focus-visible,a:focus-visible { outline:3px solid #225d8c; outline-offset:3px; }
+    .columns { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    section { min-width:0; } pre { white-space:pre-wrap; overflow-wrap:anywhere; padding:16px; background:white; border:1px solid #e2d8d2; border-radius:10px; min-height:160px; font-size:14px; }
+    #status { padding:12px 0; font-weight:600; } a { color:#803047; }
+    @media(max-width:700px) { .columns { grid-template-columns:1fr; } h1 { font-size:26px; } body { padding:20px 16px; } button { flex:1 1 180px; } }
+  </style>
+</head>
+<body>
+  <p>LENLY CROCHET · BẢN BÀN GIAO KỸ THUẬT</p>
+  <h1>Lưu giỏ và bộ quà đang soạn</h1>
+  <p>Trang thử năm hàm trong <code>js/storage.js</code>, dùng cho Đức, Bảo, Châu và Khanh. Các trang bán hàng vẫn đang chờ thành viên lập trình chức năng.</p>
+  <p class="notice">Nút thử sẽ ghi dữ liệu mẫu vào hai khóa thật của website trên địa chỉ/cổng đang mở. Nên chạy trên cổng thử riêng như <strong>5513</strong>. Trang không tự ghi dữ liệu khi mở hoặc tải lại. Đây là trang kỹ thuật để bàn giao, không phải giao diện cửa hàng.</p>
+  <div class="actions">
+    <button type="button" data-action="cart">1. Lưu giỏ mẫu</button>
+    <button type="button" data-action="draft">2. Lưu bản quà đang soạn</button>
+    <button type="button" data-action="read">3. Đọc lại dữ liệu</button>
+    <button type="button" data-action="clear-draft">4. Xóa riêng bản đang soạn</button>
+  </div>
+  <p id="status" role="status" aria-live="polite">Đang nạp module lưu trữ…</p>
+  <div class="columns">
+    <section><h2>Giỏ đã xác nhận</h2><code>lenly.cart.v1</code><pre id="cart-output"></pre></section>
+    <section><h2>Bộ quà đang soạn</h2><code>lenly.giftDraft.v1</code><pre id="draft-output"></pre></section>
+  </div>
+  <p>Sau bước 1–2, tải lại trang: dữ liệu phải giữ nguyên. Thử bước 4: giỏ bên trái vẫn còn, bản đang soạn bên phải trở thành <code>null</code>.</p>
+  <p>Mở F12 → Application → Local Storage để đối chiếu hai khóa; xem Console nếu có cảnh báo dữ liệu lỗi. Các tổng tiền phải được tính ở module sản phẩm/giỏ, không lưu thành nguồn giá tại đây.</p>
+  <p><a href="ban-giao-ban-nen-buoi3.md">Hướng dẫn bàn giao và ví dụ gọi hàm</a> · <a href="../index.html">Về website Lenly</a></p>
+  <script type="module" src="../js/storage-demo.js"></script>
+</body>
+</html>
