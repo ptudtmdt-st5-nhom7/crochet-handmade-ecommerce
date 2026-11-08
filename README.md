@@ -2,6 +2,18 @@
 
 Đồ án học phần **Phát triển ứng dụng TMĐT — Nhóm 7, ST5**. Website giới thiệu và kinh doanh sản phẩm móc len handmade cho một cửa hàng.
 
+## Bản nền Buổi 3 — lưu trữ dùng chung
+
+Đã chuẩn bị `js/storage.js` do Đức phụ trách, lưu riêng giỏ hàng và bộ quà đang soạn. Các thành viên dùng [hướng dẫn bàn giao](docs/ban-giao-ban-nen-buoi3.md) và [quy ước hiện hành](docs/quy-uoc.md) để nối mã; chưa xác nhận toàn website Buổi 3 đã có đủ chức năng.
+
+- Chạy qua HTTP bằng VS Code Live Server, hoặc `python -m http.server 5513` tại thư mục gốc.
+- Mở `http://localhost:5513/docs/kiem-tra-storage.html` để gọi thử năm hàm; nên dùng cổng thử riêng. Trang chỉ ghi mẫu khi bấm nút, không tự ghi khi mở/tải lại.
+- [Kết quả kiểm tra module lưu trữ](docs/kiem-thu-storage-buoi3.md): 23 ca tự động và lượt thử trên trình duyệt; còn chờ nghiệm thu với trang thật.
+- Nếu có Node, chạy `npm run test:storage` (không cần cài thư viện). Node dùng kiểm thử, chưa triển khai backend.
+- Nam: dữ liệu/danh sách; Tuấn: tìm/lọc/sắp/gợi ý; Khanh: chi tiết; Bảo: giỏ; Châu: chọn quà; Quyến: CSS/responsive; Đức: bản nền/lưu trữ/tích hợp/hồ sơ.
+
+Các trang cửa hàng bên dưới vẫn là giao diện Buổi 2 cho tới khi chức năng của các PIC được ghép. Không dùng trang thử lưu trữ để thay trang giỏ hàng thật.
+
 ## 1. Phiên bản giao diện Buổi 2
 
 Website được xây dựng bằng **HTML5 và CSS3 thuần**, kế thừa repository Buổi 1. Bản hiện tại có bốn loại trang chính và tám trang chi tiết sản phẩm, tổng cộng **11 trang HTML**. Các trang dùng chung nhận diện, CSS, header và footer; có Grid/Flexbox, media query, hover và focus.

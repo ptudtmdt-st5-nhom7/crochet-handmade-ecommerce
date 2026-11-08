@@ -699,3 +699,14 @@ Không sử dụng JavaScript hoặc framework CSS. 
 - AI hỗ trợ: diễn giải lại đầu vào, thao tác, file đầu ra, người nhận/người kiểm tra và điều kiện bắt đầu; giải thích thuật ngữ; đồng bộ sơ đồ bàn giao và phân công. Mẫu prompt nguyên văn của giảng viên được giữ; phần bối cảnh Lenly được làm rõ.
 - Phân công bổ sung: Quyến chuẩn bị mẫu giao diện sớm và chuẩn hóa CSS chung sau Đức duyệt; từng chủ trang áp dụng mẫu; Quyến kiểm thử cuối, Nam hỗ trợ ghép, Đức duyệt và tự nộp. Kế hoạch này chưa xác nhận các thành viên đã thiết kế hoặc sửa giao diện.
 - Kiểm tra công cụ: đối chiếu hướng dẫn với Sheet; giữ các ô người phụ trách, deadline cuối, trạng thái và danh sách chọn; kiểm tra phần Bài làm không phát sinh giờ điều phối chi tiết. Không chạy hoặc xác nhận thay các ca kiểm thử chức năng của thành viên.
+
+
+### 08/11/2026 — Bản nền và module lưu trữ dùng chung Buổi 3
+
+- Người yêu cầu: Nguyễn Quang Đức. Công cụ hỗ trợ: OpenAI Codex.
+- Prompt thực tế: “okee vậy bạn làm giúp tôi phần bản nền, quy ước và js/storage.js trước để mọi người bắt đầu nha, có gì cần hỏi thì hỏi tôi”.
+- Đầu vào: phân công và lịch hiện hành trong báo cáo/Sheet; hợp đồng năm hàm và hai khóa; mã main và dữ liệu Buổi 2. Phân công mới: Đức làm lưu trữ/tích hợp/hồ sơ, Châu làm trang chọn quà; Quyến kế thừa CSS Buổi 2 và bổ sung phần mới/responsive. Các phân công cũ trong nhật ký trước là lịch sử, đã được thay bằng bản hiện hành.
+- AI thực hiện: viết js/storage.js; kiểm tra cấu trúc, đọc/lưu độc lập giỏ và bản soạn, trả lỗi khi không lưu được; tạo trang thử, ví dụ cho Bảo/Châu/Khanh, hướng dẫn nhận bản nền và bộ kiểm thử. Đồng bộ README/quy ước theo trách nhiệm mới; giữ HTML/CSS/ảnh của trang bán hàng.
+- Quyết định triển khai: giữ năm hàm và hai khóa đã thống nhất; bản đang chỉnh được có ngân sách null/danh sách rỗng, nhưng bộ xác nhận thêm giỏ phải được module nghiệp vụ kiểm tra đầy đủ. Giá, catalog, lượng tồn và gộp bộ thuộc Nam/Bảo/Châu, không chuyển vào storage.js. Không tạo file rỗng hoặc tự làm thay các module được giao cho thành viên.
+- Kết quả kiểm tra công cụ: 23/23 ca tự động đạt; thử trình duyệt HTTP cổng riêng, lưu hai loại dữ liệu rồi tải lại vẫn giữ; xóa bản soạn không xóa giỏ; lượt thử bình thường không có cảnh báo/lỗi trình duyệt. Lỗi quyền/dung lượng được mô phỏng trong bộ tự động. Chi tiết tại docs/kiem-thu-storage-buoi3.md.
+- Giới hạn và người kiểm tra: Đức nhận bản bàn giao; Bảo/Châu/Khanh cần tự gọi thử và phản hồi. Chưa nghiệm thu các trang giỏ/chọn quà/chi tiết thật hoặc toàn Bước 6; không ghi kiểm tra công cụ thành thao tác sinh viên đã tự làm, không xác nhận đã nộp LMS.

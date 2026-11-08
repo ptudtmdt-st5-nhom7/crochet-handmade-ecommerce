@@ -1,0 +1,8 @@
+{
+  "name": "lenly-crochet",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test:storage": "node --test tests/storage.test.mjs"
+  }
+}
