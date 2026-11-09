@@ -734,3 +734,12 @@ Không sử dụng JavaScript hoặc framework CSS. 
 - Quyết định: giữ phần dữ liệu và hiển thị cơ bản sau khi đối chiếu kết quả chạy; bàn giao 2A để các thành viên kiểm tra và sử dụng.
 - Phần tiếp tục ở 2B: nối tìm kiếm/lọc/sắp xếp của Tuấn, thêm giỏ của Bảo và chi tiết động của Khanh; chưa xác nhận các kết nối này hoàn tất.
 - Người tự kiểm tra: Nguyễn Thanh Nam. Người nhận tiếp tục kiểm tra chéo trước khi ghép main.
+
+### 09/11/2026 — Review và sửa điểm tích hợp PR #26 của Nam
+
+- Người yêu cầu: Nguyễn Quang Đức. Công cụ: OpenAI Codex.
+- Prompt thực tế: “vậy bạn kiểm tra PR #26 của Nam giúp tôi, nếu đúng và đủ rồi thì merge vào main để anh Tuấn làm tiếp nha, và tôi kiểm tra luôn hả”.
+- Phạm vi: dữ liệu/hàm/hiển thị cơ bản 2A, không xác nhận 2B hoặc các chức năng của PIC khác.
+- Kết quả review: dữ liệu tám sản phẩm và ba bộ mẫu đầy đủ. Sửa link tạm thời để khi trang đọc id của Khanh chưa có, khách vẫn mở đúng trang tĩnh hiện hành; thêm tùy chọn detailReady để chuyển sau. Sửa base/path của trang thử và hướng dẫn wrapper render giữ cartReady/detailReady khi lọc.
+- Kiểm tra công cụ: 31 test Node đạt; chín mục trình duyệt đạt; thử rỗng/khôi phục, tám ảnh và ba kích thước 1366/768/390 px không tràn ngang. Kiểm tra trên bản ghép thử với main; nhận 2A sau sửa để các thành viên tiếp tục.
+- Nhóm tự kiểm tra: Đức xem bản chạy và hiểu phần bàn giao; Nam/Tuấn kiểm tra đầu vào phần mình dùng. Không ghi kết quả công cụ thành việc sinh viên đã tự thao tác. Phần 2B/chi tiết động/giỏ vẫn còn chờ bàn giao.
