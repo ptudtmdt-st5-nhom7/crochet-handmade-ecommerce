@@ -1,0 +1,38 @@
+✔ 8 mã/giá/ảnh đúng và trường mô tả đầy đủ (7.937279ms)
+✔ tra đủ 8 mã và mã thiếu/sai (0.378139ms)
+✔ 3 bộ mẫu hợp lệ; tổng 80000/150000/129000 (0.366312ms)
+✔ rỗng, lượng nhiều/mã lặp và không đổi đầu vào (0.23724ms)
+✔ tính lại từ catalog, không dùng giá bộ lưu sẵn (0.188319ms)
+✔ từ chối mã/lượng sai và tràn số (0.636091ms)
+✔ tiền VND và hai bộ (18.107981ms)
+✔ chưa có dữ liệu: giỏ rỗng mới và bản soạn null (2.855663ms)
+✔ khôi phục nguyên hàng lẻ, nhóm bộ, số món và số bộ (0.886ms)
+✔ đọc lại không dùng tham chiếu chung hoặc bộ nhớ cache (0.557395ms)
+✔ lưu bản nhân bản không sửa dòng gốc hay tự thêm giỏ (0.48646ms)
+✔ hai khóa riêng; xóa bản soạn không xóa giỏ hoặc khóa khác (0.535302ms)
+✔ bản đang chỉnh được rỗng và chưa nhập ngân sách (0.384108ms)
+✔ dữ liệu giỏ JSON hỏng: không ném lỗi, trả mặc định và giữ dữ liệu để kiểm tra (0.431938ms)
+✔ dữ liệu giỏ sai phiên bản: không ném lỗi, trả mặc định và giữ dữ liệu để kiểm tra (0.261868ms)
+✔ dữ liệu giỏ sai lines: không ném lỗi, trả mặc định và giữ dữ liệu để kiểm tra (1.33246ms)
+✔ dữ liệu giỏ null: không ném lỗi, trả mặc định và giữ dữ liệu để kiểm tra (0.252814ms)
+✔ bản soạn hỏng trả null và không xóa giỏ (0.251583ms)
+✔ từ chối số lượng sai 0, giữ giỏ đã lưu (0.291631ms)
+✔ từ chối số lượng sai -1, giữ giỏ đã lưu (0.303328ms)
+✔ từ chối số lượng sai 1.5, giữ giỏ đã lưu (0.204893ms)
+✔ từ chối số lượng sai 2, giữ giỏ đã lưu (0.168038ms)
+✔ từ chối số lượng sai Infinity, giữ giỏ đã lưu (0.178064ms)
+✔ từ chối số lượng sai 9007199254740992, giữ giỏ đã lưu (0.1418ms)
+✔ từ chối bộ trống, dòng trùng, kiểu dòng lạ, số bộ sai và mã trống (0.259414ms)
+✔ không lưu giá/tổng tiền; tính giá và lượng tồn thuộc module nghiệp vụ (0.263179ms)
+✔ bản soạn sai dữ liệu không ghi đè bản tốt (0.269168ms)
+✔ lỗi dung lượng khi ghi: trả ok false, giữ giỏ trước đó (0.258743ms)
+✔ bị chặn truy cập localStorage: đọc mặc định, lưu/xóa báo lỗi (0.321135ms)
+✔ lỗi xóa bản soạn không báo thành công và giữ dữ liệu (0.231362ms)
+ℹ tests 30
+ℹ suites 0
+ℹ pass 30
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 122.035237
