@@ -1,11 +1,12 @@
-import { formatPrice } from './product-utils.js';
+import { formatPrice, getProductDetailUrl } from './product-utils.js';
 
 /**
  * Render vào [data-products-list] có sẵn, không gắn sự kiện hoặc tự chạy.
  * options là tùy chọn: 2A chưa nhận cart nên nút thêm giỏ hiển thị disabled.
- * 2B gọi renderProducts(list, { cartReady: true }) sau khi nối addSingle.
+ * 2B gọi với cartReady: true sau khi nối addSingle; detailReady: true
+ * chỉ sau khi trang chi tiết của Khanh đã đọc và hiển thị đúng id.
  */
-export function renderProducts(list, { cartReady = false } = {}) {
+export function renderProducts(list, { cartReady = false, detailReady = false } = {}) {
   if (!Array.isArray(list)) throw new TypeError('Danh sách sản phẩm phải là mảng.');
   const container = document.querySelector('[data-products-list]');
   if (!container) throw new Error('Không tìm thấy vùng data-products-list.');
@@ -38,7 +39,7 @@ export function renderProducts(list, { cartReady = false } = {}) {
     }
     const detail = document.createElement('a');
     detail.className = 'button button-secondary';
-    detail.href = 'product-detail.html?id=' + encodeURIComponent(product.id);
+    detail.href = getProductDetailUrl(product.id, { detailReady });
     detail.textContent = 'Xem chi tiết';
     detail.setAttribute('aria-label', 'Xem chi tiết ' + product.name);
     const add = document.createElement('button');

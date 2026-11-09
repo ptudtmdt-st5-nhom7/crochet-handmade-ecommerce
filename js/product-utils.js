@@ -5,6 +5,15 @@ export function getProductById(id) {
   return products.find((product) => product.id === id) ?? null;
 }
 
+/** Giữ trang chi tiết hiện có cho đến khi Khanh bàn giao trang đọc id. */
+export function getProductDetailUrl(id, { detailReady = false } = {}) {
+  if (!getProductById(id)) throw new RangeError('Mã sản phẩm không tồn tại.');
+  if (detailReady || id === 'TL-001') {
+    return 'product-detail.html?id=' + encodeURIComponent(id);
+  }
+  return 'pages/product-details/product-' + id.toLowerCase() + '.html';
+}
+
 /**
  * Giá tiền của các món trong MỘT bộ, không nhân số bộ.
  * Mã lặp được cộng đủ; không sửa items, products hay stockDemo.
