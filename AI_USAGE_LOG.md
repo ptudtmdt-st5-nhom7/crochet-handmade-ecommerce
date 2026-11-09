@@ -720,3 +720,26 @@ Không sử dụng JavaScript hoặc framework CSS. 
 - Giới hạn: product-detail.html vẫn là đầu vào để Khanh phát triển chi tiết động theo id ở Buổi 3; không triển khai thay phần chức năng đó. URL bảy trang tĩnh chuyển sang đường dẫn mới; thành viên cần lấy main mới, không tạo lại file ở gốc.
 - Kiểm tra công cụ: rà 12 trang HTML độc lập và 242 đường dẫn/tài nguyên nội bộ, không có đích file/anchor bị thiếu. Hai đoạn header/footer trong docs là mẫu chép vào trang ở gốc, được loại khỏi danh sách trang độc lập. Mã lưu trữ, CSS, ảnh và dữ liệu sản phẩm không thay đổi.
 - Trách nhiệm: các thành viên kiểm tra lại đường dẫn khi cập nhật nhánh; Đức tích hợp, Khanh tiếp tục trang chi tiết động. Kết quả công cụ không ghi thành thao tác sinh viên đã tự làm.
+## 09/11/2026 — Chuẩn bị và tự kiểm tra bàn giao 2A Buổi 3
+
+- Người thực hiện: Nguyễn Thanh Nam.
+- Công cụ hỗ trợ: ChatGPT/Codex.
+- Yêu cầu hỗ trợ (tóm tắt nội dung trao đổi): Rà soát checklist, quy ước kỹ thuật và mã nguồn hiện có; hỗ trợ chuẩn hóa dữ liệu tám sản phẩm, ba bộ quà mẫu, xây dựng hàm tra cứu, tính giá và hiển thị danh sách; hướng dẫn tự kiểm tra trước khi bàn giao 2A.
+- Mục đích: chuẩn hóa dữ liệu sản phẩm, bộ quà mẫu và các hàm dùng chung theo quy ước Buổi 3.
+- Nội dung AI hỗ trợ: đọc yêu cầu và mã nguồn; chuẩn bị tám sản phẩm, ba bộ quà mẫu, hàm tra mã/tính giá/render, trang kiểm tra và hướng dẫn bàn giao.
+- Kết quả kiểm thử tự động trong môi trường AI: 7 kiểm thử dữ liệu/tính giá mới và 23 kiểm thử storage có sẵn đều đạt; tổng 30 đạt, 0 lỗi.
+- Kết quả Nam tự thử bằng Live Server: products.html hiển thị đủ tám sản phẩm, ảnh và giá đúng; trang kiem-tra-2a.html có chín mục ĐẠT. Giá ba bộ mẫu lần lượt là 80.000, 150.000 và 129.000 đồng.
+- Thử danh sách rỗng: hiển thị 0 sản phẩm và thông báo “Không có sản phẩm phù hợp.”
+- Minh chứng: ba ảnh trong docs/minh-chung-2a/ gồm danh-sach-san-pham.png, ket-qua-kiem-tra.png và danh-sach-rong.png.
+- Quyết định: giữ phần dữ liệu và hiển thị cơ bản sau khi đối chiếu kết quả chạy; bàn giao 2A để các thành viên kiểm tra và sử dụng.
+- Phần tiếp tục ở 2B: nối tìm kiếm/lọc/sắp xếp của Tuấn, thêm giỏ của Bảo và chi tiết động của Khanh; chưa xác nhận các kết nối này hoàn tất.
+- Người tự kiểm tra: Nguyễn Thanh Nam. Người nhận tiếp tục kiểm tra chéo trước khi ghép main.
+
+### 09/11/2026 — Review và sửa điểm tích hợp PR #26 của Nam
+
+- Người yêu cầu: Nguyễn Quang Đức. Công cụ: OpenAI Codex.
+- Prompt thực tế: “vậy bạn kiểm tra PR #26 của Nam giúp tôi, nếu đúng và đủ rồi thì merge vào main để anh Tuấn làm tiếp nha, và tôi kiểm tra luôn hả”.
+- Phạm vi: dữ liệu/hàm/hiển thị cơ bản 2A, không xác nhận 2B hoặc các chức năng của PIC khác.
+- Kết quả review: dữ liệu tám sản phẩm và ba bộ mẫu đầy đủ. Sửa link tạm thời để khi trang đọc id của Khanh chưa có, khách vẫn mở đúng trang tĩnh hiện hành; thêm tùy chọn detailReady để chuyển sau. Sửa base/path của trang thử và hướng dẫn wrapper render giữ cartReady/detailReady khi lọc.
+- Kiểm tra công cụ: 31 test Node đạt; chín mục trình duyệt đạt; thử rỗng/khôi phục, tám ảnh và ba kích thước 1366/768/390 px không tràn ngang. Kiểm tra trên bản ghép thử với main; nhận 2A sau sửa để các thành viên tiếp tục.
+- Nhóm tự kiểm tra: Đức xem bản chạy và hiểu phần bàn giao; Nam/Tuấn kiểm tra đầu vào phần mình dùng. Không ghi kết quả công cụ thành việc sinh viên đã tự thao tác. Phần 2B/chi tiết động/giỏ vẫn còn chờ bàn giao.

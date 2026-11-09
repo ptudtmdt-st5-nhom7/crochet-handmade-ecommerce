@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kiểm tra dữ liệu và danh sách 2A</title>
+<base href="../">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<main class="container products-page">
+<h1>Kiểm tra bàn giao 2A của Nam</h1>
+<p>Trang kỹ thuật kiểm tra dữ liệu và hàm dùng chung, không phải giao diện bán hàng.</p>
+<p><a href="products.html">Mở danh sách sản phẩm</a></p>
+<h2>Kết quả kiểm tra</h2>
+<ul data-test-results></ul>
+<h2>Ba bộ quà mẫu</h2>
+<ul data-gift-examples></ul>
+<button class="button button-secondary" type="button" data-test-empty>Thử danh sách rỗng</button>
+<button class="button button-secondary" type="button" data-test-restore>Hiện lại tám sản phẩm</button>
+<p data-products-count aria-live="polite"></p>
+<p id="products-integration-note">Nút thêm giỏ chờ module Bảo trong 2B.</p>
+<div class="product-grid" data-products-list></div>
+</main>
+<script type="module" src="docs/kiem-tra-2a.js"></script>
+</body>
+</html>

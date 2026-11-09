@@ -41,84 +41,30 @@
       <p>Khám phá những món đồ len được làm thủ công, phù hợp để sử dụng hoặc làm quà tặng.</p>
     </div>
 
-    <div class="product-grid">
-<article class="product-card" id="moc-khoa">
-  <img class="product-card-image" src="images/product-1.webp" alt="Móc khóa gấu len">
-  <div class="product-card-content">
-    <p class="product-code">KC-001</p>
-    <h2 class="product-name">Móc khóa gấu len</h2>
-    <p class="product-price">45.000₫</p>
-    <a class="button button-secondary" href="pages/product-details/product-kc-001.html">Xem chi tiết</a>
-  </div>
-</article>
-
-<article class="product-card">
-  <img class="product-card-image" src="images/product-2.webp" alt="Móc khóa hoa cúc len">
-  <div class="product-card-content">
-    <p class="product-code">KC-002</p>
-    <h2 class="product-name">Móc khóa hoa cúc len</h2>
-    <p class="product-price">35.000₫</p>
-    <a class="button button-secondary" href="pages/product-details/product-kc-002.html">Xem chi tiết</a>
-  </div>
-</article>
-<article class="product-card" id="thu-len">
-  <img class="product-card-image" src="images/product-3.webp" alt="Thú len thỏ">
-  <div class="product-card-content">
-    <p class="product-code">TL-001</p>
-    <h2 class="product-name">Thú len thỏ</h2>
-    <p class="product-price">125.000₫</p>
-    <a class="button button-secondary" href="product-detail.html">Xem chi tiết</a>
-  </div>
-</article>
-
-<article class="product-card">
-  <img class="product-card-image" src="images/product-4.webp" alt="Thú len mèo">
-  <div class="product-card-content">
-    <p class="product-code">TL-002</p>
-    <h2 class="product-name">Thú len mèo</h2>
-    <p class="product-price">115.000₫</p>
-    <a class="button button-secondary" href="pages/product-details/product-tl-002.html">Xem chi tiết</a>
-  </div>
-</article>
-<article class="product-card" id="hoa-len">
-  <img class="product-card-image" src="images/product-5.webp" alt="Hoa tulip len">
-  <div class="product-card-content">
-    <p class="product-code">HL-001</p>
-    <h2 class="product-name">Hoa tulip len</h2>
-    <p class="product-price">35.000₫</p>
-    <a class="button button-secondary" href="pages/product-details/product-hl-001.html">Xem chi tiết</a>
-  </div>
-</article>
-
-<article class="product-card">
-  <img class="product-card-image" src="images/product-6.webp" alt="Bó hoa len nhỏ">
-  <div class="product-card-content">
-    <p class="product-code">HL-002</p>
-    <h2 class="product-name">Bó hoa len nhỏ</h2>
-    <p class="product-price">99.000₫</p>
-    <a class="button button-secondary" href="pages/product-details/product-hl-002.html">Xem chi tiết</a>
-  </div>
-</article>
-
-<article class="product-card" id="phu-kien">
-  <img class="product-card-image" src="images/product-7.webp" alt="Scrunchie len">
-  <div class="product-card-content">
-    <p class="product-code">PK-001</p>
-    <h2 class="product-name">Scrunchie len</h2>
-    <p class="product-price">30.000₫</p>
-    <a class="button button-secondary" href="pages/product-details/product-pk-001.html">Xem chi tiết</a>
-  </div>
-</article>
-
-<article class="product-card">
-  <img class="product-card-image" src="images/product-8.webp" alt="Kẹp tóc hoa len">
-  <div class="product-card-content">
-    <p class="product-code">PK-002</p>
-    <h2 class="product-name">Kẹp tóc hoa len</h2>
-    <p class="product-price">25.000₫</p>
-    <a class="button button-secondary" href="pages/product-details/product-pk-002.html">Xem chi tiết</a>
-  </div>
-</article>
+    <fieldset disabled aria-describedby="products-integration-note">
+      <legend>Tìm kiếm, lọc và sắp xếp sản phẩm</legend>
+      <label for="product-search">Tên sản phẩm</label>
+      <input id="product-search" type="search" data-product-search placeholder="Nhập tên sản phẩm">
+      <label for="category-filter">Danh mục</label>
+      <select id="category-filter" data-category-filter>
+        <option value="">Tất cả danh mục</option>
+        <option value="moc-khoa">Móc khóa len</option>
+        <option value="thu-len">Thú len</option>
+        <option value="hoa-len">Hoa len</option>
+        <option value="phu-kien">Phụ kiện móc len</option>
+      </select>
+      <label for="sort-select">Thứ tự giá</label>
+      <select id="sort-select" data-sort-select>
+        <option value="default">Mặc định</option>
+        <option value="price-asc">Giá tăng dần</option>
+        <option value="price-desc">Giá giảm dần</option>
+      </select>
+    </fieldset>
+    <p id="products-integration-note">Tìm kiếm, lọc, sắp xếp và thêm giỏ sẽ được kết nối trong bản bàn giao 2B.</p>
+    <p data-products-count role="status" aria-live="polite"></p>
+    <noscript>Vui lòng bật JavaScript để xem danh sách sản phẩm.</noscript>
+    <div class="product-grid" data-products-list>
+      <p>Đang tải sản phẩm…</p>
     </div>
   </section>
 <section class="container quick-info-section" aria-labelledby="quick-info-title">
@@ -246,5 +192,6 @@
     <p class="site-footer-note">Website học tập thuộc môn Phát triển ứng dụng thương mại điện tử, Nhóm 7. Các thao tác mua hàng chỉ ở mức giao diện minh họa.</p>
   </div>
 </footer>
+  <script type="module" src="js/products-page.js"></script>
 </body>
 </html>
