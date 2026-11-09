@@ -40,6 +40,7 @@ function commitCart(nextCart, message) {
     }
 
     cart = nextCart;
+    updateCartBadge();
 
     return createResult(
         true,

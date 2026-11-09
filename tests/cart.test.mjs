@@ -114,3 +114,48 @@ test('nghiệp vụ chính của giỏ hàng', () => {
     totalSets: 0
   });
 });
+
+test('tự cập nhật số đếm giỏ hàng sau mỗi thao tác thành công', () => {
+  const badges = [
+    { textContent: '' },
+    { textContent: '' }
+  ];
+
+  globalThis.document = {
+    querySelectorAll(selector) {
+      assert.equal(selector, '[data-cart-count]');
+      return badges;
+    }
+  };
+
+  try {
+    let result = addSingle('KC-002', 2);
+
+    assert.equal(result.ok, true);
+    assert.deepEqual(
+      badges.map((badge) => badge.textContent),
+      ['2', '2']
+    );
+
+    result = setSingleQuantity(
+      'single:KC-002',
+      3
+    );
+
+    assert.equal(result.ok, true);
+    assert.deepEqual(
+      badges.map((badge) => badge.textContent),
+      ['3', '3']
+    );
+
+    result = removeCartLine('single:KC-002');
+
+    assert.equal(result.ok, true);
+    assert.deepEqual(
+      badges.map((badge) => badge.textContent),
+      ['0', '0']
+    );
+  } finally {
+    delete globalThis.document;
+  }
+});

@@ -752,3 +752,6 @@ Không sử dụng JavaScript hoặc framework CSS. 
 **Đánh giá và xử lý:** Giữ cách tách nghiệp vụ trong `js/cart.js`, sử dụng dữ liệu sản phẩm và lưu trữ đã có của nhóm. Bổ sung kiểm tra dữ liệu đầu vào, tồn kho và gộp các sản phẩm hoặc bộ quà trùng cấu hình.
 
 **Kiểm tra kết quả:** Chạy kiểm thử cho dữ liệu sản phẩm, lưu trữ và giỏ hàng; kết quả 32 kiểm thử đạt, 0 lỗi.
+**Bổ sung sau review:** Gọi `updateCartBadge()` trong `commitCart()` sau khi lưu giỏ hàng thành công, để số đếm tự cập nhật khi thêm, xóa hoặc đổi số lượng. Bổ sung kiểm thử mô phỏng hai phần tử `[data-cart-count]`.
+
+**Kiểm tra lại:** Chạy kiểm thử dữ liệu sản phẩm, lưu trữ, giỏ hàng và cập nhật badge; kết quả 33 kiểm thử đạt, 0 lỗi.
