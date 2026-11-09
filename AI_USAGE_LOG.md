@@ -754,4 +754,24 @@ Không sử dụng JavaScript hoặc framework CSS. 
 **Kiểm tra kết quả:** Chạy kiểm thử cho dữ liệu sản phẩm, lưu trữ và giỏ hàng; kết quả 32 kiểm thử đạt, 0 lỗi.
 **Bổ sung sau review:** Gọi `updateCartBadge()` trong `commitCart()` sau khi lưu giỏ hàng thành công, để số đếm tự cập nhật khi thêm, xóa hoặc đổi số lượng. Bổ sung kiểm thử mô phỏng hai phần tử `[data-cart-count]`.
 
-**Kiểm tra lại:** Chạy kiểm thử dữ liệu sản phẩm, lưu trữ, giỏ hàng và cập nhật badge; kết quả 33 kiểm thử đạt, 0 lỗi.
+**Kiểm tra lại:** Chạy kiểm thử dữ liệu sản phẩm, lưu trữ, giỏ hàng và cập nhật badge; kết quả 33 kiểm thử đạt, 0 lỗi.## 10/11/2026 — Nam kiểm tra và sửa lỗi giỏ trong PR #27
+
+- Người thực hiện: Nguyễn Thanh Nam.
+- Công cụ hỗ trợ: ChatGPT/Codex.
+- Nội dung: kiểm tra code giỏ của Bảo; sửa lỗi cập nhật số giỏ khi dữ liệu đã lưu có mã sản phẩm không còn trong products.
+- Cách sửa: bỏ qua dòng chứa mã không còn hợp lệ, giữ các dòng còn đúng. Nếu bộ quà có mã lỗi thì bỏ qua nguyên bộ; không tự ghi lại localStorage khi mở trang.
+- File sửa: js/cart.js và tests/cart.test.mjs.
+- Kết quả chạy trên máy Nam: node --test tests/cart.test.mjs — 4 kiểm thử đạt, 0 lỗi.
+- Quyết định: giữ bản sửa sau khi kiểm tra; cập nhật vào PR #27 để tiếp tục bàn giao.
+## 10/11/2026 — Nối chức năng trang Sản phẩm, phần 2B
+
+- Người thực hiện: Nguyễn Thanh Nam.
+- Công cụ hỗ trợ: ChatGPT/Codex.
+- Yêu cầu hỗ trợ: nối tìm kiếm, lọc danh mục, sắp giá và thêm giỏ bằng các module Tuấn và Bảo đã bàn giao; kiểm tra thao tác sau khi danh sách được vẽ lại.
+- Nội dung AI hỗ trợ: sửa products.html và js/products-page.js; bổ sung tests/products-page.test.mjs và hướng dẫn kiểm tra.
+- Kết quả tự thử bằng Live Server: tìm theo mã bằng nút Tìm kiếm và phím Enter đúng; lọc danh mục, sắp giá tăng/giảm, xóa lọc và thông báo không có kết quả đúng. Thêm giỏ tăng một món mỗi lần bấm; tải lại trang vẫn giữ số giỏ. Ba link chi tiết gấu, hoa cúc và thỏ mở đúng.
+- Kết quả chạy node --test tests/*.mjs trên máy Nam: 36 kiểm thử đạt, 0 lỗi. Bài thử nối trang trong Node dùng DOM mô phỏng; giao diện được Nam thử riêng bằng Live Server.
+- Minh chứng: bốn ảnh trong docs/minh-chung-2b/.
+- Quyết định sau khi kiểm tra: giữ phần nối tìm/lọc/sắp và thêm giỏ đã thử.
+- Phần còn chờ: nối trang chi tiết động sau khi Khanh bàn giao; chưa xác nhận toàn bộ phần 2B hoàn tất.
+- Người tự kiểm tra: Nguyễn Thanh Nam.
