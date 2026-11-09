@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { access } from 'node:fs/promises';
 import { products, categoryLabels } from '../js/products.js';
 import { giftSets } from '../js/gift-sets.js';
-import { getProductById, getItemsTotal, formatPrice } from '../js/product-utils.js';
+import { getProductById, getItemsTotal, formatPrice, getProductDetailUrl } from '../js/product-utils.js';
 
 test('8 mã/giá/ảnh đúng và trường mô tả đầy đủ', async()=>{
  assert.deepEqual(products.map(p=>[p.id,p.price]),[['KC-001',45000],['KC-002',35000],['TL-001',125000],['TL-002',115000],['HL-001',35000],['HL-002',99000],['PK-001',30000],['PK-002',25000]]);
@@ -46,4 +46,14 @@ test('từ chối mã/lượng sai và tràn số',()=>{
 test('tiền VND và hai bộ',()=>{
  assert.match(formatPrice(45000),/45\.000/);assert.match(formatPrice(45000),/₫/);
  assert.equal(getItemsTotal(giftSets[0].items)*2,160000);
+});
+
+test('link chi tiết vẫn đúng sản phẩm trước và sau khi nối trang động', async()=>{
+ for(const p of products){
+  const expected=p.id==='TL-001'?'product-detail.html?id=TL-001':'pages/product-details/product-'+p.id.toLowerCase()+'.html';
+  assert.equal(getProductDetailUrl(p.id),expected);
+  await access(new URL('../'+expected.split('?')[0],import.meta.url));
+  assert.equal(getProductDetailUrl(p.id,{detailReady:true}),'product-detail.html?id='+p.id);
+ }
+ assert.throws(()=>getProductDetailUrl('BAD'));
 });
