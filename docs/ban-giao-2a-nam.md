@@ -5,7 +5,7 @@ Phạm vi: Bước 2A theo TO DO LIST, không gộp phần kết nối 2B hạn 
 ## File đã triển khai
 - js/products.js: tám mã, tên, giá số, danh mục, ảnh, mô tả, stockDemo và thuộc tính màu/kích thước/chất liệu từ docs/products-data.md.
 - js/gift-sets.js: ba bộ tham chiếu sản phẩm và allowedProductIds, không lưu giá bộ riêng.
-- js/product-utils.js: getProductById, getItemsTotal, formatPrice.
+- js/product-utils.js: getProductById, getItemsTotal, formatPrice; getProductDetailUrl giữ link chi tiết đang hoạt động trước khi nối trang động.
 - js/product-list.js: renderProducts(list), dùng DOM/textContent, trạng thái rỗng và đường dẫn đúng mã.
 - js/products-page.js và vùng danh sách products.html: render tám sản phẩm bằng ES modules; giữ các phần chung/CSS cũ, các điểm nối theo quy ước.
 - tests/products.test.mjs; docs/kiem-tra-2a.html và docs/kiem-tra-2a.js: cách kiểm tra tự động/trình duyệt.
@@ -45,7 +45,7 @@ Món mặc định đều thuộc allowedProductIds. Châu sao chép items trư�
 Lệnh tại gốc: node --test tests/products.test.mjs tests/storage.test.mjs
 Kết quả: 30 kiểm thử đạt, 0 lỗi; gồm 7 kiểm thử dữ liệu/tính giá mới và 23 kiểm thử lưu trữ có sẵn. Log tại docs/minh-chung-2a/ket-qua-node.txt.
 Đã kiểm tra cú pháp các module mới và đối chiếu dữ liệu/đường dẫn ảnh với file nguồn. Việc chạy bộ lưu trữ cũ chỉ kiểm tra hồi quy, không nhận là phần Nam viết.
-Trình duyệt tự động trong môi trường hỗ trợ không khởi động được (hạn chế socket). Chưa ghi nhận kết quả hoặc ảnh trình duyệt của bản 2A này; dùng trang thử dưới đây để Nam/người nhận xác nhận thực tế.
+Ở lượt chuẩn bị ban đầu, trình duyệt trong môi trường hỗ trợ chưa khởi động được do hạn chế socket. Sau đó Nam đã bổ sung ba ảnh và ghi kết quả tự thử trong AI_USAGE_LOG.md; kết quả review mới nhất bằng công cụ được ghi riêng ở cuối tài liệu này.
 
 ## Cách tự thử và chụp minh chứng
 1. Mở thư mục dự án bằng VS Code, chạy Live Server với products.html. Không mở HTML bằng nhấp đúp.
@@ -56,9 +56,21 @@ Trình duyệt tự động trong môi trường hỗ trợ không khởi độn
 
 ## Phần chờ kết nối 2B
 - Tuấn: initProductFilters({products, renderProducts}); các điểm nối data-product-search, data-category-filter, data-sort-select đã có. Bỏ disabled của fieldset sau khi nhận và gắn module.
-- Bảo: addSingle(productId, quantity); gắn MỘT listener trên vùng danh sách. Chỉ bật nút sau khi có hàm giỏ; có thể dùng renderProducts(list, {cartReady:true}). Khi nối bộ lọc, truyền wrapper render với tùy chọn này để render sau lọc không vô hiệu hóa lại nút.
-- Khanh: hoàn thiện trang động product-detail.html đọc id. Các link đã mang mã đúng theo hợp đồng; bản nền vẫn hiển thị chi tiết thỏ tĩnh nên chưa được coi là đã nghiệm thu tám trang động.
+- Bảo: addSingle(productId, quantity); gắn MỘT listener trên vùng danh sách. Chỉ bật nút sau khi có hàm giỏ bằng renderProducts(list, {cartReady:true}). Khi nối bộ lọc, Nam truyền wrapper render giữ các tùy chọn cartReady/detailReady để render sau lọc không đổi trạng thái đã tích hợp.
+- Khanh: hoàn thiện trang động product-detail.html đọc id. Trong 2A, link mặc định dùng bảy trang tĩnh hiện có và trang thỏ để không mở nhầm mọi sản phẩm thành thỏ. Sau khi trang động đã kiểm tra đúng tám mã, Nam bật renderProducts(list, {detailReady:true}); khi đó tất cả link trở thành product-detail.html?id=[mã]. Không tự bật cờ trước khi Khanh bàn giao. Nếu giỏ cũng sẵn sàng thì truyền cả cartReady:true và detailReady:true.
 - Đức: site.js chưa có trong bản nền gửi kèm, vì vậy không import file chưa tồn tại.
 - Quyến: bổ sung kiểu điều khiển mới và khoảng cách nút, rà responsive sau kết nối.
 
 2A là dữ liệu/hàm cơ bản; không xác nhận đã tìm/lọc/thêm giỏ hoặc hoàn thành 2B. Nhánh/commit sẽ có sau khi Nam chép file, tự thử và commit trong repository của nhóm.
+
+
+## Review PR #26 trước khi merge — 09/11/2026
+
+Đức yêu cầu OpenAI Codex review và merge nếu phần 2A đúng/đủ. Kết quả công cụ được ghi riêng với kết quả Nam tự kiểm tra.
+
+- Đối chiếu đủ tám sản phẩm, trường dữ liệu, ảnh và ba bộ mẫu; giá bộ tính từ products, không lưu bảng giá riêng. Không phát hiện xung đột khi thử ghép vào main hiện hành.
+- Sửa điểm chuyển tiếp: khi trang chi tiết động chưa có, link vẫn mở đúng trang tĩnh đã hoạt động. Tùy chọn detailReady:true chuyển sang URL theo id sau khi Khanh bàn giao; tên hàm/data đầu vào Tuấn dùng giữ nguyên.
+- Đặt base trong HTML trang thử ngay từ đầu và sửa đường dẫn CSS/module tương ứng để dùng được khi website đặt trong thư mục con như GitHub Pages.
+- Chạy lại node --test tests/products.test.mjs tests/storage.test.mjs: 31 đạt, 0 lỗi; gồm 8 test sản phẩm/đường dẫn và 23 test lưu trữ có sẵn. Kiểm tra cú pháp các file đã sửa đạt.
+- Trình duyệt HTTP: chín mục ĐẠT; render rỗng có thông báo và khôi phục đủ tám thẻ, không nhân đôi. Tám ảnh tải được. Kiểm tra products.html ở 1366, 768, 390 px không tràn ngang hoặc ảnh lỗi.
+- Phạm vi nhận là 2A. Tìm/lọc/sắp, thêm giỏ, chi tiết động và 2B vẫn do các PIC tiếp tục; không đánh dấu các chức năng đó đã hoàn tất.

@@ -1,6 +1,6 @@
 import { products } from '../js/products.js';
 import { giftSets } from '../js/gift-sets.js';
-import { getProductById, getItemsTotal, formatPrice } from '../js/product-utils.js';
+import { getProductById, getItemsTotal, formatPrice, getProductDetailUrl } from '../js/product-utils.js';
 import { renderProducts } from '../js/product-list.js';
 
 const results = document.querySelector('[data-test-results]');
@@ -14,11 +14,7 @@ function check(name, test) {
   }
   results.append(row);
 }
-// Đường dẫn trong catalog tính từ gốc website; trang thử ở docs dùng base để
-// trình duyệt tải đúng ảnh và link, không thay đổi catalog hoặc hàm render.
-const base = document.createElement('base');
-base.href = new URL('../', location.href).href;
-document.head.append(base);
+// HTML đặt base từ đầu để CSS, ảnh và module đúng cả trên GitHub Pages.
 
 check('Có đúng tám sản phẩm và không trùng mã', () => products.length === 8 && new Set(products.map(p => p.id)).size === 8);
 check('Tra đúng mã KC-001, sai mã trả null', () => getProductById('KC-001').price === 45000 && getProductById('SAI') === null);
@@ -40,7 +36,7 @@ check('Render rỗng có thông báo, không còn thẻ cũ', () => {
 check('Render lại không nhân đôi thẻ; đủ tám link đúng mã', () => {
   renderProducts(products); renderProducts(products);
   const links = [...document.querySelectorAll('[data-products-list] a')];
-  return links.length === 8 && links.every((a, i) => a.getAttribute('href') === 'product-detail.html?id=' + products[i].id);
+  return links.length === 8 && links.every((a, i) => a.getAttribute('href') === getProductDetailUrl(products[i].id));
 });
 for (const gift of giftSets) {
   const li = document.createElement('li');
