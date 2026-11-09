@@ -1,7 +1,34 @@
 import { getProductById, getItemsTotal } from './product-utils.js';
 import { loadCart, saveCart } from './storage.js';
 
-let cart = loadCart();
+// storage.js kiểm tra cấu trúc; cart.js đối chiếu mã với catalog hiện tại.
+function restoreAvailableCart() {
+    const savedCart = loadCart();
+    const lines = savedCart.lines.filter((line) => {
+        const items = line.type === 'single'
+            ? [{ productId: line.productId }]
+            : line.items;
+        const missingIds = items
+            .filter((item) => !getProductById(item.productId))
+            .map((item) => item.productId);
+
+        if (missingIds.length === 0) return true;
+
+        // Bỏ nguyên dòng/bộ lỗi, không tách bớt món làm thay cấu hình bộ quà.
+        console.warn(
+            '[Lenly cart] Bỏ qua dòng có mã sản phẩm không còn trong danh sách:',
+            line.lineId,
+            missingIds
+        );
+        return false;
+    });
+
+    // Không tự ghi lại/xóa localStorage khi mở trang.
+    // Các dòng còn hợp lệ được giữ; chỉ lưu sau thao tác thành công.
+    return { version: savedCart.version, lines };
+}
+
+let cart = restoreAvailableCart();
 
 function copyData(value) {
     return JSON.parse(JSON.stringify(value));

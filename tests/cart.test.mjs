@@ -159,3 +159,91 @@ test('tự cập nhật số đếm giỏ hàng sau mỗi thao tác thành công
     delete globalThis.document;
   }
 });
+
+test('đọc giỏ có mã hàng lẻ cũ vẫn giữ dòng hợp lệ và cập nhật số đếm', async () => {
+  const savedCart = {
+    version: 1,
+    lines: [
+      { lineId: 'single:OLD-001', type: 'single', productId: 'OLD-001', quantity: 1 },
+      { lineId: 'single:KC-001', type: 'single', productId: 'KC-001', quantity: 2 }
+    ]
+  };
+  const raw = JSON.stringify(savedCart);
+  memory.set('lenly.cart.v1', raw);
+  memory.set('lenly.giftDraft.v1', 'giu-ban-soan');
+  const badges = [{ textContent: '' }];
+  const warnings = [];
+  const oldWarn = console.warn;
+  const oldDocument = globalThis.document;
+  console.warn = (...args) => warnings.push(args);
+  globalThis.document = { querySelectorAll: () => badges };
+  try {
+    // Nạp mới cart.js để mô phỏng mở lại trang với giỏ đã lưu.
+    const restored = await import('../js/cart.js?test=old-single');
+    assert.equal(restored.getCart().lines.length, 1);
+    assert.equal(restored.getCart().lines[0].productId, 'KC-001');
+    assert.deepEqual(restored.getCartSummary(), {
+      totalQuantity: 2, totalAmount: 90000, totalSets: 0
+    });
+    assert.equal(restored.updateCartBadge(), 2);
+    assert.equal(badges[0].textContent, '2');
+    assert.equal(warnings.length, 1);
+    assert.equal(memory.get('lenly.cart.v1'), raw);
+    assert.equal(memory.get('lenly.giftDraft.v1'), 'giu-ban-soan');
+
+    assert.equal(restored.addSingle('KC-001', 1).ok, true);
+    assert.equal(badges[0].textContent, '3');
+    assert.equal(restored.setSingleQuantity('single:KC-001', 4).ok, true);
+    assert.equal(badges[0].textContent, '4');
+    assert.equal(restored.removeCartLine('single:KC-001').ok, true);
+    assert.equal(badges[0].textContent, '0');
+    assert.deepEqual(JSON.parse(memory.get('lenly.cart.v1')), { version: 1, lines: [] });
+    assert.equal(memory.get('lenly.giftDraft.v1'), 'giu-ban-soan');
+  } finally {
+    console.warn = oldWarn;
+    if (oldDocument === undefined) delete globalThis.document;
+    else globalThis.document = oldDocument;
+    memory.clear();
+  }
+});
+
+test('bộ quà có mã cũ bị bỏ nguyên bộ, các dòng khác và số bộ vẫn đúng', async () => {
+  const savedCart = {
+    version: 1,
+    lines: [
+      { lineId: 'gift:old', type: 'gift', giftSetId: 'GIFT-OLD',
+        name: 'Bộ cũ', budget: 100000, setQuantity: 2,
+        items: [{ productId: 'OLD-002', quantity: 1 }, { productId: 'KC-001', quantity: 1 }] },
+      { lineId: 'gift:valid', type: 'gift', giftSetId: 'GIFT-01',
+        name: 'Món quà nhỏ', budget: 100000, setQuantity: 2,
+        items: [{ productId: 'KC-001', quantity: 1 }, { productId: 'HL-001', quantity: 1 }] },
+      { lineId: 'single:KC-002', type: 'single', productId: 'KC-002', quantity: 1 }
+    ]
+  };
+  memory.set('lenly.cart.v1', JSON.stringify(savedCart));
+  const oldWarn = console.warn;
+  console.warn = () => {};
+  try {
+    const restored = await import('../js/cart.js?test=old-gift');
+    assert.deepEqual(restored.getCart().lines.map(line => line.lineId), ['gift:valid', 'single:KC-002']);
+    assert.deepEqual(restored.getCartSummary(), {
+      totalQuantity: 5, totalAmount: 195000, totalSets: 2
+    });
+    assert.equal(restored.updateCartBadge(), 5);
+    assert.equal(restored.removeCartLine('single:KC-002').ok, true);
+    assert.deepEqual(restored.getCartSummary(), {
+      totalQuantity: 4, totalAmount: 160000, totalSets: 2
+    });
+    const onlyOld = { version: 1, lines: [savedCart.lines[0]] };
+    memory.set('lenly.cart.v1', JSON.stringify(onlyOld));
+    const empty = await import('../js/cart.js?test=only-old');
+    assert.deepEqual(empty.getCart(), { version: 1, lines: [] });
+    assert.equal(empty.updateCartBadge(), 0);
+    assert.equal(memory.get('lenly.cart.v1'), JSON.stringify(onlyOld));
+    assert.equal(empty.addSingle('KC-001', 1).ok, true);
+    assert.equal(empty.getCartSummary().totalAmount, 45000);
+  } finally {
+    console.warn = oldWarn;
+    memory.clear();
+  }
+});
