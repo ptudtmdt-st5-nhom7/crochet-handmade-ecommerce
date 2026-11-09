@@ -743,3 +743,15 @@ Không sử dụng JavaScript hoặc framework CSS. 
 - Kết quả review: dữ liệu tám sản phẩm và ba bộ mẫu đầy đủ. Sửa link tạm thời để khi trang đọc id của Khanh chưa có, khách vẫn mở đúng trang tĩnh hiện hành; thêm tùy chọn detailReady để chuyển sau. Sửa base/path của trang thử và hướng dẫn wrapper render giữ cartReady/detailReady khi lọc.
 - Kiểm tra công cụ: 31 test Node đạt; chín mục trình duyệt đạt; thử rỗng/khôi phục, tám ảnh và ba kích thước 1366/768/390 px không tràn ngang. Kiểm tra trên bản ghép thử với main; nhận 2A sau sửa để các thành viên tiếp tục.
 - Nhóm tự kiểm tra: Đức xem bản chạy và hiểu phần bàn giao; Nam/Tuấn kiểm tra đầu vào phần mình dùng. Không ghi kết quả công cụ thành việc sinh viên đã tự thao tác. Phần 2B/chi tiết động/giỏ vẫn còn chờ bàn giao.
+### Bước 5A — Xử lý nghiệp vụ giỏ hàng
+
+**Người phụ trách:** Trần Quốc Bảo. **Công cụ:** ChatGPT.
+
+**Nội dung đã hỏi AI:** Đề xuất mã xử lý giỏ hàng gồm thêm sản phẩm lẻ, thêm bộ quà, thay đổi số lượng, xóa sản phẩm, kiểm tra tồn kho và tính tổng giỏ hàng.
+
+**Đánh giá và xử lý:** Giữ cách tách nghiệp vụ trong `js/cart.js`, sử dụng dữ liệu sản phẩm và lưu trữ đã có của nhóm. Bổ sung kiểm tra dữ liệu đầu vào, tồn kho và gộp các sản phẩm hoặc bộ quà trùng cấu hình.
+
+**Kiểm tra kết quả:** Chạy kiểm thử cho dữ liệu sản phẩm, lưu trữ và giỏ hàng; kết quả 32 kiểm thử đạt, 0 lỗi.
+**Bổ sung sau review:** Gọi `updateCartBadge()` trong `commitCart()` sau khi lưu giỏ hàng thành công, để số đếm tự cập nhật khi thêm, xóa hoặc đổi số lượng. Bổ sung kiểm thử mô phỏng hai phần tử `[data-cart-count]`.
+
+**Kiểm tra lại:** Chạy kiểm thử dữ liệu sản phẩm, lưu trữ, giỏ hàng và cập nhật badge; kết quả 33 kiểm thử đạt, 0 lỗi.
