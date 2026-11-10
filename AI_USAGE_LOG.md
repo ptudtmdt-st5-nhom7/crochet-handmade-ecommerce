@@ -899,3 +899,12 @@ Các nội dung cần kiểm thử sau khi tích hợp:
 - Kết quả: bổ sung CSS responsive và bố cục bộ lọc; giữ nguyên JavaScript; chuẩn bị báo cáo 12 trang, ảnh và bảng 23 ca kiểm thử.
 - Kiểm tra: 36/36 kiểm thử có sẵn; minh chứng trình duyệt và 12 ca bổ sung được lưu tại docs/minh-chung-buoi3/. Các lượt thử do Codex thực hiện.
 - Người dùng đã yêu cầu commit và đẩy lên GitHub. Chưa ghi nhận Quyến tự thử, quyết định giữ/sửa/bỏ chi tiết hoặc xác nhận của Nam/Tuấn/Đức. Chưa coi việc push nhánh là nghiệm thu nhóm.
+
+## 10/11/2026 — Đức yêu cầu giữ bộ gốc và bản sao cùng trong mục 3
+
+- Công cụ: Codex, GitHub connector, Node test runner, Playwright/Chrome headless.
+- Prompt chính của Đức: “sửa lại mục 3 theo cách này ... giữ bộ gốc và bản sao chỉnh riêng được, rồi cập nhật lên web GitHub để tôi xem”. Đã xác nhận cách mỗi bộ có khung riêng và nút nhân bản tạo thêm khung dưới bộ gốc.
+- Quyết định: sửa giao diện một bản soạn thành nhiều khung độc lập; giữ HTML/CSS/JavaScript thuần, thiết kế Quyến và API nghiệp vụ giỏ. Bản sao mặc định một bộ; không tự thêm giỏ. Mục 4 cho thêm từng bộ; khung đang soạn vẫn giữ để chỉnh tiếp và không tự sửa giỏ đã xác nhận.
+- Sản phẩm: cập nhật gift-builder, storage workspace tương thích API cũ, thao tác nhân bản từ cart, CSS, README và quy ước; hướng dẫn tại `docs/chon-nhieu-bo-qua.md`.
+- Kiểm tra bằng công cụ: 41 kiểm thử Node; thử nhiều bộ/bản sao, tải lại, quay về từ chi tiết, giữ dòng giỏ gốc, thiếu lượng và lỗi lưu. Rà sáu trang ở 1366/768/390 px. Phát hiện và sửa lỗi thay bố cục lúc ô số mất focus có thể làm mất cú click kế tiếp; bổ sung ca thao tác tự nhiên để thử lại.
+- Giới hạn/xác nhận: đây là kết quả công cụ hỗ trợ, chưa xác nhận Đức hoặc cả nhóm đã tự thử/giải thích mã. Phải kiểm tra bản triển khai Pages thực tế trước khi thông báo link đã cập nhật; không coi việc merge là triển khai thành công.

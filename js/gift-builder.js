@@ -1,1515 +1,340 @@
-// ==========================================
-// 1. IMPORT MODULE
-// ==========================================
-
 import { giftSets } from './gift-sets.js';
-
+import { getProductById, getItemsTotal, formatPrice } from './product-utils.js';
+import { recommendGiftSets } from './gift-recommendations.js';
+import { addGiftSet } from './cart.js';
 import {
-  getProductById,
-  getItemsTotal,
-  formatPrice
-} from './product-utils.js';
-
-import {
-  recommendGiftSets
-} from './gift-recommendations.js';
-
-import {
-  loadGiftDraft,
-  saveGiftDraft,
-  clearGiftDraft
+  loadGiftDraft, clearGiftDraft, loadGiftWorkspace, saveGiftWorkspace,
+  createWorkspaceDraft, duplicateWorkspaceDraft,
 } from './storage.js';
 
-import {
-  addGiftSet
-} from './cart.js';
+// Mỗi draftId là một khung độc lập; items luôn được sao chép sâu khi nhân bản.
+let workspace = loadGiftWorkspace();
+let recommended = [];
+let recommendationBudget = null;
+const messages = new Map();
+const editor = document.querySelector('#gift-editor-list');
+const summary = document.querySelector('#gift-workspace-summary');
+const budgetInput = document.querySelector('#gift-budget');
+const integer = value => Number.isSafeInteger(value) && value > 0;
+const copy = value => JSON.parse(JSON.stringify(value));
 
-
-// ==========================================
-// 2. LẤY CÁC PHẦN TỬ HTML
-// ==========================================
-
-const elements = {
-
-  budget: document.querySelector('#gift-budget'),
-
-  recommendButton: document.querySelector('#btn-recommend'),
-
-  budgetError: document.querySelector('#budget-error'),
-
-  recommendationDescription:
-    document.querySelector('#recommend-description'),
-
-  recommendationList:
-    document.querySelector('#gift-set-list'),
-
-  recommendationMessage:
-    document.querySelector('#recommend-message'),
-
-  editorDescription:
-    document.querySelector('#gift-editor-description'),
-
-  editorList:
-    document.querySelector('#gift-editor-list'),
-
-  addProductButton:
-    document.querySelector('#btn-add-product'),
-
-  editorMessage:
-    document.querySelector('#editor-message'),
-
-  unitPrice:
-    document.querySelector('#gift-unit-price'),
-
-  budgetDisplay:
-    document.querySelector('#gift-budget-display'),
-
-  remaining:
-    document.querySelector('#gift-remaining'),
-
-  exceeded:
-    document.querySelector('#gift-exceeded'),
-
-  setQuantity:
-    document.querySelector('#gift-set-quantity'),
-
-  totalPrice:
-    document.querySelector('#gift-total-price'),
-
-  summaryMessage:
-    document.querySelector('#summary-message'),
-
-  duplicateButton:
-    document.querySelector('#btn-duplicate-gift'),
-
-  addCartButton:
-    document.querySelector('#btn-add-cart')
-
-};
-
-
-// ==========================================
-// 3. BIẾN QUẢN LÝ TRẠNG THÁI
-// ==========================================
-
-let currentDraft = null;
-
-let allowedProductIds = [];
-
-let lastAdded = false;
-
-let recommendationsForCurrentBudget = [];
-
-let recommendationsBudget = null;
-
-
-// ==========================================
-// 4. CÁC HÀM HỖ TRỢ
-// ==========================================
-
-// Hiển thị thông báo
-
-function setMessage(element, message = '') {
-
-  element.textContent = message;
-
+function element(tag, className = '', text = '') {
+  const node = document.createElement(tag);
+  node.className = className;
+  node.textContent = text;
+  return node;
 }
-
-
-// Kiểm tra số nguyên dương
-
-function isPositiveInteger(value) {
-
-  return Number.isSafeInteger(value) && value > 0;
-
+function message(selector, text) {
+  document.querySelector(selector).textContent = text;
 }
-
-
-// Lấy ngân sách khách nhập
-
-function readBudget() {
-
-  const rawValue = elements.budget.value.trim();
-
-  if (!rawValue) return null;
-
-  const value = Number(rawValue);
-
-  return isPositiveInteger(value) ? value : null;
-
+function button(text, action, secondary = true) {
+  const node = element('button', `button button-${secondary ? 'secondary' : 'primary'}`, text);
+  node.type = 'button';
+  node.dataset.action = action;
+  return node;
 }
-
-
-// Lấy danh sách sản phẩm được phép sử dụng
-
-function getAllowedIds(sourceGiftSetId, fallbackItems = []) {
-
-  const sourceSet = giftSets.find(
-    (set) => set.id === sourceGiftSetId
-  );
-
-  if (sourceSet && Array.isArray(sourceSet.allowedProductIds)) {
-
-    return [...sourceSet.allowedProductIds];
-
-  }
-
-  const existingIds = fallbackItems
-
-    .map((item) => item.productId)
-
-    .filter((id) => getProductById(id));
-
-  return [...new Set(existingIds)];
-
+function allowedIds(draft) {
+  const source = giftSets.find(set => set.id === draft.sourceGiftSetId);
+  return (source?.allowedProductIds ?? draft.items.map(item => item.productId))
+    .filter(id => getProductById(id));
 }
-
-
-// Tạo bản nháp từ bộ quà gợi ý
-
-function createDraftFromRecommendation(recommendation, budget) {
-
-  return {
-
-    version: 1,
-
-    budget,
-
-    sourceGiftSetId: recommendation.giftSetId,
-
-    name: recommendation.name,
-
-    items: recommendation.items.map((item) => ({
-
-      productId: item.productId,
-
-      quantity: item.quantity
-
-    })),
-
-    setQuantity: 1,
-
-    copiedFromLineId: null
-
-  };
-
-}
-
-
-// Lưu bản quà đang soạn
-
-function persistDraft() {
-
-  if (!currentDraft) {
-
-    return { ok: true, message: '' };
-
-  }
-
-  const result = saveGiftDraft(currentDraft);
-
-  if (!result.ok) {
-
-    setMessage(elements.editorMessage, result.message);
-
-  }
-
-  return result;
-
-}
-
-
-// Tạo phần tử HTML an toàn
-
-function createElement(tag, className, text) {
-
-  const element = document.createElement(tag);
-
-  if (className) {
-
-    element.className = className;
-
-  }
-
-  if (text !== undefined) {
-
-    element.textContent = text;
-
-  }
-
-  return element;
-
-}
-
-
-// ==========================================
-// 5. HIỂN THỊ CÁC BỘ QUÀ GỢI Ý
-// ==========================================
-
-function renderRecommendations(list) {
-
-  elements.recommendationList.replaceChildren();
-
-  list.forEach((recommendation) => {
-
-    const card = createElement(
-      'article',
-      'gift-set-card'
-    );
-
-    const title = createElement(
-      'h3',
-      '',
-      recommendation.name
-    );
-
-    const price = createElement(
-      'p',
-      'gift-set-price',
-      `Giá một bộ: ${formatPrice(recommendation.unitTotal)}`
-    );
-
-    const remaining = createElement(
-      'p',
-      '',
-      `Còn lại: ${formatPrice(recommendation.remainingBudget)}`
-    );
-
-    const itemList = createElement(
-      'ul',
-      'gift-set-items'
-    );
-
-    recommendation.items.forEach((item) => {
-
-      const product = item.product ??
-        getProductById(item.productId);
-
-      if (!product) return;
-
-      const line = createElement(
-        'li',
-        '',
-        `${product.name} × ${item.quantity}`
-      );
-
-      itemList.append(line);
-
-    });
-
-    const chooseButton = createElement(
-      'button',
-      'button button-primary',
-      'Chọn bộ quà này'
-    );
-
-    chooseButton.type = 'button';
-
-    chooseButton.dataset.action = 'choose-gift';
-
-    chooseButton.dataset.giftSetId =
-      recommendation.giftSetId;
-
-    card.append(
-      title,
-      price,
-      remaining,
-      itemList,
-      chooseButton
-    );
-
-    elements.recommendationList.append(card);
-
-  });
-
-}
-
-
-// ==========================================
-// 6. HIỂN THỊ KHU VỰC CHỈNH SỬA
-// ==========================================
-
-function renderEditor() {
-
-  elements.editorList.replaceChildren();
-
-  if (!currentDraft) {
-
-    elements.editorDescription.textContent =
-      'Hãy chọn một bộ quà để bắt đầu chỉnh sửa.';
-
-    elements.addProductButton.disabled = true;
-
-    return;
-
-  }
-
-  elements.editorDescription.textContent =
-    currentDraft.name || 'Bộ quà đang chỉnh sửa';
-
-  elements.addProductButton.disabled =
-    allowedProductIds.length === 0;
-
-
-  if (currentDraft.items.length === 0) {
-
-    elements.editorList.append(
-
-      createElement(
-        'p',
-        'gift-empty-message',
-        'Bộ quà chưa có sản phẩm. Hãy thêm ít nhất một món.'
-      )
-
-    );
-
-  }
-
-
-  currentDraft.items.forEach((item, index) => {
-
-    const product = getProductById(item.productId);
-
-    if (!product) return;
-
-
-    const row = createElement(
-      'article',
-      'gift-editor-item'
-    );
-
-
-    // Hình ảnh sản phẩm
-
-    const image = createElement('img', 'gift-editor-image');
-
-    image.src = product.image;
-
-    image.alt = product.name;
-
-    image.width = 120;
-
-    image.height = 120;
-
-    image.loading = 'lazy';
-
-
-    // Thông tin sản phẩm
-
-    const info = createElement(
-      'div',
-      'gift-editor-item-info'
-    );
-
-    const name = createElement(
-      'h3',
-      '',
-      product.name
-    );
-
-    const price = createElement(
-      'p',
-      '',
-      `Đơn giá: ${formatPrice(product.price)}`
-    );
-
-
-    // Chọn sản phẩm thay thế
-
-    const productLabel = createElement(
-      'label',
-      '',
-      'Sản phẩm'
-    );
-
-    const productSelect = createElement(
-      'select',
-      'gift-product-select'
-    );
-
-    productSelect.dataset.index = String(index);
-
-    productSelect.setAttribute(
-      'aria-label',
-      `Chọn sản phẩm cho dòng ${index + 1}`
-    );
-
-
-    allowedProductIds.forEach((productId) => {
-
-      const allowedProduct = getProductById(productId);
-
-      if (!allowedProduct) return;
-
-      const option = createElement(
-        'option',
-        '',
-        `${allowedProduct.name} — ${formatPrice(allowedProduct.price)}`
-      );
-
-      option.value = allowedProduct.id;
-
-      option.selected =
-        allowedProduct.id === item.productId;
-
-      productSelect.append(option);
-
-    });
-
-    productLabel.append(productSelect);
-
-
-    // Thay đổi số lượng
-
-    const quantityLabel = createElement(
-      'label',
-      '',
-      'Số lượng'
-    );
-
-    const quantityInput = createElement(
-      'input',
-      'gift-product-quantity'
-    );
-
-    quantityInput.type = 'number';
-
-    quantityInput.min = '1';
-
-    quantityInput.step = '1';
-
-    quantityInput.value = String(item.quantity);
-
-    quantityInput.dataset.index = String(index);
-
-    quantityInput.setAttribute(
-      'aria-label',
-      `Số lượng ${product.name}`
-    );
-
-    quantityLabel.append(quantityInput);
-
-
-    // Xem chi tiết sản phẩm
-
-    const detailLink = createElement(
-      'a',
-      'gift-detail-link',
-      'Xem chi tiết sản phẩm'
-    );
-
-    detailLink.href =
-      `product-detail.html?id=${encodeURIComponent(product.id)}&from=gift`;
-
-    detailLink.dataset.productDetail = 'true';
-
-    detailLink.dataset.productId = product.id;
-
-
-    // Xóa sản phẩm
-
-    const removeButton = createElement(
-      'button',
-      'button button-secondary',
-      'Bỏ sản phẩm'
-    );
-
-    removeButton.type = 'button';
-
-    removeButton.dataset.action = 'remove-item';
-
-    removeButton.dataset.index = String(index);
-
-
-    info.append(
-      name,
-      price,
-      productLabel,
-      quantityLabel,
-      detailLink,
-      removeButton
-    );
-
-    row.append(image, info);
-
-    elements.editorList.append(row);
-
-  });
-
-}
-
-
-// ==========================================
-// 7. TÍNH TOÁN VÀ HIỂN THỊ TỔNG KẾT
-// ==========================================
-
-function renderSummary() {
-
-  const budget =
-    currentDraft?.budget ?? readBudget() ?? 0;
-
-  const setQuantity =
-    currentDraft?.setQuantity ?? 1;
-
-  let unitTotal = 0;
-
-  let total = 0;
-
-  let calculationError = '';
-
-
+function evaluate(draft) {
   try {
-
-    if (currentDraft?.items?.length) {
-
-      unitTotal = getItemsTotal(currentDraft.items);
-
+    if (!integer(draft.budget)) throw Error('Nhập ngân sách nguyên dương cho một bộ.');
+    if (!integer(draft.setQuantity)) throw Error('Số bộ phải là số nguyên dương.');
+    if (!draft.items.length) throw Error('Bộ chưa có sản phẩm. Hãy thêm ít nhất một món.');
+    if (draft.items.some(item => !allowedIds(draft).includes(item.productId))) {
+      throw Error('Có sản phẩm không còn trong danh sách được phép. Hãy thay hoặc bỏ sản phẩm đó.');
     }
-
-    total = unitTotal * setQuantity;
-
-    if (!Number.isSafeInteger(total)) {
-
-      throw new RangeError(
-        'Thành tiền vượt giới hạn an toàn.'
-      );
-
-    }
-
+    const unitTotal = getItemsTotal(draft.items);
+    const total = unitTotal * draft.setQuantity;
+    if (!Number.isSafeInteger(total)) throw Error('Tổng tiền vượt giới hạn an toàn. Hãy giảm số lượng.');
+    return { unitTotal, total, error: '' };
   } catch (error) {
-
-    calculationError = error.message;
-
+    return { unitTotal: null, total: null, error: error.message };
   }
-
-
-  elements.unitPrice.textContent =
-    formatPrice(unitTotal);
-
-  elements.budgetDisplay.textContent =
-    formatPrice(budget);
-
-  elements.remaining.textContent =
-    formatPrice(Math.max(budget - unitTotal, 0));
-
-  elements.exceeded.textContent =
-    formatPrice(Math.max(unitTotal - budget, 0));
-
-  elements.totalPrice.textContent =
-    calculationError
-      ? 'Không thể tính'
-      : formatPrice(total);
-
-
-  elements.setQuantity.value =
-    String(setQuantity);
-
-  elements.setQuantity.disabled =
-    !currentDraft;
-
-  elements.duplicateButton.disabled =
-    !currentDraft ||
-    currentDraft.items.length === 0 ||
-    lastAdded;
-
-  elements.addCartButton.disabled =
-    !currentDraft ||
-    currentDraft.items.length === 0 ||
-    lastAdded ||
-    Boolean(calculationError);
-
-
-  if (calculationError) {
-
-    setMessage(
-      elements.summaryMessage,
-      calculationError
-    );
-
-  } else if (
-    currentDraft &&
-    unitTotal > budget &&
-    budget > 0
-  ) {
-
-    setMessage(
-      elements.summaryMessage,
-      `Bộ quà đang vượt ngân sách ${formatPrice(unitTotal - budget)}. Bạn vẫn có thể thêm bộ quà vào giỏ nếu số lượng hợp lệ.`
-    );
-
-  } else {
-
-    setMessage(elements.summaryMessage, '');
-
-  }
-
+}
+function price(value) {
+  return value === null ? 'Chưa hợp lệ' : formatPrice(value);
 }
 
-
-// Hiển thị lại toàn bộ khu vực chỉnh sửa và tổng kết
-
-function renderAll() {
-
-  renderEditor();
-
-  renderSummary();
-
+// Chỉ thay trạng thái sau khi lưu thành công: lỗi dung lượng không làm mất bộ gốc.
+function commit(next, successMessage = '', focusId = null, preserveControls = false) {
+  const saved = saveGiftWorkspace(next);
+  if (!saved.ok) {
+    render();
+    message('#editor-message', saved.message + ' Các bộ trước thao tác vẫn được giữ.');
+    return false;
+  }
+  workspace = next;
+  if (preserveControls) refreshTotals();
+  else render();
+  message('#editor-message', successMessage);
+  if (focusId) {
+    editor.querySelector(`[data-draft-id="${CSS.escape(focusId)}"] h3`)?.focus();
+  }
+  return true;
 }
-
-
-// ==========================================
-// 8. CHỌN BỘ QUÀ GỢI Ý
-// ==========================================
-
-function selectRecommendation(giftSetId) {
-
-  const recommendation =
-    recommendationsForCurrentBudget.find(
-      (item) => item.giftSetId === giftSetId
-    );
-
-  if (!recommendation) return;
-
-
-  currentDraft = createDraftFromRecommendation(
-    recommendation,
-    readBudget()
-  );
-
-  allowedProductIds = getAllowedIds(
-    currentDraft.sourceGiftSetId,
-    currentDraft.items
-  );
-
-  lastAdded = false;
-
-  setMessage(elements.editorMessage, '');
-
-  setMessage(elements.summaryMessage, '');
-
-  persistDraft();
-
-  renderAll();
-
-}
-
-
-// ==========================================
-// 9. GỢI Ý BỘ QUÀ THEO NGÂN SÁCH
-// ==========================================
-
-function handleRecommend() {
-
-  setMessage(elements.budgetError, '');
-
-  setMessage(elements.recommendationMessage, '');
-
-  const budget = readBudget();
-
-
-  // Kiểm tra ngân sách
-
-  if (budget === null) {
-
-    setMessage(
-      elements.budgetError,
-      'Vui lòng nhập ngân sách là số nguyên dương (VNĐ).'
-    );
-
-    elements.budget.focus();
-
-    return;
-
-  }
-
-
-  recommendationsBudget = budget;
-
-  recommendationsForCurrentBudget =
-    recommendGiftSets(budget);
-
-
-  if (currentDraft) {
-
-    currentDraft.budget = budget;
-
-    persistDraft();
-
-    renderSummary();
-
-  }
-
-
-  elements.recommendationDescription.textContent =
-    `Các bộ quà phù hợp với ngân sách ${formatPrice(budget)} cho một bộ:`;
-
-
-  // Không tìm thấy bộ quà phù hợp
-
-  if (recommendationsForCurrentBudget.length === 0) {
-
-    elements.recommendationList.replaceChildren();
-
-    setMessage(
-      elements.recommendationMessage,
-      'Hiện chưa có bộ quà phù hợp. Bạn có thể thử ngân sách cao hơn.'
-    );
-
-    return;
-
-  }
-
-
-  // Hiển thị bộ quà
-
-  renderRecommendations(
-    recommendationsForCurrentBudget
-  );
-
-  setMessage(
-    elements.recommendationMessage,
-    `Tìm thấy ${recommendationsForCurrentBudget.length} bộ quà phù hợp.`
-  );
-
-}
-
-
-// ==========================================
-// 10. THÊM SẢN PHẨM VÀO BỘ QUÀ
-// ==========================================
-
-function addProductToDraft() {
-
-  if (!currentDraft || allowedProductIds.length === 0) {
-
-    return;
-
-  }
-
-  const existingIds = new Set(
-    currentDraft.items.map((item) => item.productId)
-  );
-
-  const nextId =
-    allowedProductIds.find(
-      (id) => !existingIds.has(id)
-    ) ?? allowedProductIds[0];
-
-
-  currentDraft.items.push({
-
-    productId: nextId,
-
-    quantity: 1
-
-  });
-
-  lastAdded = false;
-
-  setMessage(elements.editorMessage, '');
-
-  persistDraft();
-
-  renderAll();
-
-}
-
-
-// ==========================================
-// 11. THAY ĐỔI SẢN PHẨM
-// ==========================================
-
-function changeProduct(index, nextProductId) {
-
-  if (
-    !currentDraft ||
-    !allowedProductIds.includes(nextProductId) ||
-    !getProductById(nextProductId)
-  ) {
-
-    return;
-
-  }
-
-  const target = currentDraft.items[index];
-
-  if (!target) return;
-
-
-  // Nếu sản phẩm đã tồn tại thì gộp số lượng
-
-  const duplicate = currentDraft.items.find(
-    (item, itemIndex) =>
-      itemIndex !== index &&
-      item.productId === nextProductId
-  );
-
-
-  if (duplicate) {
-
-    duplicate.quantity += target.quantity;
-
-    currentDraft.items.splice(index, 1);
-
-  } else {
-
-    target.productId = nextProductId;
-
-  }
-
-
-  lastAdded = false;
-
-  persistDraft();
-
-  renderAll();
-
-}
-
-
-// ==========================================
-// 12. THAY ĐỔI SỐ LƯỢNG SẢN PHẨM
-// ==========================================
-
-function changeItemQuantity(index, rawValue) {
-
-  if (!currentDraft) return;
-
-  const quantity = Number(rawValue);
-
-
-  if (!isPositiveInteger(quantity)) {
-
-    setMessage(
-      elements.editorMessage,
-      'Số lượng phải là số nguyên dương.'
-    );
-
-    renderEditor();
-
-    return;
-
-  }
-
-
-  const item = currentDraft.items[index];
-
-  if (!item) return;
-
-
-  item.quantity = quantity;
-
-  lastAdded = false;
-
-  setMessage(elements.editorMessage, '');
-
-  persistDraft();
-
-  renderAll();
-
-}
-
-
-// ==========================================
-// 13. XÓA SẢN PHẨM
-// ==========================================
-
-function removeItem(index) {
-
-  if (
-    !currentDraft ||
-    !currentDraft.items[index]
-  ) {
-
-    return;
-
-  }
-
-  currentDraft.items.splice(index, 1);
-
-  lastAdded = false;
-
-  persistDraft();
-
-  renderAll();
-
-}
-
-
-// ==========================================
-// 14. THAY ĐỔI SỐ BỘ MUỐN MUA
-// ==========================================
-
-function changeSetQuantity() {
-
-  if (!currentDraft) return;
-
-  const quantity =
-    Number(elements.setQuantity.value);
-
-
-  if (!isPositiveInteger(quantity)) {
-
-    setMessage(
-      elements.summaryMessage,
-      'Số bộ muốn mua phải là số nguyên dương.'
-    );
-
-    elements.setQuantity.value =
-      String(currentDraft.setQuantity);
-
-    return;
-
-  }
-
-
-  currentDraft.setQuantity = quantity;
-
-  lastAdded = false;
-
-  persistDraft();
-
-  renderSummary();
-
-}
-
-
-// ==========================================
-// 15. THAY ĐỔI NGÂN SÁCH
-// ==========================================
-
-function changeBudget() {
-
-  const budget = readBudget();
-
-
-  if (budget === null) {
-
-    setMessage(
-      elements.budgetError,
-      'Ngân sách phải là số nguyên dương (VNĐ).'
-    );
-
-    return;
-
-  }
-
-
-  setMessage(elements.budgetError, '');
-
-
-  if (currentDraft) {
-
-    currentDraft.budget = budget;
-
-    lastAdded = false;
-
-    persistDraft();
-
-  }
-
-
-  if (
-    recommendationsBudget !== null &&
-    recommendationsBudget !== budget
-  ) {
-
-    recommendationsForCurrentBudget = [];
-
-    recommendationsBudget = null;
-
-    elements.recommendationList.replaceChildren();
-
-    elements.recommendationDescription.textContent =
-      'Ngân sách đã thay đổi. Hãy bấm “Gợi ý bộ quà” để cập nhật danh sách.';
-
-    setMessage(elements.recommendationMessage, '');
-
-  }
-
-
-  renderSummary();
-
-}
-
-
-// ==========================================
-// 16. NHÂN BẢN BỘ QUÀ ĐỂ CHỈNH RIÊNG
-// ==========================================
-
-function duplicateDraft() {
-
-  if (
-    !currentDraft ||
-    currentDraft.items.length === 0
-  ) {
-
-    return;
-
-  }
-
-
-  // Tạo bản sao độc lập, không sửa bản gốc
-
-  currentDraft = {
-
-    version: 1,
-
-    budget: currentDraft.budget,
-
-    sourceGiftSetId: currentDraft.sourceGiftSetId,
-
-    name: `${currentDraft.name || 'Bộ quà'} (bản chỉnh riêng)`,
-
-    items: currentDraft.items.map(
-      (item) => ({ ...item })
-    ),
-
-    setQuantity: 1,
-
-    copiedFromLineId:
-      currentDraft.copiedFromLineId ?? null
-
-  };
-
-
-  allowedProductIds = getAllowedIds(
-    currentDraft.sourceGiftSetId,
-    currentDraft.items
-  );
-
-  lastAdded = false;
-
-
-  setMessage(
-    elements.editorMessage,
-    'Đã tạo bản sao một bộ. Mọi chỉnh sửa tiếp theo chỉ áp dụng cho bản sao; bộ gốc trong giỏ không bị thay đổi.'
-  );
-
-
-  persistDraft();
-
-  renderAll();
-
-}
-
-
-// ==========================================
-// 17. THÊM BỘ QUÀ VÀO GIỎ HÀNG
-// ==========================================
-
-function addCurrentDraftToCart() {
-
-  if (!currentDraft) return;
-
-  const enteredBudget = readBudget();
-
-
-  // Kiểm tra ngân sách
-
-  if (!isPositiveInteger(enteredBudget)) {
-
-    setMessage(
-      elements.summaryMessage,
-      'Vui lòng nhập ngân sách hợp lệ trước khi thêm vào giỏ.'
-    );
-
-    elements.budget.focus();
-
-    return;
-
-  }
-
-
-  currentDraft.budget = enteredBudget;
-
-
-  // Kiểm tra bộ quà có sản phẩm
-
-  if (
-    !Array.isArray(currentDraft.items) ||
-    currentDraft.items.length === 0
-  ) {
-
-    setMessage(
-      elements.summaryMessage,
-      'Bộ quà cần có ít nhất một sản phẩm.'
-    );
-
-    return;
-
-  }
-
-
-  // Kiểm tra sản phẩm có nằm trong danh sách được phép
-
-  if (
-    currentDraft.items.some(
-      (item) => !allowedProductIds.includes(item.productId)
-    )
-  ) {
-
-    setMessage(
-      elements.summaryMessage,
-      'Có sản phẩm nằm ngoài danh sách được phép của bộ quà.'
-    );
-
-    return;
-
-  }
-
-
-  // Kiểm tra giá bộ quà
-
-  try {
-
-    getItemsTotal(currentDraft.items);
-
-  } catch (error) {
-
-    setMessage(
-      elements.summaryMessage,
-      error.message
-    );
-
-    return;
-
-  }
-
-
-  // Chuẩn bị dữ liệu gửi sang cart.js
-
-  const selection = {
-
-    giftSetId:
-      currentDraft.sourceGiftSetId || 'GIFT-CUSTOM',
-
-    name:
-      currentDraft.name || 'Bộ quà tự chọn',
-
-    budget: currentDraft.budget,
-
-    items: currentDraft.items.map(
-      (item) => ({ ...item })
-    ),
-
-    setQuantity: currentDraft.setQuantity
-
-  };
-
-
-  // Gọi hàm thêm bộ quà của Bảo
-
-  const result = addGiftSet(selection);
-
-
-  // Nếu thêm thất bại thì giữ nguyên bản đang soạn
-
-  if (!result.ok) {
-
-    setMessage(
-      elements.summaryMessage,
-      result.message ||
-      'Không thể thêm bộ quà vào giỏ. Vui lòng thử lại.'
-    );
-
-    return;
-
-  }
-
-
-  // Thêm thành công
-
-  lastAdded = true;
-
-
-  const clearResult = clearGiftDraft();
-
-
-  if (clearResult.ok) {
-
-    currentDraft = null;
-
-    allowedProductIds = [];
-
-    elements.editorList.replaceChildren();
-
-    elements.editorDescription.textContent =
-      'Bộ quà đã được thêm vào giỏ. Bạn có thể nhập ngân sách để tạo bộ mới.';
-
-    elements.setQuantity.value = '1';
-
-    elements.setQuantity.disabled = true;
-
-    elements.duplicateButton.disabled = true;
-
-    elements.addCartButton.disabled = true;
-
-    elements.addProductButton.disabled = true;
-
-    elements.unitPrice.textContent = formatPrice(0);
-
-    elements.remaining.textContent = formatPrice(0);
-
-    elements.exceeded.textContent = formatPrice(0);
-
-    elements.totalPrice.textContent = formatPrice(0);
-
-
-    setMessage(
-      elements.summaryMessage,
-      `${result.message} ${clearResult.message}`
-    );
-
-  } else {
-
-    setMessage(
-      elements.summaryMessage,
-      `${result.message} Tuy nhiên, ${clearResult.message} Không bấm thêm lần nữa để tránh tạo dòng trùng.`
-    );
-
-    elements.addCartButton.disabled = true;
-
-    elements.duplicateButton.disabled = true;
-
-  }
-
-}
-
-
-// ==========================================
-// 18. XỬ LÝ SỰ KIỆN TRONG KHU VỰC CHỈNH SỬA
-// ==========================================
-
-function handleEditorClick(event) {
-
-  const detailLink =
-    event.target.closest('[data-product-detail]');
-
-
-  // Lưu bản nháp trước khi chuyển sang trang chi tiết
-
-  if (detailLink) {
-
-    const saved = persistDraft();
-
-    if (!saved.ok) {
-
-      event.preventDefault();
-
-    }
-
-    return;
-
-  }
-
-
-  const actionButton =
-    event.target.closest('button[data-action]');
-
-  if (!actionButton) return;
-
-
-  if (
-    actionButton.dataset.action === 'remove-item'
-  ) {
-
-    removeItem(
-      Number(actionButton.dataset.index)
-    );
-
-  }
-
-}
-
-
-// Xử lý thay sản phẩm và số lượng
-
-function handleEditorChange(event) {
-
-  const productSelect =
-    event.target.closest('.gift-product-select');
-
-
-  if (productSelect) {
-
-    changeProduct(
-      Number(productSelect.dataset.index),
-      productSelect.value
-    );
-
-    return;
-
-  }
-
-
-  const quantityInput =
-    event.target.closest('.gift-product-quantity');
-
-
-  if (quantityInput) {
-
-    changeItemQuantity(
-      Number(quantityInput.dataset.index),
-      quantityInput.value
-    );
-
-  }
-
-}
-
-
-// ==========================================
-// 19. XỬ LÝ CHỌN BỘ QUÀ
-// ==========================================
-
-function handleRecommendationClick(event) {
-
-  const button =
-    event.target.closest(
-      'button[data-action="choose-gift"]'
-    );
-
-  if (button) {
-
-    selectRecommendation(
-      button.dataset.giftSetId
-    );
-
-  }
-
-}
-
-
-// ==========================================
-// 20. KHÔI PHỤC BẢN QUÀ ĐANG SOẠN
-// ==========================================
-
-function restoreDraft() {
-
-  const draft = loadGiftDraft();
-
+function updateDraft(draftId, update, preserveControls = false) {
+  const next = copy(workspace);
+  const draft = next.drafts.find(item => item.draftId === draftId);
   if (!draft) return;
-
-
-  currentDraft = draft;
-
-  allowedProductIds = getAllowedIds(
-    draft.sourceGiftSetId,
-    draft.items
-  );
-
-  lastAdded = false;
-
-
-  if (isPositiveInteger(draft.budget)) {
-
-    elements.budget.value =
-      String(draft.budget);
-
+  update(draft);
+  messages.delete(draftId);
+  commit(next, '', null, preserveControls);
+}
+function field(labelText, value, fieldName, draftId, index = null) {
+  const label = element('label', 'gift-draft-field', labelText);
+  const input = element('input');
+  input.type = 'number'; input.min = '1'; input.step = '1'; input.inputMode = 'numeric';
+  input.value = value ?? '';
+  input.dataset.field = fieldName;
+  if (index !== null) input.dataset.index = index;
+  input.id = `gift-${CSS.escape(draftId)}-${fieldName}-${index ?? 'set'}`;
+  label.htmlFor = input.id;
+  label.append(input);
+  return label;
+}
+function renderItem(draft, item, index) {
+  const product = getProductById(item.productId);
+  const row = element('div', 'gift-editor-item');
+  if (product) {
+    const image = element('img', 'gift-editor-image');
+    image.src = product.image; image.alt = product.name; image.loading = 'lazy';
+    image.width = 120; image.height = 120;
+    row.append(image);
   }
-
-
-  setMessage(
-    elements.editorMessage,
-    'Đã khôi phục bộ quà đang soạn từ lần truy cập trước.'
-  );
-
-
-  renderAll();
-
+  const info = element('div', 'gift-editor-item-info');
+  info.append(element('h4', '', product?.name ?? `Không tìm thấy: ${item.productId}`));
+  info.append(element('p', '', product ? `Đơn giá: ${formatPrice(product.price)}` : 'Hãy thay hoặc bỏ sản phẩm này.'));
+  const label = element('label', '', 'Sản phẩm');
+  const select = element('select', 'gift-product-select');
+  select.dataset.field = 'product'; select.dataset.index = index;
+  select.id = `gift-${draft.draftId}-product-${index}`; label.htmlFor = select.id;
+  for (const id of new Set([...allowedIds(draft), item.productId])) {
+    const candidate = getProductById(id);
+    const option = element('option', '', candidate ? `${candidate.name} — ${formatPrice(candidate.price)}` : `Mã không tồn tại: ${id}`);
+    option.value = id; option.selected = id === item.productId;
+    select.append(option);
+  }
+  label.append(select);
+  info.append(label, field('Số lượng trong một bộ', item.quantity, 'quantity', draft.draftId, index));
+  if (product) {
+    const link = element('a', 'gift-detail-link', 'Xem chi tiết sản phẩm');
+    link.href = `product-detail.html?id=${encodeURIComponent(product.id)}&from=gift`;
+    link.dataset.productDetail = '';
+    info.append(link);
+  }
+  const remove = button('Bỏ sản phẩm', 'remove-item'); remove.dataset.index = index;
+  info.append(remove); row.append(info);
+  return row;
+}
+function renderCard(draft, index) {
+  const card = element('article', 'gift-draft-card');
+  card.dataset.draftId = draft.draftId;
+  const heading = element('h3', '', `Bộ ${index + 1} · ${draft.name}`);
+  heading.tabIndex = -1;
+  card.append(heading);
+  card.append(element('p', 'gift-draft-caption', draft.copyOfDraftId || draft.copiedFromLineId
+    ? 'Bản sao chỉnh riêng. Đổi món hoặc số lượng ở khung này không thay đổi bộ gốc.'
+    : 'Các sản phẩm bên dưới cùng tạo thành một bộ quà.'));
+  const settings = element('div', 'gift-draft-settings');
+  settings.append(field('Ngân sách cho một bộ (VNĐ)', draft.budget, 'budget', draft.draftId),
+    field('Số bộ muốn mua', draft.setQuantity, 'setQuantity', draft.draftId));
+  card.append(settings);
+  const items = element('div', 'gift-draft-items');
+  draft.items.forEach((item, itemIndex) => items.append(renderItem(draft, item, itemIndex)));
+  if (!draft.items.length) items.append(element('p', 'gift-empty-message', 'Bộ đang trống. Nhấn “Thêm sản phẩm” để chọn món.'));
+  card.append(items);
+  const addProduct = button('+ Thêm sản phẩm', 'add-product');
+  addProduct.disabled = !allowedIds(draft).length;
+  card.append(addProduct);
+  const evaluation = evaluate(draft);
+  card.append(element('p', 'gift-draft-price', `Giá một bộ: ${price(evaluation.unitTotal)}`));
+  card.append(element('p', 'gift-draft-note', draftNote(draft, evaluation)));
+  const actions = element('div', 'gift-draft-actions');
+  actions.append(button('Nhân bản bộ này', 'duplicate'), button('Bỏ bộ đang soạn', 'remove-draft'));
+  card.append(actions);
+  return card;
+}
+function renderSummary(draft, index) {
+  const result = evaluate(draft);
+  const row = element('article', 'gift-summary-row'); row.dataset.draftId = draft.draftId;
+  row.append(element('h3', '', `Bộ ${index + 1} · ${draft.name}`));
+  row.append(element('p', '', `${price(result.unitTotal)}/bộ × ${draft.setQuantity} bộ`));
+  row.append(element('strong', '', `Thành tiền: ${price(result.total)}`));
+  const add = button('Thêm bộ này vào giỏ', 'add-cart', false);
+  add.disabled = Boolean(result.error);
+  row.append(add);
+  const feedback = element('p', 'gift-message', messages.get(draft.draftId) ?? result.error);
+  feedback.setAttribute('role', 'status'); feedback.setAttribute('aria-live', 'polite');
+  row.append(feedback);
+  return row;
+}
+function draftNote(draft, evaluation) {
+  return evaluation.error || (evaluation.unitTotal > draft.budget
+    ? `Vượt ngân sách ${formatPrice(evaluation.unitTotal - draft.budget)} cho một bộ. Bạn vẫn có thể thêm vào giỏ nếu đủ số lượng.`
+    : `Còn lại ${formatPrice(draft.budget - evaluation.unitTotal)} trong ngân sách một bộ.`);
+}
+// Giữ nguyên các input/nút khi ô số mất focus để cú click kế tiếp không bị mất.
+function refreshTotals() {
+  for (const draft of workspace.drafts) {
+    const selector = `[data-draft-id="${CSS.escape(draft.draftId)}"]`;
+    const card = editor.querySelector(selector), row = summary.querySelector(selector);
+    const result = evaluate(draft);
+    card.querySelector('.gift-draft-price').textContent = `Giá một bộ: ${price(result.unitTotal)}`;
+    card.querySelector('.gift-draft-note').textContent = draftNote(draft, result);
+    row.querySelector(':scope > p').textContent = `${price(result.unitTotal)}/bộ × ${draft.setQuantity} bộ`;
+    row.querySelector(':scope > strong').textContent = `Thành tiền: ${price(result.total)}`;
+    row.querySelector('button').disabled = Boolean(result.error);
+    row.querySelector('.gift-message').textContent = messages.get(draft.draftId) ?? result.error;
+  }
+  renderTotal();
+}
+function renderTotal() {
+  const evaluations = workspace.drafts.map(evaluate);
+  const total = evaluations.reduce((sum, result) => sum + (result.total ?? 0), 0);
+  document.querySelector('#gift-total-price').textContent = evaluations.some(result => result.error) || !Number.isSafeInteger(total)
+    ? 'Chưa tính được — kiểm tra từng bộ' : formatPrice(total);
+}
+function render() {
+  editor.replaceChildren(...workspace.drafts.map(renderCard));
+  summary.replaceChildren(...workspace.drafts.map(renderSummary));
+  if (!workspace.drafts.length) {
+    summary.append(element('p', '', 'Chưa có bộ đang soạn. Hãy chọn mẫu ở mục 2.'));
+  }
+  renderTotal();
+}
+function recommend() {
+  const budget = Number(budgetInput.value);
+  const list = document.querySelector('#gift-set-list'); list.replaceChildren();
+  recommended = []; recommendationBudget = null;
+  if (!integer(budget)) {
+    message('#budget-error', 'Ngân sách phải là số nguyên dương, ví dụ 150000.');
+    message('#recommend-message', ''); return;
+  }
+  message('#budget-error', '');
+  recommendationBudget = budget;
+  recommended = recommendGiftSets(budget);
+  document.querySelector('#recommend-description').textContent = `Gợi ý theo ngân sách ${formatPrice(budget)} cho một bộ. Có thể chọn nhiều mẫu; các bộ đã soạn vẫn được giữ.`;
+  for (const gift of recommended) {
+    const card = element('article', 'gift-set-card');
+    card.append(element('h3', '', gift.name), element('p', 'gift-set-price', formatPrice(gift.unitTotal)));
+    const ul = element('ul');
+    gift.items.forEach(item => ul.append(element('li', '', `${getProductById(item.productId)?.name ?? item.productId} × ${item.quantity}`)));
+    const choose = button('Thêm vào mục tùy chỉnh', 'choose-gift', false);
+    choose.dataset.giftSetId = gift.giftSetId;
+    card.append(ul, choose); list.append(card);
+  }
+  message('#recommend-message', recommended.length ? `Có ${recommended.length} bộ quà phù hợp.` : 'Chưa có bộ quà phù hợp ngân sách và số lượng hiện tại. Hãy thử ngân sách khác.');
 }
 
-
-// ==========================================
-// 21. KHỞI TẠO TRANG CHỌN QUÀ
-// ==========================================
-
-function initGiftBuilder() {
-
-  // Nút gợi ý bộ quà
-
-  elements.recommendButton.addEventListener(
-    'click',
-    handleRecommend
-  );
-
-
-  // Thay đổi ngân sách
-
-  elements.budget.addEventListener(
-    'change',
-    changeBudget
-  );
-
-
-  // Thêm sản phẩm
-
-  elements.addProductButton.addEventListener(
-    'click',
-    addProductToDraft
-  );
-
-
-  // Xử lý chỉnh sửa sản phẩm
-
-  elements.editorList.addEventListener(
-    'click',
-    handleEditorClick
-  );
-
-  elements.editorList.addEventListener(
-    'change',
-    handleEditorChange
-  );
-
-
-  // Chọn bộ quà gợi ý
-
-  elements.recommendationList.addEventListener(
-    'click',
-    handleRecommendationClick
-  );
-
-
-  // Thay đổi số bộ
-
-  elements.setQuantity.addEventListener(
-    'change',
-    changeSetQuantity
-  );
-
-
-  // Nhân bản bộ quà
-
-  elements.duplicateButton.addEventListener(
-    'click',
-    duplicateDraft
-  );
-
-
-  // Thêm vào giỏ hàng
-
-  elements.addCartButton.addEventListener(
-    'click',
-    addCurrentDraftToCart
-  );
-
-
-  // Khôi phục dữ liệu cũ
-
-  restoreDraft();
-
-
-  // Hiển thị tổng kết ban đầu
-
-  renderSummary();
-
+document.querySelector('#btn-recommend').addEventListener('click', recommend);
+budgetInput.addEventListener('keydown', event => { if (event.key === 'Enter') recommend(); });
+document.querySelector('#gift-set-list').addEventListener('click', event => {
+  const choose = event.target.closest('[data-action="choose-gift"]');
+  const gift = recommended.find(item => item.giftSetId === choose?.dataset.giftSetId);
+  if (!gift) return;
+  const draft = createWorkspaceDraft({ version: 1, budget: recommendationBudget,
+    sourceGiftSetId: gift.giftSetId, name: gift.name, items: gift.items,
+    setQuantity: 1, copiedFromLineId: null });
+  const next = copy(workspace); next.drafts.push(draft);
+  commit(next, 'Đã thêm một khung bộ quà mới. Các bộ trước đó được giữ nguyên.', draft.draftId);
+});
+function handleFieldChange(event) {
+  const input = event.target;
+  const draftId = input.closest('[data-draft-id]')?.dataset.draftId;
+  if (!draftId || !input.dataset.field) return;
+  const draft = workspace.drafts.find(item => item.draftId === draftId);
+  const index = Number(input.dataset.index);
+  const name = input.dataset.field;
+  if (name === 'product') {
+    if (event.type === 'input') return;
+    if (!allowedIds(draft).includes(input.value)) return;
+    updateDraft(draftId, target => { target.items[index].productId = input.value; });
+  } else {
+    const value = Number(input.value);
+    if (!integer(value)) {
+      input.setAttribute('aria-invalid', 'true');
+      input.setCustomValidity('Nhập số nguyên dương.');
+      if (event.type === 'change') input.reportValidity();
+      message('#editor-message', 'Giá trị chưa hợp lệ; chưa lưu thay đổi. Hãy nhập số nguyên dương trước khi nhân bản hoặc thêm giỏ.');
+      return;
+    }
+    input.setCustomValidity(''); input.removeAttribute('aria-invalid');
+    const previousValue = name === 'quantity' ? draft.items[index].quantity : draft[name];
+    if (value === previousValue) return;
+    updateDraft(draftId, target => {
+      if (name === 'quantity') target.items[index].quantity = value;
+      else target[name] = value;
+    }, true);
+  }
+  const selector = `[data-draft-id="${CSS.escape(draftId)}"] [data-field="${name}"]${input.dataset.index === undefined ? '' : `[data-index="${index}"]`}`;
+  if (name === 'product') editor.querySelector(selector)?.focus({ preventScroll: true });
 }
+editor.addEventListener('input', handleFieldChange);
+editor.addEventListener('change', handleFieldChange);
+editor.addEventListener('click', event => {
+  const action = event.target.closest('[data-action]')?.dataset.action;
+  const draftId = event.target.closest('[data-draft-id]')?.dataset.draftId;
+  const draft = workspace.drafts.find(item => item.draftId === draftId);
+  if (!draft || !action) return;
+  if (action === 'duplicate') {
+    if (!validVisibleInputs(draftId)) return;
+    const next = copy(workspace);
+    const duplicate = duplicateWorkspaceDraft(draft);
+    next.drafts.splice(next.drafts.findIndex(item => item.draftId === draftId) + 1, 0, duplicate);
+    commit(next, 'Đã tạo bản sao ngay dưới bộ gốc. Bản sao mặc định một bộ, chỉnh riêng và chưa thêm vào giỏ.', duplicate.draftId);
+  } else if (action === 'remove-draft') {
+    const next = copy(workspace); next.drafts = next.drafts.filter(item => item.draftId !== draftId);
+    commit(next, 'Đã bỏ khung đang soạn. Các bộ khác và giỏ hàng vẫn được giữ nguyên.');
+  } else if (action === 'remove-item') {
+    const index = Number(event.target.closest('[data-index]').dataset.index);
+    updateDraft(draftId, target => target.items.splice(index, 1));
+  } else if (action === 'add-product') {
+    const ids = allowedIds(draft);
+    const id = ids.find(candidate => !draft.items.some(item => item.productId === candidate)) ?? ids[0];
+    if (id) updateDraft(draftId, target => target.items.push({ productId: id, quantity: 1 }));
+  }
+});
+function validVisibleInputs(draftId) {
+  const card = editor.querySelector(`[data-draft-id="${CSS.escape(draftId)}"]`);
+  const invalid = card?.querySelector('input:invalid, [aria-invalid="true"]');
+  if (!invalid) return true;
+  invalid.focus(); invalid.reportValidity();
+  message('#editor-message', 'Có giá trị chưa hợp lệ trong bộ này. Hãy sửa trước khi tiếp tục.');
+  return false;
+}
+summary.addEventListener('click', event => {
+  if (!event.target.closest('[data-action="add-cart"]')) return;
+  const draftId = event.target.closest('[data-draft-id]')?.dataset.draftId;
+  const draft = workspace.drafts.find(item => item.draftId === draftId);
+  if (!draft || !validVisibleInputs(draftId) || evaluate(draft).error) return;
+  const result = addGiftSet({ giftSetId: draft.sourceGiftSetId ?? draft.draftId,
+    name: draft.name, budget: draft.budget, items: copy(draft.items), setQuantity: draft.setQuantity });
+  messages.set(draftId, result.ok
+    ? `Đã thêm ${draft.setQuantity} bộ vào giỏ. Khung đang soạn vẫn giữ nguyên; nhấn thêm lần nữa sẽ tăng số bộ trong giỏ.`
+    : result.message);
+  // Không xóa bản soạn sau thêm: không phát sinh thao tác lưu thứ hai có thể lỗi giữa chừng.
+  summary.replaceChildren(...workspace.drafts.map(renderSummary));
+});
 
-
-// ==========================================
-// 22. CHẠY CHƯƠNG TRÌNH
-// ==========================================
-
-initGiftBuilder();
+// Chuyển bản soạn v1 cũ sang danh sách một lần, giữ cả dữ liệu giỏ và các bộ đã soạn.
+function restoreLegacyDraft() {
+  const legacy = loadGiftDraft();
+  if (!legacy) return;
+  const fingerprint = JSON.stringify(legacy);
+  if (workspace.legacyDraftFingerprint !== fingerprint) {
+    const next = copy(workspace);
+    next.drafts.push(createWorkspaceDraft(legacy));
+    next.legacyDraftFingerprint = fingerprint;
+    const saved = saveGiftWorkspace(next);
+    if (!saved.ok) { message('#editor-message', saved.message + ' Bản soạn cũ vẫn được giữ để khôi phục.'); return; }
+    workspace = next;
+  }
+  const cleared = clearGiftDraft();
+  if (!cleared.ok) message('#editor-message', cleared.message + ' Bản đã chuyển sẽ không bị nhập lặp khi tải lại.');
+}
+restoreLegacyDraft();
+render();
+if (workspace.drafts[0]?.budget) budgetInput.value = workspace.drafts[0].budget;

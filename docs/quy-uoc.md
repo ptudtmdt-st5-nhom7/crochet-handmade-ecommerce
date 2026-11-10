@@ -181,3 +181,13 @@ Khi bàn giao, ghi file/commit, dữ liệu/hàm đã có, cách chạy, một c
 - Bảy file `product-hl-*`, `product-kc-*`, `product-pk-*`, `product-tl-002.html` của Buổi 2 chuyển vào `pages/product-details/`. Link trong danh sách được cập nhật; trang bên trong dùng `../../css/`, `../../images/` và `../../index.html`, `../../products.html`, `../../about.html`.
 - `product-detail.html` vẫn ở gốc để Khanh làm trang động Buổi 3. Khi có chức năng đọc `id`, Nam/Khanh đổi link theo mã sản phẩm và kiểm tra trước khi quyết định bỏ các trang tĩnh cũ. Lượt sắp xếp này chưa triển khai thay chức năng của Khanh.
 - Thành viên đang làm trên nhánh cũ cần lấy `main` mới để nhận vị trí file; không tạo lại bảy trang tĩnh ở gốc. `js/storage.js`, dữ liệu, ảnh, CSS và tên hàm không đổi.
+
+## Cập nhật mục 3 chọn quà — 10/11/2026
+
+Theo yêu cầu đã xác nhận của Đức, phần giao diện chọn quà chuyển từ một bản soạn sang danh sách nhiều khung. Mỗi khung là toàn bộ một bộ quà; nhân bản tạo khung mới ngay dưới khung nguồn và không thay thế khung nguồn. Bản sao mặc định `setQuantity: 1`. Nhiều mẫu có thể được chọn cùng lúc; từng khung chỉnh ngân sách, sản phẩm, số món và số bộ độc lập.
+
+Dữ liệu mới lưu qua `loadGiftWorkspace()` / `saveGiftWorkspace()` tại `lenly.giftWorkspace.v1`, gồm `{version:1, drafts:[...], legacyDraftFingerprint:null}`. Mỗi draft có các trường bản soạn cũ và thêm `draftId`, `copyOfDraftId`. `createWorkspaceDraft()` tạo ID và bản sao sâu; `duplicateWorkspaceDraft()` tạo bản sao sâu một bộ. API giỏ và quy tắc tính giá/kiểm tra số lượng không đổi.
+
+`cart-page.js` gọi `appendGiftWorkspaceDraft()` để bổ sung bản sao từ giỏ, giữ các khung đã soạn. Khóa `lenly.giftDraft.v1` và API cũ vẫn được giữ tương thích; `gift-builder.js` chuyển bản soạn cũ một lần khi mở trang, không tự xóa giỏ. Mỗi nút thêm giỏ tại mục 4 chỉ thêm khung được chọn. Sau khi thêm, khung vẫn được giữ để tiếp tục chỉnh; việc chỉnh đó không sửa giỏ đã xác nhận. Quy định cũ chỉ xóa bản soạn sau thêm không còn áp dụng cho workspace mới.
+
+Xem [hướng dẫn và kết quả kiểm tra](chon-nhieu-bo-qua.md). Các mô tả một bản soạn ở trên là hợp đồng giai đoạn trước; API cũ vẫn hoạt động, giao diện hiện hành dùng nhiều bản soạn.

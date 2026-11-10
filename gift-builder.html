@@ -154,8 +154,7 @@
       <p id="budget-error"
          class="gift-message"
          role="alert"
-         aria-live="polite">
-      </p>
+         aria-live="polite"></p>
 
     </section>
 
@@ -183,136 +182,28 @@
       <p id="recommend-message"
          class="gift-message"
          role="status"
-         aria-live="polite">
-      </p>
+         aria-live="polite"></p>
 
     </section>
 
 
-    <!-- 3. TÙY CHỈNH BỘ QUÀ -->
-    <section class="container gift-editor"
-             aria-labelledby="editor-title">
-
-      <h2 id="editor-title">
-        3. Tùy chỉnh bộ quà
-      </h2>
-
-      <p id="gift-editor-description">
-        Hãy chọn một bộ quà để bắt đầu chỉnh sửa.
-      </p>
-
-      <div id="gift-editor-list">
-
-        <!-- JavaScript hiển thị sản phẩm trong bộ quà -->
-
-      </div>
-
-      <div id="gift-editor-actions">
-
-        <button
-          type="button"
-          id="btn-add-product"
-          class="button button-secondary"
-          disabled>
-
-          + Thêm sản phẩm
-
-        </button>
-
-      </div>
-
-      <p id="editor-message"
-         class="gift-message"
-         role="status"
-         aria-live="polite">
-      </p>
-
+    <!-- 3. NHIỀU BỘ QUÀ ĐANG SOẠN -->
+    <section class="container gift-editor" aria-labelledby="editor-title">
+      <h2 id="editor-title">3. Tùy chỉnh bộ quà</h2>
+      <p id="gift-editor-description">Chọn bộ quà ở mục 2 để thêm vào đây. Mỗi khung là một bộ quà, có thể chỉnh độc lập.</p>
+      <p class="gift-workspace-help">Muốn hai bộ giống nhau: tăng “Số bộ muốn mua”. Muốn một bộ tương tự nhưng đổi món: nhấn “Nhân bản bộ này” ngay dưới khung đó. Bản sao xuất hiện bên dưới, mặc định một bộ và chưa được thêm vào giỏ.</p>
+      <div id="gift-editor-list"></div>
+      <p id="editor-message" class="gift-message" role="status" aria-live="polite"></p>
     </section>
 
-
-    <!-- 4. TỔNG KẾT -->
-    <section class="container gift-summary"
-             aria-labelledby="summary-title">
-
-      <h2 id="summary-title">
-        4. Tổng kết bộ quà
-      </h2>
-
-      <div class="gift-summary-content">
-
-        <p>
-          Giá một bộ:
-          <strong id="gift-unit-price">0 ₫</strong>
-        </p>
-
-        <p>
-          Ngân sách:
-          <strong id="gift-budget-display">0 ₫</strong>
-        </p>
-
-        <p>
-          Tiền còn lại:
-          <strong id="gift-remaining">0 ₫</strong>
-        </p>
-
-        <p>
-          Số tiền vượt:
-          <strong id="gift-exceeded">0 ₫</strong>
-        </p>
-
-        <div class="gift-quantity-control">
-
-          <label for="gift-set-quantity">
-            Số bộ muốn mua
-          </label>
-
-          <input
-            type="number"
-            id="gift-set-quantity"
-            min="1"
-            step="1"
-            value="1"
-            disabled>
-
-        </div>
-
-        <p>
-          Thành tiền:
-          <strong id="gift-total-price">0 ₫</strong>
-        </p>
-
-      </div>
-
-      <p id="summary-message"
-         class="gift-message"
-         role="status"
-         aria-live="polite">
-      </p>
-
-      <div class="gift-summary-actions">
-
-        <button
-          type="button"
-          id="btn-duplicate-gift"
-          class="button button-secondary"
-          disabled>
-
-          Nhân bản để chỉnh riêng
-
-        </button>
-
-        <button
-          type="button"
-          id="btn-add-cart"
-          class="button button-primary"
-          disabled>
-
-          Thêm vào giỏ hàng
-
-        </button>
-
-      </div>
-
+    <!-- 4. TỔNG KẾT TỪNG BỘ ĐANG SOẠN -->
+    <section class="container gift-summary" aria-labelledby="summary-title">
+      <h2 id="summary-title">4. Tổng kết các bộ quà</h2>
+      <p>Kiểm tra từng bộ rồi nhấn “Thêm bộ này vào giỏ”. Bộ đang soạn vẫn được giữ ở mục 3 để bạn tiếp tục chỉnh; thay đổi tại đây không tự sửa bộ đã thêm trong giỏ.</p>
+      <div id="gift-workspace-summary"></div>
+      <p class="gift-workspace-total">Tổng tiền các bộ đang soạn: <strong id="gift-total-price">0 ₫</strong></p>
+      <p id="summary-message" class="gift-message" role="status" aria-live="polite"></p>
+      <a class="button button-secondary" href="cart.html">Xem giỏ hàng</a>
     </section>
 
   </main>
