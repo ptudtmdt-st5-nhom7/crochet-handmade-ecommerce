@@ -6,13 +6,11 @@ export function getProductById(id) {
 }
 
 /** Giữ trang chi tiết hiện có cho đến khi Khanh bàn giao trang đọc id. */
-export function getProductDetailUrl(id, { detailReady = false } = {}) {
-  if (!getProductById(id)) throw new RangeError('Mã sản phẩm không tồn tại.');
-  if (detailReady || id === 'TL-001') {
-    return 'product-detail.html?id=' + encodeURIComponent(id);
-  }
-  return 'pages/product-details/product-' + id.toLowerCase() + '.html';
+
+export function getProductDetailUrl(id) {
+    return `product-detail.html?id=${encodeURIComponent(id)}`;
 }
+
 
 /**
  * Giá tiền của các món trong MỘT bộ, không nhân số bộ.
