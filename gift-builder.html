@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="description"
+        content="Tạo bộ quà Lenly Crochet theo ngân sách và sở thích của bạn.">
+
+  <title>Chọn quà theo ngân sách - Lenly Crochet</title>
+
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <a class="skip-link" href="#noi-dung">
+    Đến nội dung chính
+  </a>
+
+  <!-- HEADER -->
+  <header class="site-header">
+
+    <div class="container header-top">
+
+      <a class="site-brand"
+         href="index.html"
+         aria-label="Lenly Crochet — Trang chủ">
+
+        <img src="images/logo.png"
+             alt="Lenly Crochet — Trang chủ"
+             width="402"
+             height="430">
+      </a>
+
+      <nav class="site-nav" aria-label="Điều hướng chính">
+
+        <a href="index.html">Trang chủ</a>
+
+        <a href="products.html">Sản phẩm</a>
+
+        <a href="gift-builder.html" aria-current="page">
+          Chọn quà
+        </a>
+
+        <a href="about.html">Giới thiệu</a>
+
+      </nav>
+
+      <p class="header-caption">
+        Những món len, những lời thương.
+      </p>
+
+    </div>
+
+    <!-- SEARCH STRIP -->
+    <div class="search-strip">
+
+      <div class="container search-inner">
+
+        <label for="site-search">
+          Tìm một món len
+        </label>
+
+        <div class="search-control">
+
+          <input
+            id="site-search"
+            type="search"
+            placeholder="Bạn đang tìm món đồ len nào?"
+            aria-describedby="search-note">
+
+          <button type="button" disabled>
+            Tìm kiếm
+          </button>
+
+        </div>
+
+        <p id="search-note">
+          Giao diện minh họa, chưa hỗ trợ tìm kiếm.
+        </p>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- MAIN -->
+  <main id="noi-dung" class="gift-builder-page">
+
+    <!-- GIỚI THIỆU -->
+    <section class="container gift-intro">
+
+      <p class="eyebrow">
+        LENLY GIFT BUILDER
+      </p>
+
+      <h1>
+        Chọn món quà dành riêng cho bạn
+      </h1>
+
+      <p>
+        Nhập ngân sách cho một bộ quà để xem những gợi ý phù hợp.
+        Bạn có thể thay đổi sản phẩm và số lượng để tạo nên
+        món quà của riêng mình.
+      </p>
+
+    </section>
+
+
+    <!-- 1. NGÂN SÁCH -->
+    <section class="container gift-budget"
+             aria-labelledby="budget-title">
+
+      <h2 id="budget-title">
+        1. Ngân sách của bạn
+      </h2>
+
+      <p>
+        Bạn dự định chi bao nhiêu cho một bộ quà?
+      </p>
+
+      <div class="gift-budget-control">
+
+        <label for="gift-budget">
+          Ngân sách (VNĐ)
+        </label>
+
+        <input
+          type="number"
+          id="gift-budget"
+          min="1"
+          step="1000"
+          inputmode="numeric"
+          placeholder="Ví dụ: 150000">
+
+        <button
+          type="button"
+          id="btn-recommend"
+          class="button button-primary">
+
+          Gợi ý bộ quà
+
+        </button>
+
+      </div>
+
+      <p id="budget-error"
+         class="gift-message"
+         role="alert"
+         aria-live="polite">
+      </p>
+
+    </section>
+
+
+    <!-- 2. BỘ QUÀ GỢI Ý -->
+    <section class="container gift-recommendations"
+             aria-labelledby="recommend-title">
+
+      <h2 id="recommend-title">
+        2. Bộ quà dành cho bạn
+      </h2>
+
+      <p id="recommend-description">
+        Nhập ngân sách để xem các bộ quà phù hợp.
+      </p>
+
+      <div id="gift-set-list"
+           class="gift-set-list"
+           aria-live="polite">
+
+        <!-- JavaScript hiển thị các bộ quà -->
+
+      </div>
+
+      <p id="recommend-message"
+         class="gift-message"
+         role="status"
+         aria-live="polite">
+      </p>
+
+    </section>
+
+
+    <!-- 3. TÙY CHỈNH BỘ QUÀ -->
+    <section class="container gift-editor"
+             aria-labelledby="editor-title">
+
+      <h2 id="editor-title">
+        3. Tùy chỉnh bộ quà
+      </h2>
+
+      <p id="gift-editor-description">
+        Hãy chọn một bộ quà để bắt đầu chỉnh sửa.
+      </p>
+
+      <div id="gift-editor-list">
+
+        <!-- JavaScript hiển thị sản phẩm trong bộ quà -->
+
+      </div>
+
+      <div id="gift-editor-actions">
+
+        <button
+          type="button"
+          id="btn-add-product"
+          class="button button-secondary"
+          disabled>
+
+          + Thêm sản phẩm
+
+        </button>
+
+      </div>
+
+      <p id="editor-message"
+         class="gift-message"
+         role="status"
+         aria-live="polite">
+      </p>
+
+    </section>
+
+
+    <!-- 4. TỔNG KẾT -->
+    <section class="container gift-summary"
+             aria-labelledby="summary-title">
+
+      <h2 id="summary-title">
+        4. Tổng kết bộ quà
+      </h2>
+
+      <div class="gift-summary-content">
+
+        <p>
+          Giá một bộ:
+          <strong id="gift-unit-price">0 ₫</strong>
+        </p>
+
+        <p>
+          Ngân sách:
+          <strong id="gift-budget-display">0 ₫</strong>
+        </p>
+
+        <p>
+          Tiền còn lại:
+          <strong id="gift-remaining">0 ₫</strong>
+        </p>
+
+        <p>
+          Số tiền vượt:
+          <strong id="gift-exceeded">0 ₫</strong>
+        </p>
+
+        <div class="gift-quantity-control">
+
+          <label for="gift-set-quantity">
+            Số bộ muốn mua
+          </label>
+
+          <input
+            type="number"
+            id="gift-set-quantity"
+            min="1"
+            step="1"
+            value="1"
+            disabled>
+
+        </div>
+
+        <p>
+          Thành tiền:
+          <strong id="gift-total-price">0 ₫</strong>
+        </p>
+
+      </div>
+
+      <p id="summary-message"
+         class="gift-message"
+         role="status"
+         aria-live="polite">
+      </p>
+
+      <div class="gift-summary-actions">
+
+        <button
+          type="button"
+          id="btn-duplicate-gift"
+          class="button button-secondary"
+          disabled>
+
+          Nhân bản để chỉnh riêng
+
+        </button>
+
+        <button
+          type="button"
+          id="btn-add-cart"
+          class="button button-primary"
+          disabled>
+
+          Thêm vào giỏ hàng
+
+        </button>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+
+    <div class="site-footer-inner">
+
+      <div class="site-footer-brand">
+
+        <a class="site-footer-wordmark" href="index.html">
+
+          <img src="images/logo.png"
+               alt="Lenly Crochet — Trang chủ"
+               width="402"
+               height="430"
+               loading="lazy">
+
+        </a>
+
+        <p class="site-footer-description">
+          Lenly Crochet — Sản phẩm móc len, bộ quà theo ngân sách
+          và những món quà mang dấu ấn riêng.
+        </p>
+
+      </div>
+
+
+      <div class="site-footer-policy">
+
+        <h2>Thông tin chính sách</h2>
+
+        <ul>
+          <li>Hướng dẫn mua hàng</li>
+          <li>Chính sách thanh toán</li>
+          <li>Chính sách đổi trả</li>
+          <li>Chính sách vận chuyển</li>
+          <li>Chính sách bảo mật</li>
+        </ul>
+
+      </div>
+
+
+      <div class="site-footer-nav">
+
+        <nav aria-label="Liên kết nhanh">
+
+          <h2>Liên kết nhanh</h2>
+
+          <ul>
+            <li><a href="index.html">Trang chủ</a></li>
+            <li><a href="products.html">Sản phẩm</a></li>
+            <li><a href="gift-builder.html">Chọn quà</a></li>
+            <li><a href="about.html">Giới thiệu</a></li>
+          </ul>
+
+        </nav>
+
+      </div>
+
+
+      <div class="site-footer-info">
+
+        <h2>Liên hệ</h2>
+
+        <address>
+
+          <p>
+            Điện thoại:
+            <a href="tel:0767916364">0767916364</a>
+          </p>
+
+          <p>
+            Địa chỉ: 279 Nguyễn Tri Phương,
+            phường Diên Hồng, TP. Hồ Chí Minh
+          </p>
+
+          <p>
+            Email:
+            <a href="mailto:lenlycrochet@gmail.com">
+              lenlycrochet@gmail.com
+            </a>
+          </p>
+
+        </address>
+
+        <div class="site-footer-social">
+
+          <ul>
+
+            <li>
+              <span role="img"
+                    aria-label="Facebook"
+                    title="Facebook">
+                Facebook
+              </span>
+            </li>
+
+            <li>
+              <span role="img"
+                    aria-label="TikTok"
+                    title="TikTok">
+                TikTok
+              </span>
+            </li>
+
+            <li>
+              <span role="img"
+                    aria-label="Instagram"
+                    title="Instagram">
+                Instagram
+              </span>
+            </li>
+
+          </ul>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="site-footer-bottom">
+
+      <p class="site-footer-note">
+        Website học tập thuộc môn Phát triển ứng dụng thương mại
+        điện tử, Nhóm 7. Các thao tác mua hàng chỉ ở mức
+        giao diện minh họa.
+      </p>
+
+    </div>
+
+  </footer>
+
+
+  <!-- JAVASCRIPT -->
+  <script type="module" src="js/gift-builder.js"></script>
+
+</body>
+</html>
