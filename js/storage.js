@@ -1,3 +1,4 @@
+import { normalizeGiftName, getGiftCopyName } from './gift-names.js';
 /**
  * Lưu trữ dùng chung Buổi 3 — Đức phụ trách.
  * Chỉ lưu/đọc dữ liệu, không sửa HTML, tính giá hoặc kiểm tra tồn kho.
@@ -40,7 +41,7 @@ function copyCart(cart) {
       'Thông tin bộ quà không hợp lệ.');
     return {
       lineId: line.lineId, type: 'gift', giftSetId: line.giftSetId,
-      name: line.name, budget: line.budget,
+      name: normalizeGiftName(line.name), budget: line.budget,
       items: copyItems(line.items), setQuantity: line.setQuantity,
     };
   });
@@ -57,7 +58,7 @@ function copyDraft(draft) {
   check(draft.copiedFromLineId === null || isText(draft.copiedFromLineId), 'Mã dòng gốc của bản soạn không hợp lệ.');
   return {
     version: 1, budget: draft.budget, sourceGiftSetId: draft.sourceGiftSetId,
-    name: draft.name, items: copyItems(draft.items, true),
+    name: normalizeGiftName(draft.name), items: copyItems(draft.items, true),
     setQuantity: draft.setQuantity, copiedFromLineId: draft.copiedFromLineId,
   };
 }
@@ -165,7 +166,7 @@ export function createWorkspaceDraft(draft) {
 /** Bản sao sâu của MỘT bộ; không sửa bộ gốc, không thêm vào giỏ. */
 export function duplicateWorkspaceDraft(draft) {
   return { ...createWorkspaceDraft(draft), setQuantity: 1,
-    name: `${draft.name.replace(/ \(bản sao\)$/, '')} (bản sao)`, copyOfDraftId: draft.draftId };
+    name: getGiftCopyName(draft.name), copyOfDraftId: draft.draftId };
 }
 
 /** Trang giỏ chuyển bản sao vào danh sách đang soạn, giữ mọi bộ đã có. */

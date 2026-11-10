@@ -908,3 +908,7 @@ Các nội dung cần kiểm thử sau khi tích hợp:
 - Sản phẩm: cập nhật gift-builder, storage workspace tương thích API cũ, thao tác nhân bản từ cart, CSS, README và quy ước; hướng dẫn tại `docs/chon-nhieu-bo-qua.md`.
 - Kiểm tra bằng công cụ: 41 kiểm thử Node; thử nhiều bộ/bản sao, tải lại, quay về từ chi tiết, giữ dòng giỏ gốc, thiếu lượng và lỗi lưu. Rà sáu trang ở 1366/768/390 px. Phát hiện và sửa lỗi thay bố cục lúc ô số mất focus có thể làm mất cú click kế tiếp; bổ sung ca thao tác tự nhiên để thử lại.
 - Giới hạn/xác nhận: đây là kết quả công cụ hỗ trợ, chưa xác nhận Đức hoặc cả nhóm đã tự thử/giải thích mã. Phải kiểm tra bản triển khai Pages thực tế trước khi thông báo link đã cập nhật; không coi việc merge là triển khai thành công.
+
+## 10/11/2026 — Sửa tên bộ quà bị lặp hậu tố
+
+Đức gửi ảnh tên bộ quà lặp nhiều lần “bản chỉnh riêng”. Codex bổ sung hàm chuẩn hóa tên và dùng chung khi nhân bản từ giỏ/workspace. Khi đọc dữ liệu cũ, rút hậu tố lặp thành một “bản sao”, không đổi thành phần, số bộ, giá hoặc tự xóa dữ liệu. Bổ sung kiểm thử tên cũ, giữ sản phẩm/số bộ và nhân bản liên tiếp 12 lần; chạy lại toàn bộ kiểm thử Node và thao tác trình duyệt. Đây là kiểm tra công cụ, chưa phải xác nhận người học tự kiểm tra.

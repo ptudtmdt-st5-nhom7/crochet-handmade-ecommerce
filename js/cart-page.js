@@ -1,3 +1,4 @@
+import { getGiftCopyName } from './gift-names.js';
 import {
     getCart,
     setSingleQuantity,
@@ -371,7 +372,7 @@ function handleCartClick(event) {
         version: 1,
         budget: line.budget,
         sourceGiftSetId: line.giftSetId,
-        name: `${line.name} (bản sao từ giỏ)`,
+        name: getGiftCopyName(line.name),
         items: line.items.map((item) => ({
             productId: item.productId,
             quantity: item.quantity
