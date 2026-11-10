@@ -13,11 +13,25 @@
   <!-- CSS DÙNG CHUNG -->
   <link rel="stylesheet" href="css/style.css">
 
-  <!-- HEADER DÙNG CHUNG -->
+  <!-- CSS RIÊNG CHO TRANG CHI TIẾT SẢN PHẨM -->
+  <link rel="stylesheet" href="css/product-detail.css">
+</head>
+
+<body>
+  <a class="skip-link" href="#noi-dung">Đến nội dung chính</a>
+
+  <!-- =========================================
+       HEADER DÙNG CHUNG
+  ========================================== -->
   <header class="site-header">
     <div class="container header-top">
+
       <a class="site-brand" href="index.html" aria-label="Lenly Crochet - Trang chủ">
-        <img src="images/logo.png" alt="Lenly Crochet - Trang chủ" width="402" height="430">
+        <img
+          src="images/logo.png"
+          alt="Lenly Crochet - Trang chủ"
+          width="402"
+          height="430">
       </a>
 
       <nav class="site-nav" aria-label="Điều hướng chính">
@@ -29,8 +43,10 @@
       <p class="header-caption">Những món len, những lời thương.</p>
     </div>
 
+    <!-- THANH TÌM KIẾM -->
     <div class="search-strip">
       <div class="container search-inner">
+
         <label for="site-search">Tìm một món len</label>
 
         <div class="search-control">
@@ -40,27 +56,45 @@
             placeholder="Bạn đang tìm món đồ len nào?"
             aria-describedby="search-note">
 
-          <button type="button" disabled>Tìm kiếm</button>
+          <button type="button" disabled>
+            Tìm kiếm
+          </button>
         </div>
 
-        <p id="search-note">Giao diện minh họa, chưa hỗ trợ tìm kiếm.</p>
+        <p id="search-note">
+          Giao diện minh họa, chưa hỗ trợ tìm kiếm.
+        </p>
+
       </div>
     </div>
   </header>
 
-  <!-- NỘI DUNG CHI TIẾT SẢN PHẨM -->
+
+  <!-- =========================================
+       NỘI DUNG CHÍNH
+  ========================================== -->
   <main id="noi-dung">
 
-    <!-- ĐƯỜNG DẪN ĐIỀU HƯỚNG -->
-    <section class="detail-breadcrumb container" aria-label="Đường dẫn điều hướng">
+    <!-- 1. ĐƯỜNG DẪN ĐIỀU HƯỚNG -->
+    <section
+      class="detail-breadcrumb container"
+      aria-label="Đường dẫn điều hướng">
+
       <a href="index.html">Trang chủ</a>
+
       <span aria-hidden="true">/</span>
+
       <a href="products.html">Sản phẩm</a>
+
       <span aria-hidden="true">/</span>
-      <span id="breadcrumb-product" aria-current="page">Thú len thỏ</span>
+
+      <span id="breadcrumb-product" aria-current="page">
+        Thú len thỏ
+      </span>
     </section>
 
-    <!-- THÔNG BÁO KHI THIẾU HOẶC SAI MÃ SẢN PHẨM -->
+
+    <!-- 2. THÔNG BÁO KHI THIẾU HOẶC SAI MÃ SẢN PHẨM -->
     <section
       id="product-error"
       class="detail-error container"
@@ -78,13 +112,16 @@
       </a>
     </section>
 
-    <!-- THÔNG TIN CHÍNH CỦA SẢN PHẨM -->
+
+    <!-- 3. THÔNG TIN CHÍNH CỦA SẢN PHẨM -->
     <section
       id="product-detail"
       class="detail-main container"
       aria-labelledby="product-title">
 
+      <!-- 3.1. HÌNH ẢNH SẢN PHẨM -->
       <div class="detail-gallery">
+
         <figure class="detail-image">
           <img
             id="product-image"
@@ -102,9 +139,13 @@
           <span aria-hidden="true">♡</span>
           Một người bạn nhỏ đáng yêu cho góc học tập và làm việc.
         </div>
+
       </div>
 
+
+      <!-- 3.2. THÔNG TIN CHI TIẾT -->
       <div class="detail-information">
+
         <p class="eyebrow" id="product-category">
           LENLY CROCHET · THÚ LEN
         </p>
@@ -113,9 +154,13 @@
           Mã sản phẩm: TL-001
         </p>
 
-        <h1 id="product-title">Thú len thỏ</h1>
+        <h1 id="product-title">
+          Thú len thỏ
+        </h1>
 
-        <p class="detail-price" id="product-price">125.000đ</p>
+        <p class="detail-price" id="product-price">
+          125.000đ
+        </p>
 
         <p class="detail-price-note">
           Giá minh họa phục vụ bài tập; chưa phải giá bán chính thức.
@@ -123,7 +168,10 @@
 
         <div class="detail-divider"></div>
 
+
+        <!-- 3.3. MÔ TẢ SẢN PHẨM -->
         <div class="detail-description">
+
           <h2>Mô tả sản phẩm</h2>
 
           <p id="product-description">
@@ -131,12 +179,17 @@
             ở góc học tập hoặc bàn làm việc. Chiếc nơ nhỏ tạo thêm
             nét ngọt ngào cho món quà.
           </p>
+
         </div>
 
+
+        <!-- 3.4. THÔNG TIN THUỘC TÍNH SẢN PHẨM -->
         <div class="detail-attributes">
+
           <h2>Thông tin sản phẩm</h2>
 
           <dl class="detail-specification">
+
             <div class="detail-spec-row">
               <dt>Danh mục</dt>
               <dd id="product-category-value">Thú len</dd>
@@ -149,7 +202,9 @@
 
             <div class="detail-spec-row">
               <dt>Kích thước</dt>
-              <dd id="product-size">Cao khoảng 18 cm, tính cả tai</dd>
+              <dd id="product-size">
+                Cao khoảng 18 cm, tính cả tai
+              </dd>
             </div>
 
             <div class="detail-spec-row">
@@ -163,45 +218,77 @@
               <dt>Tồn kho minh họa</dt>
               <dd id="product-stock">20 sản phẩm</dd>
             </div>
+
           </dl>
         </div>
 
-        <!-- KHU VỰC MUA HÀNG VÀ THÊM GIỎ HÀNG -->
-      <div class="detail-purchase">
-    <form id="add-to-cart-form" novalidate>
 
-        <div class="detail-quantity-field">
-    <label for="product-quantity">Số lượng</label>
+        <!-- =========================================
+             3.5. KHU VỰC CHỌN SỐ LƯỢNG VÀ THÊM GIỎ HÀNG
+        ========================================== -->
+        <div class="detail-purchase">
 
-       <div class="quantity-control">
-        <button
-            type="button"
-            class="quantity-btn"
-            id="quantity-decrease"
-            aria-label="Giảm số lượng"
-        >−</button>
+          <form id="add-to-cart-form" novalidate>
 
-        <input
-            id="product-quantity"
-            name="quantity"
-            type="number"
-            value="1"
-            min="1"
-            step="1"
-            inputmode="numeric"
-            required
-            aria-label="Số lượng sản phẩm"
-        >
+            <!-- BỘ ĐIỀU CHỈNH SỐ LƯỢNG -->
+            <div class="detail-quantity-field">
 
-        <button
-            type="button"
-            class="quantity-btn"
-            id="quantity-increase"
-            aria-label="Tăng số lượng"
-        >+</button>
-    </div>
-</div>
-            <!-- THÔNG BÁO KẾT QUẢ THÊM GIỎ HÀNG -->
+              <label for="product-quantity">
+                Số lượng
+              </label>
+
+              <div class="quantity-control">
+
+                <button
+                  type="button"
+                  class="quantity-btn"
+                  id="quantity-decrease"
+                  aria-label="Giảm số lượng">
+
+                  −
+                </button>
+
+                <input
+                  id="product-quantity"
+                  name="quantity"
+                  type="number"
+                  value="1"
+                  min="1"
+                  step="1"
+                  inputmode="numeric"
+                  required
+                  aria-label="Số lượng sản phẩm">
+
+                <button
+                  type="button"
+                  class="quantity-btn"
+                  id="quantity-increase"
+                  aria-label="Tăng số lượng">
+
+                  +
+                </button>
+
+              </div>
+            </div>
+
+
+            <!-- HƯỚNG DẪN CHỌN SỐ LƯỢNG -->
+            <p id="quantity-note" class="detail-purchase-note">
+              Vui lòng chọn số lượng sản phẩm muốn mua.
+            </p>
+
+
+            <!-- NÚT THÊM VÀO GIỎ HÀNG -->
+            <button
+              id="add-to-cart-button"
+              class="button button-primary detail-buy-button"
+              type="submit">
+
+              Thêm vào giỏ hàng
+            </button>
+
+
+            <!-- THÔNG BÁO KẾT QUẢ THAO TÁC -->
             <p
               id="cart-action-message"
               class="detail-action-message"
@@ -212,30 +299,44 @@
 
           </form>
 
+
+          <!-- LƯU Ý VỀ CHỨC NĂNG MUA HÀNG -->
           <p class="detail-purchase-note">
             Website phục vụ mục đích học tập. Các thao tác mua hàng
             chỉ ở mức giao diện minh họa, chưa hỗ trợ thanh toán
             trực tuyến.
           </p>
+
         </div>
 
-        <!-- LIÊN KẾT QUAY LẠI ĐƯỢC XỬ LÝ THEO THAM SỐ URL -->
+
+        <!-- 3.6. LIÊN KẾT QUAY LẠI -->
         <a
           class="detail-back-link"
           id="detail-back-link"
           href="products.html">
 
           <span aria-hidden="true">←</span>
-          <span id="back-link-label">Quay lại danh sách sản phẩm</span>
+
+          <span id="back-link-label">
+            Quay lại danh sách sản phẩm
+          </span>
+
         </a>
+
       </div>
     </section>
 
-    <!-- MÔ TẢ VÀ THÔNG TIN BỔ SUNG -->
+
+    <!-- =========================================
+         4. MÔ TẢ VÀ THÔNG TIN BỔ SUNG
+    ========================================== -->
     <section class="detail-extra" id="detail-extra">
+
       <div class="container">
 
         <div class="detail-section-heading">
+
           <p class="eyebrow">TÌM HIỂU THÊM</p>
 
           <h2 id="extra-description">
@@ -245,12 +346,19 @@
           <p id="extra-appearance">
             Khám phá thêm những đặc điểm của sản phẩm Thú len thỏ TL-001.
           </p>
+
         </div>
 
+
+        <!-- CÁC THẺ THÔNG TIN BỔ SUNG -->
         <div class="detail-extra-grid">
 
+          <!-- THẺ 1: THIẾT KẾ -->
           <article class="detail-extra-card">
-            <div class="detail-extra-icon" aria-hidden="true">♡</div>
+
+            <div class="detail-extra-icon" aria-hidden="true">
+              ♡
+            </div>
 
             <h3>Thiết kế dễ thương</h3>
 
@@ -259,10 +367,16 @@
               chiếc nơ xinh xắn, phù hợp để trang trí góc học tập
               hoặc bàn làm việc.
             </p>
+
           </article>
 
+
+          <!-- THẺ 2: MÀU SẮC VÀ KÍCH THƯỚC -->
           <article class="detail-extra-card">
-            <div class="detail-extra-icon" aria-hidden="true">✿</div>
+
+            <div class="detail-extra-icon" aria-hidden="true">
+              ✿
+            </div>
 
             <h3>Màu sắc và kích thước</h3>
 
@@ -271,10 +385,16 @@
               chiều cao khoảng 18 cm tính cả tai.
               Tông màu nhẹ nhàng tạo cảm giác ngọt ngào.
             </p>
+
           </article>
 
+
+          <!-- THẺ 3: CHẤT LIỆU -->
           <article class="detail-extra-card">
-            <div class="detail-extra-icon" aria-hidden="true">⌂</div>
+
+            <div class="detail-extra-icon" aria-hidden="true">
+              ⌂
+            </div>
 
             <h3>Chất liệu sản phẩm</h3>
 
@@ -282,21 +402,30 @@
               Theo dữ liệu sản phẩm, thú len sử dụng sợi cotton milk,
               bông nhồi polyester và chỉ thêu.
             </p>
+
           </article>
 
         </div>
 
+
+        <!-- LƯU Ý -->
         <p class="detail-care-note">
           Lưu ý: Đây là các sản phẩm mẫu thuộc website Lenly Crochet.
           Hình ảnh, giá và thông số phục vụ mục đích minh họa cho
           bài tập, không được xem là thông tin kinh doanh đã xác nhận.
         </p>
+
       </div>
     </section>
 
-    <!-- ĐIỀU HƯỚNG CUỐI TRANG -->
+
+    <!-- =========================================
+         5. ĐIỀU HƯỚNG CUỐI TRANG
+    ========================================== -->
     <section class="detail-continue container">
+
       <div>
+
         <p class="eyebrow">KHÁM PHÁ THÊM CÙNG LENLY</p>
 
         <h2>Tìm thêm món len bạn yêu thích</h2>
@@ -305,22 +434,29 @@
           Mỗi sản phẩm đều mang một nét đáng yêu riêng.
           Hãy tiếp tục khám phá các mẫu móc len tại Lenly Crochet.
         </p>
+
       </div>
 
       <a class="button button-secondary" href="products.html">
         Xem tất cả sản phẩm
         <span aria-hidden="true">↗</span>
       </a>
+
     </section>
 
   </main>
 
-  <!-- FOOTER DÙNG CHUNG -->
+
+  <!-- =========================================
+       FOOTER DÙNG CHUNG
+  ========================================== -->
   <footer class="site-footer">
+
     <div class="site-footer-inner">
 
-      <!-- CỘT THƯƠNG HIỆU -->
+      <!-- CỘT 1: THƯƠNG HIỆU -->
       <div class="site-footer-brand">
+
         <a class="site-footer-wordmark" href="index.html">
           <span class="site-footer-name">Lenly</span>
           <span class="site-footer-label">CROCHET</span>
@@ -330,10 +466,13 @@
           Lenly Crochet — Sản phẩm móc len, bộ quà theo ngân sách
           và những món quà mang dấu ấn riêng.
         </p>
+
       </div>
 
-      <!-- CỘT CHÍNH SÁCH -->
+
+      <!-- CỘT 2: CHÍNH SÁCH -->
       <div class="site-footer-policy">
+
         <h2>Thông tin chính sách</h2>
 
         <ul>
@@ -343,11 +482,15 @@
           <li>Chính sách vận chuyển</li>
           <li>Chính sách bảo mật</li>
         </ul>
+
       </div>
 
-      <!-- CỘT LIÊN KẾT NHANH -->
+
+      <!-- CỘT 3: LIÊN KẾT NHANH -->
       <div class="site-footer-nav">
+
         <nav aria-label="Liên kết nhanh">
+
           <h2>Liên kết nhanh</h2>
 
           <ul>
@@ -355,14 +498,19 @@
             <li><a href="products.html">Sản phẩm</a></li>
             <li><a href="about.html">Giới thiệu</a></li>
           </ul>
+
         </nav>
+
       </div>
 
-      <!-- CỘT LIÊN HỆ -->
+
+      <!-- CỘT 4: LIÊN HỆ -->
       <div class="site-footer-info">
+
         <h2>Liên hệ</h2>
 
         <address>
+
           <p>
             Điện thoại:
             <a href="tel:0767916364">0767916364</a>
@@ -379,11 +527,16 @@
               lenlycrochet@gmail.com
             </a>
           </p>
+
         </address>
+
 
         <!-- ICON MẠNG XÃ HỘI -->
         <div class="site-footer-social">
+
           <ul>
+
+            <!-- FACEBOOK -->
             <li>
               <span
                 class="site-footer-social-icon"
@@ -391,14 +544,20 @@
                 aria-label="Facebook"
                 title="Facebook">
 
-                <svg viewBox="0 0 24 24"
-                     aria-hidden="true"
-                     focusable="false">
+                <svg
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false">
+
                   <path d="M14 22v-9h3l.5-4H14V7c0-1.2.4-2 2-2h2V1.4C17.3 1.2 16.1 1 15 1c-3 0-5 1.8-5 5v3H7v4h3v9z"/>
+
                 </svg>
+
               </span>
             </li>
 
+
+            <!-- TIKTOK -->
             <li>
               <span
                 class="site-footer-social-icon"
@@ -406,14 +565,20 @@
                 aria-label="TikTok"
                 title="TikTok">
 
-                <svg viewBox="0 0 24 24"
-                     aria-hidden="true"
-                     focusable="false">
+                <svg
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false">
+
                   <path d="M16 2c.3 2.4 1.7 3.8 4 4v4a9 9 0 0 1-4-1v7a6 6 0 1 1-6-6v4a2 2 0 1 0 2 2V2z"/>
+
                 </svg>
+
               </span>
             </li>
 
+
+            <!-- INSTAGRAM -->
             <li>
               <span
                 class="site-footer-social-icon"
@@ -421,43 +586,64 @@
                 aria-label="Instagram"
                 title="Instagram">
 
-                <svg viewBox="0 0 24 24"
-                     aria-hidden="true"
-                     focusable="false">
+                <svg
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false">
+
                   <rect
-                    x="3" y="3"
-                    width="18" height="18"
+                    x="3"
+                    y="3"
+                    width="18"
+                    height="18"
                     rx="5"
                     fill="none"
                     stroke="currentColor"
                     stroke-width="2"/>
 
                   <circle
-                    cx="12" cy="12" r="4"
+                    cx="12"
+                    cy="12"
+                    r="4"
                     fill="none"
                     stroke="currentColor"
                     stroke-width="2"/>
 
-                  <circle cx="17.5" cy="6.5" r="1.2"/>
+                  <circle
+                    cx="17.5"
+                    cy="6.5"
+                    r="1.2"/>
+
                 </svg>
+
               </span>
             </li>
+
           </ul>
+
         </div>
+
       </div>
 
     </div>
 
+
     <!-- DẢI CUỐI FOOTER -->
     <div class="site-footer-bottom">
+
       <p class="site-footer-note">
         Website học tập thuộc môn Phát triển ứng dụng thương mại điện tử,
         Nhóm 7. Các thao tác mua hàng chỉ ở mức giao diện minh họa.
       </p>
+
     </div>
+
   </footer>
 
-  <!-- JAVASCRIPT XỬ LÝ TRANG CHI TIẾT ĐỘNG -->
+
+  <!-- =========================================
+       JAVASCRIPT XỬ LÝ TRANG CHI TIẾT ĐỘNG
+  ========================================== -->
   <script type="module" src="js/product-detail.js"></script>
 
 </body>
