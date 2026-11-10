@@ -766,3 +766,12 @@ Không sử dụng JavaScript hoặc framework CSS. 
 **Kiểm tra kết quả:** Chạy 35 kiểm thử, 35 đạt, 0 lỗi. Kiểm tra trực tiếp bằng Live Server: tăng, giảm, xóa, trạng thái giỏ trống, số đếm giỏ và lưu bản soạn quà đều hoạt động.
 
 **Phần chờ ghép:** Sau khi lưu bản soạn thành công, trang chuyển tới `gift-builder.html`. Trang này thuộc phần của Châu và chưa có trên nhánh hiện tại.
+
+### 10/11/2026 — Codex kiểm tra tích hợp phần 5B và xác nhận kết nối GitHub
+
+- Người yêu cầu: Nguyễn Quang Đức. Công cụ hỗ trợ: OpenAI Codex.
+- Yêu cầu: kiểm tra phần 5B của Bảo trước khi merge; sau khi cấp quyền organization, kiểm tra kết nối có thể đọc và cập nhật repository.
+- Phạm vi kiểm tra trước merge: ghép thử commit 9455eb7 của buoc5-bao vào main 8e7fbca, không có xung đột. Có 35 kiểm thử hiện có và 16 ca kiểm tra DOM bổ sung đạt, gồm giỏ trống, sản phẩm lẻ/bộ quà, đổi số lượng, tổng tiền/số đếm, giới hạn tồn kho, lỗi lưu, xóa nhóm và nhân bản bộ quà sang trang chọn quà.
+- Giới hạn: kiểm tra DOM bằng jsdom, chưa kiểm tra hình thức/responsive trên trình duyệt trong lần review này. Không ghi kết quả công cụ thành thao tác sinh viên tự thực hiện.
+- Kết quả bàn giao: Nguyễn Quang Đức tự tạo và merge PR #33 vào main, commit d67f2476e788f15a8a24bbd28a3c42e68e8ddfe0. Codex xác nhận trạng thái merged qua GitHub; không sửa mã chức năng của Bảo trong lần kiểm tra này. Quyến tiếp tục chỉnh giao diện và kiểm tra hiển thị.
+- Cập nhật hiện tại: bổ sung mục nhật ký này để ghi nhận việc AI hỗ trợ và xác nhận quyền ghi của kết nối mới; giữ nguyên các ghi nhận cũ.
