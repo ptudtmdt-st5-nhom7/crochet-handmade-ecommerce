@@ -170,3 +170,18 @@ test('lỗi lưu workspace giữ nguyên các bộ trước thao tác', () => {
   assert.equal(appendGiftWorkspaceDraft(draft()).ok, false);
   assert.deepEqual(loadGiftWorkspace(), good);
 });
+
+test('tên bản sao cũ được rút gọn khi đọc, không đổi sản phẩm/số bộ hoặc tự ghi dữ liệu', () => {
+  const old = cart(); old.lines[1].name = 'Hoa (bản chỉnh riêng) (bản chỉnh riêng) (bản sao từ giỏ)';
+  memory.set(CART_STORAGE_KEY, JSON.stringify(old));
+  const loaded = loadCart();
+  assert.equal(loaded.lines[1].name, 'Hoa (bản sao)');
+  assert.deepEqual(loaded.lines[1].items, old.lines[1].items);
+  assert.equal(loaded.lines[1].setQuantity, old.lines[1].setQuantity);
+  assert.equal(JSON.parse(memory.get(CART_STORAGE_KEY)).lines[1].name, old.lines[1].name);
+  const source = createWorkspaceDraft({...draft(), name: old.lines[1].name});
+  let result = source;
+  for (let i = 0; i < 12; i++) result = duplicateWorkspaceDraft(result);
+  assert.equal(result.name, 'Hoa (bản sao)');
+  assert.deepEqual(source.items, result.items);
+});
