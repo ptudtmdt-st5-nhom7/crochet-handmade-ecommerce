@@ -260,396 +260,670 @@ button,input { font:inherit; }
 .product-price { color:var(--primary); font-size:20px; font-weight:700; padding-block:16px; margin-top:auto; }
 .product-link { display:flex; align-items:center; justify-content:space-between; min-height:44px; color:var(--primary); font-weight:700; border-top:1px solid var(--border); padding-top:8px; }
 
-/* ===== 6. CHI TIẾT SẢN PHẨM ===== */
+/* =====================================================
+   6. TRANG CHI TIẾT SẢN PHẨM - LENLY CROCHET
+===================================================== */
 
 /* 6.1. Đường dẫn điều hướng */
 .detail-breadcrumb {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 10px;
-  padding-block: 24px;
-  color: var(--muted);
-  font-size: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    padding-block: 24px;
+    color: var(--muted);
+    font-size: 14px;
 }
 
 .detail-breadcrumb a {
-  color: var(--primary);
-  transition: color .18s;
+    color: var(--primary);
+    transition: color .18s ease;
 }
 
 .detail-breadcrumb a:hover {
-  color: var(--primary-hover);
-  text-decoration: underline;
-  text-underline-offset: 4px;
+    color: var(--primary-hover);
+    text-decoration: underline;
+    text-underline-offset: 4px;
 }
 
 .detail-breadcrumb [aria-current="page"] {
-  color: var(--text);
-  font-weight: 700;
+    color: var(--text);
+    font-weight: 700;
 }
 
-/* 6.2. Bố cục chính: hình ảnh và thông tin */
+/* 6.2. Bố cục chính */
 .detail-main {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  align-items: start;
-  gap: 56px;
-  padding-bottom: 64px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: start;
+    gap: 48px;
+    padding-bottom: 64px;
 }
 
-/* Khu vực hình ảnh */
-.detail-gallery {
-  min-width: 0;
+.detail-gallery,
+.detail-information {
+    min-width: 0;
 }
 
+/* 6.3. Hình ảnh sản phẩm */
 .detail-image {
-  overflow: hidden;
-  padding: 24px;
-  border-radius: 20px;
-  background: var(--pink);
+    overflow: hidden;
+    padding: 20px;
+    border-radius: 20px;
+    background: var(--pink);
 }
 
 .detail-image img {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: contain;
-  border-radius: 12px;
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    border-radius: 12px;
+    background: #fff;
 }
 
 .detail-image figcaption {
-  padding-top: 16px;
-  color: var(--muted);
-  font-size: 14px;
-  text-align: center;
+    padding-top: 14px;
+    color: var(--muted);
+    font-size: 14px;
+    text-align: center;
 }
 
 .detail-image-note {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 16px;
-  color: var(--primary);
-  font-size: 14px;
-  font-weight: 700;
-  text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+    color: var(--primary);
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
 }
 
 .detail-image-note span {
-  font-size: 20px;
+    font-size: 20px;
 }
 
-/* 6.3. Thông tin sản phẩm */
+/* 6.4. Thông tin sản phẩm */
 .detail-information {
-  min-width: 0;
-  padding-top: 8px;
+    padding-top: 8px;
 }
 
 .detail-information .eyebrow {
-  margin-bottom: 12px;
+    margin-bottom: 10px;
 }
 
 .detail-code {
-  margin-bottom: 8px;
-  color: var(--muted);
-  font-size: 14px;
+    margin-bottom: 8px;
+    color: var(--muted);
+    font-size: 14px;
 }
 
 .detail-information h1 {
-  margin-bottom: 12px;
+    margin-bottom: 12px;
 }
 
 .detail-price {
-  color: var(--primary);
-  font-size: 30px;
-  font-weight: 700;
-  line-height: 1.3;
+    color: var(--primary);
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.3;
 }
 
 .detail-price-note {
-  margin-top: 6px;
-  color: var(--muted);
-  font-size: 13px;
+    margin-top: 6px;
+    color: var(--muted);
+    font-size: 13px;
 }
 
 .detail-divider {
-  height: 1px;
-  margin-block: 24px;
-  background: var(--border);
+    height: 1px;
+    margin-block: 24px;
+    border: 0;
+    background: var(--border);
 }
 
-/* 6.4. Mô tả sản phẩm */
+/* 6.5. Mô tả sản phẩm */
 .detail-description h2,
 .detail-attributes h2 {
-  margin-bottom: 12px;
-  font-size: 20px;
-  letter-spacing: 0;
+    margin-bottom: 12px;
+    font-size: 20px;
+    letter-spacing: 0;
 }
 
 .detail-description p {
-  color: var(--muted);
-  line-height: 1.8;
+    color: var(--muted);
+    line-height: 1.8;
 }
 
-/* 6.5. Bảng thuộc tính sản phẩm */
+/* 6.6. Bảng thuộc tính sản phẩm */
 .detail-attributes {
-  margin-top: 28px;
+    margin-top: 28px;
 }
 
 .detail-specification {
-  margin: 0;
-  border-top: 1px solid var(--border);
+    margin: 0;
+    border-top: 1px solid var(--border);
 }
 
 .detail-spec-row {
-  display: grid;
-  grid-template-columns: minmax(105px, .75fr) minmax(0, 1.5fr);
-  gap: 16px;
-  padding-block: 13px;
-  border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: minmax(105px, .75fr) minmax(0, 1.5fr);
+    gap: 16px;
+    padding-block: 13px;
+    border-bottom: 1px solid var(--border);
 }
 
 .detail-spec-row dt {
-  color: var(--muted);
-  font-size: 15px;
+    color: var(--muted);
+    font-size: 15px;
 }
 
 .detail-spec-row dd {
-  margin: 0;
-  color: var(--text);
-  font-size: 15px;
-  font-weight: 600;
+    margin: 0;
+    color: var(--text);
+    font-size: 15px;
+    font-weight: 600;
+    overflow-wrap: anywhere;
 }
 
-/* 6.6. Khu vực nút mua hàng */
+/* =====================================================
+   6.7. KHU VỰC CHỌN SỐ LƯỢNG VÀ THÊM VÀO GIỎ HÀNG
+===================================================== */
+
 .detail-purchase {
-  margin-top: 28px;
+    margin-top: 24px;
 }
 
-.detail-buy-button {
-  width: 100%;
-  min-height: 52px;
-  font-size: 16px;
-  cursor: not-allowed;
-  opacity: .75;
+/* Form mua hàng */
+#add-to-cart-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
 }
 
-.detail-buy-button:disabled {
-  background: var(--primary);
-  border-color: var(--primary);
-  color: #fff;
+/* Hàng chọn số lượng */
+.detail-quantity-field {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+    margin: 0 0 2px;
 }
 
+.detail-quantity-field label {
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* Khung bộ chọn số lượng */
+.quantity-control {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+    width: 132px;
+    height: 42px;
+    overflow: hidden;
+    border: 1px solid #E7CED3;
+    border-radius: 10px;
+    background: #FFFDFC;
+    transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+/* Nút giảm và tăng */
+.quantity-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 36px;
+    width: 36px;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    background: #F6E7E9;
+    color: var(--primary);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color .18s ease, color .18s ease;
+}
+
+.quantity-btn:hover:not(:disabled) {
+    background: #EFD7DC;
+    color: var(--primary-hover);
+}
+
+.quantity-btn:active:not(:disabled) {
+    background: #E7C6CE;
+}
+
+.quantity-btn:disabled {
+    opacity: .4;
+    cursor: not-allowed;
+}
+
+/* Ô hiển thị số lượng */
+.quantity-control input {
+    flex: 1;
+    width: 0;
+    min-width: 0;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    outline: none;
+    background: transparent;
+    color: var(--text);
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+
+.quantity-control input::-webkit-inner-spin-button,
+.quantity-control input::-webkit-outer-spin-button {
+    margin: 0;
+    -webkit-appearance: none;
+}
+
+/* Hiệu ứng khi chọn số lượng */
+.quantity-control:focus-within {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(143, 69, 88, .12);
+}
+
+/* Trạng thái vô hiệu hóa */
+.quantity-control:has(input:disabled) {
+    opacity: .6;
+    background: #F5F0ED;
+}
+
+/* Hướng dẫn mua hàng */
 .detail-purchase-note {
-  margin-top: 10px;
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.6;
+    margin: 0;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.6;
 }
 
-/* 6.7. Liên kết quay lại */
+/* Nút thêm vào giỏ hàng */
+#add-to-cart-button,
+.detail-buy-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 50px;
+    margin-top: 2px;
+    padding: 12px 20px;
+    border: 1px solid var(--primary);
+    border-radius: 10px;
+    background: var(--primary);
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+    opacity: 1;
+    visibility: visible;
+    transition: background-color .2s ease, border-color .2s ease, transform .2s ease;
+}
+
+#add-to-cart-button:hover:not(:disabled),
+.detail-buy-button:hover:not(:disabled) {
+    border-color: var(--primary-hover);
+    background: var(--primary-hover);
+    transform: translateY(-1px);
+}
+
+#add-to-cart-button:active:not(:disabled),
+.detail-buy-button:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+#add-to-cart-button:disabled,
+.detail-buy-button:disabled {
+    background: #B99AA1;
+    border-color: #B99AA1;
+    color: #fff;
+    opacity: .7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Thông báo kết quả thêm giỏ */
+.detail-action-message {
+    margin-top: 4px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.detail-action-message.success {
+    border: 1px solid #B9D5C0;
+    background: #EDF6EF;
+    color: #315C3D;
+}
+
+.detail-action-message.error {
+    border: 1px solid #E7BFC4;
+    background: #FFF0F1;
+    color: #963D4B;
+}
+
+/* =====================================================
+   6.8. LIÊN KẾT QUAY LẠI
+===================================================== */
+
 .detail-back-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 44px;
-  margin-top: 16px;
-  color: var(--primary);
-  font-weight: 700;
-  transition: color .18s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    margin-top: 16px;
+    color: var(--primary);
+    font-weight: 700;
+    transition: color .18s ease;
 }
 
 .detail-back-link:hover {
-  color: var(--primary-hover);
-  text-decoration: underline;
-  text-underline-offset: 4px;
+    color: var(--primary-hover);
+    text-decoration: underline;
+    text-underline-offset: 4px;
 }
 
-/* 6.8. Phần thông tin bổ sung */
+/* =====================================================
+   6.9. THÔNG TIN BỔ SUNG
+===================================================== */
+
 .detail-extra {
-  padding-block: 64px;
-  background: var(--surface);
+    padding-block: 64px;
+    background: var(--surface);
 }
 
 .detail-section-heading {
-  max-width: 720px;
-  margin-bottom: 32px;
+    max-width: 720px;
+    margin-bottom: 32px;
 }
 
 .detail-section-heading h2 {
-  margin-bottom: 12px;
+    margin-bottom: 12px;
 }
 
 .detail-section-heading > p:last-child {
-  color: var(--muted);
+    color: var(--muted);
 }
 
 .detail-extra-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 24px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
 }
 
 .detail-extra-card {
-  min-width: 0;
-  padding: 24px;
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  background: var(--page);
+    min-width: 0;
+    padding: 24px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: var(--page);
 }
 
 .detail-extra-icon {
-  display: flex;
-  width: 44px;
-  height: 44px;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 16px;
-  border-radius: 50%;
-  background: var(--pink);
-  color: var(--primary);
-  font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    margin-bottom: 16px;
+    border-radius: 50%;
+    background: var(--pink);
+    color: var(--primary);
+    font-size: 22px;
 }
 
 .detail-extra-card h3 {
-  margin-bottom: 10px;
-  color: var(--primary);
+    margin-bottom: 10px;
+    color: var(--primary);
 }
 
 .detail-extra-card p {
-  color: var(--muted);
-  font-size: 15px;
-  line-height: 1.75;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.75;
 }
 
 .detail-care-note {
-  margin-top: 24px;
-  color: var(--muted);
-  font-size: 13px;
-  font-style: italic;
-  line-height: 1.6;
+    margin-top: 24px;
+    color: var(--muted);
+    font-size: 13px;
+    font-style: italic;
+    line-height: 1.6;
 }
 
-/* 6.9. Khu vực điều hướng cuối trang */
+/* =====================================================
+   6.10. ĐIỀU HƯỚNG CUỐI TRANG
+===================================================== */
+
 .detail-continue {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 32px;
-  padding-block: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    padding-block: 56px;
 }
 
 .detail-continue > div {
-  max-width: 680px;
+    max-width: 680px;
 }
 
 .detail-continue h2 {
-  margin-bottom: 12px;
+    margin-bottom: 12px;
 }
 
 .detail-continue > div > p:last-child {
-  color: var(--muted);
+    color: var(--muted);
 }
 
 .detail-continue .button {
-  flex-shrink: 0;
-  gap: 8px;
+    flex-shrink: 0;
+    gap: 8px;
 }
 
-/* ===== RESPONSIVE RIÊNG CHO TRANG CHI TIẾT ===== */
+/* =====================================================
+   6.11. THÔNG BÁO LỖI SẢN PHẨM
+===================================================== */
+
+.detail-error {
+    margin-block: 40px 64px;
+    padding: 32px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: var(--surface);
+}
+
+.detail-error h1 {
+    margin-bottom: 12px;
+    color: var(--primary);
+}
+
+.detail-error p {
+    margin-bottom: 20px;
+    color: var(--muted);
+}
+
+/* Ẩn các khu vực khi có thuộc tính hidden */
+#product-detail[hidden],
+#product-error[hidden],
+#detail-extra[hidden],
+.detail-action-message[hidden] {
+    display: none !important;
+}
+
+/* =====================================================
+   6.12. RESPONSIVE TRANG CHI TIẾT
+===================================================== */
 
 /* Tablet */
 @media (min-width: 700px) and (max-width: 1099px) {
-  .detail-main {
-    gap: 32px;
-  }
+    .detail-main {
+        gap: 32px;
+    }
 
-  .detail-image {
-    padding: 16px;
-  }
+    .detail-image {
+        padding: 16px;
+    }
 
-  .detail-extra-grid {
-    gap: 16px;
-  }
+    .detail-extra-grid {
+        gap: 16px;
+    }
 
-  .detail-extra-card {
-    padding: 20px;
-  }
+    .detail-extra-card {
+        padding: 20px;
+    }
 }
 
 /* Mobile */
 @media (max-width: 699px) {
-  .detail-breadcrumb {
-    gap: 7px;
-    padding-block: 16px;
-    font-size: 13px;
-  }
+    .detail-breadcrumb {
+        gap: 7px;
+        padding-block: 16px;
+        font-size: 13px;
+    }
 
-  .detail-main {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 28px;
-    padding-bottom: 40px;
-  }
+    .detail-main {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 28px;
+        padding-bottom: 40px;
+    }
 
-  .detail-image {
-    padding: 16px;
-    border-radius: 16px;
-  }
+    .detail-image {
+        padding: 16px;
+        border-radius: 16px;
+    }
 
-  .detail-image-note {
-    font-size: 13px;
-  }
+    .detail-image-note {
+        font-size: 13px;
+    }
 
-  .detail-information {
-    padding-top: 0;
-  }
+    .detail-information {
+        padding-top: 0;
+    }
 
-  .detail-price {
-    font-size: 26px;
-  }
+    .detail-price {
+        font-size: 26px;
+    }
 
-  .detail-divider {
-    margin-block: 20px;
-  }
+    .detail-divider {
+        margin-block: 20px;
+    }
 
-  .detail-spec-row {
-    grid-template-columns: minmax(95px, .8fr) minmax(0, 1.3fr);
-    gap: 12px;
-  }
+    .detail-spec-row {
+        grid-template-columns: minmax(95px, .8fr) minmax(0, 1.3fr);
+        gap: 12px;
+    }
 
-  .detail-spec-row dt,
-  .detail-spec-row dd {
-    font-size: 14px;
-  }
+    .detail-spec-row dt,
+    .detail-spec-row dd {
+        font-size: 14px;
+    }
 
-  .detail-extra {
-    padding-block: 36px;
-  }
+    .detail-quantity-field {
+        gap: 10px;
+    }
 
-  .detail-section-heading {
-    margin-bottom: 24px;
-  }
+    .quantity-control {
+        width: 128px;
+    }
 
-  .detail-extra-grid {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 16px;
-  }
+    .detail-extra {
+        padding-block: 36px;
+    }
 
-  .detail-extra-card {
-    padding: 20px;
-  }
+    .detail-section-heading {
+        margin-bottom: 24px;
+    }
 
-  .detail-continue {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 24px;
-    padding-block: 36px;
-  }
+    .detail-extra-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 16px;
+    }
 
-  .detail-continue .button {
-    width: 100%;
-  }
+    .detail-extra-card {
+        padding: 20px;
+    }
+
+    .detail-continue {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 24px;
+        padding-block: 36px;
+    }
+
+    .detail-continue .button {
+        width: 100%;
+    }
+}
+
+/* Màn hình rất nhỏ */
+@media (max-width: 390px) {
+    .detail-quantity-field {
+        gap: 8px;
+    }
+
+    .detail-quantity-field label {
+        font-size: 13px;
+    }
+
+    .quantity-control {
+        width: 120px;
+        height: 40px;
+    }
+
+    .quantity-btn {
+        flex-basis: 32px;
+        width: 32px;
+    }
+
+    #add-to-cart-button,
+    .detail-buy-button {
+        min-height: 46px;
+        font-size: 14px;
+    }
+}
+
+/* =====================================================
+   8. HOVER / FOCUS TRANG CHI TIẾT
+===================================================== */
+
+.detail-breadcrumb a:focus-visible,
+.detail-back-link:focus-visible,
+#add-to-cart-button:focus-visible,
+.quantity-btn:focus-visible {
+    outline: 3px solid #245C52;
+    outline-offset: 3px;
+}
+
+/* Hạn chế chuyển động theo thiết lập trình duyệt */
+@media (prefers-reduced-motion: reduce) {
+    .detail-breadcrumb a,
+    .detail-back-link,
+    .quantity-btn,
+    .quantity-control,
+    #add-to-cart-button {
+        transition: none;
+    }
+
+    #add-to-cart-button:hover:not(:disabled) {
+        transform: none;
+    }
 }
 
 /* ===== 7. GIỚI THIỆU ===== */
@@ -1154,3 +1428,6 @@ a:focus-visible,button:focus-visible,input:focus-visible { outline:3px solid #24
         margin-top: 20px;
     }
 }
+
+/* Trạng thái ẩn do JavaScript điều khiển phải thắng bố cục grid/flex. */
+[hidden] { display: none !important; }

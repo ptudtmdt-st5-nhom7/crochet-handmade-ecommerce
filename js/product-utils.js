@@ -5,8 +5,8 @@ export function getProductById(id) {
   return products.find((product) => product.id === id) ?? null;
 }
 
-/** Giữ trang chi tiết hiện có cho đến khi Khanh bàn giao trang đọc id. */
-export function getProductDetailUrl(id, { detailReady = false } = {}) {
+/** Trang động đã ghép; detailReady: false chỉ dành cho bản tĩnh lịch sử. */
+export function getProductDetailUrl(id, { detailReady = true } = {}) {
   if (!getProductById(id)) throw new RangeError('Mã sản phẩm không tồn tại.');
   if (detailReady || id === 'TL-001') {
     return 'product-detail.html?id=' + encodeURIComponent(id);

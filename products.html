@@ -19,7 +19,10 @@
       <a href="index.html">Trang chủ</a>
       <a href="products.html" aria-current="page">Sản phẩm</a>
       <a href="about.html">Giới thiệu</a>
-    </nav>
+
+      <a href="gift-builder.html">Chọn quà</a>
+      <a href="cart.html">Giỏ hàng (<span data-cart-count>0</span>)</a>
+</nav>
     <p class="header-caption">Những món len, những lời thương.</p>
   </div>
   <div class="search-strip">
@@ -27,9 +30,9 @@
       <label for="site-search">Tìm một món len</label>
       <div class="search-control">
         <input id="site-search" type="search" placeholder="Bạn đang tìm món đồ len nào?" aria-describedby="search-note">
-        <button type="button" disabled>Tìm kiếm</button>
+        <button type="button" data-site-search-button disabled>Tìm kiếm</button>
       </div>
-      <p id="search-note">Giao diện minh họa, chưa hỗ trợ tìm kiếm.</p>
+      <p id="search-note">Tìm theo tên hoặc mã sản phẩm.</p>
     </div>
   </div>
 </header>
@@ -44,7 +47,7 @@
     <fieldset disabled aria-describedby="products-integration-note">
       <legend>Tìm kiếm, lọc và sắp xếp sản phẩm</legend>
       <label for="product-search">Tên sản phẩm</label>
-      <input id="product-search" type="search" data-product-search placeholder="Nhập tên sản phẩm">
+      <input id="product-search" type="search" data-product-search placeholder="Nhập tên hoặc mã sản phẩm">
       <label for="category-filter">Danh mục</label>
       <select id="category-filter" data-category-filter>
         <option value="">Tất cả danh mục</option>
@@ -59,8 +62,10 @@
         <option value="price-asc">Giá tăng dần</option>
         <option value="price-desc">Giá giảm dần</option>
       </select>
+      <button type="button" data-reset-products>Xóa bộ lọc</button>
     </fieldset>
-    <p id="products-integration-note">Tìm kiếm, lọc, sắp xếp và thêm giỏ sẽ được kết nối trong bản bàn giao 2B.</p>
+    <p id="products-integration-note">Chọn danh mục hoặc thứ tự giá để tìm món len phù hợp.</p>
+    <p data-cart-feedback role="status" aria-live="polite"></p>
     <p data-products-count role="status" aria-live="polite"></p>
     <noscript>Vui lòng bật JavaScript để xem danh sách sản phẩm.</noscript>
     <div class="product-grid" data-products-list>
@@ -189,9 +194,10 @@
     </div>
   </div>
   <div class="site-footer-bottom">
-    <p class="site-footer-note">Website học tập thuộc môn Phát triển ứng dụng thương mại điện tử, Nhóm 7. Các thao tác mua hàng chỉ ở mức giao diện minh họa.</p>
+    <p class="site-footer-note">Website học tập thuộc môn Phát triển ứng dụng thương mại điện tử, Nhóm 7. Giỏ hàng lưu trên trình duyệt; website chưa tiếp nhận đơn hàng hoặc thanh toán thật.</p>
   </div>
 </footer>
   <script type="module" src="js/products-page.js"></script>
+  <script type="module" src="js/site.js"></script>
 </body>
 </html>

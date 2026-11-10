@@ -2,17 +2,18 @@
 
 Đồ án học phần **Phát triển ứng dụng TMĐT — Nhóm 7, ST5**. Website giới thiệu và kinh doanh sản phẩm móc len handmade cho một cửa hàng.
 
-## Bản nền Buổi 3 — lưu trữ dùng chung
+## Bản tích hợp chức năng Buổi 3 — bàn giao chỉnh giao diện
 
-Đã chuẩn bị `js/storage.js` do Đức phụ trách, lưu riêng giỏ hàng và bộ quà đang soạn. Các thành viên dùng [hướng dẫn bàn giao](docs/ban-giao-ban-nen-buoi3.md) và [quy ước hiện hành](docs/quy-uoc.md) để nối mã; chưa xác nhận toàn website Buổi 3 đã có đủ chức năng.
+Website dùng HTML/CSS và JavaScript thuần, lưu giỏ/bản soạn trong localStorage. Đã nối tìm kiếm, lọc và sắp xếp danh sách; chi tiết động theo mã; thêm sản phẩm lẻ; bộ quà theo ngân sách; giỏ hàng và nhân bản bộ quà. Ngân sách áp dụng cho tiền sản phẩm của một bộ, không gồm đóng gói/vận chuyển. Bộ hợp lệ vượt ngân sách sau điều chỉnh được cảnh báo và vẫn có thể thêm giỏ.
 
-- Chạy qua HTTP bằng VS Code Live Server, hoặc `python -m http.server 5513` tại thư mục gốc.
-- Mở `http://localhost:5513/docs/kiem-tra-storage.html` để gọi thử năm hàm; nên dùng cổng thử riêng. Trang chỉ ghi mẫu khi bấm nút, không tự ghi khi mở/tải lại.
-- [Kết quả kiểm tra module lưu trữ](docs/kiem-thu-storage-buoi3.md): 23 ca tự động và lượt thử trên trình duyệt; còn chờ nghiệm thu với trang thật.
-- Nếu có Node, chạy `npm run test:storage` (không cần cài thư viện). Node dùng kiểm thử, chưa triển khai backend.
-- Nam: dữ liệu/danh sách; Tuấn: tìm/lọc/sắp/gợi ý; Khanh: chi tiết; Bảo: giỏ; Châu: chọn quà; Quyến: CSS/responsive; Đức: bản nền/lưu trữ/tích hợp/hồ sơ.
+- [Xem website](https://ptudtmdt-st5-nhom7.github.io/crochet-handmade-ecommerce/).
+- [Bàn giao bản tích hợp cho Quyến](docs/ban-giao-tich-hop-buoi3.md): nội dung đã ghép, cách kiểm tra và phần giao diện cần làm tiếp.
+- Các trang chính: `index.html`, `products.html`, `product-detail.html?id=KC-001`, `about.html`, `cart.html`, `gift-builder.html`.
+- **Chạy qua HTTP:** VS Code Live Server hoặc `python -m http.server 5500`, rồi mở `http://localhost:5500/`. Giữ cùng host/cổng để dùng chung localStorage; không mở trực tiếp bằng `file://`.
+- **Kiểm thử:** `node --test tests/*.mjs` (Node chỉ phục vụ kiểm thử, chưa có backend).
+- Dữ liệu tám sản phẩm và stockDemo phục vụ học tập. Chưa có đơn hàng máy chủ, tài khoản hay thanh toán thật. Quyến tiếp tục CSS bộ lọc/chọn quà và rà giao diện responsive; không coi bản này là hoàn tất toàn bộ bài Buổi 3.
 
-Các trang cửa hàng bên dưới vẫn là giao diện Buổi 2 cho tới khi chức năng của các PIC được ghép. Không dùng trang thử lưu trữ để thay trang giỏ hàng thật.
+Các phần Buổi 1–2 dưới đây là hồ sơ của các giai đoạn trước. [Hướng dẫn lưu trữ](docs/ban-giao-ban-nen-buoi3.md) và [quy ước chung](docs/quy-uoc.md) được giữ để đối chiếu hợp đồng dữ liệu.
 
 ## 1. Phiên bản giao diện Buổi 2
 
@@ -23,7 +24,7 @@ Website được xây dựng bằng **HTML5 và CSS3 thuần**, kế thừa repo
 - [Câu hỏi kiến thức của cả bảy thành viên](https://docs.google.com/document/d/1uIoFsaHZOZoELrRm6Y9PIP3tNZ9jMsXwfM6cFZjABJ8/edit?tab=t.ndz8ebldwwq9).
 - [Bảng phân công và tiến độ](https://docs.google.com/spreadsheets/d/1UIP27nPdW2n_PZR36gXBxR1aO9nti8mK8NYxyOvS_0s/edit?gid=0#gid=0).
 
-Các trang chính đặt ngoài thư mục gốc; bảy trang chi tiết tĩnh bổ sung được gom vào `pages/product-details/`. Khi Khanh hoàn thiện Buổi 3, các sản phẩm dùng `product-detail.html?id=...` theo quy ước; giữ các trang cũ tới khi rà xong liên kết.
+Các trang chính đặt ở thư mục gốc; bảy trang chi tiết tĩnh bổ sung được gom vào `pages/product-details/`. Khi Khanh hoàn thiện Buổi 3, các sản phẩm dùng `product-detail.html?id=...` theo quy ước; giữ các trang cũ tới khi rà xong liên kết.
 
 ### Các trang hiện có
 
@@ -36,7 +37,7 @@ Các trang chính đặt ngoài thư mục gốc; bảy trang chi tiết tĩnh b
 
 Bảy trang chi tiết còn lại là `pages/product-details/product-kc-001.html`, `pages/product-details/product-kc-002.html`, `pages/product-details/product-tl-002.html`, `pages/product-details/product-hl-001.html`, `pages/product-details/product-hl-002.html`, `pages/product-details/product-pk-001.html` và `pages/product-details/product-pk-002.html`.
 
-### Phạm vi hiện tại
+### Phạm vi bản Buổi 2
 
 Buổi 2 chỉ triển khai giao diện HTML/CSS. Tìm kiếm, mua hàng, gợi ý bộ quà theo ngân sách và đặt làm chưa xử lý nghiệp vụ. Phiên bản này chưa có JavaScript, framework CSS, backend, cơ sở dữ liệu, đăng nhập thật hoặc thanh toán. Ảnh, giá và thông tin sản phẩm là dữ liệu minh họa phục vụ học tập.
 
@@ -48,6 +49,9 @@ crochet-handmade-ecommerce/
 ├── products.html
 ├── product-detail.html
 ├── about.html
+├── cart.html
+├── gift-builder.html
+├── js/                           # Dữ liệu và chức năng Buổi 3
 ├── pages/product-details/       # Bảy trang chi tiết tĩnh của Buổi 2
 ├── css/style.css
 ├── images/                       # Logo và tám ảnh sản phẩm
@@ -63,7 +67,7 @@ crochet-handmade-ecommerce/
 
 ## 3. Cách mở và kiểm tra website
 
-Mở `index.html` bằng Chrome hoặc Edge, giữ nguyên vị trí thư mục `css/` và `images/`. Không cần cài npm hoặc máy chủ backend để xem giao diện. Có thể dùng VS Code Live Server; nếu máy có Python, chạy `python -m http.server 8000` tại thư mục dự án rồi mở `http://localhost:8000/`.
+Dùng Chrome hoặc Edge qua VS Code Live Server; nếu máy có Python, chạy `python -m http.server 5500` tại thư mục dự án rồi mở `http://localhost:5500/`. Giữ nguyên cấu trúc thư mục. Bản Buổi 3 dùng ES modules nên cần HTTP, không mở bằng cách nhấp đúp file HTML. Chưa cần backend để chạy bản này.
 
 Trong DevTools, kiểm tra lần lượt các độ rộng **1366 px, 768 px và 390 px**. Cuộn hết từng trang, kiểm tra hình ảnh, menu, banner, số cột sản phẩm và footer. Dùng chuột thử hover; dùng Tab, Shift+Tab và Enter để kiểm tra focus, liên kết bỏ qua điều hướng và các liên kết trang. Kiểm tra thêm chế độ giảm chuyển động nếu trình duyệt hỗ trợ.
 

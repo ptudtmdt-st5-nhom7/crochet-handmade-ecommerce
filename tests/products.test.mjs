@@ -48,10 +48,11 @@ test('tiền VND và hai bộ',()=>{
  assert.equal(getItemsTotal(giftSets[0].items)*2,160000);
 });
 
-test('link chi tiết vẫn đúng sản phẩm trước và sau khi nối trang động', async()=>{
+test('link chi tiết động cho đủ tám mã, giữ tùy chọn bản tĩnh lịch sử', async()=>{
  for(const p of products){
   const expected=p.id==='TL-001'?'product-detail.html?id=TL-001':'pages/product-details/product-'+p.id.toLowerCase()+'.html';
-  assert.equal(getProductDetailUrl(p.id),expected);
+  assert.equal(getProductDetailUrl(p.id),'product-detail.html?id='+p.id);
+  assert.equal(getProductDetailUrl(p.id,{detailReady:false}),expected);
   await access(new URL('../'+expected.split('?')[0],import.meta.url));
   assert.equal(getProductDetailUrl(p.id,{detailReady:true}),'product-detail.html?id='+p.id);
  }
