@@ -755,3 +755,14 @@ Không sử dụng JavaScript hoặc framework CSS. 
 **Bổ sung sau review:** Gọi `updateCartBadge()` trong `commitCart()` sau khi lưu giỏ hàng thành công, để số đếm tự cập nhật khi thêm, xóa hoặc đổi số lượng. Bổ sung kiểm thử mô phỏng hai phần tử `[data-cart-count]`.
 
 **Kiểm tra lại:** Chạy kiểm thử dữ liệu sản phẩm, lưu trữ, giỏ hàng và cập nhật badge; kết quả 33 kiểm thử đạt, 0 lỗi.
+### 10/11/2026 — Bước 5B — Giao diện và thao tác giỏ hàng
+
+**Người phụ trách:** Trần Quốc Bảo. **Công cụ:** ChatGPT.
+
+**Nội dung đã hỏi AI:** Hướng dẫn tạo trang giỏ hàng, hiển thị sản phẩm lẻ và bộ quà, thay đổi số lượng, xóa dòng, cập nhật số đếm giỏ và nhân bản bộ quà để chỉnh riêng.
+
+**Đánh giá và xử lý:** Kế thừa nghiệp vụ từ `js/cart.js`, dữ liệu sản phẩm và lưu trữ của nhóm. Bổ sung `cart.html`, `js/cart-page.js` và CSS responsive. Nút nhân bản tạo bản sao sâu, đặt số bộ bằng 1, lưu `copiedFromLineId` và không thay đổi dòng gốc.
+
+**Kiểm tra kết quả:** Chạy 35 kiểm thử, 35 đạt, 0 lỗi. Kiểm tra trực tiếp bằng Live Server: tăng, giảm, xóa, trạng thái giỏ trống, số đếm giỏ và lưu bản soạn quà đều hoạt động.
+
+**Phần chờ ghép:** Sau khi lưu bản soạn thành công, trang chuyển tới `gift-builder.html`. Trang này thuộc phần của Châu và chưa có trên nhánh hiện tại.
