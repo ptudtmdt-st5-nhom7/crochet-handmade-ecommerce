@@ -775,3 +775,120 @@ Không sử dụng JavaScript hoặc framework CSS. 
 - Giới hạn: kiểm tra DOM bằng jsdom, chưa kiểm tra hình thức/responsive trên trình duyệt trong lần review này. Không ghi kết quả công cụ thành thao tác sinh viên tự thực hiện.
 - Kết quả bàn giao: Nguyễn Quang Đức tự tạo và merge PR #33 vào main, commit d67f2476e788f15a8a24bbd28a3c42e68e8ddfe0. Codex xác nhận trạng thái merged qua GitHub; không sửa mã chức năng của Bảo trong lần kiểm tra này. Quyến tiếp tục chỉnh giao diện và kiểm tra hiển thị.
 - Cập nhật hiện tại: bổ sung mục nhật ký này để ghi nhận việc AI hỗ trợ và xác nhận quyền ghi của kết nối mới; giữ nguyên các ghi nhận cũ.
+
+## 10/11/2026 — Nam kiểm tra và sửa lỗi giỏ trong PR #27
+
+- Người thực hiện: Nguyễn Thanh Nam.
+- Công cụ hỗ trợ: ChatGPT/Codex.
+- Nội dung: kiểm tra code giỏ của Bảo; sửa lỗi cập nhật số giỏ khi dữ liệu đã lưu có mã sản phẩm không còn trong products.
+- Cách sửa: bỏ qua dòng chứa mã không còn hợp lệ, giữ các dòng còn đúng. Nếu bộ quà có mã lỗi thì bỏ qua nguyên bộ; không tự ghi lại localStorage khi mở trang.
+- File sửa: js/cart.js và tests/cart.test.mjs.
+- Kết quả chạy trên máy Nam: node --test tests/cart.test.mjs — 4 kiểm thử đạt, 0 lỗi.
+- Quyết định: giữ bản sửa sau khi kiểm tra; cập nhật vào PR #27 để tiếp tục bàn giao.
+## 10/11/2026 — Nối chức năng trang Sản phẩm, phần 2B
+
+- Người thực hiện: Nguyễn Thanh Nam.
+- Công cụ hỗ trợ: ChatGPT/Codex.
+- Yêu cầu hỗ trợ: nối tìm kiếm, lọc danh mục, sắp giá và thêm giỏ bằng các module Tuấn và Bảo đã bàn giao; kiểm tra thao tác sau khi danh sách được vẽ lại.
+- Nội dung AI hỗ trợ: sửa products.html và js/products-page.js; bổ sung tests/products-page.test.mjs và hướng dẫn kiểm tra.
+- Kết quả tự thử bằng Live Server: tìm theo mã bằng nút Tìm kiếm và phím Enter đúng; lọc danh mục, sắp giá tăng/giảm, xóa lọc và thông báo không có kết quả đúng. Thêm giỏ tăng một món mỗi lần bấm; tải lại trang vẫn giữ số giỏ. Ba link chi tiết gấu, hoa cúc và thỏ mở đúng.
+- Kết quả chạy node --test tests/*.mjs trên máy Nam: 36 kiểm thử đạt, 0 lỗi. Bài thử nối trang trong Node dùng DOM mô phỏng; giao diện được Nam thử riêng bằng Live Server.
+- Minh chứng: bốn ảnh trong docs/minh-chung-2b/.
+- Quyết định sau khi kiểm tra: giữ phần nối tìm/lọc/sắp và thêm giỏ đã thử.
+- Phần còn chờ: nối trang chi tiết động sau khi Khanh bàn giao; chưa xác nhận toàn bộ phần 2B hoàn tất.
+- Người tự kiểm tra: Nguyễn Thanh Nam.
+
+### 10/11/2026 – AI-04: Tích hợp trang chi tiết sản phẩm động (Bước 4 – Buổi 3)
+
+**1. Thông tin sử dụng AI**
+
+| Nội dung | Chi tiết |
+|---|---|
+| Mã sử dụng AI | AI-04 |
+| Ngày thực hiện | 10/11/2026 |
+| Công cụ AI | ChatGPT |
+| Người sử dụng | Đỗ Trọng Khanh |
+| Công việc | Tích hợp dữ liệu và xử lý chức năng cho trang chi tiết sản phẩm |
+| Tệp liên quan | `product-detail.html`, `js/product-detail.js`, `js/product-utils.js`, `js/cart.js` |
+| Phạm vi chỉnh sửa | `product-detail.html` và `js/product-detail.js` |
+
+**2. Nội dung yêu cầu AI**
+
+Sử dụng AI để hỗ trợ hoàn thiện trang chi tiết sản phẩm theo hướng hiển thị dữ liệu động, thay vì sử dụng nội dung cố định cho từng sản phẩm. Yêu cầu AI xem xét cấu trúc HTML hiện có và xây dựng mã JavaScript đáp ứng các chức năng:
+
+- Đọc mã sản phẩm (`id`) từ URL.
+- Lấy thông tin sản phẩm tương ứng thông qua hàm `getProductById()` trong `product-utils.js`.
+- Hiển thị động tên, giá, hình ảnh, mô tả, danh mục và các thuộc tính sản phẩm.
+- Xử lý trường hợp URL thiếu mã sản phẩm hoặc mã sản phẩm không tồn tại.
+- Xây dựng chức năng tăng, giảm số lượng sản phẩm và kiểm tra số lượng hợp lệ.
+- Kiểm tra số lượng đặt mua với tồn kho mô phỏng trước khi thêm vào giỏ hàng.
+- Tích hợp chức năng thêm sản phẩm vào giỏ hàng thông qua `addSingle()` trong `cart.js`.
+- Hiển thị thông báo tương ứng khi thêm sản phẩm thành công hoặc xảy ra lỗi.
+- Xử lý điều hướng quay lại theo tham số `from` trên URL.
+
+**3. Kết quả AI hỗ trợ**
+
+AI đề xuất hoàn thiện `product-detail.html` và xây dựng `js/product-detail.js` để xử lý các nghiệp vụ chính:
+
+| STT | Nội dung | Kết quả AI hỗ trợ |
+|---|---|---|
+| 1 | Nhận diện sản phẩm | Đọc tham số `id` từ URL và truy xuất dữ liệu bằng `getProductById()`. |
+| 2 | Hiển thị thông tin | Đổ dữ liệu sản phẩm vào các thành phần HTML tương ứng. |
+| 3 | Xử lý dữ liệu không hợp lệ | Kiểm tra trường hợp thiếu `id` hoặc không tìm thấy sản phẩm. |
+| 4 | Chọn số lượng | Xây dựng chức năng tăng, giảm và kiểm tra số lượng đặt mua. |
+| 5 | Thêm vào giỏ hàng | Sử dụng `addSingle()` để thêm sản phẩm vào giỏ hàng hiện có. |
+| 6 | Thông báo kết quả | Hiển thị thông báo thành công hoặc lỗi dựa trên kết quả xử lý. |
+| 7 | Điều hướng | Sử dụng tham số `from` để xác định trang quay lại phù hợp. |
+
+**4. Nguyên tắc tích hợp với các mô-đun hiện có**
+
+Trong quá trình xây dựng, AI được yêu cầu tuân thủ cấu trúc và phân công mô-đun của nhóm:
+
+- Tái sử dụng dữ liệu sản phẩm và hàm tiện ích từ `product-utils.js`, không tạo thêm một nguồn dữ liệu sản phẩm độc lập.
+- Sử dụng `addSingle()` từ `cart.js` để thêm sản phẩm vào giỏ hàng, không tự xây dựng lại nghiệp vụ thêm sản phẩm.
+- Không gọi thêm `updateCartBadge()` nếu `addSingle()` đã thực hiện cập nhật số lượng trên biểu tượng giỏ hàng thông qua quy trình lưu giỏ hàng.
+- Không xóa hoặc ghi đè dữ liệu bản nháp quà tặng trong `giftDraft`, vì dữ liệu này được quản lý riêng với giỏ hàng.
+- Không tự ý chỉnh sửa các mô-đun thuộc phạm vi phụ trách của thành viên khác.
+
+**5. Đánh giá và kiểm soát kết quả AI**
+
+| Tiêu chí | Đánh giá |
+|---|---|
+| Phù hợp yêu cầu | Đề xuất đáp ứng định hướng chuyển trang chi tiết sản phẩm sang hiển thị dữ liệu động. |
+| Tái sử dụng mã nguồn | Tận dụng các hàm và dữ liệu dùng chung của dự án. |
+| Tính nhất quán | Hạn chế trùng lặp nghiệp vụ giữa trang chi tiết sản phẩm và mô-đun giỏ hàng. |
+| Khả năng xử lý lỗi | Có đề xuất kiểm tra mã sản phẩm và số lượng đặt mua không hợp lệ. |
+| Phạm vi chỉnh sửa | Giới hạn trong hai tệp thuộc phạm vi tích hợp trang chi tiết sản phẩm. |
+| Hạn chế | Cần đối chiếu mã nguồn thực tế của các mô-đun dùng chung, kiểm tra cấu trúc HTML và thực hiện kiểm thử trên trình duyệt trước khi xác nhận hoàn tất. |
+
+**6. Quyết định sử dụng kết quả AI**
+
+Nhóm tiếp nhận phương án xử lý do AI đề xuất làm cơ sở tích hợp trang chi tiết sản phẩm động. Tuy nhiên, mã nguồn cần được đối chiếu với các hàm thực tế trong `product-utils.js` và `cart.js` trước khi đưa vào phiên bản tích hợp chính thức.
+
+Các nội dung cần kiểm thử sau khi tích hợp:
+
+- Truy cập trang chi tiết với đầy đủ mã của 8 sản phẩm trong danh sách sản phẩm.
+- Kiểm tra trường hợp thiếu mã sản phẩm và mã sản phẩm không tồn tại.
+- Kiểm tra chức năng tăng, giảm số lượng và giới hạn tồn kho.
+- Kiểm tra thêm sản phẩm vào giỏ hàng, bao gồm trường hợp sản phẩm đã tồn tại trong giỏ.
+- Kiểm tra thông báo kết quả và số lượng hiển thị trên biểu tượng giỏ hàng.
+- Kiểm tra điều hướng quay lại từ trang chi tiết sản phẩm.
+- Kiểm tra dữ liệu bản nháp quà tặng không bị ảnh hưởng khi thêm sản phẩm thông thường vào giỏ hàng.
+
+**7. Trách nhiệm thực hiện**
+
+- Người thực hiện tích hợp: Đỗ Trọng Khanh.
+- Người hỗ trợ: ChatGPT.
+- Người kiểm tra: Chờ nhóm xác nhận sau khi tích hợp và kiểm thử.
+- Trạng thái: Đang chờ kiểm thử thực tế trên trình duyệt.
+
+### 10/11/2026 — Tích hợp danh sách, chi tiết động và bàn giao giao diện Buổi 3
+
+- Người yêu cầu: Nguyễn Quang Đức. Công cụ hỗ trợ: OpenAI Codex.
+- Prompt thực tế: “okee, ktra xong sửa lại cho đủ giúp tôi để tôi back lại quyến”. Quyến mới kiểm tra bản trước, chưa thực hiện CSS mới; không ghi nhận thay Quyến đã hoàn thành Bước 7.
+- Đầu vào: main 92ef658, phần 2B của Nam tại 12ecb1f (PR #28), branch buoi3-khanh tại 8d852ca, giỏ Bảo đã merge qua PR #33 và trang chọn quà của Châu đã có trên main.
+- Thực hiện: ghép chức năng danh sách và chi tiết động; giữ các nhật ký khi giải quyết xung đột. Chỉ nhận CSS chi tiết của Khanh, bảo toàn CSS danh sách, giới thiệu, hover/focus và giỏ của main. Bỏ tham chiếu product-detail.css không tồn tại; nối liên kết động theo mã, đường quay lại chọn quà, menu Chọn quà/Giỏ và số đếm chung qua site.js; tìm đầu trang chuyển từ khóa sang danh sách. Đồng bộ mô tả ngân sách trên trang chủ và cập nhật README/hướng dẫn bàn giao.
+- Sửa điểm nối và dữ liệu hiển thị: dùng nhãn danh mục, ẩn nội dung mẫu khi mã thiếu/sai, giữ đích quay lại cố định và bản soạn, cập nhật phép thử liên kết theo phiên bản chi tiết động. Không đổi nghiệp vụ giỏ/lưu trữ hoặc viết lại bộ lọc/gợi ý của Tuấn.
+- Kiểm tra công cụ: 36/36 kiểm thử Node, 16/16 kiểm tra DOM giỏ và 29/29 nhóm kiểm tra trên Chrome riêng qua HTTP đạt. Chrome kiểm tra tám mã, mã sai/thiếu, tìm/lọc/sắp/thêm lẻ, xem chi tiết từ bộ quà và quay lại, vượt ngân sách, số bộ, tải lại, nhân bản, nhóm gốc và giỏ trống. Rà sáu trang tại 1366/768/390 px (18 trường hợp) không thấy tràn ngang ở trạng thái thử; không có lỗi JavaScript hoặc tài nguyên lỗi trong lượt cuối.
+- Phân biệt kết quả: trên đây là kiểm tra do Codex thực hiện, không phải xác nhận các thành viên tự thao tác. Lượt đầu phát hiện tham chiếu CSS 404, đã bỏ vì CSS chi tiết nằm trong style.css; lượt cuối thử lại đạt.
+- Bàn giao: docs/ban-giao-tich-hop-buoi3.md ghi rõ phần đã ghép, cách cập nhật main và những vùng Quyến trực tiếp chỉnh CSS. Chưa xác nhận hoàn tất Bước 7, toàn bài Buổi 3, báo cáo Word/Docs hoặc nộp LMS; Đức duyệt kết quả cuối và tự nộp.
