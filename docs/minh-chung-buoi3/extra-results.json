@@ -1,0 +1,52 @@
+[
+  {
+    "id": "KC-001",
+    "pass": true
+  },
+  {
+    "id": "KC-002",
+    "pass": true
+  },
+  {
+    "id": "TL-001",
+    "pass": true
+  },
+  {
+    "id": "TL-002",
+    "pass": true
+  },
+  {
+    "id": "HL-001",
+    "pass": true
+  },
+  {
+    "id": "HL-002",
+    "pass": true
+  },
+  {
+    "id": "PK-001",
+    "pass": true
+  },
+  {
+    "id": "PK-002",
+    "pass": true
+  },
+  {
+    "test": "detail-add",
+    "cart": {
+      "version": 1,
+      "lines": [
+        {
+          "lineId": "single:KC-001",
+          "type": "single",
+          "productId": "KC-001",
+          "quantity": 2
+        }
+      ]
+    }
+  },
+  {
+    "test": "header-search",
+    "pass": true
+  }
+]

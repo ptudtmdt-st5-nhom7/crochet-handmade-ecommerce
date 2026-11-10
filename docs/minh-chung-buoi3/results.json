@@ -1,0 +1,629 @@
+[
+  {
+    "width": 1366,
+    "test": "products",
+    "count": 8,
+    "searchDisabled": false,
+    "addDisabled": false,
+    "overflow": false
+  },
+  {
+    "width": 1366,
+    "test": "empty-search",
+    "empty": 1
+  },
+  {
+    "width": 1366,
+    "test": "filter-sort",
+    "names": [
+      "Bó hoa len nhỏ",
+      "Hoa tulip len"
+    ]
+  },
+  {
+    "width": 1366,
+    "test": "add-repeat",
+    "cart": {
+      "version": 1,
+      "lines": [
+        {
+          "lineId": "single:KC-001",
+          "type": "single",
+          "productId": "KC-001",
+          "quantity": 2
+        }
+      ]
+    }
+  },
+  {
+    "width": 1366,
+    "test": "detail-KC001",
+    "title": "Móc khóa gấu len"
+  },
+  {
+    "width": 1366,
+    "test": "detail-invalid",
+    "title": "\n          Thú len thỏ\n        ",
+    "errorVisible": true,
+    "productHidden": true
+  },
+  {
+    "width": 1366,
+    "test": "gift-to-cart",
+    "lines": 1,
+    "amount": "80.000 ₫",
+    "emptyVisible": false,
+    "overflow": false
+  },
+  {
+    "width": 1366,
+    "test": "increase",
+    "amount": "160.000 ₫"
+  },
+  {
+    "width": 1366,
+    "test": "reload",
+    "amount": "160.000 ₫"
+  },
+  {
+    "width": 1366,
+    "test": "duplicate",
+    "url": "http://127.0.0.1:5534/gift-builder.html",
+    "draft": {
+      "version": 1,
+      "budget": 80000,
+      "sourceGiftSetId": "GIFT-01",
+      "name": "Món quà nhỏ",
+      "items": [
+        {
+          "productId": "HL-001",
+          "quantity": 1
+        },
+        {
+          "productId": "KC-001",
+          "quantity": 1
+        }
+      ],
+      "setQuantity": 1,
+      "copiedFromLineId": "gift:HL-001=1|KC-001=1"
+    }
+  },
+  {
+    "width": 1366,
+    "test": "gift-detail-return",
+    "url": "http://127.0.0.1:5534/product-detail.html?id=HL-001&from=gift",
+    "title": "Hoa tulip len",
+    "backGift": 3
+  },
+  {
+    "width": 1366,
+    "test": "return-restores",
+    "url": "http://127.0.0.1:5534/gift-builder.html",
+    "items": 2,
+    "budget": "80000"
+  },
+  {
+    "width": 1366,
+    "test": "remove-empty",
+    "empty": true,
+    "lines": 0,
+    "errors": []
+  },
+  {
+    "width": 768,
+    "test": "products",
+    "count": 8,
+    "searchDisabled": false,
+    "addDisabled": false,
+    "overflow": false
+  },
+  {
+    "width": 768,
+    "test": "empty-search",
+    "empty": 1
+  },
+  {
+    "width": 768,
+    "test": "filter-sort",
+    "names": [
+      "Bó hoa len nhỏ",
+      "Hoa tulip len"
+    ]
+  },
+  {
+    "width": 768,
+    "test": "add-repeat",
+    "cart": {
+      "version": 1,
+      "lines": [
+        {
+          "lineId": "single:KC-001",
+          "type": "single",
+          "productId": "KC-001",
+          "quantity": 2
+        }
+      ]
+    }
+  },
+  {
+    "width": 768,
+    "test": "detail-KC001",
+    "title": "Móc khóa gấu len"
+  },
+  {
+    "width": 768,
+    "test": "detail-invalid",
+    "title": "\n          Thú len thỏ\n        ",
+    "errorVisible": true,
+    "productHidden": true
+  },
+  {
+    "width": 768,
+    "test": "gift-to-cart",
+    "lines": 1,
+    "amount": "80.000 ₫",
+    "emptyVisible": false,
+    "overflow": false
+  },
+  {
+    "width": 768,
+    "test": "increase",
+    "amount": "160.000 ₫"
+  },
+  {
+    "width": 768,
+    "test": "reload",
+    "amount": "160.000 ₫"
+  },
+  {
+    "width": 768,
+    "test": "duplicate",
+    "url": "http://127.0.0.1:5534/gift-builder.html",
+    "draft": {
+      "version": 1,
+      "budget": 80000,
+      "sourceGiftSetId": "GIFT-01",
+      "name": "Món quà nhỏ",
+      "items": [
+        {
+          "productId": "HL-001",
+          "quantity": 1
+        },
+        {
+          "productId": "KC-001",
+          "quantity": 1
+        }
+      ],
+      "setQuantity": 1,
+      "copiedFromLineId": "gift:HL-001=1|KC-001=1"
+    }
+  },
+  {
+    "width": 768,
+    "test": "gift-detail-return",
+    "url": "http://127.0.0.1:5534/product-detail.html?id=HL-001&from=gift",
+    "title": "Hoa tulip len",
+    "backGift": 3
+  },
+  {
+    "width": 768,
+    "test": "return-restores",
+    "url": "http://127.0.0.1:5534/gift-builder.html",
+    "items": 2,
+    "budget": "80000"
+  },
+  {
+    "width": 768,
+    "test": "remove-empty",
+    "empty": true,
+    "lines": 0,
+    "errors": []
+  },
+  {
+    "width": 390,
+    "test": "products",
+    "count": 8,
+    "searchDisabled": false,
+    "addDisabled": false,
+    "overflow": false
+  },
+  {
+    "width": 390,
+    "test": "empty-search",
+    "empty": 1
+  },
+  {
+    "width": 390,
+    "test": "filter-sort",
+    "names": [
+      "Bó hoa len nhỏ",
+      "Hoa tulip len"
+    ]
+  },
+  {
+    "width": 390,
+    "test": "add-repeat",
+    "cart": {
+      "version": 1,
+      "lines": [
+        {
+          "lineId": "single:KC-001",
+          "type": "single",
+          "productId": "KC-001",
+          "quantity": 2
+        }
+      ]
+    }
+  },
+  {
+    "width": 390,
+    "test": "detail-KC001",
+    "title": "Móc khóa gấu len"
+  },
+  {
+    "width": 390,
+    "test": "detail-invalid",
+    "title": "\n          Thú len thỏ\n        ",
+    "errorVisible": true,
+    "productHidden": true
+  },
+  {
+    "width": 390,
+    "test": "gift-to-cart",
+    "lines": 1,
+    "amount": "80.000 ₫",
+    "emptyVisible": false,
+    "overflow": false
+  },
+  {
+    "width": 390,
+    "test": "increase",
+    "amount": "160.000 ₫"
+  },
+  {
+    "width": 390,
+    "test": "reload",
+    "amount": "160.000 ₫"
+  },
+  {
+    "width": 390,
+    "test": "duplicate",
+    "url": "http://127.0.0.1:5534/gift-builder.html",
+    "draft": {
+      "version": 1,
+      "budget": 80000,
+      "sourceGiftSetId": "GIFT-01",
+      "name": "Món quà nhỏ",
+      "items": [
+        {
+          "productId": "HL-001",
+          "quantity": 1
+        },
+        {
+          "productId": "KC-001",
+          "quantity": 1
+        }
+      ],
+      "setQuantity": 1,
+      "copiedFromLineId": "gift:HL-001=1|KC-001=1"
+    }
+  },
+  {
+    "width": 390,
+    "test": "gift-detail-return",
+    "url": "http://127.0.0.1:5534/product-detail.html?id=HL-001&from=gift",
+    "title": "Hoa tulip len",
+    "backGift": 3
+  },
+  {
+    "width": 390,
+    "test": "return-restores",
+    "url": "http://127.0.0.1:5534/gift-builder.html",
+    "items": 2,
+    "budget": "80000"
+  },
+  {
+    "width": 390,
+    "test": "remove-empty",
+    "empty": true,
+    "lines": 0,
+    "errors": []
+  },
+  {
+    "test": "layout",
+    "phase": "before",
+    "width": 1366,
+    "page": "index",
+    "overflow": false,
+    "brokenImages": 0
+  },
+  {
+    "test": "layout",
+    "phase": "before",
+    "width": 1366,
+    "page": "products",
+    "overflow": false,
+    "brokenImages": 0
+  },
+  {
+    "test": "layout",
+    "phase": "before",
+    "width": 1366,
+    "page": "product-detail",
+    "overflow": false,
+    "brokenImages": 0
+  },
+  {
+    "test": "layout",
+    "phase": "before",
+    "width": 1366,
+    "page": "gift-builder",
+    "overflow": false,
+    "brokenImages": 0
+  },
+  {
+    "test": "layout",
+    "phase": "before",
+    "width": 1366,
+    "page": "cart",
+    "overflow": false,
+    "brokenImages": 0
+  },
+  {
+    "test": "layout",
+    "phase": "before",
+    "width": 1366,
+    "page": "about",
+    "overflow": false,
+    "brokenImages": 0
+  },
+  {
+    "test": "layout",
+    "phase": "after",
+    "width": 1366,
+    "page": "index",
+    "overflow": false,
+    "brokenImages": 0
+  },
+  {
+    "test": "layout",
+    "phase": "after",
+    "width": 1366,
+    "page": "products",
+    "overflow": false,
+    "brokenImages": 0
+  },
+  {
+    "test": "layout",
+    "phase": "after",
+    "width": 1366,
+    "page": "product-detail",
+    "overflow": false,
+    "brokenImages": 0
+  },
+  {
+    "test": "layout",
+    "phase": "after",
+    "width": 1366,
+    "page": "gift-builder",
+    "overflow": false,
+    "brokenImages": 0
+  },
+  {
+    "test": "layout",
+    "phase": "after",
+    "width": 1366,
+    "page": "cart",
+    "overflow": false,
+    "brokenImages": 0
+  },
+  {
+    "test": "layout",
+    "phase": "after",
+    "width": 1366,
+    "page": "about",
+    "overflow": false,
+    "brokenImages": 0
+  },
+  {
+    "test": "layout",
+    "phase": "before",
+    "width": 768,
+    "page": "index",
+    "overflow": false,
+    "brokenImages": 0
+  },
+  {
+    "test": "layout",
+    "phase": "before",
+    "width": 768,
+    "page": "products",
+    "overflow": false,
+    "brokenImages": 0
+  },
+  {
+    "test": "layout",
+    "phase": "before",
+    "width": 768,
+    "page": "product-detail",
+    "overflow": false,
+    "brokenImages": 0
+  },
+  {
+    "test": "layout",
+    "phase": "before",
+    "width": 768,
+    "page": "gift-builder",
+    "overflow": false,
+    "brokenImages": 0
+  },
+  {
+    "test": "layout",
+    "phase": "before",
+    "width": 768,
+    "page": "cart",
+    "overflow": false,
+    "brokenImages": 0
+  },
+  {
+    "test": "layout",
+    "phase": "before",
+    "width": 768,
+    "page": "about",
+    "overflow": false,
+    "brokenImages": 0
+  },
+  {
+    "test": "layout",
+    "phase": "after",
+    "width": 768,
+    "page": "index",
+    "overflow": false,
+    "brokenImages": 0
+  },
+  {
+    "test": "layout",
+    "phase": "after",
+    "width": 768,
+    "page": "products",
+    "overflow": false,
+    "brokenImages": 0
+  },
+  {
+    "test": "layout",
+    "phase": "after",
+    "width": 768,
+    "page": "product-detail",
+    "overflow": false,
+    "brokenImages": 0
+  },
+  {
+    "test": "layout",
+    "phase": "after",
+    "width": 768,
+    "page": "gift-builder",
+    "overflow": false,
+    "brokenImages": 0
+  },
+  {
+    "test": "layout",
+    "phase": "after",
+    "width": 768,
+    "page": "cart",
+    "overflow": false,
+    "brokenImages": 0
+  },
+  {
+    "test": "layout",
+    "phase": "after",
+    "width": 768,
+    "page": "about",
+    "overflow": false,
+    "brokenImages": 0
+  },
+  {
+    "test": "layout",
+    "phase": "before",
+    "width": 390,
+    "page": "index",
+    "overflow": false,
+    "brokenImages": 0
+  },
+  {
+    "test": "layout",
+    "phase": "before",
+    "width": 390,
+    "page": "products",
+    "overflow": false,
+    "brokenImages": 0
+  },
+  {
+    "test": "layout",
+    "phase": "before",
+    "width": 390,
+    "page": "product-detail",
+    "overflow": false,
+    "brokenImages": 0
+  },
+  {
+    "test": "layout",
+    "phase": "before",
+    "width": 390,
+    "page": "gift-builder",
+    "overflow": false,
+    "brokenImages": 0
+  },
+  {
+    "test": "layout",
+    "phase": "before",
+    "width": 390,
+    "page": "cart",
+    "overflow": false,
+    "brokenImages": 0
+  },
+  {
+    "test": "layout",
+    "phase": "before",
+    "width": 390,
+    "page": "about",
+    "overflow": false,
+    "brokenImages": 0
+  },
+  {
+    "test": "layout",
+    "phase": "after",
+    "width": 390,
+    "page": "index",
+    "overflow": false,
+    "brokenImages": 0
+  },
+  {
+    "test": "layout",
+    "phase": "after",
+    "width": 390,
+    "page": "products",
+    "overflow": false,
+    "brokenImages": 0
+  },
+  {
+    "test": "layout",
+    "phase": "after",
+    "width": 390,
+    "page": "product-detail",
+    "overflow": false,
+    "brokenImages": 0
+  },
+  {
+    "test": "layout",
+    "phase": "after",
+    "width": 390,
+    "page": "gift-builder",
+    "overflow": false,
+    "brokenImages": 0
+  },
+  {
+    "test": "layout",
+    "phase": "after",
+    "width": 390,
+    "page": "cart",
+    "overflow": false,
+    "brokenImages": 0
+  },
+  {
+    "test": "layout",
+    "phase": "after",
+    "width": 390,
+    "page": "about",
+    "overflow": false,
+    "brokenImages": 0
+  },
+  {
+    "test": "keyboard-focus",
+    "pass": true
+  },
+  {
+    "test": "over-budget",
+    "text": "45.000 ₫",
+    "enabled": true
+  }
+]
