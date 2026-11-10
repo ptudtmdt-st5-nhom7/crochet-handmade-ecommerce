@@ -1,694 +1,604 @@
 
 /*
-============================================================
-LENLY CROCHET
-BƯỚC 4 - TÍCH HỢP TRANG CHI TIẾT SẢN PHẨM ĐỘNG
-============================================================
+ * LENLY CROCHET - PRODUCT DETAIL
+ * Chức năng:
+ * 1. Đọc mã sản phẩm từ URL.
+ * 2. Lấy dữ liệu sản phẩm từ product-utils.js.
+ * 3. Hiển thị thông tin tương ứng trên product-detail.html.
+ * 4. Xử lý mã sản phẩm thiếu hoặc không tồn tại.
+ * 5. Kiểm tra số lượng và thêm sản phẩm lẻ vào giỏ.
+ * 6. Điều hướng quay lại đúng trang theo tham số from.
+ *
+ * Lưu ý:
+ * - Không chỉnh sửa products.html hoặc products-page.js.
+ * - Không xóa hoặc ghi đè dữ liệu bộ quà đang soạn.
+ * - addSingle() tự cập nhật số lượng giỏ hàng và biểu tượng giỏ.
+ */
 
-Chức năng:
-1. Đọc mã sản phẩm từ tham số URL.
-2. Lấy dữ liệu sản phẩm từ products.js thông qua product-utils.js.
-3. Hiển thị thông tin sản phẩm tương ứng.
-4. Xử lý trường hợp thiếu mã hoặc mã sản phẩm không hợp lệ.
-5. Kiểm tra số lượng người dùng nhập.
-6. Thêm sản phẩm lẻ vào giỏ hàng thông qua addSingle().
-7. Cập nhật số lượng giỏ hàng khi tải trang.
-8. Điều hướng quay lại đúng trang theo nguồn truy cập.
+import { getProductById } from './product-utils.js';
+import { addSingle, updateCartBadge } from './cart.js';
 
-Nguyên tắc tích hợp:
-- Không tự tạo cấu trúc giỏ hàng mới.
-- Không thao tác trực tiếp với localStorage.
-- Không ghi đè hoặc xóa gift draft.
-- Không gọi clearGiftDraft().
-- Không gọi saveGiftDraft().
-- Không gọi addGiftSet().
-- addSingle() chịu trách nhiệm cập nhật giỏ hàng.
-============================================================
-*/
+// ======================================================
+// 1. KHAI BÁO CÁC PHẦN TỬ HTML
+// ======================================================
 
-// ============================================================
-// 1. IMPORT CÁC MODULE DÙNG CHUNG
-// ============================================================
+const elements = {
+    productDetail: document.getElementById('product-detail'),
+    productError: document.getElementById('product-error'),
+    productErrorMessage: document.getElementById('product-error-message'),
 
-import {
-    getProductById,
-    formatPrice
-} from './product-utils.js';
+    breadcrumbProduct: document.getElementById('breadcrumb-product'),
 
-import {
-    categoryLabels
-} from './products.js';
+    productImage: document.getElementById('product-image'),
+    productImageCaption: document.getElementById('product-image-caption'),
 
-import {
-    addSingle,
-    updateCartBadge
-} from './cart.js';
+    productCategory: document.getElementById('product-category'),
+    productCode: document.getElementById('product-code'),
+    productTitle: document.getElementById('product-title'),
+    productPrice: document.getElementById('product-price'),
+    productDescription: document.getElementById('product-description'),
 
+    productCategoryValue: document.getElementById('product-category-value'),
+    productColor: document.getElementById('product-color'),
+    productSize: document.getElementById('product-size'),
+    productMaterial: document.getElementById('product-material'),
+    productStock: document.getElementById('product-stock'),
 
-// ============================================================
-// 2. KHAI BÁO CÁC PHẦN TỬ HTML
-// ============================================================
+    detailExtra: document.getElementById('detail-extra'),
+    extraDescription: document.getElementById('extra-description'),
+    extraAppearance: document.getElementById('extra-appearance'),
+    extraDesign: document.getElementById('extra-design'),
+    extraSize: document.getElementById('extra-size'),
+    extraMaterial: document.getElementById('extra-material'),
 
-// Khu vực hiển thị thông tin sản phẩm
-const productDetailElement =
-    document.getElementById('product-detail');
+    addToCartForm: document.getElementById('add-to-cart-form'),
+    productQuantity: document.getElementById('product-quantity'),
+    addToCartButton: document.getElementById('add-to-cart-button'),
+    cartActionMessage: document.getElementById('cart-action-message'),
 
-const productErrorElement =
-    document.getElementById('product-error');
+    detailBackLink: document.getElementById('detail-back-link'),
+    backLinkLabel: document.getElementById('back-link-label')
+};
 
-const detailExtraElement =
-    document.getElementById('detail-extra');
+// ======================================================
+// 2. CẤU HÌNH VÀ HÀM TIỆN ÍCH
+// ======================================================
 
-// Thông tin cơ bản
-const productImageElement =
-    document.getElementById('product-image');
+const DEFAULT_PRODUCT_IMAGE = 'images/logo.png';
 
-const productImageCaptionElement =
-    document.getElementById('product-image-caption');
-
-const productCodeElement =
-    document.getElementById('product-code');
-
-const productTitleElement =
-    document.getElementById('product-title');
-
-const productPriceElement =
-    document.getElementById('product-price');
-
-const productDescriptionElement =
-    document.getElementById('product-description');
-
-// Thuộc tính sản phẩm
-const productCategoryElement =
-    document.getElementById('product-category');
-
-const productColorElement =
-    document.getElementById('product-color');
-
-const productSizeElement =
-    document.getElementById('product-size');
-
-const productMaterialElement =
-    document.getElementById('product-material');
-
-const productStockElement =
-    document.getElementById('product-stock');
-
-// Điều hướng
-const breadcrumbProductElement =
-    document.getElementById('breadcrumb-product');
-
-const detailBackLinkElement =
-    document.getElementById('detail-back-link');
-
-const backLinkLabelElement =
-    document.getElementById('back-link-label');
-
-const errorBackLinkElement =
-    document.getElementById('error-back-link');
-
-// Thông báo lỗi
-const productErrorMessageElement =
-    document.getElementById('product-error-message');
-
-// Form thêm giỏ hàng
-const addToCartForm =
-    document.getElementById('add-to-cart-form');
-
-const quantityInput =
-    document.getElementById('product-quantity');
-
-const addToCartButton =
-    document.getElementById('add-to-cart-button');
-
-const cartActionMessage =
-    document.getElementById('cart-action-message');
-
-// Nội dung bổ sung
-const extraDescriptionElement =
-    document.getElementById('extra-description');
-
-const extraAppearanceElement =
-    document.getElementById('extra-appearance');
-
-const extraMaterialElement =
-    document.getElementById('extra-material');
-
-
-// ============================================================
-// 3. ĐỌC THAM SỐ TRÊN URL
-// ============================================================
-
-const urlParams = new URLSearchParams(
-    window.location.search
-);
-
-// Mã sản phẩm
-const productId = urlParams.get('id');
-
-// Xác định nguồn truy cập
-const fromGift = urlParams.get('from') === 'gift';
-
-// Trang quay lại tương ứng
-const returnUrl = fromGift
-    ? 'gift-builder.html'
-    : 'products.html';
-
-
-// ============================================================
-// 4. HÀM HỖ TRỢ HIỂN THỊ
-// ============================================================
+const DEFAULT_IMAGE_NOTE =
+    'Sản phẩm được hoàn thiện thủ công. Hình ảnh mang tính chất tham khảo, màu sắc thực tế có thể chênh lệch nhẹ.';
 
 /**
- * Chuyển giá trị rỗng thành nội dung mặc định.
+ * Định dạng giá tiền Việt Nam.
  *
- * @param {*} value
+ * @param {number} price
  * @returns {string}
  */
-function getDisplayValue(value) {
-    if (
-        value === null ||
-        value === undefined ||
-        String(value).trim() === ''
-    ) {
-        return 'Đang cập nhật';
-    }
-
-    return String(value);
+function formatVND(price) {
+    return new Intl.NumberFormat('vi-VN', {
+        style: 'currency',
+        currency: 'VND'
+    }).format(price);
 }
 
-
 /**
- * Lấy tên danh mục từ categoryLabels.
+ * Gán nội dung văn bản cho phần tử HTML.
  *
- * @param {*} category
- * @returns {string}
+ * @param {HTMLElement|null} element
+ * @param {string|number|null|undefined} value
+ * @param {string} fallback
  */
-function getCategoryLabel(category) {
-    if (
-        categoryLabels &&
-        typeof categoryLabels === 'object' &&
-        category in categoryLabels
-    ) {
-        return categoryLabels[category];
-    }
+function setText(element, value, fallback = 'Đang cập nhật') {
+    if (!element) return;
 
-    return getDisplayValue(category);
+    const content =
+        value !== null &&
+        value !== undefined &&
+        String(value).trim() !== ''
+            ? String(value)
+            : fallback;
+
+    element.textContent = content;
 }
 
+/**
+ * Hiển thị hoặc ẩn phần tử.
+ *
+ * @param {HTMLElement|null} element
+ * @param {boolean} shouldShow
+ */
+function toggleElement(element, shouldShow) {
+    if (!element) return;
+
+    element.hidden = !shouldShow;
+}
 
 /**
- * Hiển thị thông báo thao tác.
+ * Hiển thị thông báo cho người dùng.
  *
  * @param {string} message
- * @param {string} type
+ * @param {'success'|'error'} type
  */
-function showCartMessage(message, type = '') {
-    if (!cartActionMessage) {
-        return;
-    }
+function showMessage(message, type = 'success') {
+    if (!elements.cartActionMessage) return;
 
-    cartActionMessage.textContent = message;
+    elements.cartActionMessage.textContent = message;
+    elements.cartActionMessage.classList.remove('success', 'error');
+    elements.cartActionMessage.classList.add(type);
+    elements.cartActionMessage.hidden = false;
+}
 
-    cartActionMessage.className =
-        'detail-action-message';
+/**
+ * Xóa thông báo cũ.
+ */
+function clearMessage() {
+    if (!elements.cartActionMessage) return;
 
-    if (type) {
-        cartActionMessage.classList.add(type);
+    elements.cartActionMessage.textContent = '';
+    elements.cartActionMessage.classList.remove('success', 'error');
+    elements.cartActionMessage.hidden = true;
+}
+
+// ======================================================
+// 3. ĐỌC THAM SỐ URL
+// ======================================================
+
+const currentUrl = new URL(window.location.href);
+const urlParams = currentUrl.searchParams;
+
+const productId = urlParams.get('id');
+const fromSource = urlParams.get('from');
+
+// ======================================================
+// 4. XỬ LÝ ĐƯỜNG DẪN QUAY LẠI
+// ======================================================
+
+/**
+ * Nếu người dùng đến từ trang tạo bộ quà:
+ * quay lại gift-builder.html.
+ *
+ * Các trường hợp còn lại:
+ * quay lại products.html.
+ *
+ * Không xóa hoặc thay đổi dữ liệu bộ quà tại đây.
+ */
+function configureBackLink() {
+    if (!elements.detailBackLink) return;
+
+    if (fromSource === 'gift') {
+        elements.detailBackLink.href = 'gift-builder.html';
+
+        setText(
+            elements.backLinkLabel,
+            'Quay lại trang tạo bộ quà'
+        );
+    } else {
+        elements.detailBackLink.href = 'products.html';
+
+        setText(
+            elements.backLinkLabel,
+            'Quay lại danh sách sản phẩm'
+        );
     }
 }
 
+// ======================================================
+// 5. XỬ LÝ SẢN PHẨM KHÔNG HỢP LỆ
+// ======================================================
 
 /**
- * Hiển thị khu vực lỗi.
+ * Hiển thị thông báo khi:
+ * - URL không có mã sản phẩm.
+ * - Mã sản phẩm không tồn tại.
+ * - Dữ liệu sản phẩm không hợp lệ.
  *
  * @param {string} message
  */
 function showProductError(message) {
-    productDetailElement.hidden = true;
-    detailExtraElement.hidden = true;
+    toggleElement(elements.productDetail, false);
+    toggleElement(elements.detailExtra, false);
+    toggleElement(elements.productError, true);
 
-    productErrorElement.hidden = false;
+    setText(
+        elements.productErrorMessage,
+        message,
+        'Không thể tải thông tin sản phẩm.'
+    );
 
-    productErrorMessageElement.textContent = message;
-
-    document.title =
-        'Không tìm thấy sản phẩm | Lenly Crochet';
+    document.title = 'Không tìm thấy sản phẩm | Lenly Crochet';
 }
-
-
-// ============================================================
-// 5. THIẾT LẬP ĐƯỜNG DẪN QUAY LẠI
-// ============================================================
-
-function setupReturnNavigation() {
-    detailBackLinkElement.href = returnUrl;
-    errorBackLinkElement.href = returnUrl;
-
-    if (fromGift) {
-        backLinkLabelElement.textContent =
-            'Quay lại trang tạo bộ quà';
-    } else {
-        backLinkLabelElement.textContent =
-            'Quay lại danh sách sản phẩm';
-    }
-}
-
-
-// ============================================================
-// 6. KIỂM TRA DỮ LIỆU SẢN PHẨM
-// ============================================================
 
 /**
- * Kiểm tra dữ liệu cơ bản trước khi hiển thị.
+ * Kiểm tra dữ liệu cơ bản của sản phẩm.
  *
- * @param {Object} product
- * @returns {{valid: boolean, message: string}}
+ * @param {object|null} product
+ * @returns {boolean}
  */
-function validateProductData(product) {
+function isValidProduct(product) {
     if (!product || typeof product !== 'object') {
-        return {
-            valid: false,
-            message: 'Không tìm thấy dữ liệu sản phẩm.'
-        };
+        return false;
     }
 
-    if (!product.id || !product.name) {
-        return {
-            valid: false,
-            message: 'Thông tin mã hoặc tên sản phẩm không hợp lệ.'
-        };
-    }
-
-    if (
-        !Number.isFinite(product.price) ||
-        product.price < 0
-    ) {
-        return {
-            valid: false,
-            message: 'Thông tin giá sản phẩm không hợp lệ.'
-        };
-    }
-
-    if (
-        !Number.isSafeInteger(product.stockDemo) ||
-        product.stockDemo < 0
-    ) {
-        return {
-            valid: false,
-            message: 'Thông tin số lượng sản phẩm không hợp lệ.'
-        };
-    }
-
-    if (product.stockDemo === 0) {
-        return {
-            valid: false,
-            message: 'Sản phẩm hiện không còn số lượng mẫu.'
-        };
-    }
-
-    return {
-        valid: true,
-        message: ''
-    };
+    return (
+        typeof product.id === 'string' &&
+        typeof product.name === 'string' &&
+        typeof product.price === 'number' &&
+        Number.isFinite(product.price) &&
+        product.price >= 0
+    );
 }
 
-
-// ============================================================
-// 7. HIỂN THỊ THÔNG TIN SẢN PHẨM
-// ============================================================
+// ======================================================
+// 6. HIỂN THỊ THÔNG TIN SẢN PHẨM
+// ======================================================
 
 /**
- * Hiển thị dữ liệu của sản phẩm lên giao diện.
+ * Cập nhật thông tin sản phẩm lên giao diện.
  *
- * @param {Object} product
+ * @param {object} product
  */
 function renderProduct(product) {
+    // ------------------------------------------
+    // 6.1. Thông tin cơ bản
+    // ------------------------------------------
 
-    // --------------------------------------------------------
-    // 7.1. Hình ảnh
-    // --------------------------------------------------------
+    setText(elements.breadcrumbProduct, product.name);
+    setText(elements.productCategory, product.category);
+    setText(elements.productCode, `Mã sản phẩm: ${product.id}`);
+    setText(elements.productTitle, product.name);
+    setText(elements.productPrice, formatVND(product.price));
 
-    productImageElement.src = product.image;
+    setText(
+        elements.productDescription,
+        product.description,
+        'Sản phẩm len handmade được hoàn thiện thủ công tại Lenly Crochet.'
+    );
 
-    productImageElement.alt =
-        `Hình ảnh ${product.name}`;
+    // ------------------------------------------
+    // 6.2. Thông tin thuộc tính
+    // ------------------------------------------
 
-    productImageCaptionElement.textContent =
-        `Hình ảnh sản phẩm ${product.name} tại Lenly Crochet.`;
+    setText(elements.productCategoryValue, product.category);
+    setText(elements.productColor, product.color);
+    setText(elements.productSize, product.size);
+    setText(elements.productMaterial, product.material);
 
-    // --------------------------------------------------------
-    // 7.2. Thông tin cơ bản
-    // --------------------------------------------------------
+    // ------------------------------------------
+    // 6.3. Hình ảnh sản phẩm
+    // ------------------------------------------
 
-    productCodeElement.textContent =
-        `Mã sản phẩm: ${product.id}`;
+    if (elements.productImage) {
+        const imagePath =
+            typeof product.image === 'string' &&
+            product.image.trim() !== ''
+                ? product.image
+                : DEFAULT_PRODUCT_IMAGE;
 
-    productTitleElement.textContent =
-        product.name;
+        elements.productImage.src = imagePath;
+        elements.productImage.alt =
+            `${product.name} - Sản phẩm handmade Lenly Crochet`;
 
-    productPriceElement.textContent =
-        formatPrice(product.price);
+        elements.productImage.onerror = function () {
+            this.onerror = null;
+            this.src = DEFAULT_PRODUCT_IMAGE;
+        };
+    }
 
-    productDescriptionElement.textContent =
-        getDisplayValue(product.description);
+    setText(
+        elements.productImageCaption,
+        `Hình ảnh minh họa sản phẩm ${product.name} ${product.id}.`,
+        DEFAULT_IMAGE_NOTE
+    );
 
-    // --------------------------------------------------------
-    // 7.3. Thuộc tính sản phẩm
-    // --------------------------------------------------------
+    // ------------------------------------------
+    // 6.4. Thông tin tồn kho minh họa
+    // ------------------------------------------
 
-    productCategoryElement.textContent =
-        getCategoryLabel(product.category);
+    const stock = Number.isSafeInteger(product.stockDemo)
+        ? product.stockDemo
+        : 0;
 
-    productColorElement.textContent =
-        getDisplayValue(product.color);
+    setText(
+        elements.productStock,
+        stock > 0
+            ? `Còn ${stock} sản phẩm`
+            : 'Tạm hết hàng'
+    );
 
-    productSizeElement.textContent =
-        getDisplayValue(product.size);
+    // ------------------------------------------
+    // 6.5. Cập nhật nội dung phần giới thiệu
+    // ------------------------------------------
 
-    productMaterialElement.textContent =
-        getDisplayValue(product.material);
+    setText(
+        elements.extraDescription,
+        product.description,
+        `Khám phá sản phẩm ${product.name} được thực hiện thủ công tại Lenly Crochet.`
+    );
 
-    productStockElement.textContent =
-        `${product.stockDemo} sản phẩm`;
+    setText(
+        elements.extraAppearance,
+        product.name
+    );
 
-    // --------------------------------------------------------
-    // 7.4. Nội dung bổ sung
-    // --------------------------------------------------------
+    setText(
+        elements.extraDesign,
+        product.color,
+        'Màu sắc được cập nhật theo từng sản phẩm'
+    );
 
-    extraDescriptionElement.textContent =
-        getDisplayValue(product.description);
+    setText(
+        elements.extraSize,
+        product.size
+    );
 
-    extraAppearanceElement.textContent =
-        `Màu sắc: ${getDisplayValue(product.color)}. ` +
-        `Kích thước: ${getDisplayValue(product.size)}.`;
+    setText(
+        elements.extraMaterial,
+        product.material
+    );
 
-    extraMaterialElement.textContent =
-        `Sản phẩm sử dụng chất liệu ${getDisplayValue(product.material)}.`;
-
-    // --------------------------------------------------------
-    // 7.5. Breadcrumb
-    // --------------------------------------------------------
-
-    breadcrumbProductElement.textContent =
-        product.name;
-
-    // --------------------------------------------------------
-    // 7.6. Tiêu đề trình duyệt
-    // --------------------------------------------------------
+    // ------------------------------------------
+    // 6.6. Cập nhật tiêu đề trang
+    // ------------------------------------------
 
     document.title =
-        `${product.name} | Lenly Crochet`;
+        `${product.name} - Chi tiết sản phẩm | Lenly Crochet`;
 
-    // --------------------------------------------------------
-    // 7.7. Thiết lập số lượng
-    // --------------------------------------------------------
+    // ------------------------------------------
+    // 6.7. Cấu hình số lượng mua
+    // ------------------------------------------
 
-    quantityInput.min = '1';
+    if (elements.productQuantity) {
+        elements.productQuantity.min = '1';
+        elements.productQuantity.step = '1';
+        elements.productQuantity.value = '1';
 
-    quantityInput.max =
-        String(product.stockDemo);
+        elements.productQuantity.max = String(stock);
+        elements.productQuantity.disabled = stock <= 0;
+    }
 
-    quantityInput.value = '1';
+    // ------------------------------------------
+    // 6.8. Cấu hình nút thêm vào giỏ
+    // ------------------------------------------
 
-    // --------------------------------------------------------
-    // 7.8. Hiển thị nội dung
-    // --------------------------------------------------------
+    if (elements.addToCartButton) {
+        elements.addToCartButton.disabled = stock <= 0;
 
-    productDetailElement.hidden = false;
+        elements.addToCartButton.textContent =
+            stock > 0
+                ? 'Thêm vào giỏ hàng'
+                : 'Tạm hết hàng';
+    }
 
-    detailExtraElement.hidden = false;
+    if (stock <= 0) {
+        setText(
+            elements.productStock,
+            'Sản phẩm hiện tạm hết hàng.'
+        );
+    }
 
-    productErrorElement.hidden = true;
+    toggleElement(elements.productDetail, true);
+    toggleElement(elements.detailExtra, true);
+    toggleElement(elements.productError, false);
 }
 
-
-// ============================================================
-// 8. KIỂM TRA SỐ LƯỢNG NGƯỜI DÙNG NHẬP
-// ============================================================
+// ======================================================
+// 7. KIỂM TRA SỐ LƯỢNG
+// ======================================================
 
 /**
- * Kiểm tra số lượng trước khi thêm vào giỏ hàng.
+ * Kiểm tra số lượng trước khi thêm vào giỏ.
  *
- * @param {Object} product
- * @returns {{valid: boolean, quantity?: number, message?: string}}
+ * @returns {{ok: boolean, quantity?: number, message?: string}}
  */
-function validateQuantity(product) {
+function validateQuantity() {
+    if (!elements.productQuantity) {
+        return {
+            ok: false,
+            message: 'Không tìm thấy trường nhập số lượng.'
+        };
+    }
 
-    const rawQuantity =
-        quantityInput.value.trim();
+    const rawQuantity = elements.productQuantity.value.trim();
 
-    // Không được để trống
     if (rawQuantity === '') {
         return {
-            valid: false,
+            ok: false,
             message: 'Vui lòng nhập số lượng sản phẩm.'
         };
     }
 
     const quantity = Number(rawQuantity);
 
-    // Phải là số nguyên dương
-    if (
-        !Number.isSafeInteger(quantity) ||
-        quantity <= 0
-    ) {
+    if (!Number.isSafeInteger(quantity) || quantity <= 0) {
         return {
-            valid: false,
+            ok: false,
             message: 'Số lượng phải là số nguyên dương.'
         };
     }
 
-    // Không được vượt quá số lượng mẫu
-    if (quantity > product.stockDemo) {
+    const maxQuantity = Number(elements.productQuantity.max);
+
+    if (
+        Number.isSafeInteger(maxQuantity) &&
+        quantity > maxQuantity
+    ) {
         return {
-            valid: false,
+            ok: false,
             message:
-                `Số lượng không được vượt quá ${product.stockDemo} sản phẩm.`
+                `Số lượng vượt quá tồn kho minh họa. ` +
+                `Vui lòng chọn tối đa ${maxQuantity} sản phẩm.`
         };
     }
 
     return {
-        valid: true,
+        ok: true,
         quantity
     };
 }
 
-
-// ============================================================
-// 9. XỬ LÝ THÊM SẢN PHẨM LẺ VÀO GIỎ HÀNG
-// ============================================================
+// ======================================================
+// 8. THÊM SẢN PHẨM LẺ VÀO GIỎ HÀNG
+// ======================================================
 
 /**
+ * Xử lý thêm sản phẩm lẻ.
+ *
  * Gọi addSingle() từ cart.js.
- *
- * Không tự thao tác với localStorage.
- * Không ghi đè gift draft.
- *
- * @param {Object} product
- * @param {number} quantity
+ * Không thao tác với gift draft của người dùng.
  */
-function handleAddToCart(product, quantity) {
+function handleAddToCart() {
+    clearMessage();
 
-    // Tránh người dùng nhấn nhiều lần liên tục
-    addToCartButton.disabled = true;
+    const quantityResult = validateQuantity();
 
-    addToCartButton.textContent =
-        'Đang xử lý...';
+    if (!quantityResult.ok) {
+        showMessage(quantityResult.message, 'error');
 
-    showCartMessage('');
+        elements.productQuantity?.focus();
+        return;
+    }
+
+    const quantity = quantityResult.quantity;
+
+    if (!productId) {
+        showMessage(
+            'Không xác định được mã sản phẩm.',
+            'error'
+        );
+        return;
+    }
+
+    if (elements.addToCartButton) {
+        elements.addToCartButton.disabled = true;
+        elements.addToCartButton.textContent = 'Đang xử lý...';
+    }
 
     try {
+        // addSingle tự kiểm tra tồn kho, lưu giỏ hàng
+        // và cập nhật biểu tượng số lượng giỏ.
+        const result = addSingle(productId, quantity);
 
-        // Gọi hàm thêm sản phẩm lẻ của Bảo
-        const result = addSingle(
-            product.id,
-            quantity
-        );
-
-        // Kiểm tra kết quả trả về
-        if (!result || !result.ok) {
-
-            showCartMessage(
-                result?.message ||
-                'Không thể thêm sản phẩm vào giỏ hàng.',
-                'error'
+        if (result.ok) {
+            showMessage(
+                result.message || 'Đã thêm sản phẩm vào giỏ hàng.',
+                'success'
             );
 
-            return;
+            // Không gọi updateCartBadge() ở đây vì addSingle()
+            // đã tự cập nhật badge sau khi lưu giỏ thành công.
+        } else {
+            showMessage(
+                result.message || 'Không thể thêm sản phẩm vào giỏ hàng.',
+                'error'
+            );
         }
-
-        // Thông báo thêm thành công
-        showCartMessage(
-            result.message ||
-            'Đã thêm sản phẩm vào giỏ hàng thành công.',
-            'success'
-        );
-
     } catch (error) {
-
         console.error(
-            'Lỗi khi thêm sản phẩm vào giỏ hàng:',
+            '[Lenly product detail] Lỗi khi thêm sản phẩm:',
             error
         );
 
-        showCartMessage(
+        showMessage(
             'Đã xảy ra lỗi khi thêm sản phẩm. Vui lòng thử lại.',
             'error'
         );
-
     } finally {
+        if (elements.addToCartButton) {
+            const stock = Number.isSafeInteger(currentProduct?.stockDemo)
+                ? currentProduct.stockDemo
+                : 0;
 
-        addToCartButton.disabled = false;
+            elements.addToCartButton.disabled = stock <= 0;
 
-        addToCartButton.textContent =
-            'Thêm vào giỏ hàng';
-
+            elements.addToCartButton.textContent =
+                stock > 0
+                    ? 'Thêm vào giỏ hàng'
+                    : 'Tạm hết hàng';
+        }
     }
 }
 
+// ======================================================
+// 9. KHỞI TẠO TRANG CHI TIẾT
+// ======================================================
 
-// ============================================================
-// 10. GẮN SỰ KIỆN CHO FORM
-// ============================================================
+let currentProduct = null;
 
 /**
- * Xử lý sự kiện gửi form thêm giỏ hàng.
- *
- * @param {Object} product
+ * Khởi tạo trang khi tài liệu HTML đã được tải.
  */
-function setupAddToCartForm(product) {
+function initializeProductDetail() {
+    // Cập nhật đường dẫn quay lại.
+    configureBackLink();
 
-    addToCartForm.addEventListener(
-        'submit',
-        function (event) {
+    // Đồng bộ số lượng giỏ hàng hiện tại.
+    // addSingle() sẽ tự cập nhật badge ở các lần thêm tiếp theo.
+    try {
+        updateCartBadge();
+    } catch (error) {
+        console.error(
+            '[Lenly product detail] Không thể cập nhật giỏ hàng:',
+            error
+        );
+    }
 
-            event.preventDefault();
+    // Kiểm tra mã sản phẩm trên URL.
+    if (!productId || productId.trim() === '') {
+        showProductError(
+            'Đường dẫn chưa có mã sản phẩm. Vui lòng quay lại danh sách sản phẩm và chọn sản phẩm muốn xem.'
+        );
+        return;
+    }
 
-            // Kiểm tra số lượng
-            const validation =
-                validateQuantity(product);
+    // Lấy dữ liệu sản phẩm từ product-utils.js.
+    try {
+        currentProduct = getProductById(productId.trim());
+    } catch (error) {
+        console.error(
+            '[Lenly product detail] Lỗi khi đọc dữ liệu sản phẩm:',
+            error
+        );
 
-            if (!validation.valid) {
+        showProductError(
+            'Không thể tải dữ liệu sản phẩm. Vui lòng thử lại sau.'
+        );
+        return;
+    }
 
-                showCartMessage(
-                    validation.message,
-                    'error'
-                );
+    // Kiểm tra mã không tồn tại hoặc dữ liệu không hợp lệ.
+    if (!isValidProduct(currentProduct)) {
+        showProductError(
+            `Không tìm thấy sản phẩm có mã "${productId}". Vui lòng kiểm tra lại đường dẫn hoặc chọn sản phẩm khác.`
+        );
+        return;
+    }
 
-                quantityInput.focus();
+    // Hiển thị thông tin sản phẩm.
+    renderProduct(currentProduct);
 
-                return;
+    // Đăng ký sự kiện thêm vào giỏ.
+    if (elements.addToCartForm) {
+        elements.addToCartForm.addEventListener(
+            'submit',
+            function (event) {
+                event.preventDefault();
+                handleAddToCart();
             }
+        );
+    }
 
-            // Thêm sản phẩm vào giỏ
-            handleAddToCart(
-                product,
-                validation.quantity
-            );
-
-        }
-    );
-
-    // Xóa thông báo cũ khi người dùng thay đổi số lượng
-    quantityInput.addEventListener(
-        'input',
-        function () {
-
-            showCartMessage('');
-
-        }
-    );
+    // Xóa thông báo cũ khi người dùng thay đổi số lượng.
+    if (elements.productQuantity) {
+        elements.productQuantity.addEventListener(
+            'input',
+            clearMessage
+        );
+    }
 }
 
+// ======================================================
+// 10. CHẠY CHƯƠNG TRÌNH
+// ======================================================
 
-// ============================================================
-// 11. KHỞI TẠO TRANG CHI TIẾT
-// ============================================================
-
-function initProductDetail() {
-
-    // --------------------------------------------------------
-    // 11.1. Thiết lập đường dẫn quay lại
-    // --------------------------------------------------------
-
-    setupReturnNavigation();
-
-    // --------------------------------------------------------
-    // 11.2. Cập nhật số lượng trên biểu tượng giỏ hàng
-    // --------------------------------------------------------
-
-    updateCartBadge();
-
-    // --------------------------------------------------------
-    // 11.3. Kiểm tra tham số id
-    // --------------------------------------------------------
-
-    if (!productId || !productId.trim()) {
-
-        showProductError(
-            'Đường dẫn chưa có mã sản phẩm. ' +
-            'Vui lòng quay lại danh sách sản phẩm.'
-        );
-
-        return;
-    }
-
-    // --------------------------------------------------------
-    // 11.4. Tìm sản phẩm theo mã
-    // --------------------------------------------------------
-
-    const product = getProductById(
-        productId.trim()
-    );
-
-    // --------------------------------------------------------
-    // 11.5. Kiểm tra sản phẩm có tồn tại không
-    // --------------------------------------------------------
-
-    if (!product) {
-
-        showProductError(
-            `Không tìm thấy sản phẩm có mã "${productId}". ` +
-            'Vui lòng kiểm tra lại đường dẫn.'
-        );
-
-        return;
-    }
-
-    // --------------------------------------------------------
-    // 11.6. Kiểm tra tính hợp lệ của dữ liệu
-    // --------------------------------------------------------
-
-    const productValidation =
-        validateProductData(product);
-
-    if (!productValidation.valid) {
-
-        showProductError(
-            productValidation.message
-        );
-
-        return;
-    }
-
-    // --------------------------------------------------------
-    // 11.7. Hiển thị dữ liệu sản phẩm
-    // --------------------------------------------------------
-
-    renderProduct(product);
-
-    // --------------------------------------------------------
-    // 11.8. Thiết lập sự kiện thêm giỏ hàng
-    // --------------------------------------------------------
-
-    setupAddToCartForm(product);
-
-}
-
-
-// ============================================================
-// 12. CHẠY CHƯƠNG TRÌNH
-// ============================================================
-
-initProductDetail();
+initializeProductDetail();
