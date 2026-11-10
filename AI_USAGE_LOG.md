@@ -912,3 +912,14 @@ Các nội dung cần kiểm thử sau khi tích hợp:
 ## 10/11/2026 — Sửa tên bộ quà bị lặp hậu tố
 
 Đức gửi ảnh tên bộ quà lặp nhiều lần “bản chỉnh riêng”. Codex bổ sung hàm chuẩn hóa tên và dùng chung khi nhân bản từ giỏ/workspace. Khi đọc dữ liệu cũ, rút hậu tố lặp thành một “bản sao”, không đổi thành phần, số bộ, giá hoặc tự xóa dữ liệu. Bổ sung kiểm thử tên cũ, giữ sản phẩm/số bộ và nhân bản liên tiếp 12 lần; chạy lại toàn bộ kiểm thử Node và thao tác trình duyệt. Đây là kiểm tra công cụ, chưa phải xác nhận người học tự kiểm tra.
+
+## 11/11/2026 — Đức cập nhật báo cáo cá nhân phụ trách và kết quả tích hợp Buổi 3
+
+- Người yêu cầu: Nguyễn Quang Đức. Công cụ: OpenAI Codex, Google Docs connector, GitHub connector; các kiểm tra trước đó dùng Node test runner và Playwright/Chrome headless.
+- Prompt thực tế: “bạn cập nhật phần của tôi trong Docs với nhật ký AI ... còn phần các bạn thì để mọi người tự bổ sung, và kiểm tra còn ai chưa thêm vô”.
+- Nội dung hỗ trợ: bổ sung kết quả Bài làm 1, viết phần lưu trữ Bài làm 6 và phần 8B của Đức; giữ nguyên phần 8A của Châu và nội dung các thành viên khác. Đối chiếu báo cáo với mã main, các PR #33–37 và kết quả công cụ đã ghi nhận.
+- Phạm vi đóng góp của Đức: chuẩn bị bản nền, quy ước và favicon; module lưu trữ; review, tích hợp và sửa điểm nối; yêu cầu/chốt giao diện nhiều bộ quà, nhân bản độc lập và sửa tên hậu tố; tổng hợp tài liệu, README và kiểm tra triển khai. Giữ ghi nhận đóng góp ban đầu của từng tác giả; không ghi các module của thành viên thành công việc Đức tự lập trình.
+- Kết quả kỹ thuật đã có: 42/42 kiểm thử Node ở bản sửa tên; 16 nhóm thao tác Chrome sau điều chỉnh và 18 trạng thái bố cục. Tại link Pages đã thử dữ liệu tên cũ lặp hậu tố, sao từ giỏ và giữ nguyên sản phẩm/số bộ; PR #37 đã ghép tại d8b915fa597c617a0c3c791e8ee412343c97569b. Số kiểm thử là của toàn repository, không cộng số các phiên bản.
+- Đánh giá/điều chỉnh: giữ tách lưu dữ liệu với nghiệp vụ; dùng khóa workspace cho nhiều bộ và giữ API cũ tương thích; không tự thêm bản sao vào giỏ. Các khung được giữ sau thêm; không tự sửa dòng giỏ đã xác nhận. Chuẩn hóa tên cũ mà không thay thành phần hoặc số bộ.
+- Kiểm soát báo cáo: phân biệt kết quả công cụ và xác nhận sinh viên tự kiểm tra. Chưa ghi nhận Đức đã tự thử hết, giải thích toàn bộ mã, cả nhóm nghiệm thu hoặc nộp LMS. Những xác nhận đó chỉ cập nhật sau khi người liên quan thực hiện và phản hồi.
+- Phần các thành viên: chỉ rà để báo Đức nhắc bổ sung; không tạo prompt, nhật ký cá nhân, ảnh minh chứng hoặc xác nhận thay các bạn.
