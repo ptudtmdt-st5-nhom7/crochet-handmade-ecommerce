@@ -178,43 +178,41 @@
     <form id="add-to-cart-form" novalidate>
 
         <div class="detail-quantity-field">
-            <label for="product-quantity">Số lượng</label>
+           <div class="detail-quantity-field">
+    <label for="product-quantity">Số lượng</label>
 
-            <input
-                id="product-quantity"
-                name="quantity"
-                type="number"
-                value="1"
-                min="1"
-                step="1"
-                inputmode="numeric"
-                required
-            >
-        </div>
-
-        <p id="quantity-note" class="detail-purchase-note">
-            Vui lòng chọn số lượng sản phẩm muốn mua.
-        </p>
-
+    <div class="quantity-control">
         <button
-            id="add-to-cart-button"
-            class="button button-primary detail-buy-button"
-            type="submit"
+            type="button"
+            class="quantity-btn"
+            id="quantity-decrease"
+            aria-label="Giảm số lượng"
         >
-            Thêm vào giỏ hàng
+            −
         </button>
 
-        <p
-            id="cart-action-message"
-            class="detail-action-message"
-            role="status"
-            aria-live="polite"
-            hidden
-        ></p>
+        <input
+            id="product-quantity"
+            name="quantity"
+            type="number"
+            value="1"
+            min="1"
+            step="1"
+            inputmode="numeric"
+            required
+            aria-label="Số lượng sản phẩm"
+        >
 
-    </form>
+        <button
+            type="button"
+            class="quantity-btn"
+            id="quantity-increase"
+            aria-label="Tăng số lượng"
+        >
+            +
+        </button>
+    </div>
 </div>
-
             <!-- THÔNG BÁO KẾT QUẢ THÊM GIỎ HÀNG -->
             <p
               id="cart-action-message"
