@@ -174,14 +174,13 @@
         </div>
 
         <!-- KHU VỰC MUA HÀNG VÀ THÊM GIỎ HÀNG -->
-        <div class="detail-purchase">
+      <div class="detail-purchase">
+    <form id="add-to-cart-form" novalidate>
 
-          <form id="add-to-cart-form" novalidate>
+        <div class="detail-quantity-field">
+            <label for="product-quantity">Số lượng</label>
 
-            <div class="detail-quantity-field">
-              <label for="product-quantity">Số lượng</label>
-
-              <input
+            <input
                 id="product-quantity"
                 name="quantity"
                 type="number"
@@ -190,20 +189,31 @@
                 step="1"
                 inputmode="numeric"
                 required
-                aria-describedby="quantity-note">
-            </div>
+            >
+        </div>
 
-            <p id="quantity-note" class="detail-purchase-note">
-              Vui lòng chọn số lượng sản phẩm muốn thêm vào giỏ hàng.
-            </p>
+        <p id="quantity-note" class="detail-purchase-note">
+            Vui lòng chọn số lượng sản phẩm muốn mua.
+        </p>
 
-            <button
-              id="add-to-cart-button"
-              class="button button-primary detail-buy-button"
-              type="submit">
+        <button
+            id="add-to-cart-button"
+            class="button button-primary detail-buy-button"
+            type="submit"
+        >
+            Thêm vào giỏ hàng
+        </button>
 
-              Thêm vào giỏ hàng
-            </button>
+        <p
+            id="cart-action-message"
+            class="detail-action-message"
+            role="status"
+            aria-live="polite"
+            hidden
+        ></p>
+
+    </form>
+</div>
 
             <!-- THÔNG BÁO KẾT QUẢ THÊM GIỎ HÀNG -->
             <p
