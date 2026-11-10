@@ -12,7 +12,7 @@ import {
     getItemsTotal,
     formatPrice
 } from './product-utils.js';
-import { saveGiftDraft } from './storage.js';
+import { appendGiftWorkspaceDraft } from './storage.js';
 
 const cartLinesElement =
     document.querySelector('[data-cart-lines]');
@@ -367,11 +367,11 @@ function handleCartClick(event) {
         return;
     }
 
-    result = saveGiftDraft({
+    result = appendGiftWorkspaceDraft({
         version: 1,
         budget: line.budget,
         sourceGiftSetId: line.giftSetId,
-        name: line.name,
+        name: `${line.name} (bản sao từ giỏ)`,
         items: line.items.map((item) => ({
             productId: item.productId,
             quantity: item.quantity

@@ -1,7 +1,8 @@
 import test, { beforeEach, after } from 'node:test';
 import assert from 'node:assert/strict';
 import {
-  CART_STORAGE_KEY, GIFT_DRAFT_STORAGE_KEY,
+  CART_STORAGE_KEY, GIFT_DRAFT_STORAGE_KEY, GIFT_WORKSPACE_STORAGE_KEY,
+  loadGiftWorkspace, saveGiftWorkspace, createWorkspaceDraft, duplicateWorkspaceDraft, appendGiftWorkspaceDraft,
   loadCart, saveCart, loadGiftDraft, saveGiftDraft, clearGiftDraft,
 } from '../js/storage.js';
 
@@ -117,4 +118,55 @@ test('bị chặn truy cập localStorage: đọc mặc định, lưu/xóa báo 
 test('lỗi xóa bản soạn không báo thành công và giữ dữ liệu', () => {
   saveGiftDraft(draft()); globalThis.localStorage.removeItem = () => { throw new Error('SecurityError'); };
   assert.equal(clearGiftDraft().ok, false); assert.deepEqual(loadGiftDraft(), draft());
+});
+
+test('nhiều khung và bản sao có ID riêng, dữ liệu độc lập; không sửa giỏ', () => {
+  saveCart(cart());
+  const original = createWorkspaceDraft({ ...draft(), setQuantity: 2 });
+  const duplicate = duplicateWorkspaceDraft(original);
+  duplicate.items[0].quantity = 3;
+  assert.equal(original.items[0].quantity, 1);
+  assert.equal(original.setQuantity, 2);
+  assert.equal(duplicate.setQuantity, 1);
+  assert.notEqual(original.draftId, duplicate.draftId);
+  assert.equal(duplicate.copyOfDraftId, original.draftId);
+  const workspace = { version: 1, drafts: [original, duplicate], legacyDraftFingerprint: null };
+  assert.equal(saveGiftWorkspace(workspace).ok, true);
+  original.items[0].quantity = 9;
+  const loaded = loadGiftWorkspace();
+  assert.equal(loaded.drafts[0].items[0].quantity, 1);
+  assert.equal(loaded.drafts[1].items[0].quantity, 3);
+  loaded.drafts.splice(0, 1);
+  assert.equal(loadGiftWorkspace().drafts.length, 2);
+  assert.deepEqual(loadCart(), cart());
+});
+test('bản sao từ giỏ bổ sung vào workspace, giữ các bộ trước đó', () => {
+  assert.equal(appendGiftWorkspaceDraft(draft()).ok, true);
+  const first = loadGiftWorkspace().drafts[0];
+  assert.equal(appendGiftWorkspaceDraft(draft()).ok, true);
+  const result = loadGiftWorkspace();
+  assert.equal(result.drafts.length, 2);
+  assert.deepEqual(result.drafts[0], first);
+  assert.notEqual(result.drafts[0].draftId, result.drafts[1].draftId);
+});
+test('workspace từ chối ID trùng và dữ liệu sai, không ghi đè bản tốt', () => {
+  appendGiftWorkspaceDraft(draft());
+  const good = loadGiftWorkspace();
+  const bad = loadGiftWorkspace(); bad.drafts.push(bad.drafts[0]);
+  assert.equal(saveGiftWorkspace(bad).ok, false);
+  assert.deepEqual(loadGiftWorkspace(), good);
+  bad.drafts = [{ ...bad.drafts[0], setQuantity: 0 }];
+  assert.equal(saveGiftWorkspace(bad).ok, false);
+  assert.deepEqual(loadGiftWorkspace(), good);
+});
+test('workspace JSON hỏng không ném lỗi hoặc xóa giỏ/khóa cũ', () => {
+  saveCart(cart()); saveGiftDraft(draft()); memory.set(GIFT_WORKSPACE_STORAGE_KEY, '{bad');
+  assert.deepEqual(loadGiftWorkspace().drafts, []);
+  assert.deepEqual(loadCart(), cart()); assert.deepEqual(loadGiftDraft(), draft());
+});
+test('lỗi lưu workspace giữ nguyên các bộ trước thao tác', () => {
+  appendGiftWorkspaceDraft(draft()); const good = loadGiftWorkspace();
+  globalThis.localStorage.setItem = () => { throw Error('quota'); };
+  assert.equal(appendGiftWorkspaceDraft(draft()).ok, false);
+  assert.deepEqual(loadGiftWorkspace(), good);
 });

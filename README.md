@@ -2,7 +2,7 @@
 
 Đồ án học phần **Phát triển ứng dụng TMĐT — Nhóm 7, ST5**. Website giới thiệu và kinh doanh sản phẩm móc len handmade cho một cửa hàng.
 
-## Bản tích hợp chức năng Buổi 3 — bàn giao chỉnh giao diện
+## Bản tích hợp chức năng Buổi 3
 
 Website dùng HTML/CSS và JavaScript thuần, lưu giỏ/bản soạn trong localStorage. Đã nối tìm kiếm, lọc và sắp xếp danh sách; chi tiết động theo mã; thêm sản phẩm lẻ; bộ quà theo ngân sách; giỏ hàng và nhân bản bộ quà. Ngân sách áp dụng cho tiền sản phẩm của một bộ, không gồm đóng gói/vận chuyển. Bộ hợp lệ vượt ngân sách sau điều chỉnh được cảnh báo và vẫn có thể thêm giỏ.
 
@@ -11,7 +11,15 @@ Website dùng HTML/CSS và JavaScript thuần, lưu giỏ/bản soạn trong loc
 - Các trang chính: `index.html`, `products.html`, `product-detail.html?id=KC-001`, `about.html`, `cart.html`, `gift-builder.html`.
 - **Chạy qua HTTP:** VS Code Live Server hoặc `python -m http.server 5500`, rồi mở `http://localhost:5500/`. Giữ cùng host/cổng để dùng chung localStorage; không mở trực tiếp bằng `file://`.
 - **Kiểm thử:** `node --test tests/*.mjs` (Node chỉ phục vụ kiểm thử, chưa có backend).
-- Dữ liệu tám sản phẩm và stockDemo phục vụ học tập. Chưa có đơn hàng máy chủ, tài khoản hay thanh toán thật. Quyến tiếp tục CSS bộ lọc/chọn quà và rà giao diện responsive; không coi bản này là hoàn tất toàn bộ bài Buổi 3.
+- Dữ liệu tám sản phẩm và stockDemo phục vụ học tập. Chưa có đơn hàng máy chủ, tài khoản hay thanh toán thật. CSS bộ lọc, chọn quà và giỏ hàng của Quyến đã được ghép. Việc nghiệm thu hồ sơ học phần được tổng hợp riêng.
+
+### Soạn nhiều bộ quà và nhân bản tại mục 3
+
+Chọn một hoặc nhiều mẫu ở mục 2 để tạo các khung độc lập ở mục 3. Mỗi khung chứa toàn bộ sản phẩm của một bộ quà. Nút **Nhân bản bộ này** tạo một bản sao ngay dưới bộ gốc, mặc định một bộ; sửa bản sao không thay đổi bộ gốc. Muốn mua nhiều bộ giống nhau thì tăng **Số bộ muốn mua** trong cùng khung.
+
+Mục 4 tổng kết từng khung và có nút **Thêm bộ này vào giỏ** riêng. Các khung đang soạn vẫn được giữ sau khi thêm; chúng không tự cập nhật những bộ đã nằm trong giỏ. Cùng cấu hình sản phẩm/số lượng thì giỏ tăng số bộ; khác cấu hình thì tách dòng. Tải lại hoặc đi xem chi tiết vẫn giữ các bộ đang soạn trên cùng trình duyệt/địa chỉ web.
+
+- [Hướng dẫn và kiểm thử soạn nhiều bộ](docs/chon-nhieu-bo-qua.md).
 
 Các phần Buổi 1–2 dưới đây là hồ sơ của các giai đoạn trước. [Hướng dẫn lưu trữ](docs/ban-giao-ban-nen-buoi3.md) và [quy ước chung](docs/quy-uoc.md) được giữ để đối chiếu hợp đồng dữ liệu.
 

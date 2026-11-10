@@ -128,3 +128,54 @@ export function clearGiftDraft() {
     return { ok: false, message: 'Không xóa được bản quà đang soạn trong trình duyệt.' };
   }
 }
+
+/** Nhiều bộ đang soạn ở mục 3; giữ API bản soạn cũ để tương thích Buổi 3. */
+export const GIFT_WORKSPACE_STORAGE_KEY = 'lenly.giftWorkspace.v1';
+const emptyWorkspace = () => ({ version: 1, drafts: [], legacyDraftFingerprint: null });
+
+function copyWorkspace(workspace) {
+  check(isObject(workspace) && workspace.version === 1 && Array.isArray(workspace.drafts),
+    'Danh sách bộ đang soạn không hợp lệ.');
+  const ids = new Set();
+  const drafts = workspace.drafts.map((draft) => {
+    check(isText(draft.draftId) && !ids.has(draft.draftId), 'Mã bộ đang soạn trống hoặc trùng.');
+    check(draft.copyOfDraftId === null || isText(draft.copyOfDraftId), 'Mã bộ được nhân bản không hợp lệ.');
+    ids.add(draft.draftId);
+    return { ...copyDraft(draft), draftId: draft.draftId, copyOfDraftId: draft.copyOfDraftId };
+  });
+  check(workspace.legacyDraftFingerprint === null || typeof workspace.legacyDraftFingerprint === 'string',
+    'Thông tin chuyển bản soạn cũ không hợp lệ.');
+  return { version: 1, drafts, legacyDraftFingerprint: workspace.legacyDraftFingerprint };
+}
+
+export function loadGiftWorkspace() {
+  return load(GIFT_WORKSPACE_STORAGE_KEY, copyWorkspace, emptyWorkspace);
+}
+
+export function saveGiftWorkspace(workspace) {
+  return save(GIFT_WORKSPACE_STORAGE_KEY, workspace, copyWorkspace);
+}
+
+export function createWorkspaceDraft(draft) {
+  const draftId = globalThis.crypto?.randomUUID?.()
+    ?? `gift-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+  return { ...copyDraft(draft), draftId, copyOfDraftId: null };
+}
+
+/** Bản sao sâu của MỘT bộ; không sửa bộ gốc, không thêm vào giỏ. */
+export function duplicateWorkspaceDraft(draft) {
+  return { ...createWorkspaceDraft(draft), setQuantity: 1,
+    name: `${draft.name.replace(/ \(bản sao\)$/, '')} (bản sao)`, copyOfDraftId: draft.draftId };
+}
+
+/** Trang giỏ chuyển bản sao vào danh sách đang soạn, giữ mọi bộ đã có. */
+export function appendGiftWorkspaceDraft(draft) {
+  try {
+    const workspace = loadGiftWorkspace();
+    const incoming = createWorkspaceDraft(draft);
+    workspace.drafts.push(incoming);
+    return saveGiftWorkspace(workspace);
+  } catch (error) {
+    return { ok: false, message: `Không tạo được bản sao: ${error.message}` };
+  }
+}
