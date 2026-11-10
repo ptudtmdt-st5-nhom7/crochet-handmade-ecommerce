@@ -930,3 +930,94 @@ a:focus-visible,button:focus-visible,input:focus-visible { outline:3px solid #24
   }
 }
 
+
+/* =========================================
+   LENLY CROCHET - QUANTITY CONTROL
+   Bộ chọn số lượng sản phẩm
+========================================= */
+
+.detail-quantity-field {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin: 20px 0 10px;
+}
+
+.detail-quantity-field label {
+    color: #49352F;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    width: 132px;
+    height: 42px;
+    overflow: hidden;
+    border: 1px solid #E7CED3;
+    border-radius: 10px;
+    background: #FFFDFC;
+}
+
+.quantity-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 100%;
+    padding: 0;
+    border: none;
+    background: #F6E7E9;
+    color: #A96F7D;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.quantity-btn:hover:not(:disabled) {
+    background: #EFD7DC;
+}
+
+.quantity-btn:active:not(:disabled) {
+    background: #E7C6CE;
+}
+
+.quantity-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.quantity-control input {
+    width: 56px;
+    height: 100%;
+    padding: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #49352F;
+    text-align: center;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+
+.quantity-control input::-webkit-inner-spin-button,
+.quantity-control input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.quantity-control:focus-within {
+    border-color: #B57989;
+    box-shadow: 0 0 0 3px rgba(181, 121, 137, 0.12);
+}
+
+@media (max-width: 390px) {
+    .detail-quantity-field {
+        gap: 10px;
+    }
+}
