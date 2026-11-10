@@ -755,3 +755,87 @@ Không sử dụng JavaScript hoặc framework CSS. 
 **Bổ sung sau review:** Gọi `updateCartBadge()` trong `commitCart()` sau khi lưu giỏ hàng thành công, để số đếm tự cập nhật khi thêm, xóa hoặc đổi số lượng. Bổ sung kiểm thử mô phỏng hai phần tử `[data-cart-count]`.
 
 **Kiểm tra lại:** Chạy kiểm thử dữ liệu sản phẩm, lưu trữ, giỏ hàng và cập nhật badge; kết quả 33 kiểm thử đạt, 0 lỗi.
+
+### 10/11/2026 – AI-04: Tích hợp trang chi tiết sản phẩm động (Bước 4 – Buổi 3)
+
+**1. Thông tin sử dụng AI**
+
+| Nội dung | Chi tiết |
+|---|---|
+| Mã sử dụng AI | AI-04 |
+| Ngày thực hiện | 10/11/2026 |
+| Công cụ AI | ChatGPT |
+| Người sử dụng | Đỗ Trọng Khanh |
+| Công việc | Tích hợp dữ liệu và xử lý chức năng cho trang chi tiết sản phẩm |
+| Tệp liên quan | `product-detail.html`, `js/product-detail.js`, `js/product-utils.js`, `js/cart.js` |
+| Phạm vi chỉnh sửa | `product-detail.html` và `js/product-detail.js` |
+
+**2. Nội dung yêu cầu AI**
+
+Sử dụng AI để hỗ trợ hoàn thiện trang chi tiết sản phẩm theo hướng hiển thị dữ liệu động, thay vì sử dụng nội dung cố định cho từng sản phẩm. Yêu cầu AI xem xét cấu trúc HTML hiện có và xây dựng mã JavaScript đáp ứng các chức năng:
+
+- Đọc mã sản phẩm (`id`) từ URL.
+- Lấy thông tin sản phẩm tương ứng thông qua hàm `getProductById()` trong `product-utils.js`.
+- Hiển thị động tên, giá, hình ảnh, mô tả, danh mục và các thuộc tính sản phẩm.
+- Xử lý trường hợp URL thiếu mã sản phẩm hoặc mã sản phẩm không tồn tại.
+- Xây dựng chức năng tăng, giảm số lượng sản phẩm và kiểm tra số lượng hợp lệ.
+- Kiểm tra số lượng đặt mua với tồn kho mô phỏng trước khi thêm vào giỏ hàng.
+- Tích hợp chức năng thêm sản phẩm vào giỏ hàng thông qua `addSingle()` trong `cart.js`.
+- Hiển thị thông báo tương ứng khi thêm sản phẩm thành công hoặc xảy ra lỗi.
+- Xử lý điều hướng quay lại theo tham số `from` trên URL.
+
+**3. Kết quả AI hỗ trợ**
+
+AI đề xuất hoàn thiện `product-detail.html` và xây dựng `js/product-detail.js` để xử lý các nghiệp vụ chính:
+
+| STT | Nội dung | Kết quả AI hỗ trợ |
+|---|---|---|
+| 1 | Nhận diện sản phẩm | Đọc tham số `id` từ URL và truy xuất dữ liệu bằng `getProductById()`. |
+| 2 | Hiển thị thông tin | Đổ dữ liệu sản phẩm vào các thành phần HTML tương ứng. |
+| 3 | Xử lý dữ liệu không hợp lệ | Kiểm tra trường hợp thiếu `id` hoặc không tìm thấy sản phẩm. |
+| 4 | Chọn số lượng | Xây dựng chức năng tăng, giảm và kiểm tra số lượng đặt mua. |
+| 5 | Thêm vào giỏ hàng | Sử dụng `addSingle()` để thêm sản phẩm vào giỏ hàng hiện có. |
+| 6 | Thông báo kết quả | Hiển thị thông báo thành công hoặc lỗi dựa trên kết quả xử lý. |
+| 7 | Điều hướng | Sử dụng tham số `from` để xác định trang quay lại phù hợp. |
+
+**4. Nguyên tắc tích hợp với các mô-đun hiện có**
+
+Trong quá trình xây dựng, AI được yêu cầu tuân thủ cấu trúc và phân công mô-đun của nhóm:
+
+- Tái sử dụng dữ liệu sản phẩm và hàm tiện ích từ `product-utils.js`, không tạo thêm một nguồn dữ liệu sản phẩm độc lập.
+- Sử dụng `addSingle()` từ `cart.js` để thêm sản phẩm vào giỏ hàng, không tự xây dựng lại nghiệp vụ thêm sản phẩm.
+- Không gọi thêm `updateCartBadge()` nếu `addSingle()` đã thực hiện cập nhật số lượng trên biểu tượng giỏ hàng thông qua quy trình lưu giỏ hàng.
+- Không xóa hoặc ghi đè dữ liệu bản nháp quà tặng trong `giftDraft`, vì dữ liệu này được quản lý riêng với giỏ hàng.
+- Không tự ý chỉnh sửa các mô-đun thuộc phạm vi phụ trách của thành viên khác.
+
+**5. Đánh giá và kiểm soát kết quả AI**
+
+| Tiêu chí | Đánh giá |
+|---|---|
+| Phù hợp yêu cầu | Đề xuất đáp ứng định hướng chuyển trang chi tiết sản phẩm sang hiển thị dữ liệu động. |
+| Tái sử dụng mã nguồn | Tận dụng các hàm và dữ liệu dùng chung của dự án. |
+| Tính nhất quán | Hạn chế trùng lặp nghiệp vụ giữa trang chi tiết sản phẩm và mô-đun giỏ hàng. |
+| Khả năng xử lý lỗi | Có đề xuất kiểm tra mã sản phẩm và số lượng đặt mua không hợp lệ. |
+| Phạm vi chỉnh sửa | Giới hạn trong hai tệp thuộc phạm vi tích hợp trang chi tiết sản phẩm. |
+| Hạn chế | Cần đối chiếu mã nguồn thực tế của các mô-đun dùng chung, kiểm tra cấu trúc HTML và thực hiện kiểm thử trên trình duyệt trước khi xác nhận hoàn tất. |
+
+**6. Quyết định sử dụng kết quả AI**
+
+Nhóm tiếp nhận phương án xử lý do AI đề xuất làm cơ sở tích hợp trang chi tiết sản phẩm động. Tuy nhiên, mã nguồn cần được đối chiếu với các hàm thực tế trong `product-utils.js` và `cart.js` trước khi đưa vào phiên bản tích hợp chính thức.
+
+Các nội dung cần kiểm thử sau khi tích hợp:
+
+- Truy cập trang chi tiết với đầy đủ mã của 8 sản phẩm trong danh sách sản phẩm.
+- Kiểm tra trường hợp thiếu mã sản phẩm và mã sản phẩm không tồn tại.
+- Kiểm tra chức năng tăng, giảm số lượng và giới hạn tồn kho.
+- Kiểm tra thêm sản phẩm vào giỏ hàng, bao gồm trường hợp sản phẩm đã tồn tại trong giỏ.
+- Kiểm tra thông báo kết quả và số lượng hiển thị trên biểu tượng giỏ hàng.
+- Kiểm tra điều hướng quay lại từ trang chi tiết sản phẩm.
+- Kiểm tra dữ liệu bản nháp quà tặng không bị ảnh hưởng khi thêm sản phẩm thông thường vào giỏ hàng.
+
+**7. Trách nhiệm thực hiện**
+
+- Người thực hiện tích hợp: Đỗ Trọng Khanh.
+- Người hỗ trợ: ChatGPT.
+- Người kiểm tra: Chờ nhóm xác nhận sau khi tích hợp và kiểm thử.
+- Trạng thái: Đang chờ kiểm thử thực tế trên trình duyệt.
