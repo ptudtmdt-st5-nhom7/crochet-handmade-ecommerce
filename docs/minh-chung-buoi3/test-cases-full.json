@@ -1,0 +1,232 @@
+[
+  {
+    "id": "KT01",
+    "function": "Responsive sáu trang",
+    "data": "1366/768/390 px; cao 900 px",
+    "steps": "Mở sáu trang, chọn bộ quà, rà ảnh và chiều rộng",
+    "expected": "Không tràn ngang hoặc ảnh lỗi",
+    "actual": "18/18 lượt sau sửa đạt; đã có ảnh",
+    "status": "Đạt",
+    "source": "Lượt kiểm tra bản cuối trước đối chiếu PDF"
+  },
+  {
+    "id": "KT02",
+    "function": "Tìm không có kết quả",
+    "data": "zzzzzz",
+    "steps": "Nhập từ khóa trên danh sách",
+    "expected": "Hiện trạng thái không có sản phẩm",
+    "actual": "Hiện đúng thông báo ở ba độ rộng",
+    "status": "Đạt",
+    "source": "Lượt kiểm tra bản cuối trước đối chiếu PDF"
+  },
+  {
+    "id": "KT03",
+    "function": "Thêm lại hàng lẻ",
+    "data": "KC-001 × 1, thêm hai lần",
+    "steps": "Bấm Thêm vào giỏ hai lần",
+    "expected": "Một dòng KC-001 số lượng 2",
+    "actual": "Một dòng, quantity = 2",
+    "status": "Đạt",
+    "source": "Lượt kiểm tra bản cuối trước đối chiếu PDF"
+  },
+  {
+    "id": "KT04",
+    "function": "Chi tiết động",
+    "data": "Tám mã trong products",
+    "steps": "Mở từng URL product-detail.html?id=...",
+    "expected": "Tên đúng mã được chọn",
+    "actual": "Đủ tám mã hiển thị đúng tên",
+    "status": "Đạt",
+    "source": "Lượt kiểm tra bản cuối trước đối chiếu PDF"
+  },
+  {
+    "id": "KT05",
+    "function": "Chi tiết sai mã",
+    "data": "id=BAD",
+    "steps": "Mở URL sai",
+    "expected": "Hiện lỗi và ẩn sản phẩm",
+    "actual": "Đúng; không hiển thị sản phẩm mẫu",
+    "status": "Đạt",
+    "source": "Lượt kiểm tra bản cuối trước đối chiếu PDF"
+  },
+  {
+    "id": "KT06",
+    "function": "Thêm từ chi tiết",
+    "data": "KC-001, số lượng 2",
+    "steps": "Mở chi tiết, nhập 2, bấm thêm",
+    "expected": "Giỏ KC-001 × 2",
+    "actual": "Dữ liệu giỏ đúng",
+    "status": "Đạt",
+    "source": "Lượt kiểm tra bản cuối trước đối chiếu PDF"
+  },
+  {
+    "id": "KT07",
+    "function": "Tìm từ trang chủ",
+    "data": "KC-001",
+    "steps": "Nhập ô header và Enter",
+    "expected": "Sang danh sách với một sản phẩm",
+    "actual": "products.html?q=KC-001; một thẻ",
+    "status": "Đạt",
+    "source": "Lượt kiểm tra bản cuối trước đối chiếu PDF"
+  },
+  {
+    "id": "KT08",
+    "function": "Tăng bộ và lưu giỏ",
+    "data": "GIFT-01 giá 80.000",
+    "steps": "Thêm bộ, tăng số bộ lên 2, tải lại",
+    "expected": "Giá 160.000; giữ số bộ 2",
+    "actual": "Đúng ở ba chiều rộng",
+    "status": "Đạt",
+    "source": "Lượt kiểm tra bản cuối trước đối chiếu PDF"
+  },
+  {
+    "id": "KT09",
+    "function": "Quay lại giữ bản soạn",
+    "data": "Hai món, ngân sách 80.000",
+    "steps": "Xem chi tiết món rồi quay lại chọn quà",
+    "expected": "Giữ món và ngân sách",
+    "actual": "Hai món và 80.000 được khôi phục",
+    "status": "Đạt",
+    "source": "Lượt kiểm tra bản cuối trước đối chiếu PDF"
+  },
+  {
+    "id": "KT10",
+    "function": "Vượt ngân sách",
+    "data": "80.000; gấu × 2 + tulip × 1",
+    "steps": "Tăng gấu, xem tổng, thêm giỏ",
+    "expected": "Giá 125.000; vượt 45.000; vẫn thêm",
+    "actual": "Hiển thị 45.000 và thêm được bộ",
+    "status": "Đạt",
+    "source": "Lượt kiểm tra bản cuối trước đối chiếu PDF"
+  },
+  {
+    "id": "KT11",
+    "function": "Giỏ rỗng",
+    "data": "Giỏ còn một dòng",
+    "steps": "Xóa dòng cuối",
+    "expected": "Không còn dòng; hiện giỏ trống",
+    "actual": "Đúng ở ba độ rộng",
+    "status": "Đạt",
+    "source": "Lượt kiểm tra bản cuối trước đối chiếu PDF"
+  },
+  {
+    "id": "BS01",
+    "function": "Ngân sách không hợp lệ",
+    "data": "Trống, 0, -1, 1.5",
+    "steps": "Nhập lần lượt, bấm Gợi ý",
+    "expected": "Báo ngân sách phải là số nguyên dương",
+    "actual": "Cả bốn giá trị đều báo lỗi ngân sách.",
+    "status": "Đạt",
+    "source": "Lượt bổ sung đối chiếu PDF; 390 × 900, Edge"
+  },
+  {
+    "id": "BS02",
+    "function": "Không có bộ phù hợp",
+    "data": "Ngân sách 1 đồng",
+    "steps": "Nhập 1, bấm Gợi ý",
+    "expected": "Không có thẻ; thông báo không có bộ phù hợp",
+    "actual": "Không có thẻ; hiện chưa có bộ phù hợp.",
+    "status": "Đạt",
+    "source": "Lượt bổ sung đối chiếu PDF; 390 × 900, Edge"
+  },
+  {
+    "id": "BS03",
+    "function": "Thay món",
+    "data": "GIFT-01; thay KC-001 thành KC-002",
+    "steps": "Đổi select dòng đầu sang KC-002",
+    "expected": "Bản soạn đổi mã; giá từ 80.000 xuống 70.000",
+    "actual": "Giá một bộ 70.000 đồng.",
+    "status": "Đạt",
+    "source": "Lượt bổ sung đối chiếu PDF; 390 × 900, Edge"
+  },
+  {
+    "id": "BS04",
+    "function": "Thêm và bỏ món",
+    "data": "Bộ đang có hai dòng",
+    "steps": "Bấm Thêm sản phẩm; bỏ dòng cuối",
+    "expected": "Số dòng 2 → 3 → 2; thao tác không làm trang dừng",
+    "actual": "Thêm được dòng thứ ba; bỏ về hai dòng.",
+    "status": "Đạt",
+    "source": "Lượt bổ sung đối chiếu PDF; 390 × 900, Edge"
+  },
+  {
+    "id": "BS05",
+    "function": "Số lượng món sai",
+    "data": "0 và 1.5",
+    "steps": "Nhập số lượng sai rồi change",
+    "expected": "Không lưu số lượng không hợp lệ; có thông báo",
+    "actual": "Bản soạn giữ số lượng nguyên dương; hiện thông báo.",
+    "status": "Đạt",
+    "source": "Lượt bổ sung đối chiếu PDF; 390 × 900, Edge"
+  },
+  {
+    "id": "BS06",
+    "function": "Bộ rỗng",
+    "data": "Bỏ mọi món",
+    "steps": "Bấm Bỏ sản phẩm đến hết",
+    "expected": "Nút Thêm vào giỏ disabled; không tạo giỏ",
+    "actual": "Bộ có 0 món; nút thêm giỏ bị khóa.",
+    "status": "Đạt",
+    "source": "Lượt bổ sung đối chiếu PDF; 390 × 900, Edge"
+  },
+  {
+    "id": "BS07",
+    "function": "Gộp bộ giống nhau",
+    "data": "GIFT-01 thêm hai lần",
+    "steps": "Chọn lại bộ 80.000 và thêm giỏ",
+    "expected": "Một dòng gift; số bộ tăng 2",
+    "actual": "Một dòng gift với setQuantity = 2.",
+    "status": "Đạt",
+    "source": "Lượt bổ sung đối chiếu PDF; 390 × 900, Edge"
+  },
+  {
+    "id": "BS08",
+    "function": "Nhân bản không đổi gốc",
+    "data": "Bộ gốc số bộ 2",
+    "steps": "Vào giỏ, Nhân bản, thay món, thêm lại",
+    "expected": "Gốc giữ 2 bộ và thành phần; bản khác tạo dòng riêng",
+    "actual": "Dòng gốc giữ nguyên; thêm một dòng cấu hình mới.",
+    "status": "Đạt",
+    "source": "Lượt bổ sung đối chiếu PDF; 390 × 900, Edge"
+  },
+  {
+    "id": "BS09",
+    "function": "Tồn kho gộp hàng lẻ và bộ",
+    "data": "KC-001 lẻ 19; bộ 2 gấu + 1 tulip",
+    "steps": "Chi tiết thêm 19 gấu; chọn bộ và tăng gấu lên 2; thêm giỏ",
+    "expected": "Từ chối do tổng gấu 21 > stockDemo 20; giữ giỏ và bản soạn",
+    "actual": "Giữ giỏ 19 gấu, giữ bản soạn hai món; thông báo: Móc khóa gấu len chỉ còn lượng minh họa 20, nhưng giỏ cần 21.",
+    "status": "Đạt",
+    "source": "Lượt bổ sung đối chiếu PDF; 390 × 900, Edge"
+  },
+  {
+    "id": "BS10",
+    "function": "Mã sai trong module giỏ",
+    "data": "BAD, quantity 1",
+    "steps": "Gọi addSingle từ module trong trình duyệt (không qua UI)",
+    "expected": "Trả lỗi, giỏ không đổi",
+    "actual": "{\"ok\":false,\"unchanged\":true,\"code\":\"NOT_FOUND\"}; đây là kiểm thử module trong trình duyệt.",
+    "status": "Đạt",
+    "source": "Lượt bổ sung đối chiếu PDF; 390 × 900, Edge"
+  },
+  {
+    "id": "BS11",
+    "function": "Tìm lọc sắp kết hợp",
+    "data": "Từ khóa hoa, danh mục hoa-len, price-desc",
+    "steps": "Nhập từ khóa, chọn danh mục và giá giảm",
+    "expected": "Bó hoa len nhỏ trước Hoa tulip len",
+    "actual": "Bó hoa len nhỏ → Hoa tulip len",
+    "status": "Đạt",
+    "source": "Lượt bổ sung đối chiếu PDF; 390 × 900, Edge"
+  },
+  {
+    "id": "BS12",
+    "function": "Hover và focus",
+    "data": "Nút Xóa bộ lọc",
+    "steps": "Rê chuột, đo màu; Tab từ tìm sang danh mục",
+    "expected": "Hover đổi nền; focus danh mục hiện outline",
+    "actual": "Hover đổi rgb(255, 255, 255) → rgb(115, 54, 71); focus có outline solid.",
+    "status": "Đạt",
+    "source": "Lượt bổ sung đối chiếu PDF; 390 × 900, Edge"
+  }
+]

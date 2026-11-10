@@ -892,3 +892,10 @@ Các nội dung cần kiểm thử sau khi tích hợp:
 - Kiểm tra công cụ: 36/36 kiểm thử Node, 16/16 kiểm tra DOM giỏ và 29/29 nhóm kiểm tra trên Chrome riêng qua HTTP đạt. Chrome kiểm tra tám mã, mã sai/thiếu, tìm/lọc/sắp/thêm lẻ, xem chi tiết từ bộ quà và quay lại, vượt ngân sách, số bộ, tải lại, nhân bản, nhóm gốc và giỏ trống. Rà sáu trang tại 1366/768/390 px (18 trường hợp) không thấy tràn ngang ở trạng thái thử; không có lỗi JavaScript hoặc tài nguyên lỗi trong lượt cuối.
 - Phân biệt kết quả: trên đây là kiểm tra do Codex thực hiện, không phải xác nhận các thành viên tự thao tác. Lượt đầu phát hiện tham chiếu CSS 404, đã bỏ vì CSS chi tiết nằm trong style.css; lượt cuối thử lại đạt.
 - Bàn giao: docs/ban-giao-tich-hop-buoi3.md ghi rõ phần đã ghép, cách cập nhật main và những vùng Quyến trực tiếp chỉnh CSS. Chưa xác nhận hoàn tất Bước 7, toàn bài Buổi 3, báo cáo Word/Docs hoặc nộp LMS; Đức duyệt kết quả cuối và tự nộp.
+
+## Bước 7 giao diện và bàn giao GitHub
+
+- Công cụ: Codex, theo yêu cầu Quyến thực hiện Bước 7, chỉnh báo cáo theo từng bước có ảnh và commit bài lên GitHub.
+- Kết quả: bổ sung CSS responsive và bố cục bộ lọc; giữ nguyên JavaScript; chuẩn bị báo cáo 12 trang, ảnh và bảng 23 ca kiểm thử.
+- Kiểm tra: 36/36 kiểm thử có sẵn; minh chứng trình duyệt và 12 ca bổ sung được lưu tại docs/minh-chung-buoi3/. Các lượt thử do Codex thực hiện.
+- Người dùng đã yêu cầu commit và đẩy lên GitHub. Chưa ghi nhận Quyến tự thử, quyết định giữ/sửa/bỏ chi tiết hoặc xác nhận của Nam/Tuấn/Đức. Chưa coi việc push nhánh là nghiệm thu nhóm.

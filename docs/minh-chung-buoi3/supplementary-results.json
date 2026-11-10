@@ -1,0 +1,110 @@
+[
+  {
+    "id": "BS01",
+    "function": "Ngân sách không hợp lệ",
+    "data": "Trống, 0, -1, 1.5",
+    "steps": "Nhập lần lượt, bấm Gợi ý",
+    "expected": "Báo ngân sách phải là số nguyên dương; không có bộ gợi ý",
+    "actual": "Cả bốn giá trị đều báo lỗi ngân sách.",
+    "status": "Đạt"
+  },
+  {
+    "id": "BS02",
+    "function": "Không có bộ phù hợp",
+    "data": "Ngân sách 1 đồng",
+    "steps": "Nhập 1, bấm Gợi ý",
+    "expected": "Không có thẻ; thông báo không có bộ phù hợp",
+    "actual": "Không có thẻ; hiện chưa có bộ phù hợp.",
+    "status": "Đạt"
+  },
+  {
+    "id": "BS03",
+    "function": "Thay món",
+    "data": "GIFT-01; thay KC-001 thành KC-002",
+    "steps": "Đổi select dòng đầu sang KC-002",
+    "expected": "Bản soạn đổi mã; giá từ 80.000 xuống 70.000",
+    "actual": "Giá một bộ 70.000 đồng.",
+    "status": "Đạt"
+  },
+  {
+    "id": "BS04",
+    "function": "Thêm và bỏ món",
+    "data": "Bộ đang có hai dòng",
+    "steps": "Bấm Thêm sản phẩm; bỏ dòng cuối",
+    "expected": "Số dòng 2 → 3 → 2, tính lại tiền",
+    "actual": "Thêm được dòng thứ ba; bỏ về hai dòng.",
+    "status": "Đạt"
+  },
+  {
+    "id": "BS05",
+    "function": "Số lượng món sai",
+    "data": "0 và 1.5",
+    "steps": "Nhập số lượng sai rồi change",
+    "expected": "Không lưu số lượng không hợp lệ; có thông báo",
+    "actual": "Bản soạn giữ số lượng nguyên dương; hiện thông báo.",
+    "status": "Đạt"
+  },
+  {
+    "id": "BS06",
+    "function": "Bộ rỗng",
+    "data": "Bỏ mọi món",
+    "steps": "Bấm Bỏ sản phẩm đến hết",
+    "expected": "Nút Thêm vào giỏ disabled; không tạo giỏ",
+    "actual": "Bộ có 0 món; nút thêm giỏ bị khóa.",
+    "status": "Đạt"
+  },
+  {
+    "id": "BS07",
+    "function": "Gộp bộ giống nhau",
+    "data": "GIFT-01 thêm hai lần",
+    "steps": "Chọn lại bộ 80.000 và thêm giỏ",
+    "expected": "Một dòng gift; số bộ tăng 2",
+    "actual": "Một dòng gift với setQuantity = 2.",
+    "status": "Đạt"
+  },
+  {
+    "id": "BS08",
+    "function": "Nhân bản không đổi gốc",
+    "data": "Bộ gốc số bộ 2",
+    "steps": "Vào giỏ, Nhân bản, thay món, thêm lại",
+    "expected": "Gốc giữ 2 bộ và thành phần; bản khác tạo dòng riêng",
+    "actual": "Dòng gốc giữ nguyên; thêm một dòng cấu hình mới.",
+    "status": "Đạt"
+  },
+  {
+    "id": "BS09",
+    "function": "Tồn kho gộp hàng lẻ và bộ",
+    "data": "KC-001 lẻ 19; bộ 2 gấu + 1 tulip",
+    "steps": "Chi tiết thêm 19 gấu; chọn bộ và tăng gấu lên 2; thêm giỏ",
+    "expected": "Từ chối do tổng gấu 21 > stockDemo 20; giữ giỏ và bản soạn",
+    "actual": "Giữ giỏ 19 gấu, giữ bản soạn hai món; thông báo: Móc khóa gấu len chỉ còn lượng minh họa 20, nhưng giỏ cần 21.",
+    "status": "Đạt"
+  },
+  {
+    "id": "BS10",
+    "function": "Mã sai trong module giỏ",
+    "data": "BAD, quantity 1",
+    "steps": "Gọi addSingle từ module trong trình duyệt (không qua UI)",
+    "expected": "Trả lỗi, giỏ không đổi",
+    "actual": "{\"ok\":false,\"unchanged\":true,\"code\":\"NOT_FOUND\"}; đây là kiểm thử module trong trình duyệt.",
+    "status": "Đạt"
+  },
+  {
+    "id": "BS11",
+    "function": "Tìm lọc sắp kết hợp",
+    "data": "Từ khóa hoa, danh mục hoa-len, price-desc",
+    "steps": "Nhập từ khóa, chọn danh mục và giá giảm",
+    "expected": "Bó hoa len nhỏ trước Hoa tulip len",
+    "actual": "Bó hoa len nhỏ → Hoa tulip len",
+    "status": "Đạt"
+  },
+  {
+    "id": "BS12",
+    "function": "Hover và focus",
+    "data": "Nút Xóa bộ lọc",
+    "steps": "Rê chuột, đo màu; Tab từ tìm sang danh mục",
+    "expected": "Hover đổi nền; focus danh mục hiện outline",
+    "actual": "Hover đổi rgb(255, 255, 255) → rgb(115, 54, 71); focus có outline solid.",
+    "status": "Đạt"
+  }
+]

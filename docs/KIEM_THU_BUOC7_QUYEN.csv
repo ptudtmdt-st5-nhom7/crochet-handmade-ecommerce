@@ -1,0 +1,24 @@
+﻿Mã,Chức năng,Dữ liệu đầu vào,Các bước thực hiện,Kết quả mong đợi,Kết quả thực tế,Trạng thái,Nguồn thực hiện
+KT01,Responsive sáu trang,1366/768/390 px; cao 900 px,"Mở sáu trang, chọn bộ quà, rà ảnh và chiều rộng",Không tràn ngang hoặc ảnh lỗi,18/18 lượt sau sửa đạt; đã có ảnh,Đạt,Lượt kiểm tra bản cuối trước đối chiếu PDF
+KT02,Tìm không có kết quả,zzzzzz,Nhập từ khóa trên danh sách,Hiện trạng thái không có sản phẩm,Hiện đúng thông báo ở ba độ rộng,Đạt,Lượt kiểm tra bản cuối trước đối chiếu PDF
+KT03,Thêm lại hàng lẻ,"KC-001 × 1, thêm hai lần",Bấm Thêm vào giỏ hai lần,Một dòng KC-001 số lượng 2,"Một dòng, quantity = 2",Đạt,Lượt kiểm tra bản cuối trước đối chiếu PDF
+KT04,Chi tiết động,Tám mã trong products,Mở từng URL product-detail.html?id=...,Tên đúng mã được chọn,Đủ tám mã hiển thị đúng tên,Đạt,Lượt kiểm tra bản cuối trước đối chiếu PDF
+KT05,Chi tiết sai mã,id=BAD,Mở URL sai,Hiện lỗi và ẩn sản phẩm,Đúng; không hiển thị sản phẩm mẫu,Đạt,Lượt kiểm tra bản cuối trước đối chiếu PDF
+KT06,Thêm từ chi tiết,"KC-001, số lượng 2","Mở chi tiết, nhập 2, bấm thêm",Giỏ KC-001 × 2,Dữ liệu giỏ đúng,Đạt,Lượt kiểm tra bản cuối trước đối chiếu PDF
+KT07,Tìm từ trang chủ,KC-001,Nhập ô header và Enter,Sang danh sách với một sản phẩm,products.html?q=KC-001; một thẻ,Đạt,Lượt kiểm tra bản cuối trước đối chiếu PDF
+KT08,Tăng bộ và lưu giỏ,GIFT-01 giá 80.000,"Thêm bộ, tăng số bộ lên 2, tải lại",Giá 160.000; giữ số bộ 2,Đúng ở ba chiều rộng,Đạt,Lượt kiểm tra bản cuối trước đối chiếu PDF
+KT09,Quay lại giữ bản soạn,"Hai món, ngân sách 80.000",Xem chi tiết món rồi quay lại chọn quà,Giữ món và ngân sách,Hai món và 80.000 được khôi phục,Đạt,Lượt kiểm tra bản cuối trước đối chiếu PDF
+KT10,Vượt ngân sách,80.000; gấu × 2 + tulip × 1,"Tăng gấu, xem tổng, thêm giỏ",Giá 125.000; vượt 45.000; vẫn thêm,Hiển thị 45.000 và thêm được bộ,Đạt,Lượt kiểm tra bản cuối trước đối chiếu PDF
+KT11,Giỏ rỗng,Giỏ còn một dòng,Xóa dòng cuối,Không còn dòng; hiện giỏ trống,Đúng ở ba độ rộng,Đạt,Lượt kiểm tra bản cuối trước đối chiếu PDF
+BS01,Ngân sách không hợp lệ,"Trống, 0, -1, 1.5","Nhập lần lượt, bấm Gợi ý",Báo ngân sách phải là số nguyên dương,Cả bốn giá trị đều báo lỗi ngân sách.,Đạt,"Lượt bổ sung đối chiếu PDF; 390 × 900, Edge"
+BS02,Không có bộ phù hợp,Ngân sách 1 đồng,"Nhập 1, bấm Gợi ý",Không có thẻ; thông báo không có bộ phù hợp,Không có thẻ; hiện chưa có bộ phù hợp.,Đạt,"Lượt bổ sung đối chiếu PDF; 390 × 900, Edge"
+BS03,Thay món,GIFT-01; thay KC-001 thành KC-002,Đổi select dòng đầu sang KC-002,Bản soạn đổi mã; giá từ 80.000 xuống 70.000,Giá một bộ 70.000 đồng.,Đạt,"Lượt bổ sung đối chiếu PDF; 390 × 900, Edge"
+BS04,Thêm và bỏ món,Bộ đang có hai dòng,Bấm Thêm sản phẩm; bỏ dòng cuối,Số dòng 2 → 3 → 2; thao tác không làm trang dừng,Thêm được dòng thứ ba; bỏ về hai dòng.,Đạt,"Lượt bổ sung đối chiếu PDF; 390 × 900, Edge"
+BS05,Số lượng món sai,0 và 1.5,Nhập số lượng sai rồi change,Không lưu số lượng không hợp lệ; có thông báo,Bản soạn giữ số lượng nguyên dương; hiện thông báo.,Đạt,"Lượt bổ sung đối chiếu PDF; 390 × 900, Edge"
+BS06,Bộ rỗng,Bỏ mọi món,Bấm Bỏ sản phẩm đến hết,Nút Thêm vào giỏ disabled; không tạo giỏ,Bộ có 0 món; nút thêm giỏ bị khóa.,Đạt,"Lượt bổ sung đối chiếu PDF; 390 × 900, Edge"
+BS07,Gộp bộ giống nhau,GIFT-01 thêm hai lần,Chọn lại bộ 80.000 và thêm giỏ,Một dòng gift; số bộ tăng 2,Một dòng gift với setQuantity = 2.,Đạt,"Lượt bổ sung đối chiếu PDF; 390 × 900, Edge"
+BS08,Nhân bản không đổi gốc,Bộ gốc số bộ 2,"Vào giỏ, Nhân bản, thay món, thêm lại",Gốc giữ 2 bộ và thành phần; bản khác tạo dòng riêng,Dòng gốc giữ nguyên; thêm một dòng cấu hình mới.,Đạt,"Lượt bổ sung đối chiếu PDF; 390 × 900, Edge"
+BS09,Tồn kho gộp hàng lẻ và bộ,KC-001 lẻ 19; bộ 2 gấu + 1 tulip,Chi tiết thêm 19 gấu; chọn bộ và tăng gấu lên 2; thêm giỏ,Từ chối do tổng gấu 21 > stockDemo 20; giữ giỏ và bản soạn,"Giữ giỏ 19 gấu, giữ bản soạn hai món; thông báo: Móc khóa gấu len chỉ còn lượng minh họa 20, nhưng giỏ cần 21.",Đạt,"Lượt bổ sung đối chiếu PDF; 390 × 900, Edge"
+BS10,Mã sai trong module giỏ,"BAD, quantity 1",Gọi addSingle từ module trong trình duyệt (không qua UI),"Trả lỗi, giỏ không đổi","{""ok"":false,""unchanged"":true,""code"":""NOT_FOUND""}; đây là kiểm thử module trong trình duyệt.",Đạt,"Lượt bổ sung đối chiếu PDF; 390 × 900, Edge"
+BS11,Tìm lọc sắp kết hợp,"Từ khóa hoa, danh mục hoa-len, price-desc","Nhập từ khóa, chọn danh mục và giá giảm",Bó hoa len nhỏ trước Hoa tulip len,Bó hoa len nhỏ → Hoa tulip len,Đạt,"Lượt bổ sung đối chiếu PDF; 390 × 900, Edge"
+BS12,Hover và focus,Nút Xóa bộ lọc,"Rê chuột, đo màu; Tab từ tìm sang danh mục",Hover đổi nền; focus danh mục hiện outline,"Hover đổi rgb(255, 255, 255) → rgb(115, 54, 71); focus có outline solid.",Đạt,"Lượt bổ sung đối chiếu PDF; 390 × 900, Edge"

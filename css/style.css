@@ -1431,3 +1431,118 @@ a:focus-visible,button:focus-visible,input:focus-visible { outline:3px solid #24
 
 /* Trạng thái ẩn do JavaScript điều khiển phải thắng bố cục grid/flex. */
 [hidden] { display: none !important; }
+
+/* ===== 10. BUOI 3 - QUYEN: DIEU KHIEN VA CHON QUA ===== */
+button, input, select, textarea { font: inherit; }
+select:focus-visible, textarea:focus-visible { outline:3px solid #245C52; outline-offset:3px; }
+.button:not(:disabled) { cursor:pointer; }
+.button:disabled { opacity:.58; cursor:not-allowed; }
+.button:disabled:hover { transform:none; box-shadow:none; }
+.products-page fieldset { min-width:0; margin:28px 0 12px; padding:24px; border:1px solid var(--border); border-radius:16px; background:var(--surface); }
+.products-page legend { padding:0 8px; color:var(--primary); font-weight:700; }
+.product-filter-fields { display:grid; grid-template-columns:2fr 1fr 1fr auto; gap:16px; align-items:end; }
+.product-filter-field { display:grid; gap:8px; min-width:0; }
+.product-filter-field label { font-size:14px; font-weight:700; }
+.products-page fieldset input, .products-page fieldset select,
+.gift-builder-page input, .gift-builder-page select { width:100%; min-width:0; min-height:48px; padding:10px 12px; color:var(--text); background:var(--page); border:1px solid var(--border); border-radius:10px; }
+.products-page [data-products-count] { margin:16px 0; font-weight:700; color:var(--primary); }
+#products-integration-note { font-size:14px; color:var(--muted); }
+.products-page .products-empty { grid-column:1/-1; padding:32px; border:1px dashed var(--border); border-radius:16px; background:var(--surface); text-align:center; }
+.products-page .product-card .button + .button { margin-top:10px; }
+.gift-builder-page { padding:48px 0 64px; }
+.gift-builder-page > section + section { margin-top:28px; }
+.gift-intro h1 { max-width:850px; margin-bottom:20px; }
+.gift-intro > p:last-child { max-width:760px; color:var(--muted); }
+.gift-budget, .gift-recommendations, .gift-editor, .gift-summary { padding:28px; border:1px solid var(--border); border-radius:16px; background:var(--surface); }
+.gift-builder-page h2 { font-size:26px; margin-bottom:16px; }
+.gift-budget-control { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:8px 16px; max-width:720px; margin-top:20px; align-items:end; }
+.gift-budget-control label { grid-column:1/-1; font-weight:700; }
+.gift-set-list { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; margin-top:20px; }
+.gift-set-card { padding:24px; background:var(--page); border:1px solid var(--border); border-radius:16px; display:flex; flex-direction:column; gap:12px; }
+.gift-set-card ul { padding-left:20px; margin:0 0 12px; }
+.gift-set-card .button { margin-top:auto; }
+.gift-set-price { color:var(--primary); font-size:22px; font-weight:700; }
+.gift-message:not(:empty) { padding:14px 16px; margin-top:16px; border-left:4px solid var(--primary); border-radius:8px; background:var(--pink); overflow-wrap:anywhere; }
+#gift-editor-list { display:grid; gap:16px; margin:20px 0; }
+.gift-editor-item { display:grid; grid-template-columns:120px minmax(0,1fr); gap:24px; padding:20px; border:1px solid var(--border); border-radius:12px; }
+.gift-editor-image { width:120px; height:120px; object-fit:contain; background:var(--page); border-radius:10px; }
+.gift-editor-item-info { min-width:0; display:grid; grid-template-columns:minmax(0,1fr) 140px; gap:12px 20px; align-items:end; }
+.gift-editor-item-info h3, .gift-editor-item-info > p { grid-column:1/-1; }
+.gift-editor-item-info label { display:grid; gap:6px; font-size:14px; font-weight:700; min-width:0; }
+.gift-detail-link { color:var(--primary); text-decoration:underline; padding:10px 0; }
+.gift-summary { background:var(--pink); }
+.gift-summary-content { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px 32px; }
+.gift-summary-content > p { display:flex; flex-wrap:wrap; justify-content:space-between; gap:8px; padding-bottom:12px; border-bottom:1px solid var(--border); }
+.gift-summary-content strong { overflow-wrap:anywhere; }
+.gift-quantity-control { display:flex; align-items:center; justify-content:space-between; gap:16px; }
+.gift-quantity-control input { max-width:120px; }
+#gift-total-price { color:var(--primary); font-size:24px; }
+#gift-exceeded { color:#8A2535; }
+.gift-summary-actions { display:flex; justify-content:flex-end; flex-wrap:wrap; gap:12px; margin-top:24px; }
+@media (max-width:1099px) {
+  .gift-set-list { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .product-filter-fields { grid-template-columns:repeat(2,minmax(0,1fr)); }
+
+}
+@media (max-width:699px) {
+  .gift-builder-page { padding:28px 0 40px; }
+  .gift-budget, .gift-recommendations, .gift-editor, .gift-summary, .products-page fieldset { padding:20px 16px; }
+  .gift-builder-page h2 { font-size:23px; }
+  .gift-budget-control, .gift-set-list, .gift-summary-content, .gift-editor-item-info { grid-template-columns:minmax(0,1fr); }
+  .gift-editor-item { grid-template-columns:minmax(0,1fr); padding:16px; gap:16px; }
+  .gift-editor-image { width:100%; height:180px; }
+  .gift-set-card { padding:20px; }
+  .gift-summary-actions { flex-direction:column; }
+  .gift-summary-actions .button { width:100%; }
+}
+
+/* Bước 7 trên bản tích hợp (5): giữ nguyên toàn bộ điểm nối JavaScript. */
+[hidden] { display:none !important; }
+.search-inner { flex-wrap:wrap; gap:12px 20px; }
+.search-control { flex:1 1 300px; }
+.search-control input, .search-control button { min-height:48px; }
+.header-top { gap:24px; }
+.site-nav { gap:12px 24px; }
+.site-nav a { white-space:nowrap; }
+[data-reset-products] { min-height:48px; padding:10px 16px; border:1px solid var(--primary); border-radius:10px; color:var(--primary); background:var(--surface); cursor:pointer; font-weight:700; }
+[data-reset-products]:hover { color:white; background:var(--primary-hover); }
+.products-page .product-card-content { gap:0; }
+[data-cart-feedback]:not(:empty), .detail-action-message:not(:empty) { padding:14px 16px; margin:16px 0; border-left:4px solid #245C52; border-radius:8px; background:var(--sage); overflow-wrap:anywhere; }
+.gift-builder-page label { color:var(--text); }
+.gift-builder-page .gift-message { font-size:15px; }
+.gift-summary-content > p:last-child { align-items:center; font-weight:700; }
+.gift-editor-item-info .button { min-height:48px; }
+.cart-line__image, .cart-gift-item img { object-fit:contain; background:var(--page); }
+.cart-line__quantity button { width:44px; height:44px; flex:0 0 44px; }
+.cart-line__copy, [data-cart-action="remove"] { min-height:44px; margin-bottom:10px; }
+.cart-line__information { overflow-wrap:anywhere; }
+.cart-gift-items { grid-template-columns:repeat(2,minmax(0,1fr)); }
+.cart-gift-item { min-width:0; }
+[data-cart-summary] p { flex-wrap:wrap; }
+[data-cart-summary] strong { overflow-wrap:anywhere; }
+.detail-error { margin-block:40px; padding:28px; border:1px solid var(--border); border-radius:16px; background:var(--surface); }
+.detail-error p { margin-block:16px; }
+.quantity-control { gap:10px; }
+.quantity-control button { min-width:44px; min-height:44px; }
+.detail-quantity-field { margin-bottom:16px; }
+#product-quantity { min-height:44px; }
+button:focus-visible, input:focus-visible, select:focus-visible, a:focus-visible { outline:3px solid #245C52; outline-offset:3px; }
+@media (max-width:1099px) {
+ .header-caption { display:none; }
+ .header-top { gap:20px; }
+ .site-nav { gap:8px 20px; }
+}
+@media (max-width:699px) {
+ .product-filter-fields, .cart-gift-items { grid-template-columns:minmax(0,1fr); }
+ .search-inner { align-items:stretch; gap:8px; }
+ .search-inner > label, .search-control, #search-note { width:100%; }
+ .search-control { flex-basis:100%; }
+ .search-control input { padding:10px 12px; }
+ .search-control button { padding:10px 14px; }
+ .site-nav { gap:4px 14px; }
+ .site-nav a { font-size:14px; }
+ .cart-line { grid-template-columns:minmax(0,1fr); padding:18px; }
+ .cart-line__image { width:100%; height:220px; }
+ .cart-line__copy, [data-cart-action="remove"] { width:100%; margin-right:0; }
+ .detail-error { padding:20px; }
+}

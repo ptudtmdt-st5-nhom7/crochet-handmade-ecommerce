@@ -25,7 +25,8 @@
 </nav>
     <p class="header-caption">Những món len, những lời thương.</p>
   </div>
-  <div class="search-strip">
+  <!-- Một khu vực tìm chính trong bộ lọc; giữ điểm nối header để tương thích. -->
+  <div class="search-strip" hidden>
     <div class="container search-inner">
       <label for="site-search">Tìm một món len</label>
       <div class="search-control">
@@ -46,8 +47,12 @@
 
     <fieldset disabled aria-describedby="products-integration-note">
       <legend>Tìm kiếm, lọc và sắp xếp sản phẩm</legend>
+      <div class="product-filter-fields">
+      <div class="product-filter-field">
       <label for="product-search">Tên sản phẩm</label>
       <input id="product-search" type="search" data-product-search placeholder="Nhập tên hoặc mã sản phẩm">
+      </div>
+      <div class="product-filter-field">
       <label for="category-filter">Danh mục</label>
       <select id="category-filter" data-category-filter>
         <option value="">Tất cả danh mục</option>
@@ -56,13 +61,17 @@
         <option value="hoa-len">Hoa len</option>
         <option value="phu-kien">Phụ kiện móc len</option>
       </select>
+      </div>
+      <div class="product-filter-field">
       <label for="sort-select">Thứ tự giá</label>
       <select id="sort-select" data-sort-select>
         <option value="default">Mặc định</option>
         <option value="price-asc">Giá tăng dần</option>
         <option value="price-desc">Giá giảm dần</option>
       </select>
+      </div>
       <button type="button" data-reset-products>Xóa bộ lọc</button>
+      </div>
     </fieldset>
     <p id="products-integration-note">Chọn danh mục hoặc thứ tự giá để tìm món len phù hợp.</p>
     <p data-cart-feedback role="status" aria-live="polite"></p>
