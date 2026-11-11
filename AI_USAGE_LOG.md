@@ -923,3 +923,10 @@ Các nội dung cần kiểm thử sau khi tích hợp:
 - Đánh giá/điều chỉnh: giữ tách lưu dữ liệu với nghiệp vụ; dùng khóa workspace cho nhiều bộ và giữ API cũ tương thích; không tự thêm bản sao vào giỏ. Các khung được giữ sau thêm; không tự sửa dòng giỏ đã xác nhận. Chuẩn hóa tên cũ mà không thay thành phần hoặc số bộ.
 - Kiểm soát báo cáo: phân biệt kết quả công cụ và xác nhận sinh viên tự kiểm tra. Chưa ghi nhận Đức đã tự thử hết, giải thích toàn bộ mã, cả nhóm nghiệm thu hoặc nộp LMS. Những xác nhận đó chỉ cập nhật sau khi người liên quan thực hiện và phản hồi.
 - Phần các thành viên: chỉ rà để báo Đức nhắc bổ sung; không tạo prompt, nhật ký cá nhân, ảnh minh chứng hoặc xác nhận thay các bạn.
+
+## 11/11/2026 — Rà nội dung giao diện cửa hàng và header
+
+- Người yêu cầu: Đức. Prompt: rà các câu ghi dữ liệu minh họa/bài học khỏi giao diện, thay giỏ dạng chữ bằng biểu tượng bên phải và tăng nhẹ màu header.
+- Codex sửa nội dung sáu trang mua sắm hiện hành và thông báo/caption JavaScript liên quan; chuyển các giới hạn học phần vào README, không thay dữ liệu giá, giới hạn số lượng hoặc nghiệp vụ giỏ.
+- Giữ logo Lenly, thêm SVG giỏ có số đếm và tên truy cập; bố cục header phù hợp màn hình nhỏ. Không bổ sung backend, đơn hàng hoặc thanh toán.
+- Kiểm tra: chạy lại bộ Node, thử số đếm giỏ và tìm kiếm, luồng chọn quà và bố cục ba độ rộng bằng Chrome. Kết quả công cụ không phải xác nhận thành viên đã tự thử.

@@ -19,9 +19,9 @@
       <a href="about.html">Giới thiệu</a>
 
       <a href="gift-builder.html">Chọn quà</a>
-      <a href="cart.html">Giỏ hàng (<span data-cart-count>0</span>)</a>
+
 </nav>
-    <p class="header-caption">Những món len, những lời thương.</p>
+    <a class="header-cart" href="cart.html"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3h2l2.4 11.3a2 2 0 0 0 2 1.6h8.9a2 2 0 0 0 2-1.6L22 7H6"/><circle cx="10" cy="20" r="1"/><circle cx="19" cy="20" r="1"/></svg><span class="sr-only">Giỏ hàng</span><span class="cart-badge" data-cart-count>0</span></a>
   </div>
   <div class="search-strip">
     <div class="container search-inner">
@@ -30,7 +30,7 @@
         <input id="site-search" type="search" placeholder="Bạn đang tìm món đồ len nào?" aria-describedby="search-note">
         <button type="button" disabled>Tìm kiếm</button>
       </div>
-      <p id="search-note">Giao diện minh họa, chưa hỗ trợ tìm kiếm.</p>
+      <p id="search-note">Tìm theo tên hoặc mã sản phẩm.</p>
     </div>
   </div>
 </header>
@@ -61,23 +61,23 @@
   <section class="home-section home-featured" aria-labelledby="featured-title"><div class="container">
     <div class="home-section-heading"><p class="eyebrow">GỢI Ý TỪ LENLY</p><h2 id="featured-title">Những món len đáng để bạn khám phá</h2><p>Tham khảo các mẫu móc len của Lenly Crochet và tìm món đồ phù hợp với sở thích của bạn.</p></div>
     <div class="home-product-grid"><article class="product-card">
-      <div class="product-image"><img src="images/product-1.webp" alt="Móc khóa gấu len — ảnh minh họa" width="400" height="300" loading="lazy"></div>
+      <div class="product-image"><img src="images/product-1.webp" alt="Móc khóa gấu len" width="400" height="300" loading="lazy"></div>
       <div class="product-content"><p class="product-code">KC-001</p><h3>Móc khóa gấu len</h3>
       <p class="product-price">45.000đ</p><a class="product-link" href="product-detail.html?id=KC-001" aria-label="Xem thông tin Móc khóa gấu len">Xem thông tin <span aria-hidden="true">↗</span></a></div>
     </article><article class="product-card">
-      <div class="product-image"><img src="images/product-3.webp" alt="Thú len thỏ — ảnh minh họa" width="400" height="300" loading="lazy"></div>
+      <div class="product-image"><img src="images/product-3.webp" alt="Thú len thỏ" width="400" height="300" loading="lazy"></div>
       <div class="product-content"><p class="product-code">TL-001</p><h3>Thú len thỏ</h3>
       <p class="product-price">125.000đ</p><a class="product-link" href="product-detail.html?id=TL-001" aria-label="Xem chi tiết Thú len thỏ">Xem chi tiết <span aria-hidden="true">↗</span></a></div>
     </article><article class="product-card">
-      <div class="product-image"><img src="images/product-6.webp" alt="Bó hoa len nhỏ — ảnh minh họa" width="400" height="300" loading="lazy"></div>
+      <div class="product-image"><img src="images/product-6.webp" alt="Bó hoa len nhỏ" width="400" height="300" loading="lazy"></div>
       <div class="product-content"><p class="product-code">HL-002</p><h3>Bó hoa len nhỏ</h3>
       <p class="product-price">99.000đ</p><a class="product-link" href="product-detail.html?id=HL-002" aria-label="Xem thông tin Bó hoa len nhỏ">Xem thông tin <span aria-hidden="true">↗</span></a></div>
     </article><article class="product-card">
-      <div class="product-image"><img src="images/product-8.webp" alt="Kẹp tóc hoa len — ảnh minh họa" width="400" height="300" loading="lazy"></div>
+      <div class="product-image"><img src="images/product-8.webp" alt="Kẹp tóc hoa len" width="400" height="300" loading="lazy"></div>
       <div class="product-content"><p class="product-code">PK-002</p><h3>Kẹp tóc hoa len</h3>
       <p class="product-price">25.000đ</p><a class="product-link" href="product-detail.html?id=PK-002" aria-label="Xem thông tin Kẹp tóc hoa len">Xem thông tin <span aria-hidden="true">↗</span></a></div>
     </article></div>
-    <div class="home-section-end"><a class="button button-secondary" href="products.html">Xem tất cả sản phẩm</a><p class="small-note">Ảnh và giá là dữ liệu minh họa dùng cho bài học Buổi 2.</p></div>
+    <div class="home-section-end"><a class="button button-secondary" href="products.html">Xem tất cả sản phẩm</a></div>
   </div></section>
   <section class="home-section container" id="qua-theo-ngan-sach" aria-labelledby="gift-title">
     <div class="home-gift-panel"><div class="home-section-heading"><p class="eyebrow">MÓN QUÀ VỪA Ý, MỨC CHI VỪA VẶN</p><h2 id="gift-title">Chọn bộ quà trong mức chi bạn mong muốn</h2><p>Bạn đã có ngân sách nhưng chưa biết kết hợp những món quà nào? Lenly Crochet gợi ý các bộ quà để bạn tham khảo theo mức chi mong muốn. Xem các thành phần trong bộ và lựa chọn những thay đổi được cửa hàng cho phép để món quà phù hợp hơn với người nhận.</p></div>
@@ -166,7 +166,7 @@
     </div>
   </div>
   <div class="site-footer-bottom">
-    <p class="site-footer-note">Website học tập thuộc môn Phát triển ứng dụng thương mại điện tử, Nhóm 7. Giỏ hàng lưu trên trình duyệt; website chưa tiếp nhận đơn hàng hoặc thanh toán thật.</p>
+    <p class="site-footer-note">Lenly Crochet — Những món len, những lời thương.</p>
   </div>
 </footer>
   <script type="module" src="js/site.js"></script>
