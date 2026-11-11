@@ -120,3 +120,7 @@ Các chức năng mua hàng có sẵn, bộ quà theo ngân sách, đặt làm, 
 | [Quy trình nghiệp vụ](docs/business-workflow.md) | Mô tả và sơ đồ nghiệp vụ mua sẵn, bộ quà, đặt làm. |
 
 Báo cáo [Bước 4](docs/bai-lam-4.md) và ảnh trong `docs/minh-chung-buoc4/` được giữ làm hồ sơ giai đoạn trang chủ; chúng không thay thế báo cáo và bộ ảnh bản tích hợp Buổi 2.
+
+### Cập nhật nội dung và header 11/11
+
+Sáu trang mua sắm hiện hành dùng nội dung hướng đến khách hàng; các nhãn học phần/dữ liệu minh họa được giữ trong tài liệu thay vì lặp trên giao diện. Header dùng biểu tượng giỏ ở bên phải, số món tiếp tục lấy từ module giỏ và có tên truy cập bằng bàn phím/trình đọc màn hình. Nền hồng được tăng nhẹ độ đậm. Các file chi tiết tĩnh trong pages/product-details là hồ sơ Buổi 2; luồng hiện hành sử dụng product-detail.html?id=.... Việc sửa nội dung không bổ sung thanh toán hoặc đơn hàng máy chủ; dữ liệu và lượng giới hạn vẫn là dữ liệu bài tập.

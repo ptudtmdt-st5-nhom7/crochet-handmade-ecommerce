@@ -149,7 +149,7 @@ function validateCartStock(candidateCart) {
                     ok: false,
                     code: CART_CODES.OUT_OF_STOCK,
                     message:
-                        `${product.name} chỉ còn lượng minh họa ` +
+                        `${product.name} hiện có thể chọn tối đa ` +
                         `${product.stockDemo}, nhưng giỏ cần ${quantity}.`
                 };
             }

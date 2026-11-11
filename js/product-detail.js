@@ -458,7 +458,7 @@ function renderProduct(product) {
 
     setText(
         elements.productImageCaption,
-        `Hình ảnh minh họa sản phẩm ${product.name} (${product.id}).`
+        `Hình ảnh sản phẩm ${product.name} (${product.id}).`
     );
 
 
@@ -835,7 +835,7 @@ function validateQuantity() {
         return {
             ok: false,
             message:
-                `Số lượng vượt quá tồn kho minh họa. ` +
+                `Số lượng vượt quá giới hạn có thể chọn. ` +
                 `Vui lòng chọn tối đa ${maxQuantity} sản phẩm.`
         };
     }

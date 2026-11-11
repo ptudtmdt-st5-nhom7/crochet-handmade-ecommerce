@@ -1576,3 +1576,17 @@ button:focus-visible, input:focus-visible, select:focus-visible, a:focus-visible
   .gift-draft-actions { flex-direction:column; }
   .gift-draft-actions .button { width:100%; }
 }
+
+/* Header cửa hàng: giỏ ở bên phải, giữ số đếm và tên cho trình đọc màn hình. */
+.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+.site-header { background:#F0D7DE; border-bottom-color:#C79CA8; }
+.header-cart { margin-left:auto; flex:0 0 auto; position:relative; display:inline-flex; align-items:center; justify-content:center; width:50px; height:50px; border:1px solid #C79CA8; border-radius:50%; background:#FFF9F5; color:var(--primary); }
+.header-cart:hover, .header-cart[aria-current="page"] { background:var(--primary); color:#fff; }
+.cart-badge { position:absolute; top:-6px; right:-6px; min-width:22px; height:22px; padding:0 5px; border-radius:999px; background:var(--primary); border:2px solid #F0D7DE; color:#fff; font-size:12px; font-weight:700; line-height:18px; text-align:center; }
+@media (max-width:699px) {
+ .site-header .header-top { flex-direction:row; align-items:center; flex-wrap:wrap; gap:12px; }
+ .site-header .site-brand { order:0; }
+ .site-header .header-cart { order:1; }
+ .site-header .site-nav { order:2; width:100%; gap:6px 20px; }
+ .site-header .site-brand img { width:88px; }
+}
