@@ -930,3 +930,9 @@ Các nội dung cần kiểm thử sau khi tích hợp:
 - Codex sửa nội dung sáu trang mua sắm hiện hành và thông báo/caption JavaScript liên quan; chuyển các giới hạn học phần vào README, không thay dữ liệu giá, giới hạn số lượng hoặc nghiệp vụ giỏ.
 - Giữ logo Lenly, thêm SVG giỏ có số đếm và tên truy cập; bố cục header phù hợp màn hình nhỏ. Không bổ sung backend, đơn hàng hoặc thanh toán.
 - Kiểm tra: chạy lại bộ Node, thử số đếm giỏ và tìm kiếm, luồng chọn quà và bố cục ba độ rộng bằng Chrome. Kết quả công cụ không phải xác nhận thành viên đã tự thử.
+
+## 11/11/2026 — Bổ sung sản phẩm thiếu trong thông tin tóm tắt
+
+- Đức gửi ảnh mục “Thông tin các sản phẩm” chỉ có bảy thẻ. Codex đối chiếu với `js/products.js` và bổ sung Thú len thỏ (TL-001), giá 125.000₫, vào `products.html`.
+- Giữ thứ tự theo danh mục và kiểu trình bày hiện có. Không thay giá, dữ liệu sản phẩm hoặc chức năng tìm kiếm/giỏ hàng.
+- Kiểm tra bằng Chrome: đối chiếu đủ tám mã, tên và giá với dữ liệu chung; kiểm tra bố cục tại 1366, 768 và 390 px. Đây là kiểm tra của công cụ hỗ trợ.
