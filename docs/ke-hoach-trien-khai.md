@@ -15,17 +15,17 @@ Bản hiện hành dùng HTML5, CSS3 và JavaScript thuần; Node phục vụ ch
 
 ## Công nghệ
 
-Công nghệ toàn đồ án giữ theo yêu cầu đã ghi: **HTML/CSS/JavaScript, Tailwind CSS; Node.js/Express; MongoDB/Mongoose; Git/GitHub**. Tailwind chưa được dùng trong bản Buổi 3; cách áp dụng về sau cần thống nhất để giữ CSS đang hoạt động. Nền tảng triển khai backend chưa chọn.
+Công nghệ toàn đồ án giữ theo yêu cầu đã ghi: **HTML/CSS/JavaScript, Tailwind CSS; Node.js/Express; PostgreSQL; kết nối bằng thư viện `pg` (node-postgres); Git/GitHub**. Tailwind chưa được dùng trong bản Buổi 3; cách áp dụng về sau cần thống nhất để giữ CSS đang hoạt động. Nhà cung cấp PostgreSQL và nền tảng triển khai backend chưa chọn. Nam chuẩn bị schema SQL, khóa chính/khóa ngoại, ràng buộc và script tạo/cập nhật cấu trúc, dữ liệu mẫu; Khanh phối hợp kết nối bằng `pg`. Dùng truy vấn có tham số cho dữ liệu đầu vào; các cập nhật đơn, tồn và thanh toán liên quan cần được thiết kế theo giao dịch. Tài liệu: [node-postgres](https://node-postgres.com/).
 
 ## 1. Đợt tiếp theo — hoàn thành M2
 
 | Công việc | PIC và phối hợp | Kết quả bàn giao |
 | --- | --- | --- |
-| **DA01 — Chuẩn bị môi trường** | Nam; Khanh hỗ trợ | Cấu trúc backend, cấu hình mẫu, lệnh cài/chạy và hướng dẫn. Không đưa thông tin bí mật lên repository. |
+| **DA01 — Chuẩn bị môi trường** | Nam; Khanh hỗ trợ | Cấu trúc Node.js/Express, cấu hình mẫu kết nối PostgreSQL bằng `pg`, lệnh cài/chạy và hướng dẫn. Không đưa thông tin bí mật lên repository. |
 | **DA02 — Chốt quy tắc nghiệp vụ** | Đức; Bảo, Tuấn, Khanh, Châu phối hợp | Quyết định rõ phí/voucher, giữ và giải phóng tồn, hủy/hoàn tiền; báo giá, tỷ lệ/số tiền cọc, hạn cọc và thu phần còn lại. Giữ quy tắc ngân sách một bộ, vượt sau tùy chỉnh chỉ cảnh báo. |
-| **DA03 — Thiết kế dữ liệu và API** | Nam; từng PIC cung cấp phần mình | Schema sản phẩm/biến thể, tài khoản, bộ quà, đơn, báo giá và thanh toán; đường dẫn, dữ liệu gửi nhận, quyền và lỗi thống nhất. |
+| **DA03 — Thiết kế dữ liệu và API** | Nam; từng PIC cung cấp phần mình | Schema SQL PostgreSQL cho sản phẩm/biến thể, tài khoản, bộ quà, đơn, báo giá và thanh toán; khóa chính/khóa ngoại, ràng buộc, script tạo/cập nhật cấu trúc và dữ liệu mẫu. Thống nhất đường dẫn API, dữ liệu gửi nhận, quyền và lỗi. Ưu tiên chốt phần sản phẩm cho đợt kết nối đầu tiên; phần nghiệp vụ còn lại hoàn thiện theo M3–M4. |
 | **DA04 — Hoàn thiện thiết kế các màn hình còn thiếu** | Quyến; các PIC phối hợp | Bố cục tài khoản, checkout, đặt làm và quản trị; dùng lại nhận diện và thành phần hiện có. |
-| **DA05 — Chạy thử kết nối** | Nam; Khanh, Quyến hỗ trợ | Trang danh sách lấy được sản phẩm qua backend từ cơ sở dữ liệu; có thể chạy trên máy các thành viên. |
+| **DA05 — Chạy thử kết nối** | Nam; Khanh, Quyến hỗ trợ | API Node.js/Express đọc sản phẩm từ PostgreSQL bằng `pg`; giao diện lấy dữ liệu qua API. Bàn giao script tạo bảng/nạp dữ liệu mẫu và cách chạy trên máy các thành viên. |
 | **DA06 — Chuẩn bị kiểm thử** | Châu; từng PIC bổ sung | Test case gắn yêu cầu và quy tắc, có đầu vào, bước thử, kết quả mong đợi và dữ liệu biên. |
 
 **Thứ tự bàn giao:** DA01 và DA02 triển khai song song. Có quy tắc và môi trường chung → DA03, DA04; DA06 lập sau DA02 và cập nhật theo API. Có dữ liệu/API sản phẩm và khung giao diện cần dùng → DA05. Không cần chờ thiết kế xong mọi trang mới thử kết nối sản phẩm.

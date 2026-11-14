@@ -66,6 +66,8 @@ Frontend và backend triển khai song song sau khi thống nhất dữ liệu v
 
 ## 3. Công việc
 
+**Công nghệ:** HTML/CSS/JavaScript, Tailwind CSS; Node.js/Express; PostgreSQL, kết nối bằng `pg`; Git/GitHub. Nam phụ trách schema SQL và dữ liệu mẫu; Khanh phối hợp kết nối database. Nhà cung cấp triển khai chưa chốt.
+
 Công việc, người phụ trách, đầu ra và thứ tự bàn giao được ghi trong [kế hoạch triển khai](docs/ke-hoach-trien-khai.md). Giữ các mã DA01–DA24 để theo dõi từ chuẩn bị hệ thống đến nộp và bảo vệ.
 
 Đợt M2 gồm chuẩn bị môi trường, chốt nghiệp vụ, thiết kế dữ liệu/API, hoàn thiện thiết kế màn hình, chạy thử kết nối và lập ca kiểm thử. Thanh toán sandbox được thử kết nối kỹ thuật sớm trước khi hoàn thiện các luồng giao dịch.

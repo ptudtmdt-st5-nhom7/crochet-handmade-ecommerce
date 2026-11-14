@@ -99,7 +99,7 @@ Giới hạn về Thời gian, Công nghệ và Nguồn lực
 - **Các tính năng loại bỏ/hoãn:** Không đủ thời gian phát triển hệ thống tích điểm thành viên (Loyalty), khung chat trực tiếp thời gian thực (Live Chat qua WebSocket), hay mô phỏng 3D sản phẩm/hộp quà.
 
 ### 2. Giới hạn về Công nghệ (Technology Constraints)
-- **Tech Stack:** Frontend (HTML5, CSS3, JavaScript thuần, Tailwind CSS), Backend (Node.js, Express.js), Database (MongoDB, Mongoose ODM), Quản lý mã nguồn (Git & GitHub).
+- **Tech Stack:** Frontend (HTML5, CSS3, JavaScript thuần, Tailwind CSS), Backend (Node.js, Express.js), Database (PostgreSQL; kết nối từ Node.js bằng thư viện `pg`), Quản lý mã nguồn (Git & GitHub).
 - **Thanh toán:** Không tích hợp cổng thanh toán quốc tế phức tạp (Stripe/VNPay thật); chỉ áp dụng thanh toán giả lập (COD, chuyển khoản QR mẫu) hoặc tích hợp cổng Sandbox cơ bản.
 - **Vận chuyển & AI:** Không kết nối API vận chuyển tự động bên thứ ba (GHN/ViettelPost); không sử dụng AI để tự động sinh mẫu sản phẩm hoặc định giá từ ảnh.
 

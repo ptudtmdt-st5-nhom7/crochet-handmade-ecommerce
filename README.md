@@ -109,6 +109,20 @@ Mỗi thành viên tự trả lời sáu câu Bước 10 và cần giải thích
 
 ## 6. Hồ sơ Buổi 1 và kế hoạch toàn đồ án
 
+### Công nghệ toàn đồ án
+
+| Thành phần | Công nghệ |
+| --- | --- |
+| Frontend | HTML5, CSS3, JavaScript thuần; Tailwind CSS theo kế hoạch phát triển. |
+| Backend | Node.js và Express.js. |
+| Cơ sở dữ liệu | PostgreSQL; kết nối từ Node.js bằng thư viện `pg` (node-postgres). |
+| Công cụ | VS Code, npm, Git, GitHub Issues và Pull Request. |
+| Triển khai | Chưa chốt nhà cung cấp database và nền tảng chạy backend. |
+
+Đây là công nghệ đã chọn cho phần phát triển tiếp. Bản Buổi 3 vẫn dùng JavaScript/localStorage; PostgreSQL và backend chưa được triển khai. Nam phụ trách thiết kế dữ liệu, Khanh phối hợp kết nối; hướng dẫn triển khai ở [kế hoạch triển khai](docs/ke-hoach-trien-khai.md).
+
+Tài liệu kết nối PostgreSQL từ Node.js: [node-postgres](https://node-postgres.com/).
+
 Các chức năng mua hàng có sẵn, bộ quà theo ngân sách, đặt làm, tài khoản, quản trị và thanh toán là phạm vi phát triển của toàn đồ án, không phải các chức năng đã hoạt động trong bản giao diện Buổi 2. Công nghệ và trách nhiệm phát triển về sau được giữ trong các tài liệu sau:
 
 | Tài liệu | Nội dung |
