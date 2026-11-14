@@ -951,3 +951,12 @@ Các nội dung cần kiểm thử sau khi tích hợp:
 - Công cụ: OpenAI Codex, GitHub connector. Yêu cầu của Đức: bỏ dòng học phần/cập nhật, bỏ mở đầu giải thích dài; trình bày rõ, đủ ý như mẫu Project Plan nhóm Liêm.
 - Thực hiện: dùng bốn phần thành viên, giai đoạn, công việc và rủi ro; đổi bảng vai trò dài sang tiêu đề từng thành viên với nhiệm vụ/đầu ra. Giữ bảy vai trò, mốc cuối kỳ, tiến độ Buổi 2–3 và phần backend còn thiếu. Chuyển các bảng triển khai chi tiết sang docs/ke-hoach-trien-khai.md để giữ mã và thứ tự bàn giao.
 - Kiểm tra: đối chiếu nội dung kế hoạch trước, đủ bảy thành viên, các mốc M1–M7, mã/range DA01–DA24 và liên kết nội bộ. Không thay công nghệ, chức năng hoặc mã web.
+
+## 14/11/2026 — Thống nhất PostgreSQL cho phần phát triển tiếp
+
+- Người yêu cầu và chốt công nghệ: Nguyễn Quang Đức. Công cụ hỗ trợ: OpenAI Codex, GitHub connector và Google Sheets connector.
+- Prompt: “cập nhật lại công nghệ trên GitHub với bảng phân công trong Sheet sang PostgreSQL cho thống nhất”.
+- Quyết định: thay lựa chọn MongoDB/Mongoose trong kế hoạch bằng PostgreSQL; giữ Node.js/Express và frontend đã chọn, dùng thư viện `pg` để kết nối. Nhà cung cấp database/hosting chưa được chốt.
+- Thực hiện: đồng bộ REQUIREMENTS, AGENTS, README, PROJECT_PLAN, kế hoạch triển khai và các task liên quan ở tab phân công đợt 1. Nam phụ trách schema SQL/dữ liệu mẫu; Khanh phối hợp cấu hình kết nối và thử API.
+- Kiểm tra bằng công cụ: rà nội dung công nghệ trong tài liệu hiện hành, đối chiếu các ô đã sửa với bản trước; giữ người phụ trách, trạng thái và các deadline đã chốt. Chỉ thay tài liệu/kế hoạch, không sửa mã frontend, không thêm backend hoặc database đang chạy.
+- Giới hạn: việc chọn công nghệ và cập nhật phân công không xác nhận thành viên đã cài/chạy PostgreSQL hoặc hoàn thành task. Các log và hồ sơ giai đoạn trước được giữ để đối chiếu.

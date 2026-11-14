@@ -19,7 +19,7 @@ Không tự ý thêm chức năng hoặc chọn công nghệ thay nhóm.
 
 Công nghệ đã thống nhất: Frontend (HTML5, CSS3, JavaScript thuần,
 Tailwind CSS), Backend (Node.js, Express.js), cơ sở dữ liệu
-(MongoDB, Mongoose), quản lý mã nguồn (Git, GitHub).
+(PostgreSQL, thư viện `pg`), quản lý mã nguồn (Git, GitHub).
 Xem REQUIREMENTS.md, mục 6.
 
 ### Phạm vi riêng của bài tập Buổi 2
