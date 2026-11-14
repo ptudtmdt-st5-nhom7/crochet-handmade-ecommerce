@@ -960,3 +960,24 @@ Các nội dung cần kiểm thử sau khi tích hợp:
 - Thực hiện: đồng bộ REQUIREMENTS, AGENTS, README, PROJECT_PLAN, kế hoạch triển khai và các task liên quan ở tab phân công đợt 1. Nam phụ trách schema SQL/dữ liệu mẫu; Khanh phối hợp cấu hình kết nối và thử API.
 - Kiểm tra bằng công cụ: rà nội dung công nghệ trong tài liệu hiện hành, đối chiếu các ô đã sửa với bản trước; giữ người phụ trách, trạng thái và các deadline đã chốt. Chỉ thay tài liệu/kế hoạch, không sửa mã frontend, không thêm backend hoặc database đang chạy.
 - Giới hạn: việc chọn công nghệ và cập nhật phân công không xác nhận thành viên đã cài/chạy PostgreSQL hoặc hoàn thành task. Các log và hồ sơ giai đoạn trước được giữ để đối chiếu.
+
+## DA01 — Khởi tạo môi trường backend
+
+- Ngày thực hiện: 15/11/2026.
+- Người sử dụng AI: Nguyễn Thanh Nam.
+- Công cụ: ChatGPT.
+- Mục đích: hỗ trợ thiết lập Node.js/Express, kết nối PostgreSQL
+  bằng pg và viết hướng dẫn chạy backend.
+- Nội dung yêu cầu chính: hướng dẫn từng bước cài đặt, tạo cấu hình
+  môi trường, tạo máy chủ và kiểm tra kết nối database.
+- Kết quả AI đề xuất: .env.example, db.js, server.js, lệnh npm
+  và nội dung backend/README.md.
+- Kiểm tra và điều chỉnh: Nam lưu mã và chạy trên máy Windows;
+  bổ sung đủ sáu biến trong .env, khởi động lại backend và thử
+  hai đường dẫn /health, /health/db.
+- Kết quả thực tế: npm start chạy được; /health trả về status ok;
+  /health/db trả về status ok và database crochet_dev.
+- Quyết định: giữ cấu hình và mã nền đã chạy thử.
+  Chưa triển khai bảng hoặc API sản phẩm.
+- Minh chứng: docs/minh-chung-da01/.
+- Người tự kiểm tra: Nam. Chờ Tuấn feedback và xác nhận.
