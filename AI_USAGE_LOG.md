@@ -936,3 +936,11 @@ Các nội dung cần kiểm thử sau khi tích hợp:
 - Đức gửi ảnh mục “Thông tin các sản phẩm” chỉ có bảy thẻ. Codex đối chiếu với `js/products.js` và bổ sung Thú len thỏ (TL-001), giá 125.000₫, vào `products.html`.
 - Giữ thứ tự theo danh mục và kiểu trình bày hiện có. Không thay giá, dữ liệu sản phẩm hoặc chức năng tìm kiếm/giỏ hàng.
 - Kiểm tra bằng Chrome: đối chiếu đủ tám mã, tên và giá với dữ liệu chung; kiểm tra bố cục tại 1366, 768 và 390 px. Đây là kiểm tra của công cụ hỗ trợ.
+
+
+## 14/11/2026 — Tổ chức lại kế hoạch tổng thể
+
+- Người yêu cầu: Nguyễn Quang Đức. Công cụ: OpenAI Codex, GitHub connector.
+- Prompt: “sửa lại PROJECT_PLAN.md ... cho gọn và tổng thể ... giữ vai trò 7 người và cập nhật đúng những phần đã làm ở Buổi 2, 3”.
+- Thực hiện: viết lại kế hoạch tổng, giữ phân công và mã DA01–DA24/M1–M7; chuyển nguyên phần T01–T11 sang docs/phan-cong-chuong1.md, ghi rõ trạng thái lịch sử và liên kết về bản cũ. Tóm tắt kết quả frontend Buổi 2–3, tách backend/đơn/thanh toán còn chưa triển khai; đề xuất đợt M2 và cách theo dõi bằng Sheet/Issues.
+- Kiểm tra: đối chiếu README, REQUIREMENTS, AGENTS và cây mã nguồn main; kiểm tra đủ bảy vai trò, 24 mã công việc và liên kết nội bộ. Chỉ sửa tài liệu, không thay mã web, không tự đóng Issues, không tự xác nhận nhiệm vụ cá nhân hoặc đặt ngày bàn giao M2–M5.
