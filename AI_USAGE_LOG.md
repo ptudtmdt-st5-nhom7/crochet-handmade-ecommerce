@@ -944,3 +944,10 @@ Các nội dung cần kiểm thử sau khi tích hợp:
 - Prompt: “sửa lại PROJECT_PLAN.md ... cho gọn và tổng thể ... giữ vai trò 7 người và cập nhật đúng những phần đã làm ở Buổi 2, 3”.
 - Thực hiện: viết lại kế hoạch tổng, giữ phân công và mã DA01–DA24/M1–M7; chuyển nguyên phần T01–T11 sang docs/phan-cong-chuong1.md, ghi rõ trạng thái lịch sử và liên kết về bản cũ. Tóm tắt kết quả frontend Buổi 2–3, tách backend/đơn/thanh toán còn chưa triển khai; đề xuất đợt M2 và cách theo dõi bằng Sheet/Issues.
 - Kiểm tra: đối chiếu README, REQUIREMENTS, AGENTS và cây mã nguồn main; kiểm tra đủ bảy vai trò, 24 mã công việc và liên kết nội bộ. Chỉ sửa tài liệu, không thay mã web, không tự đóng Issues, không tự xác nhận nhiệm vụ cá nhân hoặc đặt ngày bàn giao M2–M5.
+
+
+## 14/11/2026 — Tinh gọn cách trình bày Project Plan
+
+- Công cụ: OpenAI Codex, GitHub connector. Yêu cầu của Đức: bỏ dòng học phần/cập nhật, bỏ mở đầu giải thích dài; trình bày rõ, đủ ý như mẫu Project Plan nhóm Liêm.
+- Thực hiện: dùng bốn phần thành viên, giai đoạn, công việc và rủi ro; đổi bảng vai trò dài sang tiêu đề từng thành viên với nhiệm vụ/đầu ra. Giữ bảy vai trò, mốc cuối kỳ, tiến độ Buổi 2–3 và phần backend còn thiếu. Chuyển các bảng triển khai chi tiết sang docs/ke-hoach-trien-khai.md để giữ mã và thứ tự bàn giao.
+- Kiểm tra: đối chiếu nội dung kế hoạch trước, đủ bảy thành viên, các mốc M1–M7, mã/range DA01–DA24 và liên kết nội bộ. Không thay công nghệ, chức năng hoặc mã web.
