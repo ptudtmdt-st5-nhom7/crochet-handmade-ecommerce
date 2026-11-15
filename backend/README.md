@@ -99,7 +99,7 @@ không kết nối được PostgreSQL.
 - GET /health/db: trả về status ok và database crochet_dev.
 - Minh chứng được lưu tại ../docs/minh-chung-da01/.
 
-Lệnh npm run dev đã được cấu hình, chưa ghi nhận kết quả tự thử.
+Đã chạy thử npm run dev thành công; backend tự khởi động lại khi lưu thay đổi server.js.
 
 ## Lưu ý khi gặp lỗi
 
