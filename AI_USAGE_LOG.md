@@ -1005,3 +1005,10 @@ Các nội dung cần kiểm thử sau khi tích hợp:
 - Đức xác nhận còn được thanh toán tiếp thì giữ voucher; khi thanh toán kết thúc thất bại, đơn hết hạn hoặc COD tự hủy thì trả lượt theo bản Bảo nếu mã còn hạn, không gia hạn voucher.
 - Theo chỉ dẫn của Đức, thống nhất các bước hoàn tiền của Bảo/Tuấn: chờ gửi yêu cầu, đã gửi đang chờ kết quả, hoàn thành hoặc thất bại. Gửi trong một ngày làm việc từ quyết định hoàn; dự kiến 3–5 ngày làm việc từ đơn vị thanh toán tiếp nhận.
 - Đồng bộ DA02.4 và PR #45; không để hai nội dung này thành câu hỏi phải xin xác nhận lại. Không sửa mã hoặc đăng nhận xét thay thành viên.
+
+
+## 16/11/2026 — Hoàn thiện DA02.4 để feedback
+
+- Đức xác nhận giữ nguyên các thông số còn lại theo bản Tuấn: đơn đặt làm không voucher, miễn ship từ 300.000đ; số lượng 1–10, tối đa ba ảnh 5 MB/ảnh với định dạng được hỗ trợ; ngày nhận ít nhất sau năm ngày và shop phản hồi trong 24 giờ.
+- Chuyển các giá trị vào quy tắc chính, giữ quyết định cọc cố định 50% đã chốt trước. Bỏ mục chờ xác nhận trong DA02.4, đồng bộ PR #45 và sửa liên kết sơ đồ sau khi đánh lại số mục.
+- Kiểm tra nội dung và liên kết; bàn giao Châu feedback, chưa merge PR và chưa xác nhận các chức năng đã triển khai.

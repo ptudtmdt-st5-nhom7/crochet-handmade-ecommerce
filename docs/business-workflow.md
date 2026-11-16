@@ -6,7 +6,7 @@
 <title>Tài liệu quy trình nghiệp vụ website kinh doanh sản phẩm móc len</title>
 </head>
 <body style="max-width:980px;margin:0 auto;padding:16px;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;line-height:1.7;color:#27212a;background:#ffffff">
-<p><strong>Phạm vi DA02.4:</strong> Luồng và quy tắc chi tiết xem <a href="quy-tac-nghiep-vu-da02.md">bộ quy tắc dùng chung</a>. Mục 5 chỉ còn cần xác nhận các tham số đặt làm khác chưa được Đức chốt; trả lượt voucher và các bước hoàn tiền đã được làm rõ. Guest được checkout hàng có sẵn theo quyết định mới của Đức; yêu cầu đặt làm chính thức vẫn cần Customer đăng nhập. Cọc F12/F13 cố định 50% tiền hàng. Khi đơn còn hiệu lực và còn được thanh toán tiếp thì giữ voucher; khi kết thúc thất bại/hủy/hết hạn thì trả lượt theo điều kiện mã. Hai luồng dùng chung Chờ hoàn tiền, Đang hoàn tiền, Đã hoàn tiền và Hoàn tiền thất bại; chi tiết mốc gửi và tiếp nhận tại DA02.4. DA01 mới có nền Express/PostgreSQL; luồng đơn hàng và thanh toán dưới đây chưa được xác nhận đã triển khai.</p>
+<p><strong>Phạm vi DA02.4:</strong> Luồng và quy tắc chi tiết xem <a href="quy-tac-nghiep-vu-da02.md">bộ quy tắc dùng chung</a>. Các thông số đặt làm theo bản Tuấn đã được Đức xác nhận tại mục 2.7 của bản tổng hợp; không còn mục chờ xác nhận chính sách. Guest được checkout hàng có sẵn theo quyết định mới của Đức; yêu cầu đặt làm chính thức vẫn cần Customer đăng nhập. Cọc F12/F13 cố định 50% tiền hàng. Đơn đặt làm không dùng voucher, miễn ship từ 300.000đ tiền hàng; yêu cầu 1–10 món, F13 tối đa ba ảnh hợp lệ không quá 5 MB/ảnh, ngày nhận mong muốn ít nhất sau năm ngày và shop phản hồi trong 24 giờ. Khi đơn còn hiệu lực và còn được thanh toán tiếp thì giữ voucher; khi kết thúc thất bại/hủy/hết hạn thì trả lượt theo điều kiện mã. Hai luồng dùng chung Chờ hoàn tiền, Đang hoàn tiền, Đã hoàn tiền và Hoàn tiền thất bại; chi tiết mốc gửi và tiếp nhận tại DA02.4. DA01 mới có nền Express/PostgreSQL; luồng đơn hàng và thanh toán dưới đây chưa được xác nhận đã triển khai.</p>
 
 
 <h1 style="text-align:center;color:#c2457a">Tài liệu quy trình nghiệp vụ website kinh doanh sản phẩm móc len</h1>
@@ -221,7 +221,7 @@
 <h3 id="35-sơ-đồ-luồng-đơn-giản">3.5. Sơ đồ luồng đơn giản</h3>
 <p>Sơ đồ dưới đây mô tả quy trình mua sản phẩm làm sẵn, bao gồm trường hợp khách tạo giỏ quà theo ngân sách.</p>
 
-<p>Sơ đồ hiện hành: <a href="quy-tac-nghiep-vu-da02.md#6-sơ-đồ-luồng-tổng-hợp">Sơ đồ luồng trong bộ quy tắc DA02.4</a>. Ảnh cũ được giữ trong repository để đối chiếu lịch sử, không dùng làm quy tắc triển khai mới.</p>
+<p>Sơ đồ hiện hành: <a href="quy-tac-nghiep-vu-da02.md#5-sơ-đồ-luồng-tổng-hợp">Sơ đồ luồng trong bộ quy tắc DA02.4</a>. Ảnh cũ được giữ trong repository để đối chiếu lịch sử, không dùng làm quy tắc triển khai mới.</p>
 
 
 <hr />
@@ -311,7 +311,7 @@
 <td>5C</td>
 <td>Staff/Admin</td>
 <td>Admin xác nhận giá và thời gian cho F12 hoặc lập báo giá F13. Báo giá lưu phiên bản, tiền hàng, phí giao hàng, số tiền cọc phải thu, thời gian dự kiến và thời hạn 24 giờ từ lúc gửi. Nếu đổi giá/thời gian, tạo bản mới và yêu cầu khách xác nhận lại.</td>
-<td>Chờ khách phản hồi báo giá; bản cũ đã thay thế không còn được chấp nhận. Tỷ lệ cọc và các tham số riêng chưa chốt được liệt kê tại DA02.4.</td>
+<td>Chờ khách phản hồi báo giá; bản cũ đã thay thế không còn được chấp nhận. Cọc cố định 50% tiền hàng; các thông số đặt làm áp dụng theo mục 2.7 của DA02.4.</td>
 </tr>
 <tr>
 <td>7</td>
@@ -535,7 +535,7 @@
 <h2 style="color:#c2457a;border-bottom:2px solid #fbe6ef;padding-bottom:4px;margin-top:2em" id="6-sơ-đồ-luồng-custom-order">6. Sơ đồ luồng Custom Order</h2>
 <p>Sơ đồ mô tả đầy đủ các bước từ lúc khách gửi yêu cầu đặt làm đến khi sản phẩm được giao. Các nhánh bổ sung thông tin, cửa hàng từ chối, khách không chấp nhận báo giá, thanh toán thất bại, yêu cầu hủy và giao hàng không thành công được thể hiện riêng để tránh nhầm lẫn với luồng xử lý thành công.</p>
 
-<p>Sơ đồ hiện hành: <a href="quy-tac-nghiep-vu-da02.md#6-sơ-đồ-luồng-tổng-hợp">Sơ đồ luồng trong bộ quy tắc DA02.4</a>. Ảnh cũ được giữ trong repository để đối chiếu lịch sử, không dùng làm quy tắc triển khai mới.</p>
+<p>Sơ đồ hiện hành: <a href="quy-tac-nghiep-vu-da02.md#5-sơ-đồ-luồng-tổng-hợp">Sơ đồ luồng trong bộ quy tắc DA02.4</a>. Ảnh cũ được giữ trong repository để đối chiếu lịch sử, không dùng làm quy tắc triển khai mới.</p>
 
 
 

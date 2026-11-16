@@ -2,7 +2,7 @@
 
 ## 1. Phạm vi tổng hợp
 
-Tổng hợp DA02.1 của Đức, bản Done tại DA02.2 của Bảo và DA02.3 của Tuấn thành quy tắc dùng chung. Các quyết định mới của Đức về mua hàng có sẵn, nhắn shop khi hết hàng và đặt cọc được đưa vào mục 2.1. Các quyết định đã thống nhất và những tham số đặt làm còn mở được theo dõi riêng tại mục 5; không coi phần còn mở là yêu cầu cuối để triển khai.
+Tổng hợp DA02.1 của Đức, bản Done tại DA02.2 của Bảo và DA02.3 của Tuấn thành quy tắc dùng chung theo các quyết định của Đức. Bản tổng hợp bao gồm mua hàng có sẵn, bộ quà, nhắn shop trao đổi khi hết hàng, đặt làm, cọc, thanh toán, tồn kho và hoàn tiền; được bàn giao để Châu feedback.
 
 Bản frontend hiện có danh sách tám sản phẩm, giỏ quà nhiều khung và giỏ hàng dùng localStorage/stockDemo. DA01 đã được merge qua PR #43, mới có Express và hai đường dẫn kiểm tra máy chủ/database. Các quy tắc checkout, đơn hàng, giữ tồn, thanh toán và đặt làm dưới đây là đầu vào triển khai backend, không phải xác nhận các chức năng đó đã chạy.
 
@@ -66,11 +66,13 @@ Dùng chung quy trình hoàn tiền cho đơn mua sẵn và đặt làm. Khi xá
 
 ### 2.7. Báo giá và cọc đơn đặt làm
 
-Shop xác nhận khả năng làm, giá và thời gian trước khi khách đồng ý. Báo giá có phiên bản; khi đổi giá/thời gian phải tạo bản mới, đánh dấu bản cũ đã thay thế và yêu cầu khách xác nhận bản hiện hành. Chưa tự cho đổi nội dung đơn đã cọc nếu chưa có quy tắc được thống nhất.
+Shop xác nhận khả năng làm, giá và thời gian trước khi khách đồng ý. Báo giá có phiên bản; khi đổi giá/thời gian phải tạo bản mới, đánh dấu bản cũ đã thay thế và yêu cầu khách xác nhận bản hiện hành. Sau khi đã cọc, khách không tự sửa nội dung đơn; nếu cần thay đổi phải liên hệ cửa hàng để xử lý.
 
 Theo quyết định của Đức: mọi đơn đặt làm phải thu đủ cọc trước sản xuất. Hạn chấp nhận và cọc nằm trong cùng 24 giờ tính từ lúc shop gửi báo giá/xác nhận nhận làm; khách đồng ý không được cộng thêm 24 giờ. Phiên thanh toán tối đa 25 phút nhưng không vượt hạn báo giá. Tiền cọc không làm tròn đến 1.000đ; tổng tiền, cọc, đã thu và còn lại được lưu tách biệt.
 
-Theo quyết định mới của Đức, cọc cố định 50% tiền hàng đặt làm cho cả F12 và F13, không tính phí vận chuyển vào cơ sở tính cọc và không áp dụng khoảng linh hoạt 30%–70%. Tiền còn lại = tổng tiền phải thanh toán trừ tổng tiền hợp lệ đã thu. Giới hạn yêu cầu và ưu đãi riêng cho đơn đặt làm còn là đề xuất của Tuấn, được liệt kê tại mục 5.2. Giao dịch thành công chỉ cộng tiền một lần; đơn đã hủy mà nhận tiền muộn phải hoàn toàn bộ khoản thu, không tự mở lại sản xuất.
+Cọc cố định 50% tiền hàng đặt làm cho cả F12 và F13, không tính phí vận chuyển vào cơ sở tính cọc. Tiền cọc thanh toán online qua cổng Sandbox, không dùng COD cho khoản cọc. Phần còn lại = tổng tiền phải thanh toán trừ tổng tiền hợp lệ đã thu; thu COD khi giao thành công hoặc thanh toán Sandbox ở trạng thái Đóng gói trước khi giao. Giao dịch thành công chỉ cộng tiền một lần; đơn đã hủy mà nhận tiền muộn phải hoàn toàn bộ khoản thu, không tự mở lại sản xuất.
+Đơn đặt làm không áp dụng voucher trong phiên bản đầu. Phí vận chuyển dùng chung biểu phí 20.000đ/30.000đ/40.000đ theo vùng; miễn phí vận chuyển khi tiền hàng đặt làm đã xác nhận đạt từ 300.000đ, chưa tính ship.
+Mỗi yêu cầu có số lượng nguyên từ 1 đến 10 món. Ảnh tham khảo F13 tối đa ba ảnh, định dạng .jpg/.jpeg/.png/.webp, dung lượng không quá 5 MB/ảnh. Ngày mong muốn nhận hàng phải cách ít nhất năm ngày kể từ ngày gửi yêu cầu; shop vẫn phải xác nhận khả năng đáp ứng và thời gian thực tế trước khi khách đồng ý. Shop phản hồi yêu cầu trong vòng 24 giờ kể từ khi nhận; mốc này khác với hạn báo giá/cọc 24 giờ tính từ lúc shop gửi báo giá.
 
 ### 2.8. Hủy đơn đặt làm và trạng thái
 
@@ -124,27 +126,7 @@ Khách bấm liên hệ về mẫu hết hàng: chưa tạo đơn/chưa thu cọ
 
 Báo giá gửi 10:00 ngày 16/11 hết hạn 10:00 ngày 17/11; đồng ý lúc 09:00 chỉ còn một giờ để cọc. Theo mức cọc cố định 50% trên tiền hàng 280.000đ, ship 20.000đ: cọc 140.000đ, còn lại 160.000đ. Đã trả 300.000đ rồi hủy khi đang sản xuất: giữ cọc 140.000đ, hoàn 160.000đ.
 
-## 5. Các quyết định và điểm còn cần xác nhận
-
-### 5.1. Quyền mua hàng không đăng nhập
-
-Áp dụng bản mới của Bảo theo chỉ dẫn của Đức: cho phép Guest mua hàng có sẵn/bộ quà mà không bắt buộc đăng nhập, vẫn kiểm tra đầy đủ người nhận, thông tin liên hệ, địa chỉ, giá, tồn kho và thanh toán tại máy chủ. Đặt làm chính thức vẫn cần Customer đăng nhập. Phần tương ứng trong REQUIREMENTS.md và workflow được đồng bộ tại PR #45; không còn để quyền guest checkout là điểm chờ chốt.
-
-### 5.2. Tiền cọc và các tham số đặt làm
-
-Đã thống nhất cọc cố định 50% tiền hàng theo quyết định của Đức, không linh hoạt 30%–70%. Những đề xuất còn cần xác nhận với Tuấn: có áp dụng miễn ship từ 300.000đ và không dùng voucher cho đơn đặt làm không; giới hạn 1–10 món, tối đa ba ảnh 5 MB/ảnh, ngày nhận tối thiểu sau năm ngày và thời gian shop phản hồi 24 giờ. Không tự coi các giá trị còn lại đã được cả nhóm thông qua.
-
-### 5.3. Quy tắc trả lượt voucher
-
-Đã thống nhất theo cách hiểu Đức xác nhận: một lần thanh toán lỗi nhưng đơn còn hiệu lực, còn được thử lại thì không trả lượt voucher. Thanh toán kết thúc thất bại làm đơn không còn tiếp tục, đơn hết hạn hoặc COD tự hủy thì trả lượt theo điều kiện Bảo đã ghi; voucher phải còn hạn và không được gia hạn khi trả. Không còn để vấn đề này ở trạng thái chờ Bảo/Khanh xác nhận.
-
-### 5.4. Quy trình hoàn tiền và dữ liệu triển khai
-
-Đã thống nhất hai cách gọi của Bảo/Tuấn thành các bước chung: Chờ hoàn tiền (đã xác định phải hoàn, chưa gửi yêu cầu), Đang hoàn tiền (đã gửi yêu cầu), Đã hoàn tiền hoặc Hoàn tiền thất bại theo kết quả. Dùng mốc thời gian tại mục 2.6 cho cả hai luồng; đây là thống nhất cách mô tả, không cần yêu cầu các thành viên chốt lại cùng một quy trình.
-
-Trong mô tả kho của Bảo vẫn có câu “xác nhận đơn thì trừ chính thức”, dễ dẫn tới trừ hai lần. Mục 2.4 đã tổng hợp theo nguyên tắc hàng giữ không còn bán được và xác nhận chỉ chuyển loại giữ sang cam kết; Bảo và Khanh đối chiếu nguyên tắc này khi chốt schema/API. Danh sách phường/xã theo vùng giao hàng là dữ liệu cấu hình còn cần bàn giao, không tự suy đoán từ địa chỉ hành chính cũ.
-
-## 6. Sơ đồ luồng tổng hợp
+## 5. Sơ đồ luồng tổng hợp
 
 ```mermaid
 flowchart TD
