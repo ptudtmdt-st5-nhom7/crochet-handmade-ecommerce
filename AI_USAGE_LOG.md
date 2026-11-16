@@ -981,3 +981,12 @@ Các nội dung cần kiểm thử sau khi tích hợp:
   Chưa triển khai bảng hoặc API sản phẩm.
 - Minh chứng: docs/minh-chung-da01/.
 - Người tự kiểm tra: Nam. Chờ Tuấn feedback và xác nhận.
+
+## 16/11/2026 — Tổng hợp quy tắc dùng chung DA02.4
+
+- Người yêu cầu: Nguyễn Quang Đức. Công cụ: OpenAI Codex, Google Docs và GitHub connector.
+- Yêu cầu: làm DA02.4 từ DA02.1, bản Done của Bảo và DA02.3; bổ sung hướng mua hàng có sẵn không cọc riêng, nhắn shop khi hết hàng và mọi đơn đặt làm phải cọc trước sản xuất.
+- Thực hiện: tạo docs/quy-tac-nghiep-vu-da02.md, đồng bộ phần liên quan trong REQUIREMENTS.md và docs/business-workflow.md; chuẩn bị nội dung DA02.4 trong Docs.
+- Đối chiếu: bản main sau PR #43, các tab nguồn và nhận xét hiện hành; kiểm tra số học các ví dụ, liên kết và các câu cũ về chặn vượt ngân sách/miễn cọc đặt làm.
+- Các điểm chưa chốt được giữ riêng, không tự mở quyền guest checkout hoặc khẳng định tỷ lệ cọc/điều kiện đề xuất đã được cả nhóm thông qua. Tài liệu bàn giao qua PR để Châu và các PIC rà soát.
+- Không thay mã ứng dụng, không sửa phần bàn giao cá nhân của Bảo/Tuấn, không xác nhận checkout/API/thanh toán đã hoạt động. Kết quả do công cụ hỗ trợ kiểm tra, không thay cho xác nhận của thành viên.

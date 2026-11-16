@@ -6,6 +6,8 @@
 <title>Tài liệu quy trình nghiệp vụ website kinh doanh sản phẩm móc len</title>
 </head>
 <body style="max-width:980px;margin:0 auto;padding:16px;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;line-height:1.7;color:#27212a;background:#ffffff">
+<p><strong>Phạm vi DA02.4:</strong> Luồng và quy tắc chi tiết xem <a href="quy-tac-nghiep-vu-da02.md">bộ quy tắc dùng chung</a>. Các điểm cần xác nhận tại mục 5 còn mở, gồm guest checkout, tham số đặt làm, lượt voucher và tên/mốc hoàn tiền. Quyền checkout hiện vẫn theo REQUIREMENTS.md cho đến khi có quyết định mới. DA01 mới có nền Express/PostgreSQL; luồng đơn hàng và thanh toán dưới đây chưa được xác nhận đã triển khai.</p>
+
 
 <h1 style="text-align:center;color:#c2457a">Tài liệu quy trình nghiệp vụ website kinh doanh sản phẩm móc len</h1>
 
@@ -107,7 +109,7 @@
 <td>2B</td>
 <td>Guest/Customer và Hệ thống</td>
 <td>Khách nhập mức ngân sách cụ thể. Hệ thống tìm và hiển thị các bộ quà cấu hình sẵn do cửa hàng thiết lập, có tổng giá trị sản phẩm phù hợp với ngân sách và đáp ứng điều kiện còn bán. Khách chọn một bộ quà và có thể đổi món, thay đổi số lượng hoặc bỏ món trong phạm vi chức năng F07. Sau mỗi lần điều chỉnh, hệ thống tính lại tổng giá trị sản phẩm và hiển thị số tiền còn lại hoặc số tiền vượt ngân sách.</td>
-<td>Giỏ quà được tạo khi có ít nhất một sản phẩm hợp lệ và tổng giá trị sản phẩm không vượt ngân sách. Phí vận chuyển và các khoản phát sinh được tính riêng. Nếu không có bộ quà phù hợp, giỏ quà rỗng hoặc tổng giá trị vượt ngân sách, hệ thống thông báo để khách điều chỉnh. Việc gợi ý được thực hiện từ dữ liệu bộ quà do cửa hàng cấu hình, không sử dụng AI tự tạo bộ quà.</td>
+<td>Bộ quà không rỗng, mã/lượng hợp lệ và đủ lượng có thể bán thì được thêm giỏ. Gợi ý ban đầu nằm trong ngân sách; sau tùy chỉnh, vượt ngân sách chỉ cảnh báo, không chặn mua. Mỗi bộ được gói cơ bản miễn phí; phí giao hàng tính tại checkout.</td>
 </tr>
 <tr>
 <td>3</td>
@@ -125,7 +127,7 @@
 <td>5</td>
 <td>Hệ thống</td>
 <td>Hệ thống kiểm tra thông tin bắt buộc, giá hiện hành, biến thể, số lượng, tồn kho, địa chỉ giao hàng, phương thức vận chuyển và điều kiện voucher nếu có. Hệ thống tính phí vận chuyển, khoản giảm giá và tổng tiền ở phía máy chủ. Đối với bộ quà, hệ thống kiểm tra từng biến thể cấu thành bộ quà và tính tổng nhu cầu tồn kho của các sản phẩm, bao gồm cả sản phẩm bán lẻ và sản phẩm nằm trong bộ quà. Việc kiểm tra phải căn cứ vào cùng một nguồn tồn kho để tránh bán vượt số lượng thực tế.</td>
-<td>Nếu dữ liệu hợp lệ, hệ thống hiển thị bảng xác nhận gồm sản phẩm, số lượng, giá, giảm giá, phí vận chuyển, tổng tiền, địa chỉ và phương thức thanh toán. Nếu dữ liệu không hợp lệ hoặc giá/tồn kho thay đổi, hệ thống thông báo cụ thể và yêu cầu khách điều chỉnh hoặc xác nhận lại trước khi tiếp tục.</td>
+<td>Hiển thị bảng xác nhận do máy chủ tính lại. Nếu thiếu món trong bộ, chỉ rõ bộ bị ảnh hưởng, tên/mã món, tổng lượng cần và lượng có thể bán; chưa tạo đơn và không tự bỏ/thay món.</td>
 </tr>
 <tr>
 <td>6</td>
@@ -137,33 +139,33 @@
 <td>7</td>
 <td>Hệ thống</td>
 <td>Sau khi Customer xác nhận, hệ thống kiểm tra lại giá, số lượng, tồn kho, voucher, phí vận chuyển và tổng tiền ở phía máy chủ. Nếu dữ liệu vẫn hợp lệ, hệ thống tạo mã đơn hàng và lưu thông tin người đặt, người nhận, địa chỉ, phương thức vận chuyển, phương thức thanh toán, chi tiết sản phẩm và giá tại thời điểm chốt đơn. Với bộ quà, hệ thống lưu thành phần, biến thể và số lượng cụ thể để bảo đảm thông tin lịch sử không thay đổi khi cấu hình bộ quà được cập nhật.<br><br>Hệ thống thực hiện giữ hoặc cập nhật tồn kho theo quy tắc mà nhóm đã thống nhất. Nếu tồn kho không còn đủ tại thời điểm xác nhận cuối cùng, hệ thống không tạo đơn với số lượng vượt tồn và thông báo để khách điều chỉnh. Điều kiện giải phóng tồn khi đơn bị hủy hoặc giao dịch không hoàn tất phải tuân theo quy tắc giữ tồn đã được xác định.</td>
-<td>Đơn hàng được tạo với trạng thái ban đầu “Chờ xử lý” và xuất hiện trong lịch sử mua hàng của Customer. Thông tin thanh toán được ghi nhận riêng theo phương thức đã chọn; việc tạo đơn không đồng nghĩa với việc thanh toán đã thành công. Nếu dữ liệu không còn hợp lệ, hệ thống không tạo đơn sai và yêu cầu khách kiểm tra lại.</td>
+<td>Online bắt đầu ở Chờ thanh toán, hạn 25 phút từ lúc tạo; COD bắt đầu ở Chờ xác nhận. Máy chủ giữ lượng hàng trong giao dịch phù hợp và lưu giá/cấu hình đơn. Tạo đơn chưa có nghĩa đã thanh toán.</td>
 </tr>
 <tr>
 <td>8</td>
 <td>Staff/Admin</td>
-<td>Tiếp nhận đơn mới, kiểm tra thông tin và xác nhận đơn hợp lệ. Sau khi xác nhận, cửa hàng tiến hành chuẩn bị sản phẩm.</td>
-<td>Đơn hàng được cập nhật từ “Chờ xử lý” sang “Đã xác nhận” và “Đang chuẩn bị” theo tiến trình thực tế.</td>
+<td>Admin kiểm tra và xác nhận đơn hợp lệ. Khi xác nhận, chuyển hàng giữ tạm sang cam kết cho đơn, không trừ lượng có thể bán lần thứ hai. Đơn COD chưa xử lý được nhắc sau 24 giờ, tự hủy sau 48 giờ kể từ lúc tạo.</td>
+<td>Đơn chuyển từ Chờ xác nhận sang Đã xác nhận rồi Đang chuẩn bị hàng. Thanh toán online thành công hợp lệ mới chuyển từ Chờ thanh toán sang Chờ xác nhận.</td>
 </tr>
 <tr>
 <td>9</td>
 <td>Staff/Admin</td>
 <td>Sau khi hoàn tất chuẩn bị sản phẩm, cửa hàng đóng gói và bàn giao đơn cho đơn vị hoặc người thực hiện giao hàng; cập nhật trạng thái theo tiến trình thực tế.</td>
-<td>Đơn hàng chuyển sang trạng thái “Đóng gói” và “Giao hàng” tương ứng với các mốc xử lý được ghi nhận.</td>
+<td>Đơn chuyển từ Đang chuẩn bị hàng sang Đang giao hàng khi bàn giao cho vận chuyển. Đóng gói nằm trong giai đoạn chuẩn bị của đơn mua sẵn.</td>
 </tr>
 <tr>
 <td>10</td>
 <td>Staff/Admin và Hệ thống</td>
 <td>Ghi nhận kết quả giao nhận theo thông tin do cửa hàng tiếp nhận hoặc cập nhật. Chỉ chuyển đơn sang trạng thái hoàn thành khi đáp ứng điều kiện hoàn thành đã quy định.</td>
-<td>Nếu giao nhận thành công theo quy ước của website, đơn hàng chuyển sang trạng thái “Hoàn thành”. Nếu giao nhận không thành công, đơn được giữ hoặc cập nhật theo trạng thái xử lý sự cố đã thống nhất; không tự động chuyển sang trạng thái “Hoàn thành”.</td>
+<td>Hoàn thành khi giao thành công và đã thu đủ tiền. Giao thất bại do Admin xử lý; giao lại tối đa một lần theo quy tắc DA02.4. Hàng đã xuất kho chỉ cộng lại sau khi hoàn về và được kiểm tra.</td>
 </tr>
 </tbody>
 </table></div>
 <h3 id="34-trạng-thái-và-nhánh-xử-lý">3.4. Trạng thái và nhánh xử lý</h3>
-<p>Đối với đơn hàng sản phẩm làm sẵn, trạng thái “Đang móc len” không phù hợp với quy trình thông thường vì sản phẩm đã được hoàn thiện trước khi khách đặt mua. Do đó, các trạng thái xử lý chính của đơn hàng gồm “Chờ xử lý”, “Đã xác nhận”, “Đang chuẩn bị”, “Đóng gói”, “Giao hàng” và “Hoàn thành”. Ngoài ra, trạng thái “Đã hủy” có thể được sử dụng nếu website hỗ trợ và đơn đáp ứng điều kiện hủy theo chính sách đã thống nhất. Trường hợp giao hàng không thành công cần được ghi nhận và xử lý riêng, không mặc nhiên xem là đơn đã hoàn thành.</p>
+<p>Đơn mua sẵn dùng Chờ thanh toán (online), Chờ xác nhận, Đã xác nhận, Đang chuẩn bị hàng, Đang giao hàng, Hoàn thành, Giao hàng thất bại và Đã hủy. Đóng gói thuộc bước chuẩn bị; không dùng Đang móc len cho hàng đã làm sẵn.</p>
 <p>Các trạng thái được cập nhật theo tiến trình thực tế. Sau khi tiếp nhận đơn, Admin kiểm tra thông tin và xác nhận đơn hợp lệ. Cửa hàng tiếp tục chuẩn bị, đóng gói và bàn giao đơn cho quá trình giao hàng. Khi việc giao nhận kết thúc, đơn được cập nhật thành “Hoàn thành”. Nếu phát sinh sự cố, chẳng hạn khách yêu cầu hủy hoặc giao hàng không thành công, Admin ghi nhận tình trạng và xử lý theo quy tắc đã được nhóm thống nhất.</p>
 <p>Bên cạnh trạng thái xử lý đơn hàng, hệ thống cần quản lý trạng thái thanh toán riêng biệt. Việc tách hai loại trạng thái giúp xác định độc lập tiến độ thực hiện đơn và tình trạng thanh toán của khách hàng.</p>
-<p>Đối với phương thức thanh toán khi nhận hàng (COD), đơn hàng có thể đang được xử lý hoặc giao hàng trong khi khoản thanh toán chưa được ghi nhận hoàn tất. Đối với phương thức QR giả lập, hệ thống chỉ ghi nhận thanh toán thành công khi có kết quả xác nhận phù hợp với quy trình mô phỏng. Trạng thái “Đã cọc” chỉ sử dụng khi chính sách đặt cọc được nhóm xác nhận áp dụng. Việc cập nhật trạng thái thanh toán không thay thế việc cập nhật trạng thái xử lý đơn hàng. Mỗi trạng thái cần phản ánh đúng tiến trình tương ứng và kết quả được ghi nhận trong website.</p>
+<p>Đối với phương thức thanh toán khi nhận hàng (COD), đơn hàng có thể đang được xử lý hoặc giao hàng trong khi khoản thanh toán chưa được ghi nhận hoàn tất. Đối với phương thức QR giả lập, hệ thống chỉ ghi nhận thanh toán thành công khi có kết quả xác nhận phù hợp với quy trình mô phỏng. Trạng thái “Đã cọc” dùng cho đơn đặt làm đã thu đủ cọc; đơn mua sẵn không có yêu cầu cọc riêng. Việc cập nhật trạng thái thanh toán không thay thế việc cập nhật trạng thái xử lý đơn hàng. Mỗi trạng thái cần phản ánh đúng tiến trình tương ứng và kết quả được ghi nhận trong website.</p>
 <p>Đối với thanh toán qua cổng sandbox, hệ thống phải xử lý tối thiểu ba kết quả: thành công, thất bại và hủy giao dịch. Chỉ giao dịch có kết quả thành công hợp lệ mới được cộng vào số tiền đã thu và cập nhật trạng thái thanh toán. Trường hợp giao dịch thất bại hoặc bị hủy, hệ thống không ghi nhận khoản thanh toán thành công và chỉ cho phép thử lại theo quy trình được triển khai.</p>
 <p>Mỗi giao dịch cần được kiểm tra mã tham chiếu, số tiền và trạng thái trước khi ghi nhận. Nếu hệ thống nhận nhiều lần cùng một thông báo thanh toán, giao dịch chỉ được ghi nhận thành công một lần. Trạng thái đơn hàng và trạng thái thanh toán được lưu độc lập để tránh trường hợp đơn đã tạo bị hiểu nhầm là đã thanh toán.</p>
 <div style="overflow-x:auto;margin:14px 0"><table border="1" cellpadding="8" cellspacing="0" style="border-collapse:collapse;width:100%;min-width:560px;border-color:#eadfe4">
@@ -188,7 +190,7 @@
 </tr>
 <tr>
 <td>Bộ quà vượt ngân sách</td>
-<td>Yêu cầu điều chỉnh thành phần hoặc số lượng; không tính phí vận chuyển vào ngân sách sản phẩm.</td>
+<td>Cảnh báo số tiền vượt ngân sách cho một bộ; không chặn thêm giỏ nếu cấu hình hợp lệ và đủ lượng. Phí giao hàng không nằm trong ngân sách sản phẩm.</td>
 </tr>
 <tr>
 <td>Voucher hết hạn hoặc không đủ điều kiện</td>
@@ -219,20 +221,9 @@
 <h3 id="35-sơ-đồ-luồng-đơn-giản">3.5. Sơ đồ luồng đơn giản</h3>
 <p>Sơ đồ dưới đây mô tả quy trình mua sản phẩm làm sẵn, bao gồm trường hợp khách tạo giỏ quà theo ngân sách.</p>
 
-<p align="center">
-  <a href="images/sơ đồ quy trình mua sản phẩm làm sẵn.jpg" target="_blank">
-    <img
-      src="images/sơ đồ quy trình mua sản phẩm làm sẵn.jpg"
-      alt="Sơ đồ quy trình mua sản phẩm làm sẵn hoặc tạo giỏ quà theo ngân sách"
-      width="100%"
-      style="max-width: 100%; height: auto;"
-    >
-  </a>
-</p>
+<p>Sơ đồ hiện hành: <a href="quy-tac-nghiep-vu-da02.md#6-sơ-đồ-luồng-tổng-hợp">Sơ đồ luồng trong bộ quy tắc DA02.4</a>. Ảnh cũ được giữ trong repository để đối chiếu lịch sử, không dùng làm quy tắc triển khai mới.</p>
 
-<p align="center">
-  <em>Nhấn vào hình để mở ảnh kích thước đầy đủ.</em>
-</p>
+
 <hr />
 <h2 style="color:#c2457a;border-bottom:2px solid #fbe6ef;padding-bottom:4px;margin-top:2em" id="4-quy-trình-2-đặt-làm-theo-mẫucá-nhân-hóa-custom-order">4. Quy trình 2: Đặt làm theo mẫu/cá nhân hóa (Custom Order)</h2>
 <h3 id="41-mục-tiêu">4.1. Mục tiêu</h3>
@@ -255,7 +246,7 @@
 <ul>
 <li>Mã yêu cầu Custom Order, thông tin khách hàng, mẫu gốc, màu sắc, kích thước, nội dung cá nhân hóa, số lượng, ngày mong muốn nhận hàng, ghi chú và tệp tham khảo hợp lệ.</li>
 <li>Trạng thái xem xét yêu cầu, gồm chờ cửa hàng xem xét, cần bổ sung thông tin, chờ khách phản hồi báo giá hoặc bị từ chối theo kết quả xử lý.</li>
-<li>Thông tin báo giá gồm mã hoặc phiên bản báo giá, giá áp dụng, thời gian dự kiến, số tiền cọc nếu có, điều kiện thanh toán và thời hạn hiệu lực.</li>
+<li>Thông tin báo giá gồm mã hoặc phiên bản báo giá, giá áp dụng, thời gian dự kiến, số tiền cọc phải thanh toán, điều kiện thanh toán và thời hạn hiệu lực.</li>
 <li>Kết quả khách chấp nhận hoặc từ chối báo giá. Chỉ sử dụng báo giá hiện hành còn hiệu lực làm căn cứ xác nhận đơn.</li>
 <li>Thông tin đơn đặt làm sau khi đáp ứng điều kiện chốt đơn, bao gồm nội dung yêu cầu đã xác nhận, giá cuối cùng, thời gian dự kiến và trạng thái đơn.</li>
 <li>Lịch sử thanh toán gồm các giao dịch hợp lệ, số tiền đã thu và số tiền còn phải thanh toán theo điều kiện áp dụng.</li>
@@ -277,8 +268,8 @@
 <tr>
 <td>1</td>
 <td>Customer</td>
-<td>Customer đăng nhập và chọn một trong hai hình thức: đặt làm theo mẫu có tùy chọn (F12) hoặc gửi yêu cầu riêng cần báo giá (F13).</td>
-<td>Hệ thống xác định đúng loại nghiệp vụ để chuyển sang biểu mẫu tương ứng.</td>
+<td>Khách có thể nhắn shop về mẫu hết hàng hoặc yêu cầu riêng để trao đổi khả năng làm, giá và thời gian. Nhắn tin chưa tạo đơn. Khi tiếp tục ghi nhận yêu cầu F12/F13 trên hệ thống, Customer đăng nhập theo F01.</td>
+<td>Shop không nhận làm hoặc khách không đồng ý thì kết thúc trao đổi. F12 dùng mẫu thiết kế của shop; F13 dành cho yêu cầu riêng.</td>
 </tr>
 <tr>
 <td>2</td>
@@ -319,26 +310,26 @@
 <tr>
 <td>5C</td>
 <td>Staff/Admin</td>
-<td>Khi yêu cầu F13 đủ điều kiện thực hiện, Staff/Admin lập báo giá gồm giá áp dụng, thời gian dự kiến hoàn thành hoặc giao hàng, số tiền cọc nếu có, điều kiện thanh toán và thời hạn hiệu lực. Báo giá phải gắn với phiên bản yêu cầu cụ thể và được gửi cho Customer xem xét. Nếu nội dung yêu cầu thay đổi làm ảnh hưởng đến giá hoặc thời gian, cửa hàng lập phiên bản báo giá mới thay vì âm thầm ghi đè báo giá đã gửi hoặc đã được khách chấp nhận.</td>
-<td>Yêu cầu chuyển sang “Chờ khách phản hồi báo giá”. Hệ thống lưu nội dung và thời hạn hiệu lực của báo giá để kiểm tra khi khách phản hồi.</td>
+<td>Admin xác nhận giá và thời gian cho F12 hoặc lập báo giá F13. Báo giá lưu phiên bản, tiền hàng, phí giao hàng, số tiền cọc phải thu, thời gian dự kiến và thời hạn 24 giờ từ lúc gửi. Nếu đổi giá/thời gian, tạo bản mới và yêu cầu khách xác nhận lại.</td>
+<td>Chờ khách phản hồi báo giá; bản cũ đã thay thế không còn được chấp nhận. Tỷ lệ cọc và các tham số riêng chưa chốt được liệt kê tại DA02.4.</td>
 </tr>
 <tr>
 <td>7</td>
 <td>Customer</td>
 <td>Customer xem nội dung yêu cầu, phiên bản báo giá hiện hành, giá, thời gian dự kiến, điều kiện thanh toán và thời hạn hiệu lực. Hệ thống kiểm tra báo giá trước khi ghi nhận phản hồi.</td>
-<td>Nếu khách từ chối, hệ thống ghi nhận “Báo giá bị từ chối” và kết thúc nhánh này. Nếu khách chấp nhận báo giá còn hiệu lực, hệ thống ghi nhận phiên bản được chấp nhận và chuyển sang kiểm tra điều kiện chốt đơn. Nếu báo giá đã hết hiệu lực hoặc nội dung đã thay đổi, khách phải xác nhận báo giá cập nhật trước khi tiếp tục. Việc chấp nhận báo giá chưa đồng nghĩa với việc đơn đã được phép sản xuất.</td>
+<td>Khách từ chối hoặc shop không nhận làm thì kết thúc. Khách đồng ý báo giá hiện hành trong hạn thì khóa nội dung và tạo duy nhất một đơn Chờ đặt cọc. Hạn cọc giữ nguyên mốc 24 giờ từ lúc gửi báo giá, không cộng thêm 24 giờ.</td>
 </tr>
 <tr>
 <td>8</td>
 <td>Customer/Hệ thống</td>
-<td>Nếu báo giá quy định phải đặt cọc hoặc thanh toán trước, Customer thực hiện giao dịch theo phương thức được website hỗ trợ. Hệ thống kiểm tra kết quả giao dịch, số tiền và mã tham chiếu; ghi nhận số tiền đã thu, số tiền còn lại và trạng thái thanh toán. Một giao dịch thành công chỉ được ghi nhận một lần. Nếu báo giá không yêu cầu thanh toán trước, bước này không bắt buộc.</td>
-<td>Giao dịch thành công được ghi nhận theo điều kiện thanh toán áp dụng. Giao dịch thất bại hoặc bị hủy không được ghi nhận là đã thanh toán. Nếu điều kiện thanh toán trước chưa được đáp ứng, đơn chưa đủ điều kiện chuyển sang sản xuất.</td>
+<td>Mọi đơn đặt làm phải thanh toán đủ tiền cọc đã xác nhận trước sản xuất. Máy chủ kiểm tra giao dịch, số tiền và mã tham chiếu; ghi nhận một lần. Phiên thanh toán tối đa 25 phút nhưng không vượt hạn báo giá.</td>
+<td>Thu đủ cọc trước hạn thì thanh toán Đã đặt cọc. Hết hạn chưa ghi nhận đủ cọc thì hủy đơn; tiền đến sau hủy được ghi nhận và xử lý hoàn, không tự khôi phục sản xuất.</td>
 </tr>
 <tr>
 <td>9</td>
 <td>Hệ thống và Staff/Admin</td>
-<td>Hệ thống kiểm tra khách đã chấp nhận báo giá còn hiệu lực, nội dung yêu cầu đã được xác nhận và các điều kiện chốt đơn đã đáp ứng hay chưa. Nếu có yêu cầu thanh toán hoặc đặt cọc trước, hệ thống kiểm tra kết quả giao dịch tương ứng. Staff/Admin xác nhận nghiệp vụ theo quyền được cấp.</td>
-<td>Khi đủ điều kiện, hệ thống lưu nội dung yêu cầu cuối cùng, phiên bản báo giá được chấp nhận, giá cuối cùng, thời gian dự kiến và thông tin thanh toán; đơn chuyển sang “Chờ sản xuất”. Nếu chưa đáp ứng điều kiện thanh toán trước, đơn tiếp tục ở trạng thái “Chờ thanh toán/đặt cọc” và chưa được đưa vào sản xuất. Nếu báo giá không yêu cầu thanh toán trước, đơn có thể chuyển sang “Chờ sản xuất” sau khi đáp ứng các điều kiện chốt đơn còn lại.</td>
+<td>Hệ thống kiểm tra đơn đã có phiên bản báo giá được khách chấp nhận và đã thu đủ cọc trước hạn. Admin xác nhận lịch sản xuất theo quyền được cấp.</td>
+<td>Đơn đã tồn tại từ lúc khách đồng ý báo giá; khi đủ cọc, chuyển sang Chờ sản xuất. Chưa đủ cọc thì chưa được đưa vào sản xuất.</td>
 </tr>
 <tr>
 <td>10</td>
@@ -404,11 +395,11 @@
 <tbody>
 <tr>
 <td>Chờ thanh toán/đặt cọc</td>
-<td>Khách đã chấp nhận báo giá còn hiệu lực và cần hoàn tất thanh toán trước theo điều kiện đã thống nhất, nhưng chưa đáp ứng điều kiện đó.</td>
+<td>Khách đã chấp nhận báo giá còn hiệu lực; chưa thu đủ khoản cọc bắt buộc trước hạn chung 24 giờ từ lúc shop gửi báo giá.</td>
 </tr>
 <tr>
 <td>Chờ sản xuất</td>
-<td>Đơn đã đáp ứng các điều kiện chốt đơn; nếu có yêu cầu thanh toán trước thì giao dịch phải được xác nhận thành công.</td>
+<td>Đơn đã có báo giá được khách đồng ý và đã thu đủ cọc trước hạn.</td>
 </tr>
 <tr>
 <td>Đang móc len</td>
@@ -460,9 +451,9 @@
 </tr>
 </tbody>
 </table></div>
-<p>Mỗi đơn đặt làm phải lưu giá trị đơn hàng, số tiền cần thanh toán trước nếu có, tổng số tiền đã ghi nhận thành công và số tiền còn phải thanh toán. Trạng thái “Đã cọc” được sử dụng khi hệ thống xác nhận đã thu khoản đặt cọc theo điều kiện đã thống nhất nhưng chưa hoàn tất nghĩa vụ thanh toán. Trạng thái “Đã thanh toán đủ” chỉ được cập nhật khi tổng số tiền đã thu đáp ứng nghĩa vụ thanh toán của đơn.</p>
+<p>Mỗi đơn đặt làm phải lưu giá trị đơn hàng, số tiền cọc bắt buộc, tổng số tiền đã ghi nhận thành công và số tiền còn phải thanh toán. Trạng thái “Đã cọc” được sử dụng khi hệ thống xác nhận đã thu khoản đặt cọc theo điều kiện đã thống nhất nhưng chưa hoàn tất nghĩa vụ thanh toán. Trạng thái “Đã thanh toán đủ” chỉ được cập nhật khi tổng số tiền đã thu đáp ứng nghĩa vụ thanh toán của đơn.</p>
 <p>Hệ thống lưu từng giao dịch hợp lệ và kiểm tra mã tham chiếu, số tiền, trạng thái giao dịch trước khi cập nhật tổng tiền đã thu. Một giao dịch không được cộng nhiều lần khi nhận thông báo trùng. Nếu giao dịch thất bại hoặc bị hủy, số tiền đã thu không được tăng và hệ thống không ghi nhận giao dịch là thanh toán thành công. Trạng thái thanh toán được quản lý độc lập với trạng thái sản xuất và giao nhận.</p>
-<p>Nếu báo giá không yêu cầu đặt cọc trước, hệ thống không tự đặt trạng thái “Chờ thanh toán/đặt cọc” chỉ vì khách vừa chấp nhận báo giá. Điều kiện thu phần tiền còn lại và thời điểm chuyển sang “Đã thanh toán đủ” phải tuân theo chính sách thanh toán mà nhóm thống nhất trước khi lập trình.</p>
+<p>Mọi đơn đặt làm đều phải thu đủ cọc trước sản xuất. Hàng làm sẵn và bộ quà từ hàng có sẵn đi theo luồng mua hàng, không yêu cầu cọc riêng. Việc nhắn shop chưa tạo đơn hoặc phát sinh nghĩa vụ cọc.</p>
 <h3 id="45-các-trường-hợp-ngoại-lệ">4.5. Các trường hợp ngoại lệ</h3>
 <div style="overflow-x:auto;margin:14px 0"><table border="1" cellpadding="8" cellspacing="0" style="border-collapse:collapse;width:100%;min-width:560px;border-color:#eadfe4">
 <thead>
@@ -506,7 +497,7 @@
 </tr>
 <tr>
 <td>Khách chấp nhận báo giá nhưng thanh toán/đặt cọc thất bại</td>
-<td>Ghi nhận kết quả giao dịch thất bại; không cộng vào số tiền đã thu. Nếu thanh toán trước là điều kiện chốt đơn, đơn chưa được chuyển sang sản xuất.</td>
+<td>Ghi nhận kết quả giao dịch thất bại; không cộng vào số tiền đã thu. Chưa thu đủ cọc trước hạn thì đơn chưa được chuyển sang sản xuất.</td>
 </tr>
 <tr>
 <td>Khách yêu cầu hủy trước khi sản xuất</td>
@@ -530,7 +521,7 @@
 <h2 style="color:#c2457a;border-bottom:2px solid #fbe6ef;padding-bottom:4px;margin-top:2em" id="5-quy-tắc-nghiệp-vụ-dùng-chung">5. Quy tắc nghiệp vụ dùng chung</h2>
 <ul>
 <li><strong>Quy tắc 1: Kiểm tra giá và tổng tiền:</strong> Trước khi tạo đơn mua sản phẩm làm sẵn hoặc chốt đơn đặt làm, hệ thống kiểm tra lại dữ liệu có liên quan ở phía máy chủ. Đối với đơn mua sẵn, hệ thống tính lại giá sản phẩm, số lượng, tồn kho, voucher, phí vận chuyển và tổng tiền. Đối với Custom Order, giá cuối cùng được xác định theo mẫu và tùy chọn đã xác nhận hoặc phiên bản báo giá được khách chấp nhận còn hiệu lực. Tổng tiền do giao diện gửi lên không được sử dụng trực tiếp làm căn cứ tạo đơn hoặc ghi nhận thanh toán.</li>
-<li><strong>Quy tắc 2: Gợi ý và điều chỉnh bộ quà:</strong> Hệ thống chỉ gợi ý bộ quà cấu hình sẵn do cửa hàng thiết lập theo F06. Khách được thay đổi thành phần hoặc số lượng trong phạm vi F07. Ngân sách áp dụng cho tổng giá trị sản phẩm; phí vận chuyển và các khoản phát sinh được tính riêng. Tổng giá trị sản phẩm sau điều chỉnh không được vượt ngân sách nếu khách muốn tiếp tục theo luồng giỏ quà có kiểm soát ngân sách.</li>
+<li><strong>Quy tắc 2: Gợi ý và điều chỉnh bộ quà:</strong> Hệ thống chỉ gợi ý bộ quà cấu hình sẵn do cửa hàng thiết lập theo F06. Khách được thay đổi thành phần hoặc số lượng trong phạm vi F07. Ngân sách áp dụng cho tổng giá trị sản phẩm; phí vận chuyển và các khoản phát sinh được tính riêng. Gợi ý ban đầu phải nằm trong ngân sách; sau tùy chỉnh, vượt ngân sách chỉ cảnh báo và bộ hợp lệ, đủ lượng vẫn được thêm giỏ.</li>
 <li><strong>Quy tắc 3: Kiểm soát tồn kho:</strong> Tồn kho được quản lý theo từng biến thể sản phẩm. Khi kiểm tra khả năng đáp ứng đơn hàng, hệ thống phải tính cả số lượng bán lẻ và số lượng nằm trong bộ quà. Thời điểm giữ tồn, thời hạn giữ và điều kiện giải phóng tồn khi hủy đơn hoặc thanh toán không hoàn tất phải được nhóm thống nhất trước khi triển khai.</li>
 <li><strong>Quy tắc 4: Lưu dữ liệu đơn hàng:</strong> Tên, giá, biến thể, số lượng và cấu hình sản phẩm được lưu tại thời điểm chốt đơn. Việc chỉnh sửa sản phẩm hoặc bộ quà trong danh mục không được làm thay đổi thông tin lịch sử của đơn đã tạo.</li>
 <li><strong>Quy tắc 5: Phân biệt F12 và F13:</strong> F12 áp dụng cho đặt làm theo mẫu có tùy chọn được website hỗ trợ; F13 áp dụng cho yêu cầu riêng cần báo giá. Giá niêm yết hoặc giá dự kiến của F12 không thay thế việc cửa hàng xác nhận khả năng thực hiện và thời gian trước khi khách đặt cọc. Đối với F13, yêu cầu chỉ được chốt thành đơn khi khách chấp nhận báo giá còn hiệu lực và đáp ứng các điều kiện chốt đơn đã thống nhất.</li>
@@ -544,20 +535,9 @@
 <h2 style="color:#c2457a;border-bottom:2px solid #fbe6ef;padding-bottom:4px;margin-top:2em" id="6-sơ-đồ-luồng-custom-order">6. Sơ đồ luồng Custom Order</h2>
 <p>Sơ đồ mô tả đầy đủ các bước từ lúc khách gửi yêu cầu đặt làm đến khi sản phẩm được giao. Các nhánh bổ sung thông tin, cửa hàng từ chối, khách không chấp nhận báo giá, thanh toán thất bại, yêu cầu hủy và giao hàng không thành công được thể hiện riêng để tránh nhầm lẫn với luồng xử lý thành công.</p>
 
-<p align="center">
-  <a href="images/sơ đồ quy trình custom order.jpg" target="_blank">
-    <img
-      src="images/sơ đồ quy trình custom order.jpg"
-      alt="Sơ đồ quy trình đặt làm theo mẫu hoặc cá nhân hóa Custom Order"
-      width="100%"
-      style="max-width: 100%; height: auto;"
-    >
-  </a>
-</p>
+<p>Sơ đồ hiện hành: <a href="quy-tac-nghiep-vu-da02.md#6-sơ-đồ-luồng-tổng-hợp">Sơ đồ luồng trong bộ quy tắc DA02.4</a>. Ảnh cũ được giữ trong repository để đối chiếu lịch sử, không dùng làm quy tắc triển khai mới.</p>
 
-<p align="center">
-  <em>Nhấn vào hình để mở ảnh kích thước đầy đủ.</em>
-</p>
+
 
 
 <hr>
