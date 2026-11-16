@@ -990,3 +990,11 @@ Các nội dung cần kiểm thử sau khi tích hợp:
 - Đối chiếu: bản main sau PR #43, các tab nguồn và nhận xét hiện hành; kiểm tra số học các ví dụ, liên kết và các câu cũ về chặn vượt ngân sách/miễn cọc đặt làm.
 - Các điểm chưa chốt được giữ riêng, không tự mở quyền guest checkout hoặc khẳng định tỷ lệ cọc/điều kiện đề xuất đã được cả nhóm thông qua. Tài liệu bàn giao qua PR để Châu và các PIC rà soát.
 - Không thay mã ứng dụng, không sửa phần bàn giao cá nhân của Bảo/Tuấn, không xác nhận checkout/API/thanh toán đã hoạt động. Kết quả do công cụ hỗ trợ kiểm tra, không thay cho xác nhận của thành viên.
+
+
+## 16/11/2026 — Chốt quyền mua không đăng nhập và cọc 50%
+
+- Đức cho phép dùng bản mua hàng của Bảo nếu hợp lý sau feedback của Khanh; Codex đối chiếu bản Done và áp dụng Guest checkout cho hàng có sẵn, giữ đăng nhập cho yêu cầu đặt làm chính thức.
+- Đức chọn cọc cố định 50% tiền hàng; bỏ đề xuất linh hoạt 30%–70%, không tính ship vào cơ sở cọc.
+- Đồng bộ DA02.4 và bản nháp PR #45. Hai vấn đề lượt voucher khi thanh toán thất bại và tên/mốc hoàn tiền vẫn chờ quyết định; các tham số đặt làm khác chưa tự chốt.
+- Chỉ sửa tài liệu, không thay mã xác thực hoặc khẳng định các quyền/API đã triển khai.

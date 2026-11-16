@@ -6,7 +6,7 @@
 <title>Tài liệu quy trình nghiệp vụ website kinh doanh sản phẩm móc len</title>
 </head>
 <body style="max-width:980px;margin:0 auto;padding:16px;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;line-height:1.7;color:#27212a;background:#ffffff">
-<p><strong>Phạm vi DA02.4:</strong> Luồng và quy tắc chi tiết xem <a href="quy-tac-nghiep-vu-da02.md">bộ quy tắc dùng chung</a>. Các điểm cần xác nhận tại mục 5 còn mở, gồm guest checkout, tham số đặt làm, lượt voucher và tên/mốc hoàn tiền. Quyền checkout hiện vẫn theo REQUIREMENTS.md cho đến khi có quyết định mới. DA01 mới có nền Express/PostgreSQL; luồng đơn hàng và thanh toán dưới đây chưa được xác nhận đã triển khai.</p>
+<p><strong>Phạm vi DA02.4:</strong> Luồng và quy tắc chi tiết xem <a href="quy-tac-nghiep-vu-da02.md">bộ quy tắc dùng chung</a>. Các điểm cần xác nhận tại mục 5 còn mở, gồm các tham số đặt làm còn lại, lượt voucher và tên/mốc hoàn tiền. Guest được checkout hàng có sẵn theo quyết định mới của Đức; yêu cầu đặt làm chính thức vẫn cần Customer đăng nhập. Cọc F12/F13 cố định 50% tiền hàng. DA01 mới có nền Express/PostgreSQL; luồng đơn hàng và thanh toán dưới đây chưa được xác nhận đã triển khai.</p>
 
 
 <h1 style="text-align:center;color:#c2457a">Tài liệu quy trình nghiệp vụ website kinh doanh sản phẩm móc len</h1>
@@ -38,7 +38,7 @@
 <tbody>
 <tr>
 <td><strong>Guest</strong> (Khách chưa đăng nhập)</td>
-<td>Tìm kiếm, lọc và xem sản phẩm; sử dụng chức năng gợi ý bộ quà theo ngân sách; điều chỉnh bộ quà và quản lý giỏ hàng tạm thời theo phạm vi F03–F08. Khách phải đăng ký hoặc đăng nhập theo F01 trước khi đặt hàng hoặc gửi yêu cầu Custom Order. Giỏ hàng tạm thời được duy trì và đồng bộ sau khi đăng nhập theo quy tắc đã xác định trong T05.</td>
+<td>Xem sản phẩm, tạo giỏ quà, quản lý giỏ và mua hàng có sẵn mà không bắt buộc đăng nhập; phải cung cấp đủ thông tin nhận hàng và liên hệ. Chỉ tra cứu đơn vãng lai bằng mã đơn kèm email hoặc số điện thoại đã đặt. Gửi yêu cầu đặt làm chính thức cần đăng nhập Customer.</td>
 </tr>
 <tr>
 <td><strong>Customer</strong> (Khách hàng)</td>
@@ -120,8 +120,8 @@
 <tr>
 <td>4</td>
 <td>Guest/Customer</td>
-<td>Khi chọn tiến hành đặt hàng, Guest phải đăng ký hoặc đăng nhập theo F01. Sau khi đăng nhập, hệ thống duy trì hoặc đồng bộ giỏ hàng tạm thời theo quy tắc đã thống nhất, đồng thời kiểm tra lại thông tin giỏ hàng. Customer chọn hoặc bổ sung địa chỉ giao hàng, nhập thông tin người nhận, chọn phương thức giao hàng và phương thức thanh toán được hỗ trợ. Khách có thể nhập mã voucher nếu muốn sử dụng.</td>
-<td>Thông tin đặt hàng được chuyển đến bước kiểm tra phía máy chủ. Nếu khách chưa đăng nhập, hệ thống chưa tạo đơn hàng và hướng dẫn khách đăng nhập hoặc đăng ký.</td>
+<td>Guest có thể đặt mua hàng làm sẵn/bộ quà mà không bắt buộc đăng nhập, nhưng phải nhập đầy đủ họ tên, email, số điện thoại và địa chỉ nhận hàng. Customer có thể chọn địa chỉ đã lưu. Cả hai chọn phương thức giao hàng/thanh toán và nhập voucher nếu có.</td>
+<td>Hệ thống kiểm tra dữ liệu và quyền ở máy chủ. Guest không có quyền truy cập hồ sơ hoặc lịch sử tài khoản; chỉ tra cứu đơn vãng lai theo mã đơn kèm thông tin liên hệ khớp.</td>
 </tr>
 <tr>
 <td>5</td>
@@ -131,14 +131,14 @@
 </tr>
 <tr>
 <td>6</td>
-<td>Customer</td>
+<td>Guest/Customer</td>
 <td>Kiểm tra lần cuối thông tin sản phẩm, người nhận, tổng tiền và phương thức thanh toán; xác nhận đặt hàng.</td>
 <td>Yêu cầu tạo đơn được gửi đến hệ thống.</td>
 </tr>
 <tr>
 <td>7</td>
 <td>Hệ thống</td>
-<td>Sau khi Customer xác nhận, hệ thống kiểm tra lại giá, số lượng, tồn kho, voucher, phí vận chuyển và tổng tiền ở phía máy chủ. Nếu dữ liệu vẫn hợp lệ, hệ thống tạo mã đơn hàng và lưu thông tin người đặt, người nhận, địa chỉ, phương thức vận chuyển, phương thức thanh toán, chi tiết sản phẩm và giá tại thời điểm chốt đơn. Với bộ quà, hệ thống lưu thành phần, biến thể và số lượng cụ thể để bảo đảm thông tin lịch sử không thay đổi khi cấu hình bộ quà được cập nhật.<br><br>Hệ thống thực hiện giữ hoặc cập nhật tồn kho theo quy tắc mà nhóm đã thống nhất. Nếu tồn kho không còn đủ tại thời điểm xác nhận cuối cùng, hệ thống không tạo đơn với số lượng vượt tồn và thông báo để khách điều chỉnh. Điều kiện giải phóng tồn khi đơn bị hủy hoặc giao dịch không hoàn tất phải tuân theo quy tắc giữ tồn đã được xác định.</td>
+<td>Sau khi Guest/Customer xác nhận, hệ thống kiểm tra lại giá, số lượng, tồn kho, voucher, phí vận chuyển và tổng tiền ở phía máy chủ. Nếu dữ liệu vẫn hợp lệ, hệ thống tạo mã đơn hàng và lưu thông tin người đặt, người nhận, địa chỉ, phương thức vận chuyển, phương thức thanh toán, chi tiết sản phẩm và giá tại thời điểm chốt đơn. Với bộ quà, hệ thống lưu thành phần, biến thể và số lượng cụ thể để bảo đảm thông tin lịch sử không thay đổi khi cấu hình bộ quà được cập nhật.<br><br>Hệ thống thực hiện giữ hoặc cập nhật tồn kho theo quy tắc mà nhóm đã thống nhất. Nếu tồn kho không còn đủ tại thời điểm xác nhận cuối cùng, hệ thống không tạo đơn với số lượng vượt tồn và thông báo để khách điều chỉnh. Điều kiện giải phóng tồn khi đơn bị hủy hoặc giao dịch không hoàn tất phải tuân theo quy tắc giữ tồn đã được xác định.</td>
 <td>Online bắt đầu ở Chờ thanh toán, hạn 25 phút từ lúc tạo; COD bắt đầu ở Chờ xác nhận. Máy chủ giữ lượng hàng trong giao dịch phù hợp và lưu giá/cấu hình đơn. Tạo đơn chưa có nghĩa đã thanh toán.</td>
 </tr>
 <tr>
@@ -322,7 +322,7 @@
 <tr>
 <td>8</td>
 <td>Customer/Hệ thống</td>
-<td>Mọi đơn đặt làm phải thanh toán đủ tiền cọc đã xác nhận trước sản xuất. Máy chủ kiểm tra giao dịch, số tiền và mã tham chiếu; ghi nhận một lần. Phiên thanh toán tối đa 25 phút nhưng không vượt hạn báo giá.</td>
+<td>Mọi đơn đặt làm phải thanh toán đủ tiền cọc cố định 50% tiền hàng trước sản xuất, không tính ship vào cơ sở cọc. Máy chủ kiểm tra giao dịch, số tiền và mã tham chiếu; ghi nhận một lần. Phiên thanh toán tối đa 25 phút nhưng không vượt hạn báo giá.</td>
 <td>Thu đủ cọc trước hạn thì thanh toán Đã đặt cọc. Hết hạn chưa ghi nhận đủ cọc thì hủy đơn; tiền đến sau hủy được ghi nhận và xử lý hoàn, không tự khôi phục sản xuất.</td>
 </tr>
 <tr>
@@ -453,7 +453,7 @@
 </table></div>
 <p>Mỗi đơn đặt làm phải lưu giá trị đơn hàng, số tiền cọc bắt buộc, tổng số tiền đã ghi nhận thành công và số tiền còn phải thanh toán. Trạng thái “Đã cọc” được sử dụng khi hệ thống xác nhận đã thu khoản đặt cọc theo điều kiện đã thống nhất nhưng chưa hoàn tất nghĩa vụ thanh toán. Trạng thái “Đã thanh toán đủ” chỉ được cập nhật khi tổng số tiền đã thu đáp ứng nghĩa vụ thanh toán của đơn.</p>
 <p>Hệ thống lưu từng giao dịch hợp lệ và kiểm tra mã tham chiếu, số tiền, trạng thái giao dịch trước khi cập nhật tổng tiền đã thu. Một giao dịch không được cộng nhiều lần khi nhận thông báo trùng. Nếu giao dịch thất bại hoặc bị hủy, số tiền đã thu không được tăng và hệ thống không ghi nhận giao dịch là thanh toán thành công. Trạng thái thanh toán được quản lý độc lập với trạng thái sản xuất và giao nhận.</p>
-<p>Mọi đơn đặt làm đều phải thu đủ cọc trước sản xuất. Hàng làm sẵn và bộ quà từ hàng có sẵn đi theo luồng mua hàng, không yêu cầu cọc riêng. Việc nhắn shop chưa tạo đơn hoặc phát sinh nghĩa vụ cọc.</p>
+<p>Mọi đơn đặt làm đều phải thu đủ cọc cố định 50% tiền hàng trước sản xuất. Hàng làm sẵn và bộ quà từ hàng có sẵn đi theo luồng mua hàng, không yêu cầu cọc riêng. Việc nhắn shop chưa tạo đơn hoặc phát sinh nghĩa vụ cọc.</p>
 <h3 id="45-các-trường-hợp-ngoại-lệ">4.5. Các trường hợp ngoại lệ</h3>
 <div style="overflow-x:auto;margin:14px 0"><table border="1" cellpadding="8" cellspacing="0" style="border-collapse:collapse;width:100%;min-width:560px;border-color:#eadfe4">
 <thead>
@@ -527,7 +527,7 @@
 <li><strong>Quy tắc 5: Phân biệt F12 và F13:</strong> F12 áp dụng cho đặt làm theo mẫu có tùy chọn được website hỗ trợ; F13 áp dụng cho yêu cầu riêng cần báo giá. Giá niêm yết hoặc giá dự kiến của F12 không thay thế việc cửa hàng xác nhận khả năng thực hiện và thời gian trước khi khách đặt cọc. Đối với F13, yêu cầu chỉ được chốt thành đơn khi khách chấp nhận báo giá còn hiệu lực và đáp ứng các điều kiện chốt đơn đã thống nhất.</li>
 <li><strong>Quy tắc 6: Quản lý báo giá:</strong> Báo giá gắn với phiên bản yêu cầu cụ thể, có giá, thời gian dự kiến, điều kiện thanh toán và thời hạn hiệu lực. Nếu nội dung đã chấp nhận thay đổi, hệ thống không được âm thầm ghi đè dữ liệu cũ. Khách phải xác nhận lại báo giá mới nếu thay đổi ảnh hưởng đến giá hoặc cam kết thực hiện.</li>
 <li><strong>Quy tắc 7: Quản lý thanh toán:</strong> Trạng thái thanh toán được lưu độc lập với trạng thái xử lý đơn hàng. Hệ thống ghi nhận số tiền đã thu, số tiền còn lại và từng giao dịch hợp lệ. Mỗi giao dịch thành công chỉ được ghi nhận một lần. Trạng thái “Đã cọc” và “Đã thanh toán đủ” chỉ được cập nhật khi đáp ứng điều kiện thanh toán tương ứng.</li>
-<li><strong>Quy tắc 8: Phân quyền:</strong> Guest chỉ được sử dụng các chức năng công khai và giỏ hàng tạm thời. Customer chỉ được xem hoặc thao tác với hồ sơ, địa chỉ, yêu cầu và đơn hàng của chính mình. Staff thực hiện nghiệp vụ vận hành trong phạm vi quyền được cấp. Admin có quyền quản trị theo T05; các quyền này phải được kiểm tra ở phía máy chủ.</li>
+<li><strong>Quy tắc 8: Phân quyền:</strong> Guest được dùng chức năng công khai, giỏ hàng và checkout hàng có sẵn; chỉ tra cứu đơn vãng lai khi khớp mã đơn với email hoặc số điện thoại, không xem lịch sử tài khoản. Customer chỉ được xem hoặc thao tác với hồ sơ, địa chỉ, yêu cầu và đơn hàng của chính mình. Staff thực hiện nghiệp vụ vận hành trong phạm vi quyền được cấp. Admin có quyền quản trị theo T05; các quyền này phải được kiểm tra ở phía máy chủ.</li>
 <li><strong>Quy tắc 9: Theo dõi và lưu vết:</strong> Hệ thống hiển thị trạng thái hiện tại của đơn mua sẵn và yêu cầu/đơn đặt làm. Những thay đổi quan trọng về báo giá, thanh toán và trạng thái đơn phải lưu thời gian và người thực hiện theo NF09. Phạm vi lịch sử được hiển thị cho Customer phải bảo đảm không tiết lộ dữ liệu của khách khác.</li>
 <li><strong>Quy tắc 10: Thanh toán và vận chuyển:</strong> Phương thức thanh toán được mô tả đúng với chức năng thực tế đã triển khai. Nếu sử dụng cổng sandbox, hệ thống phải xử lý thành công, thất bại và hủy giao dịch. Nếu có COD hoặc QR giả lập, phải mô tả riêng cách thức ghi nhận khoản thu và giới hạn của phương thức. Nếu chưa tích hợp API vận chuyển, trạng thái giao nhận do Staff/Admin cập nhật theo thông tin thực tế tiếp nhận, không mô tả như một quy trình vận chuyển tự động.</li>
 </ul>

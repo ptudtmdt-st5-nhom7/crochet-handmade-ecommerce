@@ -10,7 +10,7 @@ Bản frontend hiện có danh sách tám sản phẩm, giỏ quà nhiều khung
 
 ### 2.1. Phân biệt mua sẵn và đặt làm
 
-Sản phẩm còn đúng mẫu, màu sắc, kích thước và đủ số lượng có thể bán: khách mua theo luồng hàng có sẵn, không yêu cầu đặt cọc riêng. Thanh toán toàn bộ online hoặc COD được xử lý theo quy tắc đơn mua.
+Sản phẩm còn đúng mẫu, màu sắc, kích thước và đủ số lượng có thể bán: khách mua theo luồng hàng có sẵn, không yêu cầu đặt cọc riêng. Áp dụng theo bản Bảo: khách có thể mua bằng tài khoản hoặc không đăng nhập, nhưng phải cung cấp đủ thông tin nhận hàng và liên hệ. Guest tra cứu đơn bằng mã đơn kèm email hoặc số điện thoại đã đặt, không chỉ bằng mã đơn; Customer xem lịch sử đơn của mình. Gửi yêu cầu đặt làm F12/F13 chính thức vẫn cần tài khoản Customer; nhắn shop trao đổi trước chưa phải gửi yêu cầu đặt làm trên hệ thống.
 
 Sản phẩm hết hàng: có điểm liên hệ “Nhắn shop đặt làm”, kèm tên/mã mẫu để khách trao đổi khả năng làm, giá và thời gian. Bấm liên hệ chưa tạo đơn, chưa yêu cầu cọc và không tự chuyển giỏ hàng thành đơn đặt làm. Nếu shop không nhận làm hoặc khách không đồng ý thì kết thúc trao đổi.
 
@@ -70,7 +70,7 @@ Shop xác nhận khả năng làm, giá và thời gian trước khi khách đ�
 
 Theo quyết định của Đức: mọi đơn đặt làm phải thu đủ cọc trước sản xuất. Hạn chấp nhận và cọc nằm trong cùng 24 giờ tính từ lúc shop gửi báo giá/xác nhận nhận làm; khách đồng ý không được cộng thêm 24 giờ. Phiên thanh toán tối đa 25 phút nhưng không vượt hạn báo giá. Tiền cọc không làm tròn đến 1.000đ; tổng tiền, cọc, đã thu và còn lại được lưu tách biệt.
 
-Tỷ lệ cọc, giới hạn yêu cầu và ưu đãi riêng cho đơn đặt làm còn là đề xuất của Tuấn, được liệt kê tại mục 5.2. Khi được xác nhận, chỉ thu phần còn lại qua phương thức đã thống nhất; giao dịch thành công chỉ cộng tiền một lần. Đơn hết hạn đã hủy mà nhận tiền muộn phải hoàn toàn bộ khoản thu, không tự mở lại sản xuất.
+Theo quyết định mới của Đức, cọc cố định 50% tiền hàng đặt làm cho cả F12 và F13, không tính phí vận chuyển vào cơ sở tính cọc và không áp dụng khoảng linh hoạt 30%–70%. Tiền còn lại = tổng tiền phải thanh toán trừ tổng tiền hợp lệ đã thu. Giới hạn yêu cầu và ưu đãi riêng cho đơn đặt làm còn là đề xuất của Tuấn, được liệt kê tại mục 5.2. Giao dịch thành công chỉ cộng tiền một lần; đơn đã hủy mà nhận tiền muộn phải hoàn toàn bộ khoản thu, không tự mở lại sản xuất.
 
 ### 2.8. Hủy đơn đặt làm và trạng thái
 
@@ -122,17 +122,17 @@ Khách bấm liên hệ về mẫu hết hàng: chưa tạo đơn/chưa thu cọ
 
 ### 4.8. Thời hạn và tiền đơn đặt làm
 
-Báo giá gửi 10:00 ngày 16/11 hết hạn 10:00 ngày 17/11; đồng ý lúc 09:00 chỉ còn một giờ để cọc. Giả định đã xác nhận cọc 50% trên tiền hàng 280.000đ, ship 20.000đ: cọc 140.000đ, còn lại 160.000đ. Đã trả 300.000đ rồi hủy khi đang sản xuất: giữ cọc 140.000đ, hoàn 160.000đ.
+Báo giá gửi 10:00 ngày 16/11 hết hạn 10:00 ngày 17/11; đồng ý lúc 09:00 chỉ còn một giờ để cọc. Theo mức cọc cố định 50% trên tiền hàng 280.000đ, ship 20.000đ: cọc 140.000đ, còn lại 160.000đ. Đã trả 300.000đ rồi hủy khi đang sản xuất: giữ cọc 140.000đ, hoàn 160.000đ.
 
-## 5. Các điểm còn cần xác nhận
+## 5. Các quyết định và điểm còn cần xác nhận
 
-### 5.1. Khách chưa đăng nhập có được checkout hay không
+### 5.1. Quyền mua hàng không đăng nhập
 
-Bảo cho phép Guest tạo đơn bằng thông tin nhận hàng; REQUIREMENTS.md hiện chỉ cho Customer thực hiện F09–F10 và workflow yêu cầu đăng nhập. Cần Đức, Bảo và Khanh thống nhất có mở guest checkout/tra cứu đơn khách vãng lai hay giữ yêu cầu đăng nhập. Trước khi chốt, không mở rộng quyền API trái với REQUIREMENTS hiện hành.
+Áp dụng bản mới của Bảo theo chỉ dẫn của Đức: cho phép Guest mua hàng có sẵn/bộ quà mà không bắt buộc đăng nhập, vẫn kiểm tra đầy đủ người nhận, thông tin liên hệ, địa chỉ, giá, tồn kho và thanh toán tại máy chủ. Đặt làm chính thức vẫn cần Customer đăng nhập. Phần tương ứng trong REQUIREMENTS.md và workflow được đồng bộ tại PR #45; không còn để quyền guest checkout là điểm chờ chốt.
 
-### 5.2. Các đề xuất riêng của Tuấn
+### 5.2. Tiền cọc và các tham số đặt làm
 
-Cần xác nhận tỷ lệ cọc mặc định 50% và có cho Admin chọn 30%–70% với F13 hay không; có áp dụng miễn ship từ 300.000đ và không dùng voucher cho đơn đặt làm không; giới hạn 1–10 món, tối đa ba ảnh 5 MB/ảnh, ngày nhận tối thiểu sau năm ngày và thời gian shop phản hồi 24 giờ. Đây là các giá trị Tuấn đang ghi là đề xuất, chưa tự biến thành quyết định của cả nhóm.
+Đã thống nhất cọc cố định 50% tiền hàng theo quyết định của Đức, không linh hoạt 30%–70%. Những đề xuất còn cần xác nhận với Tuấn: có áp dụng miễn ship từ 300.000đ và không dùng voucher cho đơn đặt làm không; giới hạn 1–10 món, tối đa ba ảnh 5 MB/ảnh, ngày nhận tối thiểu sau năm ngày và thời gian shop phản hồi 24 giờ. Không tự coi các giá trị còn lại đã được cả nhóm thông qua.
 
 ### 5.3. Lượt voucher khi giao dịch thất bại
 
@@ -172,7 +172,7 @@ flowchart TD
  D --> E{"Khách đồng ý trong hạn?"}
  E -- Không --> X
  E -- Có --> F["Tạo đơn Chờ đặt cọc; giữ hạn 24h từ lúc gửi báo giá"]
- F --> G{"Thu đủ cọc trước hạn?"}
+ F --> G{"Thu đủ cọc 50% trước hạn?"}
  G -- Có --> H["Chờ sản xuất, móc len, đóng gói"]
  G -- Không --> Y["Hủy đơn; tiền về muộn phải hoàn, không tự mở lại"]
  H --> I["Giao hàng, thu đủ phần còn lại và hoàn thành"]
