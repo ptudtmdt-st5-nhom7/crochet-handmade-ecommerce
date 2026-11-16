@@ -1012,3 +1012,12 @@ Các nội dung cần kiểm thử sau khi tích hợp:
 - Đức xác nhận giữ nguyên các thông số còn lại theo bản Tuấn: đơn đặt làm không voucher, miễn ship từ 300.000đ; số lượng 1–10, tối đa ba ảnh 5 MB/ảnh với định dạng được hỗ trợ; ngày nhận ít nhất sau năm ngày và shop phản hồi trong 24 giờ.
 - Chuyển các giá trị vào quy tắc chính, giữ quyết định cọc cố định 50% đã chốt trước. Bỏ mục chờ xác nhận trong DA02.4, đồng bộ PR #45 và sửa liên kết sơ đồ sau khi đánh lại số mục.
 - Kiểm tra nội dung và liên kết; bàn giao Châu feedback, chưa merge PR và chưa xác nhận các chức năng đã triển khai.
+
+### 16/11/2026 — Bổ sung chi tiết bàn giao DA02.4 và PR #45
+
+- Công cụ: Codex, Google Docs và GitHub connector.
+- Người yêu cầu: Đức. Prompt chính: bổ sung đầy đủ các phần thiếu đã đối chiếu với bản Done DA02.2 của Bảo và DA02.3 của Tuấn, giữ nguyên quyết định đã chốt để Châu feedback.
+- Thực hiện: bổ sung giá lịch sử/sửa đơn, thiếu hàng thực tế và mốc 24 giờ, ba hướng duyệt yêu cầu, báo giá mới/chống đơn trùng, hủy/giao lại đơn đặt làm, dữ liệu đầu vào, quyền máy chủ, lưu vết và thông báo/tra cứu; bổ sung sáu tình huống đối chiếu.
+- Giữ nguyên: Guest mua sẵn, đặt làm chính thức cần Customer; gói cơ bản không thu phí; cọc F12/F13 cố định 50% tiền hàng; voucher/ship, giới hạn món/ảnh/ngày và các mốc thời hạn đã chốt. Không đưa lại khoảng cọc 30%–70% hoặc mục chờ xác nhận.
+- Kiểm tra: đối chiếu nội dung bổ sung giữa Docs và Markdown, rà các điều kiện/ngoại lệ tại nguồn, kiểm tra số mục, liên kết, ví dụ tính tiền và phạm vi tệp thay đổi. Đây là kiểm tra tài liệu, không ghi các ca dự kiến là API đã chạy đạt.
+- Phạm vi: chỉ tài liệu; không sửa mã ứng dụng, không sửa các thẻ Docs của thành viên khác. Bàn giao Châu feedback; chưa ghi nhận đã được Châu nghiệm thu và chưa merge PR.

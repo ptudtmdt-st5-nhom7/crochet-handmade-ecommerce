@@ -9,6 +9,8 @@
 <p><strong>Phạm vi DA02.4:</strong> Luồng và quy tắc chi tiết xem <a href="quy-tac-nghiep-vu-da02.md">bộ quy tắc dùng chung</a>. Các thông số đặt làm theo bản Tuấn đã được Đức xác nhận tại mục 2.7 của bản tổng hợp; không còn mục chờ xác nhận chính sách. Guest được checkout hàng có sẵn theo quyết định mới của Đức; yêu cầu đặt làm chính thức vẫn cần Customer đăng nhập. Cọc F12/F13 cố định 50% tiền hàng. Đơn đặt làm không dùng voucher, miễn ship từ 300.000đ tiền hàng; yêu cầu 1–10 món, F13 tối đa ba ảnh hợp lệ không quá 5 MB/ảnh, ngày nhận mong muốn ít nhất sau năm ngày và shop phản hồi trong 24 giờ. Khi đơn còn hiệu lực và còn được thanh toán tiếp thì giữ voucher; khi kết thúc thất bại/hủy/hết hạn thì trả lượt theo điều kiện mã. Hai luồng dùng chung Chờ hoàn tiền, Đang hoàn tiền, Đã hoàn tiền và Hoàn tiền thất bại; chi tiết mốc gửi và tiếp nhận tại DA02.4. DA01 mới có nền Express/PostgreSQL; luồng đơn hàng và thanh toán dưới đây chưa được xác nhận đã triển khai.</p>
 
 
+<p><strong>Chi tiết bàn giao DA02.4:</strong> <a href="quy-tac-nghiep-vu-da02.md#23-giá-khuyến-mãi-voucher-và-vận-chuyển">Lưu giá và sửa đơn</a>; <a href="quy-tac-nghiep-vu-da02.md#24-tồn-kho-dùng-chung">thiếu hàng thực tế và mốc liên hệ 24 giờ</a>; <a href="quy-tac-nghiep-vu-da02.md#27-báo-giá-và-cọc-đơn-đặt-làm">ba hướng duyệt yêu cầu, báo giá phiên bản và chống tạo đơn trùng</a>; <a href="quy-tac-nghiep-vu-da02.md#28-hủy-đơn-đặt-làm-và-trạng-thái">hủy/giao thất bại của đơn đặt làm</a>; <a href="quy-tac-nghiep-vu-da02.md#29-thông-tin-yêu-cầu-và-kiểm-tra-trên-máy-chủ">dữ liệu đầu vào, phân quyền và kiểm tra máy chủ</a>; <a href="quy-tac-nghiep-vu-da02.md#210-thông-báo-và-bảo-vệ-thông-tin-đơn">email và bảo vệ tra cứu</a>. Các tình huống đối chiếu ở mục 4 của bộ quy tắc là kết quả mong đợi khi triển khai, chưa phải kiểm thử API đã đạt.</p>
+
 <h1 style="text-align:center;color:#c2457a">Tài liệu quy trình nghiệp vụ website kinh doanh sản phẩm móc len</h1>
 
 
@@ -25,7 +27,7 @@
 <h2 style="color:#c2457a;border-bottom:2px solid #fbe6ef;padding-bottom:4px;margin-top:2em" id="1-mục-đích-và-phạm-vi">1. Mục đích và phạm vi</h2>
 <p>Tài liệu mô tả hai quy trình nghiệp vụ chính của website kinh doanh sản phẩm móc len, bao gồm quy trình mua sản phẩm làm sẵn hoặc tạo giỏ quà theo ngân sách và quy trình đặt làm sản phẩm theo mẫu hoặc yêu cầu cá nhân hóa (Custom Order). Mục tiêu là xác định trình tự xử lý, tác nhân tham gia, dữ liệu đầu vào và đầu ra, trạng thái nghiệp vụ, điều kiện chuyển bước và cách xử lý các trường hợp ngoại lệ, làm cơ sở cho việc thiết kế sơ đồ luồng và triển khai chức năng website.</p>
 <p>Quy trình mua sản phẩm làm sẵn tập trung vào các chức năng F01, F03–F10, trong đó khách có thể tìm kiếm sản phẩm, xem chi tiết, tạo hoặc điều chỉnh giỏ quà, quản lý giỏ hàng và đặt hàng. Quy trình này có liên quan đến F19–F22 và F24 trong các nghiệp vụ quản lý sản phẩm, biến thể, tồn kho, bộ quà, đơn hàng và voucher. Các chức năng quản lý hồ sơ, địa chỉ và lịch sử mua hàng tại F02 và F11 được áp dụng khi khách thực hiện đặt hàng và theo dõi đơn.</p>
-<p>Quy trình Custom Order tập trung vào F12–F17 và F23, bao gồm đặt làm theo mẫu có tùy chọn, gửi yêu cầu riêng cần báo giá, xem xét yêu cầu, bổ sung thông tin, lập và xác nhận báo giá, thanh toán tiền cọc khi có áp dụng, theo dõi tiến độ sản xuất và giao nhận. Trong đó, F12 và F13 được phân biệt theo hình thức đặt làm; không mặc định mọi yêu cầu đều phải trải qua quy trình báo giá riêng.</p>
+<p>Quy trình Custom Order tập trung vào F12–F17 và F23, bao gồm đặt làm theo mẫu có tùy chọn, gửi yêu cầu riêng cần báo giá, xem xét yêu cầu, bổ sung thông tin, lập và xác nhận báo giá, thanh toán cọc bắt buộc 50% tiền hàng trước sản xuất, theo dõi tiến độ sản xuất và giao nhận. Trong đó, F12 và F13 được phân biệt theo hình thức đặt làm; không mặc định mọi yêu cầu đều phải trải qua quy trình báo giá riêng.</p>
 <p>Các quy trình được thực hiện theo phân quyền người dùng quy định tại T05. Hệ thống phải kiểm tra dữ liệu, giá, tồn kho, điều kiện thanh toán và quyền truy cập ở phía máy chủ; lưu thông tin đơn hàng tại thời điểm chốt đơn và ghi nhận các thay đổi quan trọng theo phạm vi triển khai. Các phương thức thanh toán, quy tắc giữ tồn, điều kiện đặt cọc, hủy đơn và hoàn tiền phải tuân theo quyết định đã được nhóm thống nhất trước khi lập trình. Những chức năng ngoài phạm vi phiên bản đầu của T05 không được xem là chức năng bắt buộc trong hai quy trình.</p>
 <h2 style="color:#c2457a;border-bottom:2px solid #fbe6ef;padding-bottom:4px;margin-top:2em" id="2-tác-nhân-tham-gia">2. Tác nhân tham gia</h2>
 <div style="overflow-x:auto;margin:14px 0"><table border="1" cellpadding="8" cellspacing="0" style="border-collapse:collapse;width:100%;min-width:560px;border-color:#eadfe4">
@@ -238,7 +240,7 @@
 <li>Đối với F12: mã mẫu sản phẩm trên website, các tùy chọn được hỗ trợ như màu sắc, kích thước hoặc biến thể, số lượng và thông tin cần thiết để cửa hàng xác nhận khả năng thực hiện.</li>
 <li>Đối với F13: mẫu gốc hoặc mô tả sản phẩm mong muốn, màu sắc, kích thước, nội dung cá nhân hóa, ảnh tham khảo nếu có, số lượng, ngày mong muốn nhận hàng và ghi chú của khách.</li>
 <li>Tệp ảnh tham khảo phải đáp ứng quy định về định dạng và dung lượng theo NF05. Hệ thống kiểm tra tệp trước khi lưu.</li>
-<li>Đối với yêu cầu cần báo giá riêng: thông tin xem xét và báo giá do Staff/Admin có quyền xử lý cung cấp, gồm giá, thời gian dự kiến hoàn thành hoặc giao hàng, tiền cọc nếu áp dụng, thời hạn hiệu lực báo giá và điều kiện thanh toán.</li>
+<li>Đối với yêu cầu cần báo giá riêng: thông tin xem xét và báo giá do Staff/Admin có quyền xử lý cung cấp, gồm giá, thời gian dự kiến hoàn thành hoặc giao hàng, tiền cọc bắt buộc 50% tiền hàng, không gồm ship, thời hạn hiệu lực báo giá và điều kiện thanh toán.</li>
 <li>Đối với yêu cầu theo mẫu có giá niêm yết: giá dự kiến được tính theo mẫu và các tùy chọn được hỗ trợ; cửa hàng vẫn phải xác nhận khả năng thực hiện và thời gian trước khi khách đặt cọc.</li>
 </ul>
 <p>Báo giá phải gắn với một phiên bản yêu cầu cụ thể. Khi nội dung yêu cầu thay đổi làm ảnh hưởng đến giá hoặc thời gian, cửa hàng phải cập nhật báo giá và yêu cầu khách xác nhận lại trước khi tiếp tục.</p>
@@ -351,7 +353,7 @@
 </tr>
 </tbody>
 </table></div>
-<h3 id="44-trạng-thái-nghiệp-vụ-đề-xuất">4.4. Trạng thái nghiệp vụ đề xuất</h3>
+<h3 id="44-trạng-thái-nghiệp-vụ-đề-xuất">4.4. Trạng thái nghiệp vụ</h3>
 <h4 id="441-trạng-thái-yêu-cầu-và-báo-giá">4.4.1. Trạng thái yêu cầu và báo giá</h4>
 <div style="overflow-x:auto;margin:14px 0"><table border="1" cellpadding="8" cellspacing="0" style="border-collapse:collapse;width:100%;min-width:560px;border-color:#eadfe4">
 <thead>
@@ -489,7 +491,7 @@
 </tr>
 <tr>
 <td>Khách không phản hồi báo giá</td>
-<td>Giữ trạng thái chờ phản hồi cho đến khi khách phản hồi hoặc yêu cầu được xử lý theo thời hạn do nhóm thống nhất. Không xem việc im lặng là đồng ý.</td>
+<td>Chờ phản hồi trong hạn 24 giờ từ lúc gửi phiên bản báo giá hiện hành. Hết hạn thì báo giá hết hiệu lực, không cho chấp nhận hoặc thanh toán theo bản cũ; không xem im lặng là đồng ý.</td>
 </tr>
 <tr>
 <td>Báo giá hết hiệu lực</td>
@@ -509,7 +511,7 @@
 </tr>
 <tr>
 <td>Nội dung yêu cầu thay đổi sau khi đã chấp nhận báo giá</td>
-<td>Tạo phiên bản báo giá cập nhật nếu thay đổi ảnh hưởng đến giá hoặc thời gian. Khách phải xác nhận lại trước khi tiếp tục.</td>
+<td>Khách không tự sửa cấu hình đã khóa; phải liên hệ cửa hàng. Thay đổi được xử lý bằng phiên bản báo giá mới nếu ảnh hưởng giá/thời gian, cần khách xác nhận lại; không ghi đè cấu hình/giá hoặc giao dịch đã chốt. Tiền đã thu và khoản còn phải xử lý được lưu riêng theo DA02.4.</td>
 </tr>
 <tr>
 <td>Giao hàng chậm hoặc không thành công</td>
@@ -522,7 +524,7 @@
 <ul>
 <li><strong>Quy tắc 1: Kiểm tra giá và tổng tiền:</strong> Trước khi tạo đơn mua sản phẩm làm sẵn hoặc chốt đơn đặt làm, hệ thống kiểm tra lại dữ liệu có liên quan ở phía máy chủ. Đối với đơn mua sẵn, hệ thống tính lại giá sản phẩm, số lượng, tồn kho, voucher, phí vận chuyển và tổng tiền. Đối với Custom Order, giá cuối cùng được xác định theo mẫu và tùy chọn đã xác nhận hoặc phiên bản báo giá được khách chấp nhận còn hiệu lực. Tổng tiền do giao diện gửi lên không được sử dụng trực tiếp làm căn cứ tạo đơn hoặc ghi nhận thanh toán.</li>
 <li><strong>Quy tắc 2: Gợi ý và điều chỉnh bộ quà:</strong> Hệ thống chỉ gợi ý bộ quà cấu hình sẵn do cửa hàng thiết lập theo F06. Khách được thay đổi thành phần hoặc số lượng trong phạm vi F07. Ngân sách áp dụng cho tổng giá trị sản phẩm; phí vận chuyển và các khoản phát sinh được tính riêng. Gợi ý ban đầu phải nằm trong ngân sách; sau tùy chỉnh, vượt ngân sách chỉ cảnh báo và bộ hợp lệ, đủ lượng vẫn được thêm giỏ.</li>
-<li><strong>Quy tắc 3: Kiểm soát tồn kho:</strong> Tồn kho được quản lý theo từng biến thể sản phẩm. Khi kiểm tra khả năng đáp ứng đơn hàng, hệ thống phải tính cả số lượng bán lẻ và số lượng nằm trong bộ quà. Thời điểm giữ tồn, thời hạn giữ và điều kiện giải phóng tồn khi hủy đơn hoặc thanh toán không hoàn tất phải được nhóm thống nhất trước khi triển khai.</li>
+<li><strong>Quy tắc 3: Kiểm soát tồn kho:</strong> Tồn kho được quản lý theo từng biến thể sản phẩm. Khi kiểm tra khả năng đáp ứng đơn hàng, hệ thống phải tính cả số lượng bán lẻ và số lượng nằm trong bộ quà. Giữ hàng ngay khi tạo đơn hợp lệ; lượng giữ không còn bán cho đơn khác. Admin xác nhận chỉ chuyển giữ tạm sang cam kết, không trừ lần hai. Hủy trước xuất kho thì giải phóng; sau xuất kho chỉ cộng lượng bán được khi hàng hoàn về và đã kiểm tra. Các mốc 25 phút/48 giờ áp dụng theo luồng thanh toán tại DA02.4.</li>
 <li><strong>Quy tắc 4: Lưu dữ liệu đơn hàng:</strong> Tên, giá, biến thể, số lượng và cấu hình sản phẩm được lưu tại thời điểm chốt đơn. Việc chỉnh sửa sản phẩm hoặc bộ quà trong danh mục không được làm thay đổi thông tin lịch sử của đơn đã tạo.</li>
 <li><strong>Quy tắc 5: Phân biệt F12 và F13:</strong> F12 áp dụng cho đặt làm theo mẫu có tùy chọn được website hỗ trợ; F13 áp dụng cho yêu cầu riêng cần báo giá. Giá niêm yết hoặc giá dự kiến của F12 không thay thế việc cửa hàng xác nhận khả năng thực hiện và thời gian trước khi khách đặt cọc. Đối với F13, yêu cầu chỉ được chốt thành đơn khi khách chấp nhận báo giá còn hiệu lực và đáp ứng các điều kiện chốt đơn đã thống nhất.</li>
 <li><strong>Quy tắc 6: Quản lý báo giá:</strong> Báo giá gắn với phiên bản yêu cầu cụ thể, có giá, thời gian dự kiến, điều kiện thanh toán và thời hạn hiệu lực. Nếu nội dung đã chấp nhận thay đổi, hệ thống không được âm thầm ghi đè dữ liệu cũ. Khách phải xác nhận lại báo giá mới nếu thay đổi ảnh hưởng đến giá hoặc cam kết thực hiện.</li>
