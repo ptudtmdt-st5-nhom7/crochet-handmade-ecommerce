@@ -716,7 +716,9 @@ Giới hạn thời gian phiên giao dịch Sandbox: Mỗi phiên giao dịch tr
 
 Xử lý khi đơn quá hạn bị hủy nhưng cổng thanh toán báo thành công trễ: Khi quá mốc 24 giờ (ví dụ 10:00 ngày mai) mà chưa có giao dịch thành công, hệ thống tự động hủy đơn ('Đã hủy') để giải phóng lịch sản xuất. Nếu sau đó (ví dụ 10:01) cổng thanh toán Sandbox mới gửi thông báo/Callback đã thu tiền thành công cho đơn đã hủy đó: hệ thống tuyệt đối KHÔNG tự động phục hồi đơn sang 'Chờ sản xuất' và KHÔNG cộng dồn vào doanh thu đơn hợp lệ; thay vào đó ghi nhận giao dịch hợp lệ (chống trùng theo NF06) và tự động chuyển trạng thái thanh toán của đơn sang 'Chờ hoàn tiền' (REFUND_PENDING) để hoàn trả 100% số tiền khách đã trả theo quy trình và mốc thời gian tại mục 6, tránh tình trạng vừa giữ tiền khách vừa để đơn bị hủy.
 
-Công thức: tiền hàng = tổng (đơn giá báo giá × số lượng); tổng phải trả = tiền hàng + phí vận chuyển; cọc bắt buộc = 50% × tiền hàng; phần còn lại = tổng phải trả − tổng tiền hợp lệ đã thu. Lưu riêng totalAmount, depositRequired, paidAmount và remainingAmount; chỉ tăng số đã thu khi giao dịch hợp lệ thành công.
+Công thức: tiền hàng = tổng (đơn giá báo giá × số lượng); tổng phải trả = tiền hàng + phí vận chuyển; cọc bắt buộc = làm tròn đến đồng gần nhất của (50% × tiền hàng), phần lẻ 0,5 đồng làm tròn lên; phần còn lại = tổng phải trả − tổng tiền hợp lệ đã thu. Lưu riêng totalAmount, depositRequired, paidAmount và remainingAmount; chỉ tăng số đã thu khi giao dịch hợp lệ thành công.
+
+Cách làm tròn: làm tròn một lần trên 50% tổng tiền hàng của cả đơn, không làm tròn riêng từng món và không làm tròn đến 1.000đ. Phần lẻ dưới 0,5 đồng làm tròn xuống, từ 0,5 đồng làm tròn lên. Ví dụ tiền hàng 99.999đ, ship 20.000đ: cọc tính ra 49.999,5đ, chốt depositRequired = 50.000đ; tổng phải trả 119.999đ, khi đã thu cọc 50.000đ thì remainingAmount = 69.999đ. Lưu số cọc đã làm tròn trên báo giá/đơn và dùng thống nhất khi hiển thị, tạo giao dịch và kiểm tra cọc. paidAmount là tổng tiền thực thu hợp lệ; remainingAmount tính từ tổng phải trả trừ paidAmount, không làm tròn độc lập lần nữa.
 
 ### 5.6. Thu phần còn lại và vận chuyển
 
@@ -763,6 +765,8 @@ Ba nhóm yêu cầu/báo giá, đơn và thanh toán độc lập. Các trạng 
 Trước khi thu tiền, hủy không phát sinh hoàn; sau khi đã cọc nhưng chưa móc len, khách phải liên hệ và được Admin duyệt. Khi khách đổi ý trong sản xuất/đóng gói hoặc vẫn từ chối nhận sau một lần giao lại, giữ tiền cọc và hoàn phần đã thu ngoài cọc. Lỗi shop hoặc không thực hiện đúng cam kết thì hoàn toàn bộ; hàng lỗi/sai mẫu khi giao và khách không đồng ý làm lại thì nhận hàng hoàn, hoàn toàn bộ. Không áp dụng thêm cách khấu trừ phí của đơn mua sẵn vào đơn đặt làm này.
 
 Hủy đang giao do Admin xử lý sau liên hệ, khách không tự hủy trên web. Việc hủy phải lưu lý do, người xử lý, thời gian và khoản tiền giữ/hoàn; không xem đơn Đã hủy là đã hoàn xong. Thời gian cho phép hủy theo giai đoạn khác với thời gian xử lý hoàn tiền 3–5 ngày làm việc.
+
+Phân biệt nguyên nhân giao thất bại: giao không thành công không mặc nhiên là khách đổi ý hoặc từ chối nhận. Admin ghi rõ nguyên nhân và liên hệ khách trước khi xử lý. Chỉ áp dụng giữ cọc và hoàn phần đã thu ngoài cọc khi xác định khách đổi ý/từ chối nhận theo điều kiện tại mục 5.8. Nếu lỗi shop, hàng lỗi hoặc sai mẫu đã chốt thì áp dụng quy tắc hoàn toàn bộ tiền đã thu của mục này. Nếu lỗi đơn vị vận chuyển hoặc chưa rõ nguyên nhân, Admin xác minh và phối hợp xử lý giao lại/hủy theo thực tế; không tự quy lỗi cho khách, tự giữ cọc hoặc tự đánh dấu đã hoàn tiền chỉ vì trạng thái Giao hàng thất bại.
 
 ### 5.9. Luồng yêu cầu, báo giá và thu cọc
 
@@ -937,6 +941,7 @@ Các quy tắc đơn mua, đặt làm và các tình huống backend dưới đ�
 | Tra cứu Guest | Chỉ có mã đơn hoặc mã đơn + liên hệ sai. | Không trả dữ liệu; thông báo chung, không chỉ ra trường sai. Sai 5 lần liên tiếp thì khóa tra cứu 15 phút theo cấu hình. |
 | Quyền và tổng tiền máy chủ | A đổi ID sang đơn của B hoặc sửa giá/tổng tiền trong request. | Chặn truy cập chéo; giá/tổng tiền do máy chủ tính lại. |
 | Hết hàng và nhắn shop | Khách bấm Nhắn shop đặt làm cho mẫu hết kho. | Chưa tạo đơn/chưa thu cọc. Shop từ chối thì kết thúc; nhận làm và khách đồng ý thì tiếp tục F12/F13 thích hợp. |
+| Nhiều bộ quà thiếu sản phẩm thành phần | Giỏ có 2 bộ quà, mỗi bộ chứa 1 Thú len thỏ (TL-001). Tổng cần 2 TL-001 nhưng kho chỉ còn 1 có thể bán; khách tiến hành checkout. | Chưa tạo đơn. Báo rõ từng bộ quà bị ảnh hưởng, tên/mã Thú len thỏ – TL-001, cần 2, hiện còn 1, thiếu 1. Không tự bỏ hoặc thay món. Khách chủ động đổi món, giảm số bộ hoặc bỏ bộ rồi hệ thống kiểm tra lại. |
 
 ### 8.4. Đặt làm và báo giá
 

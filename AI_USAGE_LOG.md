@@ -1030,3 +1030,11 @@ Các nội dung cần kiểm thử sau khi tích hợp:
 - Quyết định giữ: Guest mua sẵn; yêu cầu đặt làm chính thức cần Customer; cọc F12/F13 cố định 50% tiền hàng; gói cơ bản miễn phí; giữ voucher khi đơn còn thanh toán tiếp; quy trình hoàn tiền chung và toàn bộ giới hạn/thời hạn đã chốt. Các cột đề xuất cũ được hòa vào quy tắc hiện hành theo quyết định của Đức, không tạo lại mục chờ xác nhận.
 - Kiểm tra: đối chiếu từng nhóm quy tắc/từng bảng với ba nguồn; kiểm tra ca frontend tách khỏi ca backend dự kiến, nội dung Docs so với GitHub, liên kết sau đổi số mục, công thức và định dạng bảng/sơ đồ. Con số 33 kiểm thử trong bài là bằng chứng được ghi ở DA02.1 nguồn; không trình bày là lần này đã chạy lại hoặc API đơn hàng đã triển khai.
 - Phạm vi: chỉ cập nhật tài liệu và ảnh sơ đồ, giữ nguyên các thẻ nguồn của thành viên khác. Bàn giao Châu feedback, chưa ghi nhận Châu đã nghiệm thu và chưa merge PR.
+
+### 16/11/2026 — Sửa ba phần feedback Châu được Đức chấp nhận
+
+- Công cụ: Codex, Google Docs và GitHub connector.
+- Yêu cầu: chỉ sửa ý 2, câu cuối ý 4 và ý 6; tiền cọc làm tròn đến đồng gần nhất, phần lẻ 0,5 làm tròn lên; giữ nguyên các phần đúng còn lại.
+- Thực hiện: mục 5.5 quy định làm tròn một lần trên 50% tổng tiền hàng, dùng thống nhất số cọc chốt và tính phần còn lại từ tiền thực thu. Mục 5.8 phân biệt khách đổi ý/từ chối nhận với lỗi shop, lỗi vận chuyển hoặc chưa rõ nguyên nhân. Mục 8.3 thêm ca hai bộ cần 2 TL-001 nhưng chỉ còn 1; chưa tạo đơn, báo bộ/món/lượng thiếu và không tự bỏ/thay món. Tổng số ca đối chiếu từ 36 thành 37.
+- Kiểm tra: tính tiền bằng Decimal với ROUND_HALF_UP; so nội dung Docs/GitHub, giữ nguyên các đoạn/ô bảng cũ và các thẻ khác; kiểm tra định dạng phần mới. Đây là sửa tài liệu và ca nghiệm thu dự kiến, không sửa mã hoặc ghi API đã chạy đạt.
+- Trạng thái: đã thực hiện đúng ba phần Đức chấp nhận, còn để Châu kiểm tra lại; không tự trả lời/giải quyết nhận xét hoặc merge PR.
