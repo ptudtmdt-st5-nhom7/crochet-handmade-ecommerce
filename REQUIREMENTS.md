@@ -109,6 +109,6 @@ Giới hạn về Thời gian, Công nghệ và Nguồn lực
 
 ## 7. Quy tắc nghiệp vụ dùng chung DA02
 
-Chi tiết tính tiền, tồn kho, luồng mua sẵn và đặt làm: [Bộ quy tắc DA02.4](docs/quy-tac-nghiep-vu-da02.md).
+Bài tích hợp đầy đủ quy tắc bộ quà, mua hàng và đặt làm, gồm các bảng trạng thái, ngoại lệ, công thức và 36 ca đối chiếu: [DA02.4](docs/quy-tac-nghiep-vu-da02.md). Các phần trùng được gộp; quyết định đã chốt áp dụng trực tiếp trong từng nghiệp vụ.
 Các quy tắc checkout/đơn/thanh toán trong tài liệu là yêu cầu triển khai, chưa phải chức năng backend đã hoàn thành.
-Đã thống nhất cho Guest mua hàng có sẵn và cọc cố định 50% tiền hàng đặt làm theo quyết định của Đức. Đã làm rõ trả lượt voucher và thống nhất quy trình hoàn tiền: Chờ hoàn tiền → Đang hoàn tiền → Đã hoàn tiền/Hoàn tiền thất bại. Đức đã giữ nguyên các thông số còn lại theo bản Tuấn: ưu đãi/ship cho đơn đặt làm, giới hạn món/ảnh và thời gian tiếp nhận. Chi tiết tại mục 2.7 của bản tổng hợp; bản được bàn giao cho Châu feedback, không còn mục chờ xác nhận chính sách.
+Đã thống nhất cho Guest mua hàng có sẵn và cọc cố định 50% tiền hàng đặt làm theo quyết định của Đức. Đã làm rõ trả lượt voucher và thống nhất quy trình hoàn tiền: Chờ hoàn tiền → Đang hoàn tiền → Đã hoàn tiền/Hoàn tiền thất bại. Đức đã giữ nguyên các thông số còn lại theo bản Tuấn: ưu đãi/ship cho đơn đặt làm, giới hạn món/ảnh và thời gian tiếp nhận. Chi tiết tại mục 5.2–5.6 của bài tổng hợp; bản được bàn giao cho Châu feedback, không còn mục chờ xác nhận chính sách.

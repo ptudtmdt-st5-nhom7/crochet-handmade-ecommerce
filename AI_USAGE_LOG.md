@@ -1021,3 +1021,12 @@ Các nội dung cần kiểm thử sau khi tích hợp:
 - Giữ nguyên: Guest mua sẵn, đặt làm chính thức cần Customer; gói cơ bản không thu phí; cọc F12/F13 cố định 50% tiền hàng; voucher/ship, giới hạn món/ảnh/ngày và các mốc thời hạn đã chốt. Không đưa lại khoảng cọc 30%–70% hoặc mục chờ xác nhận.
 - Kiểm tra: đối chiếu nội dung bổ sung giữa Docs và Markdown, rà các điều kiện/ngoại lệ tại nguồn, kiểm tra số mục, liên kết, ví dụ tính tiền và phạm vi tệp thay đổi. Đây là kiểm tra tài liệu, không ghi các ca dự kiến là API đã chạy đạt.
 - Phạm vi: chỉ tài liệu; không sửa mã ứng dụng, không sửa các thẻ Docs của thành viên khác. Bàn giao Châu feedback; chưa ghi nhận đã được Châu nghiệm thu và chưa merge PR.
+
+### 16/11/2026 — Viết lại DA02.4 thành bài tích hợp đầy đủ ba phần
+
+- Công cụ: Codex, Google Docs/GitHub connector và Python/Pillow cho sơ đồ.
+- Người yêu cầu: Đức. Prompt chính: tổng hợp đầy đủ DA02.1, bản Done DA02.2 và DA02.3 thành một bài; gộp phần trùng, giữ nội dung riêng và các quyết định đã chốt; cập nhật PR #45 cho Châu feedback.
+- Kết quả: tổ chức lại thành chín phần nghiệp vụ; giữ đầy đủ quy tắc bộ quà, đặt hàng, ưu đãi/ship, giá lịch sử, tồn kho, sửa/hủy/giao lại, yêu cầu/báo giá/cọc, trạng thái tiền, hoàn tiền, phân quyền và lưu vết. Có 18 bảng, 36 ca đối chiếu và bốn sơ đồ mới; mang theo các liên kết bằng chứng từ bài nguồn. Các bảng/ca riêng được đưa vào bài, không chỉ dẫn người đọc quay lại nguồn.
+- Quyết định giữ: Guest mua sẵn; yêu cầu đặt làm chính thức cần Customer; cọc F12/F13 cố định 50% tiền hàng; gói cơ bản miễn phí; giữ voucher khi đơn còn thanh toán tiếp; quy trình hoàn tiền chung và toàn bộ giới hạn/thời hạn đã chốt. Các cột đề xuất cũ được hòa vào quy tắc hiện hành theo quyết định của Đức, không tạo lại mục chờ xác nhận.
+- Kiểm tra: đối chiếu từng nhóm quy tắc/từng bảng với ba nguồn; kiểm tra ca frontend tách khỏi ca backend dự kiến, nội dung Docs so với GitHub, liên kết sau đổi số mục, công thức và định dạng bảng/sơ đồ. Con số 33 kiểm thử trong bài là bằng chứng được ghi ở DA02.1 nguồn; không trình bày là lần này đã chạy lại hoặc API đơn hàng đã triển khai.
+- Phạm vi: chỉ cập nhật tài liệu và ảnh sơ đồ, giữ nguyên các thẻ nguồn của thành viên khác. Bàn giao Châu feedback, chưa ghi nhận Châu đã nghiệm thu và chưa merge PR.
