@@ -998,3 +998,10 @@ Các nội dung cần kiểm thử sau khi tích hợp:
 - Đức chọn cọc cố định 50% tiền hàng; bỏ đề xuất linh hoạt 30%–70%, không tính ship vào cơ sở cọc.
 - Đồng bộ DA02.4 và bản nháp PR #45. Hai vấn đề lượt voucher khi thanh toán thất bại và tên/mốc hoàn tiền vẫn chờ quyết định; các tham số đặt làm khác chưa tự chốt.
 - Chỉ sửa tài liệu, không thay mã xác thực hoặc khẳng định các quyền/API đã triển khai.
+
+
+## 16/11/2026 — Làm rõ voucher và thống nhất hoàn tiền
+
+- Đức xác nhận còn được thanh toán tiếp thì giữ voucher; khi thanh toán kết thúc thất bại, đơn hết hạn hoặc COD tự hủy thì trả lượt theo bản Bảo nếu mã còn hạn, không gia hạn voucher.
+- Theo chỉ dẫn của Đức, thống nhất các bước hoàn tiền của Bảo/Tuấn: chờ gửi yêu cầu, đã gửi đang chờ kết quả, hoàn thành hoặc thất bại. Gửi trong một ngày làm việc từ quyết định hoàn; dự kiến 3–5 ngày làm việc từ đơn vị thanh toán tiếp nhận.
+- Đồng bộ DA02.4 và PR #45; không để hai nội dung này thành câu hỏi phải xin xác nhận lại. Không sửa mã hoặc đăng nhận xét thay thành viên.

@@ -2,7 +2,7 @@
 
 ## 1. Phạm vi tổng hợp
 
-Tổng hợp DA02.1 của Đức, bản Done tại DA02.2 của Bảo và DA02.3 của Tuấn thành quy tắc dùng chung. Các quyết định mới của Đức về mua hàng có sẵn, nhắn shop khi hết hàng và đặt cọc được đưa vào mục 2.1. Những điểm chưa thống nhất được tách tại mục 5, chưa coi là yêu cầu cuối để triển khai.
+Tổng hợp DA02.1 của Đức, bản Done tại DA02.2 của Bảo và DA02.3 của Tuấn thành quy tắc dùng chung. Các quyết định mới của Đức về mua hàng có sẵn, nhắn shop khi hết hàng và đặt cọc được đưa vào mục 2.1. Các quyết định đã thống nhất và những tham số đặt làm còn mở được theo dõi riêng tại mục 5; không coi phần còn mở là yêu cầu cuối để triển khai.
 
 Bản frontend hiện có danh sách tám sản phẩm, giỏ quà nhiều khung và giỏ hàng dùng localStorage/stockDemo. DA01 đã được merge qua PR #43, mới có Express và hai đường dẫn kiểm tra máy chủ/database. Các quy tắc checkout, đơn hàng, giữ tồn, thanh toán và đặt làm dưới đây là đầu vào triển khai backend, không phải xác nhận các chức năng đó đã chạy.
 
@@ -34,7 +34,7 @@ Theo bản Bảo: điều kiện giá trị đơn tối thiểu của voucher t�
 
 Phí giao hàng theo vùng cấu hình: nội thành TP.HCM 20.000đ; ngoại thành TP.HCM 30.000đ; khu vực tỉnh/thành khác được hỗ trợ 40.000đ. Miễn ship khi tổng tiền hàng sau khuyến mãi và voucher đạt từ 300.000đ, chưa cộng phí vận chuyển. Danh sách phường/xã theo vùng phải được cấu hình thống nhất, không suy ra phí từ tên quận/huyện cũ.
 
-Khi sửa sản phẩm, số lượng hoặc địa chỉ, kiểm tra lại điều kiện ưu đãi, phí giao hàng và tổng tiền. Giỏ hàng trước khi tạo đơn được gỡ voucher không còn hợp lệ và thông báo; khi sửa một đơn đã tạo thì phải kiểm tra trước khi lưu, hiển thị thay đổi để khách xác nhận. Các điểm còn thiếu về lượt voucher được ghi tại mục 5.3.
+Khi sửa sản phẩm, số lượng hoặc địa chỉ, kiểm tra lại điều kiện ưu đãi, phí giao hàng và tổng tiền. Giỏ hàng trước khi tạo đơn được gỡ voucher không còn hợp lệ và thông báo; khi sửa một đơn đã tạo thì phải kiểm tra trước khi lưu, hiển thị thay đổi để khách xác nhận. Trong thời gian đơn còn hiệu lực và khách còn được tiếp tục thanh toán, giữ voucher/lượt đang gắn với đơn, kể cả khi một lần giao dịch bị lỗi. Khi thanh toán kết thúc thất bại và đơn không còn tiếp tục, đơn hết hạn hoặc COD tự hủy, trả lại lượt theo bản Bảo nếu voucher còn hạn; xử lý trả lượt một lần, không gia hạn voucher. Khách chủ động hủy vẫn theo điều kiện riêng của mã.
 
 ### 2.4. Tồn kho dùng chung
 
@@ -62,7 +62,7 @@ Hủy trước khi bàn giao vận chuyển được chấp thuận thì hoàn t
 
 Admin liên hệ để giao lại tối đa một lần, sắp xếp trong 24 giờ sau khi khách đồng ý. Phí giao lại do lỗi khách tính theo chi phí thực tế và chỉ thực hiện sau khi khách đồng ý mức phí. Việc hủy và trả hàng về kho không được làm mất lịch sử đơn.
 
-Theo bản Bảo, gửi yêu cầu hoàn tiền trong một ngày làm việc sau khi hủy được duyệt; thời gian dự kiến 3–5 ngày làm việc tính từ lúc đơn vị thanh toán tiếp nhận yêu cầu. Hoàn về phương thức ban đầu, không quy đổi khoản giảm voucher thành tiền; chỉ đánh dấu đã hoàn khi có kết quả thành công.
+Dùng chung quy trình hoàn tiền cho đơn mua sẵn và đặt làm. Khi xác định có khoản phải hoàn, ghi Chờ hoàn tiền; gửi yêu cầu cho đơn vị thanh toán trong một ngày làm việc từ khi quyết định hoàn được ghi nhận. Sau khi gửi yêu cầu, chuyển Đang hoàn tiền; thời gian dự kiến 3–5 ngày làm việc tính từ lúc đơn vị thanh toán tiếp nhận. Chỉ chuyển Đã hoàn tiền khi có kết quả thành công; lỗi xử lý thì Hoàn tiền thất bại để Admin kiểm tra, không ghi hoàn trùng khi thử lại. Hoàn về phương thức ban đầu, không quy đổi giảm giá voucher thành tiền.
 
 ### 2.7. Báo giá và cọc đơn đặt làm
 
@@ -134,13 +134,13 @@ Báo giá gửi 10:00 ngày 16/11 hết hạn 10:00 ngày 17/11; đồng ý lúc
 
 Đã thống nhất cọc cố định 50% tiền hàng theo quyết định của Đức, không linh hoạt 30%–70%. Những đề xuất còn cần xác nhận với Tuấn: có áp dụng miễn ship từ 300.000đ và không dùng voucher cho đơn đặt làm không; giới hạn 1–10 món, tối đa ba ảnh 5 MB/ảnh, ngày nhận tối thiểu sau năm ngày và thời gian shop phản hồi 24 giờ. Không tự coi các giá trị còn lại đã được cả nhóm thông qua.
 
-### 5.3. Lượt voucher khi giao dịch thất bại
+### 5.3. Quy tắc trả lượt voucher
 
-Bản Bảo cho thử thanh toán lại trong 25 phút, đồng thời ghi trả lượt voucher khi thanh toán thất bại. Cần Bảo và Khanh xác nhận: chỉ trả lượt khi đơn bị hủy/hết hạn, hay trả ngay sau một lần giao dịch thất bại dù đơn còn hiệu lực. Phải tránh đơn còn giữ ưu đãi nhưng lượt đã được cấp lại cho đơn khác. Trả lượt không làm gia hạn voucher; điều kiện trả khi khách chủ động hủy cần theo cấu hình mã.
+Đã thống nhất theo cách hiểu Đức xác nhận: một lần thanh toán lỗi nhưng đơn còn hiệu lực, còn được thử lại thì không trả lượt voucher. Thanh toán kết thúc thất bại làm đơn không còn tiếp tục, đơn hết hạn hoặc COD tự hủy thì trả lượt theo điều kiện Bảo đã ghi; voucher phải còn hạn và không được gia hạn khi trả. Không còn để vấn đề này ở trạng thái chờ Bảo/Khanh xác nhận.
 
-### 5.4. Hoàn tiền và dữ liệu triển khai
+### 5.4. Quy trình hoàn tiền và dữ liệu triển khai
 
-Bảo dùng “Đang hoàn tiền”, Tuấn dùng “Chờ hoàn tiền”. Bảo, Tuấn và Khanh cần thống nhất tên/mã trạng thái và phân biệt thời điểm ghi nhận nghĩa vụ hoàn với thời điểm đã gửi yêu cầu cho cổng. Đồng thời kiểm tra lại hạn hoàn 3–5 ngày theo cùng một mốc bắt đầu để hai luồng không hiểu khác nhau.
+Đã thống nhất hai cách gọi của Bảo/Tuấn thành các bước chung: Chờ hoàn tiền (đã xác định phải hoàn, chưa gửi yêu cầu), Đang hoàn tiền (đã gửi yêu cầu), Đã hoàn tiền hoặc Hoàn tiền thất bại theo kết quả. Dùng mốc thời gian tại mục 2.6 cho cả hai luồng; đây là thống nhất cách mô tả, không cần yêu cầu các thành viên chốt lại cùng một quy trình.
 
 Trong mô tả kho của Bảo vẫn có câu “xác nhận đơn thì trừ chính thức”, dễ dẫn tới trừ hai lần. Mục 2.4 đã tổng hợp theo nguyên tắc hàng giữ không còn bán được và xác nhận chỉ chuyển loại giữ sang cam kết; Bảo và Khanh đối chiếu nguyên tắc này khi chốt schema/API. Danh sách phường/xã theo vùng giao hàng là dữ liệu cấu hình còn cần bàn giao, không tự suy đoán từ địa chỉ hành chính cũ.
 

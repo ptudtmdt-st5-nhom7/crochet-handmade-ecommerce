@@ -6,7 +6,7 @@
 <title>Tài liệu quy trình nghiệp vụ website kinh doanh sản phẩm móc len</title>
 </head>
 <body style="max-width:980px;margin:0 auto;padding:16px;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;line-height:1.7;color:#27212a;background:#ffffff">
-<p><strong>Phạm vi DA02.4:</strong> Luồng và quy tắc chi tiết xem <a href="quy-tac-nghiep-vu-da02.md">bộ quy tắc dùng chung</a>. Các điểm cần xác nhận tại mục 5 còn mở, gồm các tham số đặt làm còn lại, lượt voucher và tên/mốc hoàn tiền. Guest được checkout hàng có sẵn theo quyết định mới của Đức; yêu cầu đặt làm chính thức vẫn cần Customer đăng nhập. Cọc F12/F13 cố định 50% tiền hàng. DA01 mới có nền Express/PostgreSQL; luồng đơn hàng và thanh toán dưới đây chưa được xác nhận đã triển khai.</p>
+<p><strong>Phạm vi DA02.4:</strong> Luồng và quy tắc chi tiết xem <a href="quy-tac-nghiep-vu-da02.md">bộ quy tắc dùng chung</a>. Mục 5 chỉ còn cần xác nhận các tham số đặt làm khác chưa được Đức chốt; trả lượt voucher và các bước hoàn tiền đã được làm rõ. Guest được checkout hàng có sẵn theo quyết định mới của Đức; yêu cầu đặt làm chính thức vẫn cần Customer đăng nhập. Cọc F12/F13 cố định 50% tiền hàng. Khi đơn còn hiệu lực và còn được thanh toán tiếp thì giữ voucher; khi kết thúc thất bại/hủy/hết hạn thì trả lượt theo điều kiện mã. Hai luồng dùng chung Chờ hoàn tiền, Đang hoàn tiền, Đã hoàn tiền và Hoàn tiền thất bại; chi tiết mốc gửi và tiếp nhận tại DA02.4. DA01 mới có nền Express/PostgreSQL; luồng đơn hàng và thanh toán dưới đây chưa được xác nhận đã triển khai.</p>
 
 
 <h1 style="text-align:center;color:#c2457a">Tài liệu quy trình nghiệp vụ website kinh doanh sản phẩm móc len</h1>
