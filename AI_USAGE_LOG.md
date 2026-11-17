@@ -981,3 +981,60 @@ Các nội dung cần kiểm thử sau khi tích hợp:
   Chưa triển khai bảng hoặc API sản phẩm.
 - Minh chứng: docs/minh-chung-da01/.
 - Người tự kiểm tra: Nam. Chờ Tuấn feedback và xác nhận.
+
+## 16/11/2026 — Tổng hợp quy tắc dùng chung DA02.4
+
+- Người yêu cầu: Nguyễn Quang Đức. Công cụ: OpenAI Codex, Google Docs và GitHub connector.
+- Yêu cầu: làm DA02.4 từ DA02.1, bản Done của Bảo và DA02.3; bổ sung hướng mua hàng có sẵn không cọc riêng, nhắn shop khi hết hàng và mọi đơn đặt làm phải cọc trước sản xuất.
+- Thực hiện: tạo docs/quy-tac-nghiep-vu-da02.md, đồng bộ phần liên quan trong REQUIREMENTS.md và docs/business-workflow.md; chuẩn bị nội dung DA02.4 trong Docs.
+- Đối chiếu: bản main sau PR #43, các tab nguồn và nhận xét hiện hành; kiểm tra số học các ví dụ, liên kết và các câu cũ về chặn vượt ngân sách/miễn cọc đặt làm.
+- Các điểm chưa chốt được giữ riêng, không tự mở quyền guest checkout hoặc khẳng định tỷ lệ cọc/điều kiện đề xuất đã được cả nhóm thông qua. Tài liệu bàn giao qua PR để Châu và các PIC rà soát.
+- Không thay mã ứng dụng, không sửa phần bàn giao cá nhân của Bảo/Tuấn, không xác nhận checkout/API/thanh toán đã hoạt động. Kết quả do công cụ hỗ trợ kiểm tra, không thay cho xác nhận của thành viên.
+
+
+## 16/11/2026 — Chốt quyền mua không đăng nhập và cọc 50%
+
+- Đức cho phép dùng bản mua hàng của Bảo nếu hợp lý sau feedback của Khanh; Codex đối chiếu bản Done và áp dụng Guest checkout cho hàng có sẵn, giữ đăng nhập cho yêu cầu đặt làm chính thức.
+- Đức chọn cọc cố định 50% tiền hàng; bỏ đề xuất linh hoạt 30%–70%, không tính ship vào cơ sở cọc.
+- Đồng bộ DA02.4 và bản nháp PR #45. Hai vấn đề lượt voucher khi thanh toán thất bại và tên/mốc hoàn tiền vẫn chờ quyết định; các tham số đặt làm khác chưa tự chốt.
+- Chỉ sửa tài liệu, không thay mã xác thực hoặc khẳng định các quyền/API đã triển khai.
+
+
+## 16/11/2026 — Làm rõ voucher và thống nhất hoàn tiền
+
+- Đức xác nhận còn được thanh toán tiếp thì giữ voucher; khi thanh toán kết thúc thất bại, đơn hết hạn hoặc COD tự hủy thì trả lượt theo bản Bảo nếu mã còn hạn, không gia hạn voucher.
+- Theo chỉ dẫn của Đức, thống nhất các bước hoàn tiền của Bảo/Tuấn: chờ gửi yêu cầu, đã gửi đang chờ kết quả, hoàn thành hoặc thất bại. Gửi trong một ngày làm việc từ quyết định hoàn; dự kiến 3–5 ngày làm việc từ đơn vị thanh toán tiếp nhận.
+- Đồng bộ DA02.4 và PR #45; không để hai nội dung này thành câu hỏi phải xin xác nhận lại. Không sửa mã hoặc đăng nhận xét thay thành viên.
+
+
+## 16/11/2026 — Hoàn thiện DA02.4 để feedback
+
+- Đức xác nhận giữ nguyên các thông số còn lại theo bản Tuấn: đơn đặt làm không voucher, miễn ship từ 300.000đ; số lượng 1–10, tối đa ba ảnh 5 MB/ảnh với định dạng được hỗ trợ; ngày nhận ít nhất sau năm ngày và shop phản hồi trong 24 giờ.
+- Chuyển các giá trị vào quy tắc chính, giữ quyết định cọc cố định 50% đã chốt trước. Bỏ mục chờ xác nhận trong DA02.4, đồng bộ PR #45 và sửa liên kết sơ đồ sau khi đánh lại số mục.
+- Kiểm tra nội dung và liên kết; bàn giao Châu feedback, chưa merge PR và chưa xác nhận các chức năng đã triển khai.
+
+### 16/11/2026 — Bổ sung chi tiết bàn giao DA02.4 và PR #45
+
+- Công cụ: Codex, Google Docs và GitHub connector.
+- Người yêu cầu: Đức. Prompt chính: bổ sung đầy đủ các phần thiếu đã đối chiếu với bản Done DA02.2 của Bảo và DA02.3 của Tuấn, giữ nguyên quyết định đã chốt để Châu feedback.
+- Thực hiện: bổ sung giá lịch sử/sửa đơn, thiếu hàng thực tế và mốc 24 giờ, ba hướng duyệt yêu cầu, báo giá mới/chống đơn trùng, hủy/giao lại đơn đặt làm, dữ liệu đầu vào, quyền máy chủ, lưu vết và thông báo/tra cứu; bổ sung sáu tình huống đối chiếu.
+- Giữ nguyên: Guest mua sẵn, đặt làm chính thức cần Customer; gói cơ bản không thu phí; cọc F12/F13 cố định 50% tiền hàng; voucher/ship, giới hạn món/ảnh/ngày và các mốc thời hạn đã chốt. Không đưa lại khoảng cọc 30%–70% hoặc mục chờ xác nhận.
+- Kiểm tra: đối chiếu nội dung bổ sung giữa Docs và Markdown, rà các điều kiện/ngoại lệ tại nguồn, kiểm tra số mục, liên kết, ví dụ tính tiền và phạm vi tệp thay đổi. Đây là kiểm tra tài liệu, không ghi các ca dự kiến là API đã chạy đạt.
+- Phạm vi: chỉ tài liệu; không sửa mã ứng dụng, không sửa các thẻ Docs của thành viên khác. Bàn giao Châu feedback; chưa ghi nhận đã được Châu nghiệm thu và chưa merge PR.
+
+### 16/11/2026 — Viết lại DA02.4 thành bài tích hợp đầy đủ ba phần
+
+- Công cụ: Codex, Google Docs/GitHub connector và Python/Pillow cho sơ đồ.
+- Người yêu cầu: Đức. Prompt chính: tổng hợp đầy đủ DA02.1, bản Done DA02.2 và DA02.3 thành một bài; gộp phần trùng, giữ nội dung riêng và các quyết định đã chốt; cập nhật PR #45 cho Châu feedback.
+- Kết quả: tổ chức lại thành chín phần nghiệp vụ; giữ đầy đủ quy tắc bộ quà, đặt hàng, ưu đãi/ship, giá lịch sử, tồn kho, sửa/hủy/giao lại, yêu cầu/báo giá/cọc, trạng thái tiền, hoàn tiền, phân quyền và lưu vết. Có 18 bảng, 36 ca đối chiếu và bốn sơ đồ mới; mang theo các liên kết bằng chứng từ bài nguồn. Các bảng/ca riêng được đưa vào bài, không chỉ dẫn người đọc quay lại nguồn.
+- Quyết định giữ: Guest mua sẵn; yêu cầu đặt làm chính thức cần Customer; cọc F12/F13 cố định 50% tiền hàng; gói cơ bản miễn phí; giữ voucher khi đơn còn thanh toán tiếp; quy trình hoàn tiền chung và toàn bộ giới hạn/thời hạn đã chốt. Các cột đề xuất cũ được hòa vào quy tắc hiện hành theo quyết định của Đức, không tạo lại mục chờ xác nhận.
+- Kiểm tra: đối chiếu từng nhóm quy tắc/từng bảng với ba nguồn; kiểm tra ca frontend tách khỏi ca backend dự kiến, nội dung Docs so với GitHub, liên kết sau đổi số mục, công thức và định dạng bảng/sơ đồ. Con số 33 kiểm thử trong bài là bằng chứng được ghi ở DA02.1 nguồn; không trình bày là lần này đã chạy lại hoặc API đơn hàng đã triển khai.
+- Phạm vi: chỉ cập nhật tài liệu và ảnh sơ đồ, giữ nguyên các thẻ nguồn của thành viên khác. Bàn giao Châu feedback, chưa ghi nhận Châu đã nghiệm thu và chưa merge PR.
+
+### 16/11/2026 — Sửa ba phần feedback Châu được Đức chấp nhận
+
+- Công cụ: Codex, Google Docs và GitHub connector.
+- Yêu cầu: chỉ sửa ý 2, câu cuối ý 4 và ý 6; tiền cọc làm tròn đến đồng gần nhất, phần lẻ 0,5 làm tròn lên; giữ nguyên các phần đúng còn lại.
+- Thực hiện: mục 5.5 quy định làm tròn một lần trên 50% tổng tiền hàng, dùng thống nhất số cọc chốt và tính phần còn lại từ tiền thực thu. Mục 5.8 phân biệt khách đổi ý/từ chối nhận với lỗi shop, lỗi vận chuyển hoặc chưa rõ nguyên nhân. Mục 8.3 thêm ca hai bộ cần 2 TL-001 nhưng chỉ còn 1; chưa tạo đơn, báo bộ/món/lượng thiếu và không tự bỏ/thay món. Tổng số ca đối chiếu từ 36 thành 37.
+- Kiểm tra: tính tiền bằng Decimal với ROUND_HALF_UP; so nội dung Docs/GitHub, giữ nguyên các đoạn/ô bảng cũ và các thẻ khác; kiểm tra định dạng phần mới. Đây là sửa tài liệu và ca nghiệm thu dự kiến, không sửa mã hoặc ghi API đã chạy đạt.
+- Trạng thái: đã thực hiện đúng ba phần Đức chấp nhận, còn để Châu kiểm tra lại; không tự trả lời/giải quyết nhận xét hoặc merge PR.
