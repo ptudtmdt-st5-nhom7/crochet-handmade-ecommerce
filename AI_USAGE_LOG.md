@@ -981,3 +981,27 @@ Các nội dung cần kiểm thử sau khi tích hợp:
   Chưa triển khai bảng hoặc API sản phẩm.
 - Minh chứng: docs/minh-chung-da01/.
 - Người tự kiểm tra: Nam. Chờ Tuấn feedback và xác nhận.
+## DA03 — Dữ liệu và API sản phẩm
+
+- Ngày thực hiện: 16/11/2026.
+- Người sử dụng AI: Nguyễn Thanh Nam.
+- Công cụ: ChatGPT.
+- Mục đích: hỗ trợ thiết kế bảng PostgreSQL, script nạp dữ liệu
+  và đề xuất hợp đồng API sản phẩm.
+- Đầu vào: yêu cầu DA03 và dữ liệu tám sản phẩm từ js/products.js.
+- Kết quả AI đề xuất: backend/sql/001_schema.sql,
+  backend/sql/002_seed.sql và docs/da03-du-lieu-api.md.
+- Quyết định thiết kế: mỗi sản phẩm mẫu có một biến thể mặc định;
+  giữ nguyên mô tả màu, không tự tách thành lựa chọn riêng.
+  Lượng 20 lấy từ stockDemo chỉ dùng thử nghiệm.
+- Kiểm tra thực tế: Nam chạy script bằng pgAdmin trên PostgreSQL 18;
+  xác nhận 4 danh mục, 8 sản phẩm, 8 biến thể;
+  đối chiếu tên và giá với catalog.
+- Thử giá âm: bị chặn với SQLSTATE 23514.
+- Thử khóa ngoại tới sản phẩm không tồn tại:
+  bị chặn với SQLSTATE 23503.
+- Đã chạy ROLLBACK sau mỗi ca thử lỗi.
+- Giới hạn: chưa triển khai hoặc chạy thử HTTP API sản phẩm;
+  hợp đồng API và quan hệ nghiệp vụ là đề xuất chờ nhóm xác nhận.
+- Minh chứng: docs/minh-chung-da03/.
+- Người tự kiểm tra: Nam. Chờ Khanh feedback.
