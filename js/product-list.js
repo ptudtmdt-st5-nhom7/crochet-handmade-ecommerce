@@ -6,7 +6,11 @@ import { formatPrice, getProductDetailUrl } from './product-utils.js';
  * 2B gọi với cartReady: true sau khi nối addSingle; detailReady: true
  * chỉ sau khi trang chi tiết của Khanh đã đọc và hiển thị đúng id.
  */
-export function renderProducts(list, { cartReady = false, detailReady = false } = {}) {
+export function renderProducts(list, {
+  cartReady = false,
+  detailReady = false,
+  emptyMessage = 'Không có sản phẩm phù hợp.',
+} = {}) {
   if (!Array.isArray(list)) throw new TypeError('Danh sách sản phẩm phải là mảng.');
   const container = document.querySelector('[data-products-list]');
   if (!container) throw new Error('Không tìm thấy vùng data-products-list.');
@@ -37,20 +41,25 @@ export function renderProducts(list, { cartReady = false, detailReady = false } 
       element.textContent = text;
       content.append(element);
     }
-    const detail = document.createElement('a');
-    detail.className = 'button button-secondary';
-    detail.href = getProductDetailUrl(product.id, { detailReady });
-    detail.textContent = 'Xem chi tiết';
-    detail.setAttribute('aria-label', 'Xem chi tiết ' + product.name);
+    if (product.detailAvailable !== false) {
+      const detail = document.createElement('a');
+      detail.className = 'button button-secondary';
+      detail.href = getProductDetailUrl(product.id, { detailReady });
+      detail.textContent = 'Xem chi tiết';
+      detail.setAttribute('aria-label', 'Xem chi tiết ' + product.name);
+      content.append(detail);
+    }
     const add = document.createElement('button');
     add.type = 'button';
     add.className = 'button button-primary';
     add.dataset.addProduct = product.id;
-    add.textContent = 'Thêm vào giỏ';
-    add.disabled = !cartReady || product.stockDemo < 1;
-    add.setAttribute('aria-label', 'Thêm ' + product.name + ' vào giỏ');
+    if (product.stockDemo < 1) add.textContent = 'Hết hàng';
+    else if (product.cartAvailable === false) add.textContent = 'Chưa thể thêm vào giỏ';
+    else add.textContent = 'Thêm vào giỏ';
+    add.disabled = !cartReady || product.stockDemo < 1 || product.cartAvailable === false;
+    if (!add.disabled) add.setAttribute('aria-label', 'Thêm ' + product.name + ' vào giỏ');
     if (!cartReady) add.setAttribute('aria-describedby', 'products-integration-note');
-    content.append(detail, add);
+    content.append(add);
     card.append(image, content);
     fragment.append(card);
   }
@@ -58,7 +67,7 @@ export function renderProducts(list, { cartReady = false, detailReady = false } 
     const empty = document.createElement('p');
     empty.className = 'products-empty';
     empty.setAttribute('role', 'status');
-    empty.textContent = 'Không có sản phẩm phù hợp.';
+    empty.textContent = emptyMessage;
     fragment.append(empty);
   }
   container.replaceChildren(fragment);

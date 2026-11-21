@@ -34,7 +34,7 @@ globalThis.document = {
   getElementById: id => nodes.get('#' + id) ?? null,
   createElement: tag => new Element(tag), createDocumentFragment: () => new Element('fragment')
 };
-globalThis.location = { hash: '' };
+globalThis.location = { hash: '', hostname: 'example.github.io', search: '' };
 const memory = new Map();
 let rejectSave = false;
 globalThis.localStorage = {
