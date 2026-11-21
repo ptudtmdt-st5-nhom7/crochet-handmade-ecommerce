@@ -77,11 +77,11 @@
     <p data-cart-feedback role="status" aria-live="polite"></p>
     <p data-products-count role="status" aria-live="polite"></p>
     <noscript>Vui lòng bật JavaScript để xem danh sách sản phẩm.</noscript>
-    <div class="product-grid" data-products-list>
-      <p>Đang tải sản phẩm…</p>
-    </div>
+    <p data-products-status role="status" aria-live="polite">Đang tải sản phẩm…</p>
+    <button type="button" class="button button-secondary" data-retry-products hidden>Thử lại</button>
+    <div class="product-grid" data-products-list aria-busy="true"></div>
   </section>
-<section class="container quick-info-section" aria-labelledby="quick-info-title">
+<section class="container quick-info-section" aria-labelledby="quick-info-title" data-static-product-summary hidden>
   <p class="eyebrow">Thông tin nhanh</p>
   <h2 id="quick-info-title">Thông tin các sản phẩm</h2>
   <p>Cả 8 sản phẩm đều có trang chi tiết riêng. Dưới đây là thông tin tóm tắt của các sản phẩm.</p>

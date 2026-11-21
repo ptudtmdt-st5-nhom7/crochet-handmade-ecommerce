@@ -1005,3 +1005,14 @@ Các nội dung cần kiểm thử sau khi tích hợp:
   hợp đồng API và quan hệ nghiệp vụ là đề xuất chờ nhóm xác nhận.
 - Minh chứng: docs/minh-chung-da03/.
 - Người tự kiểm tra: Nam. Chờ Khanh feedback.
+
+## 21/11/2026 — Hỗ trợ bản kết nối DA05.2–DA05.4
+
+- Người yêu cầu: Nguyễn Quang Đức. Công cụ: Codex.
+- Yêu cầu chính: nối danh sách với API, kiểm tra bản kết nối và chuẩn bị bàn giao.
+- Thực hiện: dùng cùng địa chỉ Express để phục vụ giao diện và API, chuyển dữ liệu
+  biến thể sang thẻ sản phẩm, giữ chế độ tĩnh và cập nhật hướng dẫn chạy.
+- Kiểm tra bằng công cụ: chạy PostgreSQL 18.7, Node.js 24.20.0 và Chrome.
+  Đối chiếu TC-01–TC-11 của Châu, chạy thêm các ca trình duyệt và 42 ca Node.
+- Phần xác nhận của nhóm: chờ người phụ trách và người feedback duyệt PR.
+  Kết quả chạy bổ sung không thay cho báo cáo DA05.3 đã có của Châu.

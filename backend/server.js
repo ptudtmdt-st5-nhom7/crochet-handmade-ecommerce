@@ -1,6 +1,7 @@
 
 const pool = require("./db");
 const express = require("express");
+const path = require("node:path");
 
 const app = express();
 const port = Number(process.env.PORT || 3000);
@@ -229,6 +230,16 @@ app.get("/api/products/:id", async (req, res) => {
     );
   }
 });
+
+// Phục vụ giao diện và API cùng địa chỉ, chỉ phục vụ các tài nguyên công khai.
+const storeRoot = path.resolve(__dirname, "..");
+for (const directory of ["css", "images", "js", "pages"]) {
+  app.use("/" + directory, express.static(path.join(storeRoot, directory), { index: false }));
+}
+app.get("/", (_req, res) => res.sendFile(path.join(storeRoot, "index.html")));
+for (const page of ["index", "products", "product-detail", "cart", "gift-builder", "about"]) {
+  app.get("/" + page + ".html", (_req, res) => res.sendFile(path.join(storeRoot, page + ".html")));
+}
 
 // Khởi chạy backend.
 app.listen(port, "127.0.0.1", () => {

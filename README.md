@@ -2,6 +2,17 @@
 
 Đồ án học phần **Phát triển ứng dụng TMĐT — Nhóm 7, ST5**. Website giới thiệu và kinh doanh sản phẩm móc len handmade cho một cửa hàng.
 
+## Chạy thử danh sách sản phẩm với PostgreSQL
+
+Mở dự án qua Express để thử DA05.2. Trang danh sách lấy tên, ảnh, danh mục, giá và tồn của biến thể hiển thị từ API. Tìm kiếm, lọc và sắp xếp trên dữ liệu nhận được.
+
+1. Tạo database `crochet_dev` trong PostgreSQL. Với database trống, chạy `backend/sql/001_schema.sql` rồi `backend/sql/002_seed.sql` bằng pgAdmin.
+2. Trong thư mục `backend`, tạo `.env` dựa trên `.env.example` và điền thông tin PostgreSQL trên máy.
+3. Chạy `npm ci` rồi `npm start` trong `backend`. Trên Windows có thể dùng `npm.cmd ci` và `npm.cmd start`.
+4. Mở [trang danh sách](http://127.0.0.1:3000/products.html). Có thể đối chiếu tại [API sản phẩm](http://127.0.0.1:3000/api/products) và [kiểm tra database](http://127.0.0.1:3000/health/db).
+
+Xem [hướng dẫn backend](backend/README.md) và [kiểm thử, bàn giao DA05](docs/ban-giao-da05.md). GitHub Pages tiếp tục dùng dữ liệu minh họa. Trang chi tiết, giỏ và bộ quà vẫn dùng dữ liệu Buổi 3 và bộ nhớ của trình duyệt.
+
 ## Bản tích hợp chức năng Buổi 3
 
 Website dùng HTML/CSS và JavaScript thuần, lưu giỏ/bản soạn trong localStorage. Đã nối tìm kiếm, lọc và sắp xếp danh sách; chi tiết động theo mã; thêm sản phẩm lẻ; bộ quà theo ngân sách; giỏ hàng và nhân bản bộ quà. Ngân sách áp dụng cho tiền sản phẩm của một bộ, không gồm đóng gói/vận chuyển. Bộ hợp lệ vượt ngân sách sau điều chỉnh được cảnh báo và vẫn có thể thêm giỏ.
@@ -9,8 +20,8 @@ Website dùng HTML/CSS và JavaScript thuần, lưu giỏ/bản soạn trong loc
 - [Xem website](https://ptudtmdt-st5-nhom7.github.io/crochet-handmade-ecommerce/).
 - [Bàn giao bản tích hợp cho Quyến](docs/ban-giao-tich-hop-buoi3.md): nội dung đã ghép, cách kiểm tra và phần giao diện cần làm tiếp.
 - Các trang chính: `index.html`, `products.html`, `product-detail.html?id=KC-001`, `about.html`, `cart.html`, `gift-builder.html`.
-- **Chạy qua HTTP:** VS Code Live Server hoặc `python -m http.server 5500`, rồi mở `http://localhost:5500/`. Giữ cùng host/cổng để dùng chung localStorage; không mở trực tiếp bằng `file://`.
-- **Kiểm thử:** `node --test tests/*.mjs` (Node chỉ phục vụ kiểm thử, chưa có backend).
+- **Xem bản tĩnh qua HTTP:** dùng GitHub Pages hoặc VS Code Live Server. Khi dùng Live Server, mở `products.html?catalog=static` để xem danh sách từ dữ liệu minh họa. Giữ cùng host/cổng để dùng chung localStorage và mở các trang qua HTTP.
+- **Kiểm thử mã JavaScript:** chạy `node --test` tại thư mục gốc.
 - Dữ liệu tám sản phẩm và stockDemo phục vụ học tập. Chưa có đơn hàng máy chủ, tài khoản hay thanh toán thật. CSS bộ lọc, chọn quà và giỏ hàng của Quyến đã được ghép. Việc nghiệm thu hồ sơ học phần được tổng hợp riêng.
 
 ### Soạn nhiều bộ quà và nhân bản tại mục 3
@@ -75,7 +86,7 @@ crochet-handmade-ecommerce/
 
 ## 3. Cách mở và kiểm tra website
 
-Dùng Chrome hoặc Edge qua VS Code Live Server; nếu máy có Python, chạy `python -m http.server 5500` tại thư mục dự án rồi mở `http://localhost:5500/`. Giữ nguyên cấu trúc thư mục. Bản Buổi 3 dùng ES modules nên cần HTTP, không mở bằng cách nhấp đúp file HTML. Chưa cần backend để chạy bản này.
+Dùng Chrome hoặc Edge. Với bản kết nối DA05.2, mở giao diện qua Express theo hướng dẫn ở đầu tài liệu. Với bản tĩnh, dùng GitHub Pages, VS Code Live Server hoặc `python -m http.server 5500` ở thư mục dự án. Giữ cấu trúc thư mục và mở qua HTTP để trình duyệt nạp các module JavaScript.
 
 Trong DevTools, kiểm tra lần lượt các độ rộng **1366 px, 768 px và 390 px**. Cuộn hết từng trang, kiểm tra hình ảnh, menu, banner, số cột sản phẩm và footer. Dùng chuột thử hover; dùng Tab, Shift+Tab và Enter để kiểm tra focus, liên kết bỏ qua điều hướng và các liên kết trang. Kiểm tra thêm chế độ giảm chuyển động nếu trình duyệt hỗ trợ.
 
@@ -119,7 +130,7 @@ Mỗi thành viên tự trả lời sáu câu Bước 10 và cần giải thích
 | Công cụ | VS Code, npm, Git, GitHub Issues và Pull Request. |
 | Triển khai | Chưa chốt nhà cung cấp database và nền tảng chạy backend. |
 
-Đây là công nghệ đã chọn cho phần phát triển tiếp. Bản Buổi 3 vẫn dùng JavaScript/localStorage; PostgreSQL và backend chưa được triển khai. Nam phụ trách thiết kế dữ liệu, Khanh phối hợp kết nối; hướng dẫn triển khai ở [kế hoạch triển khai](docs/ke-hoach-trien-khai.md).
+Bản nền phát triển cục bộ đã có Express, PostgreSQL và API danh sách, chi tiết sản phẩm. Nhà cung cấp để triển khai backend vẫn đang được chọn. Xem [kế hoạch triển khai](docs/ke-hoach-trien-khai.md).
 
 Tài liệu kết nối PostgreSQL từ Node.js: [node-postgres](https://node-postgres.com/).
 
